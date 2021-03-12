@@ -1,0 +1,23 @@
+{
+  "name": "sos2021-24",
+  "version": "1.0.0",
+  "description": "- **Team**   - [Enrique Luque García](https://github.com/enrike7lg)   - [Francisco Javier Macero Vázquez](https://github.com/framacvaz)   - [Juan Ignacio Roldán Torres](https://github.com/juaroltor) - **Project description**: Correlation between the number of children who drop out of school (primary education), the prevalence of HIV in young people between 0-14 years old and the percentage of employed children between 7-14 years old. - **Repository**: [gti-sos/SOS2021-24](https://github.com/gti-sos/SOS2021-24) - **URL**: [http://sos2021-24.herokuapp.com](http://sos2021-24.herokuapp.com) - **APIs**:     - [https://sos2021-00.herokuapp.com/api/v1/my-awesome-resource-1/docs](https://sos2021-00.herokuapp.com/api/v1/my-awesome-resource-1/docs) (developed by [Enrique Luque García](https://github.com/enrike7lg))     - [https://sos2021-00.herokuapp.com/api/v1/my-awesome-resource-2/docs](https://sos2021-00.herokuapp.com/api/v1/my-awesome-resource-2/docs) (developed by [Francisco Javier Macero Vázquez](https://github.com/framacvaz))     - [https://sos2021-00.herokuapp.com/api/v1/my-awesome-resource-3/docs](https://sos2021-00.herokuapp.com/api/v1/my-awesome-resource-3/docs) (developed by [Juan Ignacio Roldán Torres](https://github.com/juaroltor))",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gti-sos/SOS2021-24.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gti-sos/SOS2021-24/issues"
+  },
+  "homepage": "https://github.com/gti-sos/SOS2021-24#readme",
+  "dependencies": {
+    "cool-ascii-faces": "^1.3.4",
+    "express": "^4.17.1"
+  }
+}
