@@ -2,8 +2,13 @@ var cool = require("cool-ascii-faces");
 var express = require("express");
 var path = require("path");
 var app = express();
+//var bodyParser = require("body-parser");
 
 var port = process.env.PORT || 10000;
+
+var BASE_API_PATH = "/api/v1";
+
+//app.use(bodyParser.json()); USAR EXPRESS EN VEZ DE BODYPARSER??
 
 app.use("/", express.static(path.join(__dirname,"public")));
 
