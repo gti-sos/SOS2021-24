@@ -18,7 +18,8 @@ app.get("/info/children-out-school", (req, res) => {
             table,td{ border: 1px solid black}
         </style>
             <body>
-                <table class = default><caption>Children out of school by year and country</caption> 
+                <table class = default> 
+                    <caption>Children out of school by year and country</caption> 
                     <tr> 
                         <th>country</th>  <th>year</th> <th>children-out-school-male</th> <th>children-out-school-female</th> <th>children-out-school-total</th> 
                     </tr>
