@@ -2,21 +2,24 @@ var cool = require("cool-ascii-faces");
 var express = require("express");
 var path = require("path");
 var app = express();
-//var bodyParser = require("body-parser");
+var bodyParser = require('body-parser');
 
 var port = process.env.PORT || 10000;
 
 var BASE_API_PATH = "/api/v1";
 
-//app.use(bodyParser.json()); USAR EXPRESS EN VEZ DE BODYPARSER??
+app.use(bodyParser.json()); 
+app.use(express.json());
 
 app.use("/", express.static(path.join(__dirname,"public")));
 
+//========================F02 /cool====================
 app.get("/cool", (request,response) => {
 	response.send(cool());
 	console.log("New request to /cool has arrived");
 })//cada vez que se hace un get por http 
 
+//=======================F03 /info=====================
 app.get("/info/children-out-school", (req, res) => {
     res.send(`<html>
         <style>
@@ -62,6 +65,10 @@ app.get("/info/children-with-hiv", (req, res) => {
     res.send("<html><style>table,td{ border: 1px solid black}</style><body><table class = default><caption>Children between 0-14 with HIV by year and country</caption> <tr> <th>country      </th>  <th>year      </th> <th>living-with  </th> <th>newly-infected  </th> <th>total-infected  </th> </tr>   <tr>    <th>france</th>   <th>2016 </th>  <td>500 </td>   <td>100 </td>  <td>600 </td> </tr> <tr>  <th>angola </th> <th>2006 </th><td>17000 </td>	 <td>5100 </td>  <td>221000 </td> </tr> <tr><th>ethiopia </th><th>2004 </th> <td>120000 </td>	<td>15000 </td> <td>135000 </td></tr>   <tr>  <th>morocco </th>	   <th>2003 </th>     <td>500 </td>    <td>100 </td>     <td>600 </td>  </tr>        <tr>  <th>spain </th>  	<th>2018 </th>  <td>100 </td> <td>100</td>  <td>200 </td></tr> </table> </body> </html>");
 });
 
+//=====================F04=========================
+
+
+//=================================================
 app.listen(port,() => {
 	console.log("Server already listening on port " + port);
 });
