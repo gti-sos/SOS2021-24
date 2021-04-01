@@ -66,7 +66,22 @@ app.get("/info/children-with-hiv", (req, res) => {
 });
 
 //=====================F04=========================
-
+var school = [
+    {
+        "country":"Argentina",
+        "year":"1970",
+        "children-out-school-male":94757,
+        "children-out-school-female":61145,
+        "children-out-school-total":155902
+    },
+    {
+        "country":"Italy",
+        "year":"1976",
+        "children-out-school-male":55165,
+        "children-out-school-female":18496,
+        "children-out-school-total":73661
+    }
+];
 
 //=================================================
 app.listen(port,() => {
