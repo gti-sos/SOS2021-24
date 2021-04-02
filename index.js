@@ -83,6 +83,34 @@ var school = [
     }
 ];
 
+
+app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
+    schoolData = [
+        {
+            "country":"Argentina",
+            "year":"1970",
+            "children-out-school-male":94757,
+            "children-out-school-female":61145,
+            "children-out-school-total":155902
+        },
+        {
+            "country":"Italy",
+            "year":"1976",
+            "children-out-school-male":55165,
+            "children-out-school-female":18496,
+            "children-out-school-total":73661
+        }
+    ];
+    console.log(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
+    return res.sendStatus(200);
+  
+  });
+  
+app.get(BASE_API_PATH+"/children-out-school", (req,res)=>{
+	res.send(`Initial data: <${JSON.stringify(school, null, 2)}>`);
+    res.sendStatus(200);
+});
+
 //=================================================
 app.listen(port,() => {
 	console.log("Server already listening on port " + port);
