@@ -122,7 +122,7 @@ app.put(BASE_API_PATH + "/children-out-school", (req, res) => {
 
 //6.8 DELETE: Borra todos los recursos
 app.delete(BASE_API_PATH + "/children-out-school", (req, res) => {
-    SchoolDataSet.length = 0;
+    schoolData.length = 0;
     console.log('Resources deleted');
     return res.sendStatus(200);
   
