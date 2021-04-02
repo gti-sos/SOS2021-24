@@ -87,12 +87,12 @@ app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
         }
     ];
     console.log(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
-    return res.sendStatus(200);
+    res.sendStatus(200);
   
   });
   
 app.get(BASE_API_PATH+"/children-out-school", (req,res)=>{
-	res.send(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
+	res.send(JSON.stringify(schoolData, null, 2));
     res.sendStatus(200);
 });
 
