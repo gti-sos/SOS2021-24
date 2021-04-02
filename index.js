@@ -86,7 +86,7 @@ app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
             "children-out-school-male":55165,
             "children-out-school-female":18496,
             "children-out-school-total":73661
-        }
+        },
         {
             "country":"Spain",
             "year":"2018",
