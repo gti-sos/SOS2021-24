@@ -66,8 +66,9 @@ app.get("/info/children-with-hiv", (req, res) => {
 });
 
 //=====================F04=========================
+//******************children-out-school*******************
+//5.2  GET: CREAR 2 O MÁS RECURSOS
 var schoolData = [];
-
 
 app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
     schoolData = [
@@ -88,14 +89,15 @@ app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
     ];
     console.log(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
     res.sendStatus(200);
-  
   });
   
+//6.1 GET: Devuelve la lista de recursos (array JSON)
 app.get(BASE_API_PATH+"/children-out-school", (req,res)=>{
 	res.send(JSON.stringify(schoolData, null, 2));
     res.sendStatus(200);
 });
 
+//6.2 POST: Crea un nuevo recurso
 app.post(BASE_API_PATH+"/children-out-school", (req,res)=>{
 	var newSchoolData =req.body;
 	schoolData.push(newSchoolData);
