@@ -66,6 +66,7 @@ app.get("/info/children-with-hiv", (req, res) => {
 });
 
 //=====================F04=========================
+
 //******************children-out-school*******************
 //5.2  GET: CREAR 2 O MÁS RECURSOS
 var schoolData = [];
@@ -103,6 +104,28 @@ app.post(BASE_API_PATH+"/children-out-school", (req,res)=>{
 	schoolData.push(newSchoolData);
 	res.sendStatus(201);
 });
+
+//6.6 POST: Post a un recurso -> error de método no permitido
+app.post(BASE_API_PATH + "/children-out-school/:country/:year", (req, res) => {
+    console.log("Method not allowed");
+    return res.sendStatus(405);
+  
+  })
+
+//6.7 PUT: Put a la lista de recursos -> debe dar un error de método no permitido
+app.put(BASE_API_PATH + "/children-out-school", (req, res) => {
+    console.log("Method not allowed");
+    return res.sendStatus(405);
+  
+  })
+
+//6.8 DELETE: Borra todos los recursos
+app.delete(BASE_API_PATH + "/children-out-school", (req, res) => {
+    SchoolDataSet.length = 0;
+    console.log('Resources deleted');
+    return res.sendStatus(200);
+  
+  })
 
 //=================================================
 app.listen(port,() => {
