@@ -48,7 +48,7 @@ app.get("/info/children-out-school", (req, res) => {
                     </tr> 
 
                     <tr>  
-                        <th>Greece </th> <th>2017</th> <td>4374</td> <td>3774</td> <td>8147</td>
+                        <th>Greece </th> <th>2017</th> <td>4374</td> <td>3774</td> <td>8148</td>
                     </tr> 
 
                     <tr> 
@@ -93,6 +93,27 @@ app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
             "children-out-school-male":50956,
             "children-out-school-female":40830,
             "children-out-school-total":91786
+        },
+        {
+            "country":"France",
+            "year":"2016",
+            "children-out-school-male":6482,
+            "children-out-school-female":523,
+            "children-out-school-total":7005
+        },
+        {
+            "country":"Greece",
+            "year":"2017",
+            "children-out-school-male":4374,
+            "children-out-school-female":3774,
+            "children-out-school-total":8148
+        },
+        {
+            "country":"Angola",
+            "year":"2011",
+            "children-out-school-male":170490,
+            "children-out-school-female":603347,
+            "children-out-school-total":773837
         }
     ];
     console.log(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
