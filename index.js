@@ -102,6 +102,7 @@ app.get(BASE_API_PATH+"/children-out-school", (req,res)=>{
 app.post(BASE_API_PATH+"/children-out-school", (req,res)=>{
 	var newSchoolData =req.body;
 	schoolData.push(newSchoolData);
+    console.log("Resource created");
 	res.sendStatus(201);
 });
 
