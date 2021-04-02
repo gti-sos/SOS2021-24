@@ -107,8 +107,14 @@ app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
   });
   
 app.get(BASE_API_PATH+"/children-out-school", (req,res)=>{
-	res.send(`Initial data: <${JSON.stringify(school, null, 2)}>`);
+	res.send(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
     res.sendStatus(200);
+});
+
+app.post(BASE_API_PATH+"/children-out-school", (req,res)=>{
+	var newSchoolData =req.body;
+	schoolData.push(newSchoolData);
+	res.sendStatus(201);
 });
 
 //=================================================
