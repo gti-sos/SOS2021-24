@@ -87,6 +87,13 @@ app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
             "children-out-school-female":18496,
             "children-out-school-total":73661
         }
+        {
+            "country":"Spain",
+            "year":"2018",
+            "children-out-school-male":50956,
+            "children-out-school-female":40830,
+            "children-out-school-total":91786
+        }
     ];
     console.log(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
     res.sendStatus(200);
