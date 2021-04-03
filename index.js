@@ -4,7 +4,7 @@ var path = require("path");
 var app = express();
 var bodyParser = require('body-parser');
 
-var port = process.env.PORT || 10000;
+var port = (process.env.PORT || 10000);
 
 var BASE_API_PATH = "/api/v1";
 
