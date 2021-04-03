@@ -144,7 +144,7 @@ app.get(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
         return res.status(200).send(JSON.stringify(data,null,2));
       }
     }
-    //return res.sendStatus(404);  
+    return res.sendStatus(404);  
   });
 
 //6.6 POST: Post a un recurso -> error de método no permitido
