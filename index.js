@@ -74,14 +74,14 @@ var schoolData = [];
 app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
     schoolData = [
         {
-            "country":"Argentina",
+            "country":"argentina",
             "year":"1970",
             "children-out-school-male":94757,
             "children-out-school-female":61145,
             "children-out-school-total":155902
         },
         {
-            "country":"Italy",
+            "country":"italy",
             "year":"1976",
             "children-out-school-male":55165,
             "children-out-school-female":18496,
@@ -95,21 +95,21 @@ app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
             "children-out-school-total":91786
         },
         {
-            "country":"France",
+            "country":"france",
             "year":"2016",
             "children-out-school-male":6482,
             "children-out-school-female":523,
             "children-out-school-total":7005
         },
         {
-            "country":"Greece",
+            "country":"greece",
             "year":"2017",
             "children-out-school-male":4374,
             "children-out-school-female":3774,
             "children-out-school-total":8148
         },
         {
-            "country":"Angola",
+            "country":"angola",
             "year":"2011",
             "children-out-school-male":170490,
             "children-out-school-female":603347,
@@ -144,7 +144,22 @@ app.get(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
         return res.status(200).send(JSON.stringify(data,null,2));
       }
     }
+    //si el recurso no existe:
     return res.sendStatus(404);  
+  });
+
+//6.4 DELETE: Delete a un recurso -> borra ese recurso(JSON)
+app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
+    var del_data = req.params;
+    for(var i=0; i < schoolData.length; i++){
+      if(schoolData[i].country=== del_data.country && schoolData[i].year === del_data.year){
+        //al metodo splice le pasamos el índice del objeto a partir del cual vamos a borrar objetos del array y el número de objetos a eliminar
+        schoolData.splice(i, 1); 
+        console.log(`The resource: <${del_data.country}> with year: <${del_data.date}> has been deleted`);
+        return res.sendStatus(200);
+      }
+    }
+    return res.sendStatus(404);
   });
 
 //6.6 POST: Post a un recurso -> error de método no permitido
