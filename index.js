@@ -134,6 +134,19 @@ app.post(BASE_API_PATH+"/children-out-school", (req,res)=>{
 	res.sendStatus(201);
 });
 
+//6.3 GET: Get a un recurso -> devuelve ese recurso(objeto JSON)
+app.get(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
+    var req_data = req.params;
+    
+    console.log(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
+    for (var data of schoolData){
+      if (data.country === req_data.country && data.year === req_data.year){     
+        return res.status(200).send(JSON.stringify(data,null,2));
+      }
+    }
+    return res.sendStatus(404);  
+  });
+
 //6.6 POST: Post a un recurso -> error de método no permitido
 app.post(BASE_API_PATH + "/children-out-school/:country/:year", (req, res) => {
     console.log("Method not allowed");
