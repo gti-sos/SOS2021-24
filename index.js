@@ -162,6 +162,8 @@ app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
     return res.sendStatus(404);
   });
 
+//6.5 PUT: Put a un recurso -> actualiza ese recurso
+
 //6.6 POST: Post a un recurso -> error de método no permitido
 app.post(BASE_API_PATH + "/children-out-school/:country/:year", (req, res) => {
     console.log("Method not allowed");
