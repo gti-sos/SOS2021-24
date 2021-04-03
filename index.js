@@ -140,9 +140,9 @@ app.get(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
     
     console.log(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
     for (var data of schoolData){
-      if (data.country === req_data.country && data.year === req_data.year){     
-        return res.status(200).send(JSON.stringify(data,null,2));
-      }
+        if (data.country === req_data.country && data.year === req_data.year){     
+            return res.status(200).send(JSON.stringify(data,null,2));
+        }
     }
     //si el recurso no existe:
     return res.sendStatus(404);  
@@ -152,13 +152,14 @@ app.get(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
 app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
     var del_data = req.params;
     for(var i=0; i < schoolData.length; i++){
-      if(schoolData[i].country=== del_data.country && schoolData[i].year === del_data.year){
+        if(schoolData[i].country=== del_data.country && schoolData[i].year === del_data.year){
         //al metodo splice le pasamos el índice del objeto a partir del cual vamos a borrar objetos del array y el número de objetos a eliminar
-        schoolData.splice(i, 1); 
-        console.log(`The resource: <${del_data.country}> with year: <${del_data.year}> has been deleted`);
-        return res.sendStatus(200);
-      }
+            schoolData.splice(i, 1); 
+            console.log(`The resource: <${del_data.country}> with year: <${del_data.year}> has been deleted`);
+            return res.sendStatus(200);
+        }
     }
+    //si el recurso no existe:
     return res.sendStatus(404);
   });
 
@@ -168,14 +169,12 @@ app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
 app.post(BASE_API_PATH + "/children-out-school/:country/:year", (req, res) => {
     console.log("Method not allowed");
     return res.sendStatus(405);
-  
   })
 
 //6.7 PUT: Put a la lista de recursos -> debe dar un error de método no permitido
 app.put(BASE_API_PATH + "/children-out-school", (req, res) => {
     console.log("Method not allowed");
     return res.sendStatus(405);
-  
   })
 
 //6.8 DELETE: Borra todos los recursos
@@ -183,7 +182,6 @@ app.delete(BASE_API_PATH + "/children-out-school", (req, res) => {
     schoolData.length = 0;
     console.log('Resources deleted');
     return res.sendStatus(200);
-  
   })
 
 //=================================================
