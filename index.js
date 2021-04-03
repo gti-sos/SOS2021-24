@@ -123,7 +123,7 @@ app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
 //6.1 GET: Devuelve la lista de recursos (array JSON)
 app.get(BASE_API_PATH+"/children-out-school", (req,res)=>{
 	res.send(JSON.stringify(schoolData, null, 2));
-    res.sendStatus(200);
+    return res.sendStatus(200);
 });
 
 //6.2 POST: Crea un nuevo recurso
@@ -164,6 +164,7 @@ app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
   });
 
 //6.5 PUT: Put a un recurso -> actualiza ese recurso
+
 
 //6.6 POST: Post a un recurso -> error de método no permitido
 app.post(BASE_API_PATH + "/children-out-school/:country/:year", (req, res) => {
