@@ -155,7 +155,7 @@ app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
       if(schoolData[i].country=== del_data.country && schoolData[i].year === del_data.year){
         //al metodo splice le pasamos el índice del objeto a partir del cual vamos a borrar objetos del array y el número de objetos a eliminar
         schoolData.splice(i, 1); 
-        console.log(`The resource: <${del_data.country}> with year: <${del_data.date}> has been deleted`);
+        console.log(`The resource: <${del_data.country}> with year: <${del_data.year}> has been deleted`);
         return res.sendStatus(200);
       }
     }
