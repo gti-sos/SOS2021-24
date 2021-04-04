@@ -83,7 +83,7 @@ app.get("/info/children-employment", (req, res) => {
                         </tr>   
                         
                         <tr>  
-                            <th>costa_rica </th>	   <th>2016 </th>     <td>1.2% </td>    <td>1.9% </td>     <td>0.6% </td>  
+                            <th>costa_rica </th> <th>2016 </th>     <td>1.2% </td>    <td>1.9% </td>     <td>0.6% </td>  
                         </tr>       
                         
                         <tr>  
