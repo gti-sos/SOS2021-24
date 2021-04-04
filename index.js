@@ -351,13 +351,6 @@ app.delete(BASE_API_PATH + "/children-employment", (req, res) => {
     return res.sendStatus(200);
   })
 
-//=================================================
-app.listen(port,() => {
-	console.log("Server already listening on port " + port);
-});
-
-
-
 //******************children-employment*******************
 //5.2  GET: CREAR 2 O MÁS RECURSOS
 var employmentData = [];
