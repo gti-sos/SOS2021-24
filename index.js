@@ -196,140 +196,6 @@ app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
   });
 
 //6.5 PUT: Put a un recurso -> actualiza ese recurso
-app.put(BASE_API_PATH + "/children-out-school/:country/:year", (req,res) => {
-    var put_data = req.params; //variable con el recurso a actualizar
-    var newData = req.body; //variable con el nuevo recurso (recurso actualizado)
-    var b = false;
-  
-    if (!newData.country || !newData.year || !newData['children-out-school-male']|| !newData['children-out-school-female'] || !newData['children-out-school-total']){
-      console.log("Missing parameter");
-      return res.sendStatus(400);
-    } else {
-      for(var i=0; i< schoolData.length; i++) {
-        if(schoolData[i].country === put_data.country && schoolData[i].year === put_data.year){
-          schoolData[i] = newData;
-          b = true;
-          console.log("PUT successfull");
-          return res.sendStatus(200);
-        }
-      }
-      if(!b){
-        console.log("Missing resource");
-        return res.sendStatus(404);
-      }
-    }
-  });
-
-
-//6.6 POST: Post a un recurso -> error de método no permitido
-app.post(BASE_API_PATH + "/children-out-school/:country/:year", (req, res) => {
-    console.log("Method not allowed");
-    return res.sendStatus(405);
-  })
-
-//6.7 PUT: Put a la lista de recursos -> debe dar un error de método no permitido
-app.put(BASE_API_PATH + "/children-out-school", (req, res) => {
-    console.log("Method not allowed");
-    return res.sendStatus(405);
-  })
-
-//6.8 DELETE: Borra todos los recursos
-app.delete(BASE_API_PATH + "/children-out-school", (req, res) => {
-    schoolData.length = 0;
-    console.log('Resources deleted');
-    return res.sendStatus(200);
-  })
-//******************children-employment*******************
-//5.2  GET: CREAR 2 O MÁS RECURSOS
-var employmentData = [];
-
-app.get(BASE_API_PATH + "/children-employment/loadInitialData", (req, res) => {
-    employmentData = [
-        {
-            "country":"argentina",
-            "year":"2012",
-            "percent-children-employment-m":6.4,
-            "percent-children-employment-f":3.5,
-            "percent-children-employment-t":5
-        },
-        {
-            "country":"cameroon",
-            "year":"2011",
-            "percent-children-employment-m":63.6,
-            "percent-children-employment-f":60.4,
-            "percent-children-employment-t":62
-        },
-        {
-            "country":"morocco",
-            "year":"2004",
-            "percent-children-employment-m":6,
-            "percent-children-employment-f":3,
-            "percent-children-employment-t":4.5
-        },
-        {
-            "country":"costa-rica",
-            "year":"2016",
-            "percent-children-employment-m":1.9,
-            "percent-children-employment-f":0.6,
-            "percent-children-employment-t":1.2
-        },
-        {
-            "country":"georgia",
-            "year":"2006",
-            "percent-children-employment-m":33.6,
-            "percent-children-employment-f":29.9,
-            "percent-children-employment-t":31.8
-        },
-      
-    ];
-    console.log(`Initial data: <${JSON.stringify(employmentData, null, 2)}>`);
-    res.sendStatus(200);
-  });
-  
-//6.1 GET: Devuelve la lista de recursos (array JSON)
-app.get(BASE_API_PATH+"/children-employment", (req,res)=>{
-	res.send(JSON.stringify(employmentData, null, 2));
-    return res.sendStatus(200);
-});
-
-//6.2 POST: Crea un nuevo recurso
-app.post(BASE_API_PATH+"/children-employment", (req,res)=>{
-	var newEmploymentData =req.body;
-	employmentData.push(newEmploymentData);
-    console.log("Resource created");
-	res.sendStatus(201);
-});
-
-//6.3 GET: Get a un recurso -> devuelve ese recurso(objeto JSON)
-app.get(BASE_API_PATH+ "/children-employment/:country/:year", (req,res) => {
-    var req_data = req.params;
-    
-    console.log(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
-    for (var data of employmentData){
-        if (data.country === req_data.country && data.year === req_data.year){     
-            return res.status(200).send(JSON.stringify(data,null,2));
-        }
-    }
-    //si el recurso no existe:
-    return res.sendStatus(404);  
-  });
-
-//6.4 DELETE: Delete a un recurso -> borra ese recurso(JSON)
-app.delete(BASE_API_PATH+ "/children-employment/:country/:year", (req,res) => {
-    var del_data = req.params;
-    for(var i=0; i < employmentData.length; i++){
-        if(employmentData[i].country=== del_data.country && employmentData[i].year === del_data.year){
-        //al metodo splice le pasamos el índice del objeto a partir del cual vamos a borrar objetos del array y el número de objetos a eliminar
-            employmentData.splice(i, 1); 
-            console.log(`The resource: <${del_data.country}> with year: <${del_data.year}> has been deleted`);
-            return res.sendStatus(200);
-        }
-    }
-    //si el recurso no existe:
-    return res.sendStatus(404);
-  });
-
-//6.5 PUT: Put a un recurso -> actualiza ese recurso
 app.put(BASE_API_PATH + "/children-out-school/:country/:date", (req,res) => {
     var put_data = req.params; //variable con el recurso a actualizar
     var newData = req.body; //variable con el nuevo recurso (recurso actualizado)
@@ -354,25 +220,25 @@ app.put(BASE_API_PATH + "/children-out-school/:country/:date", (req,res) => {
     }
   });
 
+
 //6.6 POST: Post a un recurso -> error de método no permitido
-app.post(BASE_API_PATH + "/children-employment/:country/:year", (req, res) => {
+app.post(BASE_API_PATH + "/children-out-school/:country/:year", (req, res) => {
     console.log("Method not allowed");
     return res.sendStatus(405);
   })
 
 //6.7 PUT: Put a la lista de recursos -> debe dar un error de método no permitido
-app.put(BASE_API_PATH + "/children-employment", (req, res) => {
+app.put(BASE_API_PATH + "/children-out-school", (req, res) => {
     console.log("Method not allowed");
     return res.sendStatus(405);
   })
 
 //6.8 DELETE: Borra todos los recursos
-app.delete(BASE_API_PATH + "/children-employment", (req, res) => {
-    employmentData.length = 0;
+app.delete(BASE_API_PATH + "/children-out-school", (req, res) => {
+    schoolData.length = 0;
     console.log('Resources deleted');
     return res.sendStatus(200);
   })
-
 //******************children-employment*******************
 //5.2  GET: CREAR 2 O MÁS RECURSOS
 var employmentData = [];
