@@ -94,7 +94,38 @@ app.get("/info/children-employment", (req, res) => {
         </html>`);
 });
 app.get("/info/children-with-hiv", (req, res) => {
-    res.send("<html><style>table,td{ border: 1px solid black}</style><body><table class = default><caption>Children between 0-14 with HIV by year and country</caption> <tr> <th>country      </th>  <th>year      </th> <th>living-with  </th> <th>newly-infected  </th> <th>total-infected  </th> </tr>   <tr>    <th>france</th>   <th>2016 </th>  <td>500 </td>   <td>100 </td>  <td>600 </td> </tr> <tr>  <th>angola </th> <th>2006 </th><td>17000 </td>	 <td>5100 </td>  <td>221000 </td> </tr> <tr><th>ethiopia </th><th>2004 </th> <td>120000 </td>	<td>15000 </td> <td>135000 </td></tr>   <tr>  <th>morocco </th>	   <th>2003 </th>     <td>500 </td>    <td>100 </td>     <td>600 </td>  </tr>        <tr>  <th>spain </th>  	<th>2018 </th>  <td>100 </td> <td>100</td>  <td>200 </td></tr> </table> </body> </html>");
+    res.send(`<html>
+    <style>
+        table,td{ border: 1px solid black}
+    </style>
+        <body>
+            <table class = default> 
+                <caption>Prevalence of HIV in young people between 0-14 years old</caption> 
+                <tr> 
+                    <th>country</th>  <th>year</th> <th>living-with</th> <th>newly-infected</th> <th>total-infected</th> 
+                </tr>
+                <tr> 
+                    <th>france</th> <th>2016</th> <td>500</td> <td>100</td> <td>600</td> 
+                </tr> 
+
+                <tr> 
+                    <th>angola </th> <th>2006 </th><td>17000</td> <td>5100 </td> <td>22100</td> 
+                </tr> 
+
+                <tr> 
+                    <th>ethiopia </th><th>2004</th> <td>120000 </td> <td>15000 </td> <td>135000</td>
+                </tr> 
+
+                <tr>  
+                    <th>morocco </th> <th>2003</th> <td>500 </td> <td>100 </td> <td>600</td>  
+                </tr> 
+
+                <tr>  
+                    <th>spain </th> <th>2018</th> <td>100</td> <td>100</td> <td>200</td>
+                </tr>  
+            </table> 
+        </body> 
+</html>`);
 });
 
 //=====================F04=========================
@@ -345,6 +376,117 @@ app.put(BASE_API_PATH + "/children-employment", (req, res) => {
 
 //6.8 DELETE: Borra todos los recursos
 app.delete(BASE_API_PATH + "/children-employment", (req, res) => {
+    employmentData.length = 0;
+    console.log('Resources deleted');
+    return res.sendStatus(200);
+  })
+
+  //******************children-with-HIV*******************
+//5.2  GET: CREAR 2 O MÁS RECURSOS
+var employmentData = [];
+
+app.get(BASE_API_PATH + "/children-with-HIV/loadInitialData", (req, res) => {
+    employmentData = [
+        {
+            "country":"france",
+            "year":"2016",
+            "living-with":500,
+            "newly-infected":100,
+            "total-infected":600
+        },
+        {
+            "country":"angola",
+            "year":"2006",
+            "living-with":17000,
+            "newly-infected":5100,
+            "total-infected":22100
+        },
+        {
+            "country":"ethiopia",
+            "year":"2004",
+            "living-with":120000,
+            "newly-infected":15000,
+            "total-infected":135000
+        },
+        {
+            "country":"morocco",
+            "year":"2003",
+            "living-with":500,
+            "newly-infected":100,
+            "total-infected":600
+        },
+        {
+            "country":"spain",
+            "year":"2016",
+            "living-with":100,
+            "newly-infected":100,
+            "total-infected":200
+        },
+      
+    ];
+    console.log(`Initial data: <${JSON.stringify(employmentData, null, 2)}>`);
+    res.sendStatus(200);
+  });
+  
+//6.1 GET: Devuelve la lista de recursos (array JSON)
+app.get(BASE_API_PATH+"/children-with-HIV", (req,res)=>{
+	res.send(JSON.stringify(employmentData, null, 2));
+    return res.sendStatus(200);
+});
+
+//6.2 POST: Crea un nuevo recurso
+app.post(BASE_API_PATH+"/children-with-HIV", (req,res)=>{
+	var newEmploymentData =req.body;
+	employmentData.push(newEmploymentData);
+    console.log("Resource created");
+	res.sendStatus(201);
+});
+
+//6.3 GET: Get a un recurso -> devuelve ese recurso(objeto JSON)
+app.get(BASE_API_PATH+ "/children-with-HIV/:country/:year", (req,res) => {
+    var req_data = req.params;
+    
+    console.log(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
+    for (var data of employmentData){
+        if (data.country === req_data.country && data.year === req_data.year){     
+            return res.status(200).send(JSON.stringify(data,null,2));
+        }
+    }
+    //si el recurso no existe:
+    return res.sendStatus(404);  
+  });
+
+//6.4 DELETE: Delete a un recurso -> borra ese recurso(JSON)
+app.delete(BASE_API_PATH+ "/children-with-HIV/:country/:year", (req,res) => {
+    var del_data = req.params;
+    for(var i=0; i < employmentData.length; i++){
+        if(employmentData[i].country=== del_data.country && employmentData[i].year === del_data.year){
+        //al metodo splice le pasamos el índice del objeto a partir del cual vamos a borrar objetos del array y el número de objetos a eliminar
+            employmentData.splice(i, 1); 
+            console.log(`The resource: <${del_data.country}> with year: <${del_data.year}> has been deleted`);
+            return res.sendStatus(200);
+        }
+    }
+    //si el recurso no existe:
+    return res.sendStatus(404);
+  });
+
+//6.5 PUT: Put a un recurso -> actualiza ese recurso
+
+//6.6 POST: Post a un recurso -> error de método no permitido
+app.post(BASE_API_PATH + "/children-with-HIV/:country/:year", (req, res) => {
+    console.log("Method not allowed");
+    return res.sendStatus(405);
+  })
+
+//6.7 PUT: Put a la lista de recursos -> debe dar un error de método no permitido
+app.put(BASE_API_PATH + "/children-with-HIV", (req, res) => {
+    console.log("Method not allowed");
+    return res.sendStatus(405);
+  })
+
+//6.8 DELETE: Borra todos los recursos
+app.delete(BASE_API_PATH + "/children-with-HIV", (req, res) => {
     employmentData.length = 0;
     console.log('Resources deleted');
     return res.sendStatus(200);
