@@ -500,7 +500,7 @@ app.put(BASE_API_PATH + "/children-with-HIV/:country/:date", (req,res) => {
     var newData = req.body; //variable con el nuevo recurso (recurso actualizado)
     var b = false;
   
-    if (!newData.country || !newData.year || !newData['percent-children-employment-t']|| !newData['percent-children-employment-m'] || !newData['percent-children-emplyment-f']){
+    if (!newData.country || !newData.year || !newData['living-with']|| !newData['newly-infected'] || !newData['total-infected']){
       console.log("Missing parameters");
       return res.sendStatus(400);
     } else {
