@@ -361,7 +361,29 @@ app.delete(BASE_API_PATH+ "/children-employment/:country/:year", (req,res) => {
   });
 
 //6.5 PUT: Put a un recurso -> actualiza ese recurso
-
+app.put(BASE_API_PATH + "/children-employment/:country/:date", (req,res) => {
+    var put_data = req.params; //variable con el recurso a actualizar
+    var newData = req.body; //variable con el nuevo recurso (recurso actualizado)
+    var b = false;
+  
+    if (!newData.country || !newData.year || !newData['percent-children-employment-t']|| !newData['percent-children-employment-m'] || !newData['percent-children-emplyment-f']){
+      console.log("Missing parameters");
+      return res.sendStatus(400);
+    } else {
+      for(var i=0; i< employmentData.length; i++) {
+        if(employmentData[i].country === put_data.country && employmentData[i].year === put_data.year){
+            employmentData[i] = newData;
+          b = true;
+          console.log("PUT successful");
+          return res.sendStatus(200);
+        }
+      }
+      if(!b){
+        console.log("The resource does not exists");
+        return res.sendStatus(404);
+      }
+    }
+  });
 //6.6 POST: Post a un recurso -> error de método no permitido
 app.post(BASE_API_PATH + "/children-employment/:country/:year", (req, res) => {
     console.log("Method not allowed");
@@ -381,12 +403,12 @@ app.delete(BASE_API_PATH + "/children-employment", (req, res) => {
     return res.sendStatus(200);
   })
 
-  //******************children-with-HIV*******************
+    //******************children-with-HIV*******************
 //5.2  GET: CREAR 2 O MÁS RECURSOS
-var employmentData = [];
+var HIVData = [];
 
 app.get(BASE_API_PATH + "/children-with-HIV/loadInitialData", (req, res) => {
-    employmentData = [
+    HIVData = [
         {
             "country":"france",
             "year":"2016",
@@ -424,20 +446,20 @@ app.get(BASE_API_PATH + "/children-with-HIV/loadInitialData", (req, res) => {
         },
       
     ];
-    console.log(`Initial data: <${JSON.stringify(employmentData, null, 2)}>`);
+    console.log(`Initial data: <${JSON.stringify(HIVData, null, 2)}>`);
     res.sendStatus(200);
   });
   
 //6.1 GET: Devuelve la lista de recursos (array JSON)
 app.get(BASE_API_PATH+"/children-with-HIV", (req,res)=>{
-	res.send(JSON.stringify(employmentData, null, 2));
+	res.send(JSON.stringify(HIVData, null, 2));
     return res.sendStatus(200);
 });
 
 //6.2 POST: Crea un nuevo recurso
 app.post(BASE_API_PATH+"/children-with-HIV", (req,res)=>{
-	var newEmploymentData =req.body;
-	employmentData.push(newEmploymentData);
+	var newHIVData =req.body;
+	HIVData.push(newHIVData);
     console.log("Resource created");
 	res.sendStatus(201);
 });
@@ -447,7 +469,7 @@ app.get(BASE_API_PATH+ "/children-with-HIV/:country/:year", (req,res) => {
     var req_data = req.params;
     
     console.log(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
-    for (var data of employmentData){
+    for (var data of HIVData){
         if (data.country === req_data.country && data.year === req_data.year){     
             return res.status(200).send(JSON.stringify(data,null,2));
         }
@@ -459,10 +481,10 @@ app.get(BASE_API_PATH+ "/children-with-HIV/:country/:year", (req,res) => {
 //6.4 DELETE: Delete a un recurso -> borra ese recurso(JSON)
 app.delete(BASE_API_PATH+ "/children-with-HIV/:country/:year", (req,res) => {
     var del_data = req.params;
-    for(var i=0; i < employmentData.length; i++){
-        if(employmentData[i].country=== del_data.country && employmentData[i].year === del_data.year){
+    for(var i=0; i < HIVData.length; i++){
+        if(HIVData[i].country=== del_data.country && HIVData[i].year === del_data.year){
         //al metodo splice le pasamos el índice del objeto a partir del cual vamos a borrar objetos del array y el número de objetos a eliminar
-            employmentData.splice(i, 1); 
+            HIVData.splice(i, 1); 
             console.log(`The resource: <${del_data.country}> with year: <${del_data.year}> has been deleted`);
             return res.sendStatus(200);
         }
@@ -472,6 +494,30 @@ app.delete(BASE_API_PATH+ "/children-with-HIV/:country/:year", (req,res) => {
   });
 
 //6.5 PUT: Put a un recurso -> actualiza ese recurso
+
+app.put(BASE_API_PATH + "/children-with-HIV/:country/:date", (req,res) => {
+    var put_data = req.params; //variable con el recurso a actualizar
+    var newData = req.body; //variable con el nuevo recurso (recurso actualizado)
+    var b = false;
+  
+    if (!newData.country || !newData.year || !newData['percent-children-employment-t']|| !newData['percent-children-employment-m'] || !newData['percent-children-emplyment-f']){
+      console.log("Missing parameters");
+      return res.sendStatus(400);
+    } else {
+      for(var i=0; i< HIVData.length; i++) {
+        if(HIVData[i].country === put_data.country && HIVData[i].year === put_data.year){
+            HIVData[i] = newData;
+          b = true;
+          console.log("PUT successful");
+          return res.sendStatus(200);
+        }
+      }
+      if(!b){
+        console.log("The resource does not exists");
+        return res.sendStatus(404);
+      }
+    }
+  });
 
 //6.6 POST: Post a un recurso -> error de método no permitido
 app.post(BASE_API_PATH + "/children-with-HIV/:country/:year", (req, res) => {
@@ -487,7 +533,7 @@ app.put(BASE_API_PATH + "/children-with-HIV", (req, res) => {
 
 //6.8 DELETE: Borra todos los recursos
 app.delete(BASE_API_PATH + "/children-with-HIV", (req, res) => {
-    employmentData.length = 0;
+    HIVData.length = 0;
     console.log('Resources deleted');
     return res.sendStatus(200);
   })
