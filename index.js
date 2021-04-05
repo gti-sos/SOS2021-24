@@ -407,7 +407,7 @@ app.delete(BASE_API_PATH + "/children-employment", (req, res) => {
 //5.2  GET: CREAR 2 O MÁS RECURSOS
 var HIVData = [];
 
-app.get(BASE_API_PATH + "/children-with-HIV/loadInitialData", (req, res) => {
+app.get(BASE_API_PATH + "/children-with-hiv/loadInitialData", (req, res) => {
     HIVData = [
         {
             "country":"france",
@@ -451,13 +451,13 @@ app.get(BASE_API_PATH + "/children-with-HIV/loadInitialData", (req, res) => {
   });
   
 //6.1 GET: Devuelve la lista de recursos (array JSON)
-app.get(BASE_API_PATH+"/children-with-HIV", (req,res)=>{
+app.get(BASE_API_PATH+"/children-with-hiv", (req,res)=>{
 	res.send(JSON.stringify(HIVData, null, 2));
     return res.sendStatus(200);
 });
 
 //6.2 POST: Crea un nuevo recurso
-app.post(BASE_API_PATH+"/children-with-HIV", (req,res)=>{
+app.post(BASE_API_PATH+"/children-with-hiv", (req,res)=>{
 	var newHIVData =req.body;
 	HIVData.push(newHIVData);
     console.log("Resource created");
@@ -465,7 +465,7 @@ app.post(BASE_API_PATH+"/children-with-HIV", (req,res)=>{
 });
 
 //6.3 GET: Get a un recurso -> devuelve ese recurso(objeto JSON)
-app.get(BASE_API_PATH+ "/children-with-HIV/:country/:year", (req,res) => {
+app.get(BASE_API_PATH+ "/children-with-hiv/:country/:year", (req,res) => {
     var req_data = req.params;
     
     console.log(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
@@ -479,7 +479,7 @@ app.get(BASE_API_PATH+ "/children-with-HIV/:country/:year", (req,res) => {
   });
 
 //6.4 DELETE: Delete a un recurso -> borra ese recurso(JSON)
-app.delete(BASE_API_PATH+ "/children-with-HIV/:country/:year", (req,res) => {
+app.delete(BASE_API_PATH+ "/children-with-hiv/:country/:year", (req,res) => {
     var del_data = req.params;
     for(var i=0; i < HIVData.length; i++){
         if(HIVData[i].country=== del_data.country && HIVData[i].year === del_data.year){
@@ -495,7 +495,7 @@ app.delete(BASE_API_PATH+ "/children-with-HIV/:country/:year", (req,res) => {
 
 //6.5 PUT: Put a un recurso -> actualiza ese recurso
 
-app.put(BASE_API_PATH + "/children-with-HIV/:country/:date", (req,res) => {
+app.put(BASE_API_PATH + "/children-with-hiv/:country/:date", (req,res) => {
     var put_data = req.params; //variable con el recurso a actualizar
     var newData = req.body; //variable con el nuevo recurso (recurso actualizado)
     var b = false;
@@ -520,19 +520,19 @@ app.put(BASE_API_PATH + "/children-with-HIV/:country/:date", (req,res) => {
   });
 
 //6.6 POST: Post a un recurso -> error de método no permitido
-app.post(BASE_API_PATH + "/children-with-HIV/:country/:year", (req, res) => {
+app.post(BASE_API_PATH + "/children-with-hiv/:country/:year", (req, res) => {
     console.log("Method not allowed");
     return res.sendStatus(405);
   })
 
 //6.7 PUT: Put a la lista de recursos -> debe dar un error de método no permitido
-app.put(BASE_API_PATH + "/children-with-HIV", (req, res) => {
+app.put(BASE_API_PATH + "/children-with-hiv", (req, res) => {
     console.log("Method not allowed");
     return res.sendStatus(405);
   })
 
 //6.8 DELETE: Borra todos los recursos
-app.delete(BASE_API_PATH + "/children-with-HIV", (req, res) => {
+app.delete(BASE_API_PATH + "/children-with-hiv", (req, res) => {
     HIVData.length = 0;
     console.log('Resources deleted');
     return res.sendStatus(200);
