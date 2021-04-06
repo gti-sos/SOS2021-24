@@ -228,7 +228,7 @@ app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
 
 //6.5 PUT: Put a un recurso -> actualiza ese recurso
 app.put(BASE_API_PATH+"/children-out-school/:country/:year",(req,res)=>{
-	for(var i=0; i<shcoolData.length; i++){
+	for(var i=0; i<schoolData.length; i++){
 		if(schoolData[i].country==req.params.country&&schoolData[i].year==req.params.year){
 			schoolData[i]=req.body;
 		}
