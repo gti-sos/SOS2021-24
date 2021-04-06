@@ -227,30 +227,15 @@ app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
   });
 
 //6.5 PUT: Put a un recurso -> actualiza ese recurso
-app.put(BASE_API_PATH + "/children-out-school/:country/:year", (req,res) => {
-    var put_data = req.params; //variable con el recurso a actualizar
-    var newData = req.body; //variable con el nuevo recurso (recurso actualizado)
-    var b = false;
-  
-    if (!newData.country || !newData.year || !newData['children-out-school-male']|| !newData['children-out-school-female'] || !newData['children-out-school-total']){
-      console.log("Missing parameters");
-      return res.sendStatus(400);
-    } 
-    else {
-      for(var i=0; i< schoolData.length; i++) {
-        if(schoolData[i].country === put_data.country && schoolData[i].year === put_data.year){
-          schoolData[i] = newData;
-          b = true;
-          console.log("PUT successful");
-          return res.sendStatus(200);
-        }
-      }
-    if(!b){
-        console.log("The resource does not exists");
-        return res.sendStatus(404);
-      }
-    }
-  });
+app.put(BASE_API_PATH+"/children-out-school/:country/:year",(req,res)=>{
+	for(var i=0; i<shcoolData.length; i++){
+		if(schoolData[i].country==req.params.country&&schoolData[i].year==req.params.year){
+			schoolData[i]=req.body;
+		}
+	}
+	res.send("Updated Data");
+	res.sendStatus(200);
+})
 
 
 //6.6 POST: Post a un recurso -> error de método no permitido
