@@ -230,25 +230,25 @@ app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
 app.put(BASE_API_PATH + "/children-out-school/:country/:date", (req,res) => {
     var put_data = req.params; //variable con el recurso a actualizar
     var newData = req.body; //variable con el nuevo recurso (recurso actualizado)
-    var b = false;
+    //var b = false;
   
-    if (!newData.country || !newData.year || !newData['children-out-school-male']|| !newData['children-out-school-female'] || !newData['children-out-school-total']){
-      console.log("Missing parameters");
-      return res.sendStatus(400);
-    } else {
+   // if (!newData.country || !newData.year || !newData['children-out-school-male']|| !newData['children-out-school-female'] || !newData['children-out-school-total']){
+     // console.log("Missing parameters");
+      //return res.sendStatus(400);
+    //} else {
       for(var i=0; i< schoolData.length; i++) {
         if(schoolData[i].country === put_data.country && schoolData[i].year === put_data.year){
           schoolData[i] = newData;
-          b = true;
+          //b = true;
           console.log("PUT successful");
           return res.sendStatus(200);
         }
       }
-      if(!b){
-        console.log("The resource does not exists");
-        return res.sendStatus(404);
-      }
-    }
+      //if(!b){
+       // console.log("The resource does not exists");
+       // return res.sendStatus(404);
+     // }
+    //}
   });
 
 
