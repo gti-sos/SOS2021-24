@@ -190,11 +190,56 @@ app.get(BASE_API_PATH+"/children-out-school", (req,res)=>{
 });
 
 //6.2 POST: Crea un nuevo recurso
+/*
 app.post(BASE_API_PATH+"/children-out-school", (req,res)=>{
 	var newSchoolData =req.body;
 	schoolData.push(newSchoolData);
     res.send("Resource created");
 	res.sendStatus(201);
+});
+*/
+
+app.post(BASE_API_PATH + "/children-out-school", (req, res) => {
+	var newSchoolData = req.body;
+	var country = req.body.location;
+	var year = parseInt(req.body.year);
+
+	//con datos
+	if (schoolData.length != 0){
+		for (var stat of schoolData){
+			if (stat.country == country && stat.year == year){
+				console.log (`Location ${country} and Year ${year} are already in the database`);
+				return res.sendStatus(403);
+			}
+		}
+		if (!newSchoolData.country ||
+			!newSchoolData.year ||
+			!newSchoolData['children-out-school-male'] ||
+			!newSchoolData['children-out-school-male'] ||
+			!newSchoolData['children-out-school-total']){
+				console.log(`Number of parameters is incorrect`);
+				return res.sendStatus(400);
+			}
+		
+		
+		console.log(`New data to be added: <${JSON.stringify(newSales, null, 2)}>`);
+		sales.push(newSales);
+		return res.sendStatus(201);
+	}
+	//sin datos
+	else if (!newSchoolData.country ||
+		!newSchoolData.year ||
+		!newSchoolData['children-out-school-male'] ||
+		!newSchoolData['children-out-school-female'] ||
+		!newSchoolData['children-out-school-total']){
+			console.log(`Number of parameters is incorrect`);
+			return res.sendStatus(400);
+		}
+	else {
+		console.log(`New data to be added: <${JSON.stringify(newSales, null, 2)}>`);
+		sales.push(newSales);
+		return res.sendStatus(201);
+	}
 });
 
 //6.3 GET: Get a un recurso -> devuelve ese recurso(objeto JSON)
