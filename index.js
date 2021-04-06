@@ -138,42 +138,42 @@ app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
     schoolData = [
         {
             "country":"argentina",
-            "year":"1970",
+            "year":1970,
             "children-out-school-male":94757,
             "children-out-school-female":61145,
             "children-out-school-total":155902
         },
         {
             "country":"italy",
-            "year":"1976",
+            "year":1976,
             "children-out-school-male":55165,
             "children-out-school-female":18496,
             "children-out-school-total":73661
         },
         {
             "country":"spain",
-            "year":"2018",
+            "year":2018,
             "children-out-school-male":50956,
             "children-out-school-female":40830,
             "children-out-school-total":91786
         },
         {
             "country":"france",
-            "year":"2016",
+            "year":2016,
             "children-out-school-male":6482,
             "children-out-school-female":523,
             "children-out-school-total":7005
         },
         {
             "country":"greece",
-            "year":"2017",
+            "year":2017,
             "children-out-school-male":4374,
             "children-out-school-female":3774,
             "children-out-school-total":8148
         },
         {
             "country":"angola",
-            "year":"2011",
+            "year":2011,
             "children-out-school-male":170490,
             "children-out-school-female":603347,
             "children-out-school-total":773837
