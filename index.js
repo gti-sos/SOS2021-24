@@ -233,7 +233,7 @@ app.put(BASE_API_PATH+"/children-out-school/:country/:year",(req,res)=>{
 			schoolData[i]=req.body;
 		}
 	}
-	res.send("Updated Data");
+	console.log("Updated Data");
 	res.sendStatus(200);
 })
 
