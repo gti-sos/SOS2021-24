@@ -185,7 +185,7 @@ app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
   
 //6.1 GET: Devuelve la lista de recursos (array JSON)
 app.get(BASE_API_PATH+"/children-out-school", (req,res)=>{
-    if (lifeStatsDS.length != 0) {
+    if (schoolData.length != 0) {
 	    res.send(JSON.stringify(schoolData, null, 2));
         return res.sendStatus(200);
     }
