@@ -481,29 +481,15 @@ app.delete(BASE_API_PATH+ "/children-with-hiv/:country/:year", (req,res) => {
 
 //6.5 PUT: Put a un recurso -> actualiza ese recurso
 
-app.put(BASE_API_PATH + "/children-with-hiv/:country/:date", (req,res) => {
-    var put_data = req.params; //variable con el recurso a actualizar
-    var newData = req.body; //variable con el nuevo recurso (recurso actualizado)
-    var b = false;
-  
-    if (!newData.country || !newData.year || !newData['living-with']|| !newData['newly-infected'] || !newData['total-infected']){
-      console.log("Missing parameters");
-      return res.sendStatus(400);
-    } else {
-      for(var i=0; i< HIVData.length; i++) {
-        if(HIVData[i].country === put_data.country && HIVData[i].year === put_data.year){
-            HIVData[i] = newData;
-          b = true;
-          console.log("PUT successful");
-          return res.sendStatus(200);
-        }
-      }
-      if(!b){
-        console.log("The resource does not exists");
-        return res.sendStatus(404);
-      }
-    }
-  });
+app.put(BASE_API_PATH+"/children-with-hiv/:country/:year",(req,res)=>{
+	for(var i=0; i<HIVData.length; i++){
+		if(HIVData[i].country==req.params.country&&HIVData[i].year==req.params.year){
+			HIVData[i]=req.body;
+		}
+	}
+	res.send("Updated Data");
+	res.sendStatus(200);
+})
 
 //6.6 POST: Post a un recurso -> error de método no permitido
 app.post(BASE_API_PATH + "/children-with-hiv/:country/:year", (req, res) => {
