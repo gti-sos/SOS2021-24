@@ -179,7 +179,7 @@ app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
             "children-out-school-total":773837
         }
     ];
-    res.send(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
+    console.log(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
     res.sendStatus(200);
   });
   
@@ -201,7 +201,7 @@ app.post(BASE_API_PATH+"/children-out-school", (req,res)=>{
 app.get(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
     var req_data = req.params;
     
-    res.send(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
+    console.log(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
     for (var data of schoolData){
         if (data.country === req_data.country && data.year === req_data.year){     
             return res.status(200).send(JSON.stringify(data,null,2));
