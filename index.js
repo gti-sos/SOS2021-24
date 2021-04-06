@@ -196,7 +196,7 @@ app.post(BASE_API_PATH+"/children-out-school", (req,res)=>{
 
   if (schoolData.length != 0) {  //Si hay datos iniciales
     for (var data of schoolData) {
-      if (data.country === newData.country && data.date === newData.year) {
+      if (data.country === newData.country && data.year === newData.year) {
         b = true;  //Existe el recurso
       }
     }
