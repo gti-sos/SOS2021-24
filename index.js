@@ -228,14 +228,20 @@ app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
 
 //6.5 PUT: Put a un recurso -> actualiza ese recurso
 app.put(BASE_API_PATH+"/children-out-school/:country/:year",(req,res)=>{
-	for(var i=0; i<schoolData.length; i++){
-		if(schoolData[i].country==req.params.country&&schoolData[i].year==req.params.year){
-			schoolData[i]=req.body;
-		}
+    if (!newData.country || !newData.date || !newData['quality-life-index'] || !newData['purchasing-power-index'] || !newData['safety-index']) {
+        console.log("Faltan datos para actualizar el recurso");
+        return res.sendStatus(400);
+    }
+    else{
+	    for(var i=0; i<schoolData.length; i++){
+		    if(schoolData[i].country==req.params.country&&schoolData[i].year==req.params.year){
+			    schoolData[i]=req.body;
+                res.send("Updated Data");
+	            res.sendStatus(200);
+		    }
+        }   
 	}
-	res.send("Updated Data");
-	res.sendStatus(200);
-})
+});
 
 
 //6.6 POST: Post a un recurso -> error de método no permitido
