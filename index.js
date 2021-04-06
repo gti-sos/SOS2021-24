@@ -227,7 +227,7 @@ app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
   });
 
 //6.5 PUT: Put a un recurso -> actualiza ese recurso
-app.put(BASE_API_PATH + "/children-out-school/:country/:date", (req,res) => {
+app.put(BASE_API_PATH + "/children-out-school/:country/:year", (req,res) => {
     var put_data = req.params; //variable con el recurso a actualizar
     var newData = req.body; //variable con el nuevo recurso (recurso actualizado)
     var b = false;
