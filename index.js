@@ -179,7 +179,7 @@ app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
             "children-out-school-total":773837
         }
     ];
-    console.log(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
+    res.send(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
     res.sendStatus(200);
   });
   
@@ -193,7 +193,7 @@ app.get(BASE_API_PATH+"/children-out-school", (req,res)=>{
 app.post(BASE_API_PATH+"/children-out-school", (req,res)=>{
 	var newSchoolData =req.body;
 	schoolData.push(newSchoolData);
-    console.log("Resource created");
+    res.send("Resource created");
 	res.sendStatus(201);
 });
 
@@ -201,7 +201,7 @@ app.post(BASE_API_PATH+"/children-out-school", (req,res)=>{
 app.get(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
     var req_data = req.params;
     
-    console.log(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
+    res.send(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
     for (var data of schoolData){
         if (data.country === req_data.country && data.year === req_data.year){     
             return res.status(200).send(JSON.stringify(data,null,2));
@@ -218,7 +218,7 @@ app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
         if(schoolData[i].country=== del_data.country && schoolData[i].year === del_data.year){
         //al metodo splice le pasamos el índice del objeto a partir del cual vamos a borrar objetos del array y el número de objetos a eliminar
             schoolData.splice(i, 1); 
-            console.log(`The resource: <${del_data.country}> with year: <${del_data.year}> has been deleted`);
+            res.send(`The resource: <${del_data.country}> with year: <${del_data.year}> has been deleted`);
             return res.sendStatus(200);
         }
     }
@@ -233,7 +233,7 @@ app.put(BASE_API_PATH+"/children-out-school/:country/:year",(req,res)=>{
 			schoolData[i]=req.body;
 		}
 	}
-	console.log("Updated Data");
+	res.send("Updated Data");
 	res.sendStatus(200);
 })
 
@@ -253,7 +253,7 @@ app.put(BASE_API_PATH + "/children-out-school", (req, res) => {
 //6.8 DELETE: Borra todos los recursos
 app.delete(BASE_API_PATH + "/children-out-school", (req, res) => {
     schoolData.length = 0;
-    console.log('Resources deleted');
+    res.send('Resources deleted');
     return res.sendStatus(200);
   })
 //******************children-employment*******************
