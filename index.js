@@ -227,27 +227,46 @@ app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
   });
 
 //6.5 PUT: Put a un recurso -> actualiza ese recurso
-app.put(BASE_API_PATH + "/children-out-school/:country/:year", (req,res) => {
-    var put_data = req.params; //variable con el recurso a actualizar
-    var newData = req.body; //variable con el nuevo recurso (recurso actualizado)
-    var b = false;
+app.put(BASE_API_PATH + "/chldren-out-school/:country/:year", (req, res) => {
+    var country = req.params.country;
+    var date = req.params.year;
+    var newSchoolData = req.body;
   
-    if (!newData.country || !newData.year || !newData['children-out-school-male']|| !newData['children-out-school-female'] || !newData['children-out-school-total']){
-      console.log("Missing parameters");
+    //Si esta vacio el recurso
+    if (schoolData.length == 0) {
+      console.log("Recurso no encontrado")
+      return res.sendStatus(404);
+    }
+    //Si no existe en el recurso
+    var f=false;
+    for (var stat of schoolData) {
+      if (stat.country === country && stat.year === year) {
+        f=true;
+      }
+    }
+    if(!f){
+      console.log("Recurso no encontrado")
+      return res.sendStatus(404);
+    }//Si los parametros son invalidos
+    else if (!schoolData.country
+      || !schoolData.year
+      || !schoolData['children-out-school-male']
+      || !schoolData['children-out-school-female']
+      || !schoolData['children-out-school-total']
+      || schoolData.country != country
+      || schoolData.year != year
+      || Object.keys(schoolData).length != 5) {
+  
+      console.log("Actualizacion de campos no valida")
       return res.sendStatus(400);
     } 
     else {
-      for(var i=0; i< schoolData.length; i++) {
-        if(schoolData[i].country === put_data.country && schoolData[i].year === put_data.year){
-          schoolData[i] = newData;
-          b = true;
-          console.log("PUT successful");
+      for (var i = 0; i < schoolData.length; i++) {
+        var stat = schoolData[i];
+        if (stat.country === country && stat.year === year) {
+            schoolData[i] = newSchoolData;
           return res.sendStatus(200);
         }
-      }
-    if(!b){
-        console.log("The resource does not exists");
-        return res.sendStatus(404);
       }
     }
   });
