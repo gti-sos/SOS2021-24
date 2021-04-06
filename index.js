@@ -191,10 +191,38 @@ app.get(BASE_API_PATH+"/children-out-school", (req,res)=>{
 
 //6.2 POST: Crea un nuevo recurso
 app.post(BASE_API_PATH+"/children-out-school", (req,res)=>{
-	var newSchoolData =req.body;
-	schoolData.push(newSchoolData);
-    res.send("Resource created");
-	res.sendStatus(201);
+    var newData = req.body;
+    var b = false;
+
+  if (schoolData.length != 0) {  //Si hay datos iniciales
+    for (var data of schoolData) {
+      if (data.country === newData.country && data.date === newData.year) {
+        b = true;  //Existe el recurso
+      }
+    }
+    if (b) {
+      res.send("Ya existe un recurso con la misma fecha y país");
+      return res.sendStatus(409);
+
+    } else if (!newData.country || !newData.year || !newData['children-out-school-male'] || !newData['children-out-school-female'] || !newData['children-out-school-total']) {
+      res.send("Missing parameters");
+      return res.sendStatus(400);
+
+    } else {
+      schoolData.push(newData);
+      res.send(`Se ha añadido el recurso <${JSON.stringify(newData, null, 2)}>`);
+      return res.sendStatus(201);
+    }
+    //si no hay datos iniciales
+  } else if (!newData.country || !newData.year || !newData['children-out-school-male'] || !newData['children-out-school-female'] || !newData['children-out-school-total']) {
+    res.send("Faltan datos para crear el recurso");
+    return res.sendStatus(400);
+
+  } else {
+    schoolData.push(newData);
+    res.send(`Se ha añadido el recurso <${JSON.stringify(newData, null, 2)}>`);
+    return res.sendStatus(201);
+  }
 });
 
 //6.3 GET: Get a un recurso -> devuelve ese recurso(objeto JSON)
