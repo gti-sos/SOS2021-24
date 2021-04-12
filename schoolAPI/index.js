@@ -44,7 +44,7 @@ module.exports.init = (app) => {
         </html>`);
     });
 
-    app.get(BASE_API_PATH + "/children-out-school/loadInitialData", (req, res) => {
+    app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/children-out-school/loadInitialData", (req, res) => {
         schoolData = [
             {
                 "country":"argentina",
@@ -94,7 +94,7 @@ module.exports.init = (app) => {
       });
       
     //6.1 GET: Devuelve la lista de recursos (array JSON)
-    app.get(BASE_API_PATH+"/children-out-school", (req,res)=>{
+    app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH +"/children-out-school", (req,res)=>{
         if (schoolData.length != 0) {
             res.send(JSON.stringify(schoolData, null, 2));
             return res.sendStatus(200);
@@ -106,7 +106,7 @@ module.exports.init = (app) => {
     });
     
     //6.2 POST: Crea un nuevo recurso
-    app.post(BASE_API_PATH+"/children-out-school", (req,res)=>{
+    app.post(BASE_CHILDREN_OUT_SCHOOL_API_PATH +"/children-out-school", (req,res)=>{
         var newData = req.body;
         var b = false;
     
@@ -142,7 +142,7 @@ module.exports.init = (app) => {
     });
     
     //6.3 GET: Get a un recurso -> devuelve ese recurso(objeto JSON)
-    app.get(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
+    app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/children-out-school/:country/:year", (req,res) => {
         var req_data = req.params;
         
         console.log(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
@@ -156,7 +156,7 @@ module.exports.init = (app) => {
       });
     
     //6.4 DELETE: Delete a un recurso -> borra ese recurso(JSON)
-    app.delete(BASE_API_PATH+ "/children-out-school/:country/:year", (req,res) => {
+    app.delete(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/children-out-school/:country/:year", (req,res) => {
         var del_data = req.params;
         for(var i=0; i < schoolData.length; i++){
             if(schoolData[i].country=== del_data.country && schoolData[i].year === del_data.year){
@@ -171,7 +171,7 @@ module.exports.init = (app) => {
       });
     
     //6.5 PUT: Put a un recurso -> actualiza ese recurso
-    app.put(BASE_API_PATH+"/children-out-school/:country/:year",(req,res)=>{
+    app.put(BASE_CHILDREN_OUT_SCHOOL_API_PATH +"/children-out-school/:country/:year",(req,res)=>{
         var put_data = req.params; //variable con el recurso a actualizar
         var newData = req.body; //variable con el nuevo recurso (recurso actualizado)
     
@@ -192,19 +192,19 @@ module.exports.init = (app) => {
     
     
     //6.6 POST: Post a un recurso -> error de método no permitido
-    app.post(BASE_API_PATH + "/children-out-school/:country/:year", (req, res) => {
+    app.post(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/children-out-school/:country/:year", (req, res) => {
         console.log("Method not allowed");
         return res.sendStatus(405);
       })
     
     //6.7 PUT: Put a la lista de recursos -> debe dar un error de método no permitido
-    app.put(BASE_API_PATH + "/children-out-school", (req, res) => {
+    app.put(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/children-out-school", (req, res) => {
         console.log("Method not allowed");
         return res.sendStatus(405);
       })
     
     //6.8 DELETE: Borra todos los recursos
-    app.delete(BASE_API_PATH + "/children-out-school", (req, res) => {
+    app.delete(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/children-out-school", (req, res) => {
         schoolData.length = 0;
         res.send('Resources deleted');
         return res.sendStatus(200);
