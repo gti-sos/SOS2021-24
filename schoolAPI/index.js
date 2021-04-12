@@ -128,17 +128,17 @@ module.exports.init = (app) => {
         } else {
           schoolData.push(newData);
           res.send(`Se ha añadido el recurso <${JSON.stringify(newData, null, 2)}>`);
-          return res.sendStatus(201);
+          res.sendStatus(201);
         }
         //si no hay datos iniciales
       } else if (!newData.country || !newData.year || !newData['children-out-school-male'] || !newData['children-out-school-female'] || !newData['children-out-school-total']) {
         res.send("Faltan datos para crear el recurso");
-        return res.sendStatus(400);
+        res.sendStatus(400);
     
       } else {
         schoolData.push(newData);
         res.send(`Se ha añadido el recurso <${JSON.stringify(newData, null, 2)}>`);
-        return res.sendStatus(201);
+        res.sendStatus(201);
       }
     });
     
