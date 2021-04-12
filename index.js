@@ -18,7 +18,6 @@ app.use("/", express.static(path.join(__dirname,"public")));
 
 //APIs
 var schoolAPI = require("./schoolAPI");
-
 schoolAPI.init(app);
 
 //========================F02 /cool====================
