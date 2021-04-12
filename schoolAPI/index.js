@@ -5,6 +5,7 @@ var schoolData = [];
 module.exports.init = (app) => {
     //=======================F03 /info=====================
     app.get("/info/children-out-school", (req, res) => {
+        res.sendStatus(200);
         res.send(
         `<html>
             <style>
