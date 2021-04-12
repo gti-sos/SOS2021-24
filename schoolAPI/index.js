@@ -147,7 +147,7 @@ module.exports.init = (app) => {
         
         console.log(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
         for (var data of schoolData){
-            if (data.country === req_data.country && data.year === req_data.year){     
+            if (data.country === req_data.country && data.year === parseInt(req_data.year)){     
                 return res.status(200).send(JSON.stringify(data,null,2));
             }
         }
@@ -159,7 +159,7 @@ module.exports.init = (app) => {
     app.delete(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req,res) => {
         var del_data = req.params;
         for(var i=0; i < schoolData.length; i++){
-            if(schoolData[i].country=== del_data.country && schoolData[i].year === del_data.year){
+            if(schoolData[i].country=== del_data.country && schoolData[i].year === parseInt(del_data.year)){
             //al metodo splice le pasamos el índice del objeto a partir del cual vamos a borrar objetos del array y el número de objetos a eliminar
                 schoolData.splice(i, 1); 
                 res.send(`The resource: <${del_data.country}> with year: <${del_data.year}> has been deleted`);
