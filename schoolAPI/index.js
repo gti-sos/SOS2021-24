@@ -193,13 +193,13 @@ module.exports.init = (app) => {
       });
     
     //6.4 DELETE: Delete a un recurso -> borra ese recurso(JSON)
-    app.delete(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req,res) => {
+    app.delete(BASE_CHILDREN_OUT_SCHOOL_API_PATH +"/:country/:year", (req,res) => {
         var del_data = req.params;
         for(var i=0; i < schoolData.length; i++){
             if(schoolData[i].country=== del_data.country && schoolData[i].year === parseInt(del_data.year)){
             //al metodo splice le pasamos el índice del objeto a partir del cual vamos a borrar objetos del array y el número de objetos a eliminar
                 schoolData.splice(i, 1); 
-                res.send(`The resource: <${del_data.country}> with year: <${del_data.year}> has been deleted`);
+                res.send(`The country: <${del_data.country}> with year: <${del_data.year}> has been deleted`);
                 return res.sendStatus(200);
             }
         }
