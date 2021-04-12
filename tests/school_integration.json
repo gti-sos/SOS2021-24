@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "5713e7f2-aabd-4a3a-9ed6-e7b21d91a6b6",
 		"name": "SOS2021-24-children-out-school",
+		"description": "Children out school management API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
