@@ -105,7 +105,7 @@ module.exports.init = (app) => {
             return res.sendStatus(404);
           }
     });
-    
+    /*
     //6.2 POST: Crea un nuevo recurso
     app.post(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req,res)=>{
         var newData = req.body;
@@ -145,7 +145,39 @@ module.exports.init = (app) => {
         res.sendStatus(201);
       }
     });
-    
+    */
+
+    app.post(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req, res) => {
+        var newData = req.body;
+        var country = req.body.country;
+        var year = parseInt(req.body.year);
+
+        //Comprobamos si el recurso a crear ya existe
+        for (var stat of schoolData) {
+            if (stat.country === country && stat.date === date) {
+
+                console.log("Conflict detected");
+                return res.sendStatus(409);
+            }
+        }
+        //Comprobamos los parametros
+        if (!newData.country 
+            || !newData.year 
+            || !newData['children-out-school-male'] 
+            || !newData['children-out-school-female'] 
+            || !newData['children-out-school-total']
+            || Object.keys(newNatalityStat).length != 5) {
+
+            console.log("Missing parameters");
+            return res.sendStatus(400);
+        } else {
+            //Añadimos
+            console.log(`new school data to be added: <${JSON.stringify(newData, null, 2)}>`);
+            natalityStatsDataSet.push(newData);
+            return res.sendStatus(201);
+        }
+    });
+
     //6.3 GET: Get a un recurso -> devuelve ese recurso(objeto JSON)
     app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req,res) => {
         var req_data = req.params;
