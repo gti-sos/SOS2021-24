@@ -166,14 +166,14 @@ module.exports.init = (app) => {
             || !newData['children-out-school-male'] 
             || !newData['children-out-school-female'] 
             || !newData['children-out-school-total']
-            || Object.keys(newNatalityStat).length != 5) {
+            || Object.keys(newData).length != 5) {
 
             console.log("Missing parameters");
             return res.sendStatus(400);
         } else {
             //Añadimos
             console.log(`new school data to be added: <${JSON.stringify(newData, null, 2)}>`);
-            natalityStatsDataSet.push(newData);
+            schoolData.push(newData);
             return res.sendStatus(201);
         }
     });
