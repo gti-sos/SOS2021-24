@@ -121,21 +121,25 @@ module.exports.init = (app) => {
           res.send("Ya existe un recurso con la misma fecha y país");
           return res.sendStatus(409);
     
-        } else if (!newData.country || !newData.year || !newData['children-out-school-male'] || !newData['children-out-school-female'] || !newData['children-out-school-total']) {
+        } 
+        else if (!newData.country || !newData.year || !newData['children-out-school-male'] || !newData['children-out-school-female'] || !newData['children-out-school-total']) {
           res.send("Missing parameters");
-          return res.sendStatus(400);
+          res.sendStatus(400);
     
-        } else {
+        } 
+        else {
           schoolData.push(newData);
           res.send(`Se ha añadido el recurso <${JSON.stringify(newData, null, 2)}>`);
           res.sendStatus(201);
         }
         //si no hay datos iniciales
-      } else if (!newData.country || !newData.year || !newData['children-out-school-male'] || !newData['children-out-school-female'] || !newData['children-out-school-total']) {
+      }
+       else if (!newData.country || !newData.year || !newData['children-out-school-male'] || !newData['children-out-school-female'] || !newData['children-out-school-total']) {
         res.send("Faltan datos para crear el recurso");
         res.sendStatus(400);
     
-      } else {
+      } 
+      else {
         schoolData.push(newData);
         res.send(`Se ha añadido el recurso <${JSON.stringify(newData, null, 2)}>`);
         res.sendStatus(201);
