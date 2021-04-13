@@ -45,35 +45,35 @@ module.exports.init = (app) => {
         HIVData = [
             {
             "country":"france",
-            "year":"2016",
+            "year":2016,
             "living-with":500,
             "newly-infected":100,
             "total-infected":600
         },
         {
             "country":"angola",
-            "year":"2006",
+            "year":2006,
             "living-with":17000,
             "newly-infected":5100,
             "total-infected":22100
         },
         {
             "country":"ethiopia",
-            "year":"2004",
+            "year":2004,
             "living-with":120000,
             "newly-infected":15000,
             "total-infected":135000
         },
         {
             "country":"morocco",
-            "year":"2003",
+            "year":2003,
             "living-with":500,
             "newly-infected":100,
             "total-infected":600
         },
         {
             "country":"spain",
-            "year":"2016",
+            "year":2016,
             "living-with":100,
             "newly-infected":100,
             "total-infected":200
