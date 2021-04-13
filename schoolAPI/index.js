@@ -105,48 +105,7 @@ module.exports.init = (app) => {
             return res.sendStatus(404);
           }
     });
-    /*
     //6.2 POST: Crea un nuevo recurso
-    app.post(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req,res)=>{
-        var newData = req.body;
-        var b = false;
-    
-      if (schoolData.length != 0) {  //Si hay datos iniciales
-        for (var data of schoolData) {
-          if (data.country === newData.country && data.year === newData.year) {
-            b = true;  //Existe el recurso
-          }
-        }
-        if (b) {
-          res.send("Ya existe un recurso con la misma fecha y país");
-          return res.sendStatus(409);
-    
-        } 
-        else if (!newData.country || !newData.year || !newData['children-out-school-male'] || !newData['children-out-school-female'] || !newData['children-out-school-total']) {
-          res.send("Missing parameters");
-          res.sendStatus(400);
-    
-        } 
-        else {
-          schoolData.push(newData);
-          res.send(`Se ha añadido el recurso <${JSON.stringify(newData, null, 2)}>`);
-          res.sendStatus(201);
-        }
-        //si no hay datos iniciales
-      }
-       else if (!newData.country || !newData.year || !newData['children-out-school-male'] || !newData['children-out-school-female'] || !newData['children-out-school-total']) {
-        res.send("Faltan datos para crear el recurso");
-        res.sendStatus(400);
-    
-      } 
-      else {
-        schoolData.push(newData);
-        res.send(`Se ha añadido el recurso <${JSON.stringify(newData, null, 2)}>`);
-        res.sendStatus(201);
-      }
-    });
-    */
-
     app.post(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req, res) => {
         var newData = req.body;
         var country = req.body.country;
