@@ -52,9 +52,9 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"Current resources = 6\", function () {\r",
+							"pm.test(\"Current resources = 5\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(6);\r",
+							"    pm.expect(jsonData.length).to.eql(5);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -262,10 +262,7 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"Current resources = 6\", function () {\r",
-							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(6);\r",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
