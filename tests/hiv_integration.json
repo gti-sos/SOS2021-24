@@ -133,9 +133,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function(){\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -145,7 +143,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv/angola/2006",
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv/france/2016",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -156,8 +154,8 @@
 						"api",
 						"v1",
 						"children-with-hiv",
-						"angola",
-						"2006"
+						"france",
+						"2016"
 					]
 				}
 			},
@@ -170,9 +168,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function(){\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -207,9 +203,7 @@
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function(){\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
+							""
 						],
 						"type": "text/javascript"
 					}
