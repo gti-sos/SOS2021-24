@@ -138,7 +138,7 @@ module.exports.init = (app) => {
     });
 
     //6.3 GET: Get a un recurso -> devuelve ese recurso(objeto JSON)
-    app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/country/year", (req,res) => {
+    app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req,res) => {
         var req_data = req.params;
         
         console.log(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
