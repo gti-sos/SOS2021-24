@@ -1,0 +1,491 @@
+{
+	"info": {
+		"_postman_id": "a241ad59-391c-459e-aef4-d57656d18341",
+		"name": "SOS2021-24-children-employment",
+		"description": "Children out school management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LoadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment/loadInitialData",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET resources",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Current resources = 6\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(6);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST resources",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"acerbaijan\",\r\n\"year\": 2005,\r\n\"percent-children-employment-m\": 6,\r\n\"percent-children-employment-f\": 4.4,\r\n\"percent-children-employment-t\": 5.2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET resources after PUT",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Current resources = 6\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(6);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET a resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment/acerbaijan/2005",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment",
+						"acerbaijan",
+						"2005"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE a resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment/acerbaijan/2005",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment",
+						"acerbaijan",
+						"2005"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET resources after DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Current resources = 6\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(6);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-out-school",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-out-school"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT a resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": \"2012\",\r\n\"percent-children-employment-m\": 10,\r\n\"percent-children-employment-f\": 6,\r\n\"percent-children-employment-t\": 8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment/argentina/2012",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment",
+						"argentina",
+						"2012"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST a resource (ERROR)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment/argentina/2012",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment",
+						"argentina",
+						"2012"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT resources (ERROR)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE resources",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoadInitialData Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment/loadInitialData",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
