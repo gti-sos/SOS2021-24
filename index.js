@@ -11,7 +11,6 @@ var port = (process.env.PORT || 10000);
 var BASE_API_PATH = "/api/v1";
 
 //Server usages
-
 app.use(bodyParser.json()); 
 app.use(express.json());
 app.use("/", express.static(path.join(__dirname,"public")));
@@ -30,7 +29,7 @@ hivAPI.init(app);
 app.get("/cool", (request,response) => {
 	response.send(cool());
 	console.log("New request to /cool has arrived");
-})//cada vez que se hace un get por http 
+});
 
 app.listen(port,() => {
 	console.log("Server already listening on port " + port);
