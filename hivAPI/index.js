@@ -44,7 +44,7 @@ module.exports.init = (app) => {
     app.get(BASE_CHILDREN_WITH_HIV_API_PATH  + "/loadInitialData", (req, res) => {
         HIVData = [
             {
-                "country":"france",
+            "country":"france",
             "year":"2016",
             "living-with":500,
             "newly-infected":100,
@@ -94,48 +94,9 @@ module.exports.init = (app) => {
             return res.sendStatus(404);
           }
     });
-    /*
+    
     //6.2 POST: Crea un nuevo recurso
-    app.post(BASE_CHILDREN_WITH_HIV_API_PATH, (req,res)=>{
-        var newData = req.body;
-        var b = false;
     
-      if (HIVData.length != 0) {  //Si hay datos iniciales
-        for (var data of HIVData) {
-          if (data.country === newData.country && data.year === newData.year) {
-            b = true;  //Existe el recurso
-          }
-        }
-        if (b) {
-          res.send("Ya existe un recurso con la misma fecha y país");
-          return res.sendStatus(409);
-    
-        } 
-        else if (!newData.country || !newData.year || !newData['living-with'] || !newData['newly-infected'] || !newData['total-infected']) {
-          res.send("Missing parameters");
-          res.sendStatus(400);
-    
-        } 
-        else {
-          HIVData.push(newData);
-          res.send(`Se ha añadido el recurso <${JSON.stringify(newData, null, 2)}>`);
-          res.sendStatus(201);
-        }
-        //si no hay datos iniciales
-      }
-       else if (!newData.country || !newData.year || !newData['living-with'] || !newData['newly-infected'] || !newData['total-infected']) {
-        res.send("Faltan datos para crear el recurso");
-        res.sendStatus(400);
-    
-      } 
-      else {
-        HIVData.push(newData);
-        res.send(`Se ha añadido el recurso <${JSON.stringify(newData, null, 2)}>`);
-        res.sendStatus(201);
-      }
-    });
-    */
-
     app.post(BASE_CHILDREN_WITH_HIV_API_PATH, (req, res) => {
         var newData = req.body;
         var country = req.body.country;
