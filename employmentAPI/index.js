@@ -1,4 +1,4 @@
-var BASE_CHILDREN_EMPLOYMENT_API_PATH = "/api/v1/children-out-school"
+var BASE_CHILDREN_EMPLOYMENT_API_PATH = "/api/v1/children-employment"
 
 var employmentData = [];
 
