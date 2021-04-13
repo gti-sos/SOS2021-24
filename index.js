@@ -62,40 +62,6 @@ app.get("/info/children-employment", (req, res) => {
                 </body> 
         </html>`);
 });
-app.get("/info/children-with-hiv", (req, res) => {
-    res.send(`<html>
-    <style>
-        table,td{ border: 1px solid black}
-    </style>
-        <body>
-            <table class = default> 
-                <caption>Prevalence of HIV in young people between 0-14 years old</caption> 
-                <tr> 
-                    <th>country</th>  <th>year</th> <th>living-with</th> <th>newly-infected</th> <th>total-infected</th> 
-                </tr>
-                <tr> 
-                    <th>france</th> <th>2016</th> <td>500</td> <td>100</td> <td>600</td> 
-                </tr> 
-
-                <tr> 
-                    <th>angola </th> <th>2006 </th><td>17000</td> <td>5100 </td> <td>22100</td> 
-                </tr> 
-
-                <tr> 
-                    <th>ethiopia </th><th>2004</th> <td>120000 </td> <td>15000 </td> <td>135000</td>
-                </tr> 
-
-                <tr>  
-                    <th>morocco </th> <th>2003</th> <td>500 </td> <td>100 </td> <td>600</td>  
-                </tr> 
-
-                <tr>  
-                    <th>spain </th> <th>2018</th> <td>100</td> <td>100</td> <td>200</td>
-                </tr>  
-            </table> 
-        </body> 
-</html>`);
-});
 
 //=====================F04=========================
 //******************children-employment*******************
@@ -230,7 +196,7 @@ app.delete(BASE_API_PATH + "/children-employment", (req, res) => {
     console.log('Resources deleted');
     return res.sendStatus(200);
   })
-  
+
 //=================================================
 app.listen(port,() => {
 	console.log("Server already listening on port " + port);
