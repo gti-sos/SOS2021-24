@@ -1,10 +1,7 @@
 var BASE_CHILDREN_OUT_SCHOOL_API_PATH = "/api/v1/children-out-school"
 
 var Datastore = require("nedb");
-var path = require("path");
-
-var dbfile = path.join(__dirname, "children_out_school.db");
-var db = new Datastore({filename: dbfile, autoload: true});
+var db = new Datastore();
 
 var schoolData = [];
 
