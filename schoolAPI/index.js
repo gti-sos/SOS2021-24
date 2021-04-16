@@ -263,7 +263,7 @@ app.put(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => {
     app.put(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req, res) => {
         console.log("Method not allowed");
         res.sendStatus(405);
-      })
+      });
     
     //DELETE children-out-school: Borra todos los recursos
     app.delete(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req, res) => {
