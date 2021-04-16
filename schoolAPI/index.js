@@ -115,7 +115,7 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
                     });
                     res.send(JSON.stringify(data, null, 2));
                     console.log("Data sent:"+JSON.stringify(data, null, 2));
-                 }
+                }
             }
         });
     });
