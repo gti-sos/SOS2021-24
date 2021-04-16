@@ -209,9 +209,9 @@ module.exports.init = (app) => {
     
     //6.8 DELETE: Borra todos los recursos
     app.delete(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req, res) => {
-        db.remove({},{multi: true},(err,numRemoved)){
+        db.remove({}, {multi: true},(err,numRemoved)=>{
             if(err){
-                console.error("ERROR deleting DB resources");
+                console.error("ERROR deleting DB resoures");
                 res.sendStatus(500);
             }
             else{
@@ -224,8 +224,6 @@ module.exports.init = (app) => {
                     res.sendStatus(200);
                 }
             }
-        }
-        res.send('Resources deleted');
-        return res.sendStatus(200);
+        });
       })
 };
