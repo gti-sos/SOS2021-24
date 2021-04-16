@@ -5,7 +5,7 @@ module.exports.init = (app) => {
 
     var dbFile = path.join(__dirname, 'children-out-school.db');
 
-    var db = new Datastore({filename: datafile, autoload: true });
+    var db = new Datastore({filename: dbFile, autoload: true });
 
     var schoolData = [
     {
