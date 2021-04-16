@@ -192,9 +192,9 @@ app.delete(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => 
 
 	var country = req.params.country;
 	var year = parseInt(req.params.year);
-	var query = {"country":country, "year":year};
+	//var query = {"country":country, "year":year};
 
-	db.remove(query, {multi:true}, (err, numRemoved) =>{
+	db.remove({country: country, year: year}, {multi:true}, (err, numRemoved) =>{
         if(err){
             console.error("ERROR accesing DB in GET");
             res.sendStatus(500);
