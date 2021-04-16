@@ -1,6 +1,9 @@
 var BASE_CHILDREN_OUT_SCHOOL_API_PATH = "/api/v1/children-out-school"
 
 var Datastore = require("nedb");
+var path = require("path");
+
+var dbfile = path.join(__dirname, "children_out_school.db");
 var db = new Datastore();
 
 var schoolData = [];
@@ -94,7 +97,7 @@ module.exports.init = (app) => {
             }
         ];
 
-        db.insert(schoolData);
+        //db.insert(schoolData);
         console.log(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
         res.sendStatus(200);
       });
@@ -206,21 +209,8 @@ module.exports.init = (app) => {
     
     //6.8 DELETE: Borra todos los recursos
     app.delete(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req, res) => {
-        db.remove({}, {multi: true}, (err, numRemoved)=>{
-            if(err){
-                console.error("ERROR deleting DB resources");
-                res.sendStatus(500);
-            }
-            else{
-                if(numRemoved == 0){
-                    console.error("ERROR resources not found");
-                    res.sendStatus(404);
-                }
-                else{
-                    res.send('Resources deleted');
-                    return res.sendStatus(200);
-                }
-            }
-        }); 
+        schoolData.length = 0;
+        res.send('Resources deleted');
+        return res.sendStatus(200);
       })
 };
