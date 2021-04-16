@@ -120,7 +120,7 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
         });
     });
 
-    //POST children-out-school: Crea un nuevo recurso
+//POST children-out-school: Crea un nuevo recurso
     app.post(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req, res) => {
         console.log("New POST .../children-out-school");
         var newData = req.body;
