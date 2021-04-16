@@ -1,9 +1,14 @@
 var BASE_CHILDREN_EMPLOYMENT_API_PATH = "/api/v1/children-employment"
+var Datastore = require("nedb");
 
-var employmentData = [];
+
+
+var db = new Datastore();
+
 
 module.exports.init = (app) => {
 
+    
     app.get("/info/children-employment", (req, res) => {
         res.sendStatus(200);
         res.send(`<html>
@@ -44,7 +49,7 @@ module.exports.init = (app) => {
     
     
     app.get(BASE_CHILDREN_EMPLOYMENT_API_PATH + "/loadInitialData", (req, res) => {
-        employmentData = [
+        var employmentData = [
             {
                 "country":"argentina",
                 "year":"2012",
@@ -84,18 +89,40 @@ module.exports.init = (app) => {
         ];
         console.log(`Initial data: <${JSON.stringify(employmentData, null, 2)}>`);
         res.sendStatus(200);
+        db.insert(employmentData);
+
       });
+    
+
+        
+
 
       //6.1 GET: Devuelve la lista de recursos (array JSON)
     app.get(BASE_CHILDREN_EMPLOYMENT_API_PATH, (req,res)=>{
-        if (employmentData.length != 0) {
+
+        db.find({}, (err, empoymentInDB)=>{
+            if(err){
+                console.error("ERROR accessing DB in GET: "+err);
+                return res.sendStatus(500);
+            } else {
+                /*var employmentToSend = employmentInDB.map((c)=>{
+                    //We skip the "_id" field
+                    return {country : c.country, year : c.year,
+                        percentChildrenEmploymentM: c.percent-children-employment-m,
+                        percentChildrenEmploymentF: c.percent-children-employment-f,
+                        percentChildrenEmploymentT: c.percent-children-employment-t};
+                });*/
+                res.send(JSON.stringify(employmentInDB,null,2));
+            }
+        });
+        /*if (employmentData.length != 0) {
             res.send(JSON.stringify(employmentData, null, 2));
             return res.sendStatus(200);
         }
         else {
             res.send("No data found");
             return res.sendStatus(404);
-          }
+          }*/
     });
     /*
     //6.2 POST: Crea un nuevo recurso

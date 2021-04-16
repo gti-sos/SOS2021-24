@@ -3,7 +3,7 @@ var cool = require("cool-ascii-faces");
 var express = require("express");
 var path = require("path");
 var bodyParser = require('body-parser');
-
+var Datastore = require("nedb");
 
 //Variables
 var app = express();
