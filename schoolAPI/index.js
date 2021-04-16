@@ -1,7 +1,7 @@
 module.exports.init = (app) => {
     var BASE_CHILDREN_OUT_SCHOOL_API_PATH = "/api/v1/children-out-school"
     var Datastore = require("nedb");
-    
+
     var db = new Datastore();
 
     var schoolData = [
@@ -62,6 +62,7 @@ module.exports.init = (app) => {
         "children-out-school-total":773837
     }
 ];
+
     //GET loadInitialData children-out-school
     app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
         db.insert(schoolData);
