@@ -1,8 +1,11 @@
 module.exports.init = (app) => {
     var BASE_CHILDREN_OUT_SCHOOL_API_PATH = "/api/v1/children-out-school"
     var Datastore = require("nedb");
+    var path = require('path');
 
-    var db = new Datastore();
+    var dbFile = path.join(__dirname, 'children-out-school.db');
+
+    var db = new Datastore({filename: datafile, autoload: true });
 
     var schoolData = [
     {
@@ -179,7 +182,6 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH+ "/:country/:year", (req, res) => {
 		    } 
             else {
 			    res.sendStatus(404);
-                res.send("The data requested is empty")
 			    console.log("The data requested is empty");
 		    }
         }   
@@ -270,7 +272,7 @@ app.post(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => {
     app.delete(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req, res) => {
         console.log("New DELETE .../children-out-school");
         
-        db.remove({}, { multi: true },  (err, numRemoved)=> {
+        db.remove({}, {multi: true },  (err, numRemoved)=> {
             if (err) {
                 console.error("ERROR deleting DB resources");
                 res.sendStatus(500);
