@@ -251,7 +251,7 @@ app.put(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => {
 		});
 	}
 });
-    //POST: Post a un recurso -> error de método no permitido
+    //POST: Post a un recurso -> error método no permitido
     app.post(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => {
         console.log("Method not allowed");
         res.sendStatus(405);
