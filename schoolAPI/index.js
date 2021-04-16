@@ -191,8 +191,8 @@ app.delete(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => 
 	console.log("New DELETE .../children-out-school/:country/:year");
 
 	var country = req.params.country;
-	var year = req.params.year;
-	var query = {"country":country, "year":parseInt(year)};
+	var year = parseInt(req.params.year);
+	var query = {"country":country, "year":year};
 
 	db.remove(query, {multi:true}, (err, numRemoved) =>{
         if(err){
