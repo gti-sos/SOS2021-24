@@ -258,7 +258,7 @@ app.put(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => {
 app.post(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => {
     console.log("Method not allowed");
     res.sendStatus(405);
-})
+});
     
 //PUT: Put a la lista de recursos -> debe dar un error de método no permitido
     app.put(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req, res) => {
