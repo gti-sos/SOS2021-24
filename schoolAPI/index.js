@@ -232,7 +232,8 @@ app.put(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => {
 
         console.log("The data is not correctly provided");
         return res.sendStatus(400);
-	} else {
+	} 
+    else {
 		db.update(query,newData,(err,numReplaced) =>{
             if(err){
                 console.error("ERROR accesing DB in PUT");
