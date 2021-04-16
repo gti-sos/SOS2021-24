@@ -94,7 +94,7 @@ module.exports.init = (app) => {
             }
         ];
 
-        //db.insert(schoolData);
+        db.insert(schoolData);
         console.log(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
         res.sendStatus(200);
       });
