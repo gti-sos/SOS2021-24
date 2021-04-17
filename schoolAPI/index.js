@@ -10,58 +10,58 @@ module.exports.init = (app) => {
     {
         "country":"argentina",
         "year":1970,
-        "children-out-school-male":94757,
-        "children-out-school-female":61145,
-        "children-out-school-total":155902
+        "children_out_school_male":94757,
+        "children_out_school_female":61145,
+        "children_out_school_total":155902
     },
     {
         "country":"italy",
         "year":1976,
-        "children-out-school-male":55165,
-        "children-out-school-female":18496,
-        "children-out-school-total":73661
+        "children_out_school_male":55165,
+        "children_out_school_female":18496,
+        "children_out_school_total":73661
     },
     {
         "country":"italy",
         "year":2018,
-        "children-out-school-male":43567,
-        "children-out-school-female":45651,
-        "children-out-school-total":89218
+        "children_out_school_male":43567,
+        "children_out_school_female":45651,
+        "children_out_school_total":89218
     },
     {
         "country":"spain",
         "year":2018,
-        "children-out-school-male":50956,
-        "children-out-school-female":40830,
-        "children-out-school-total":91786
+        "children_out_school_male":50956,
+        "children_out_school_female":40830,
+        "children_out_school_total":91786
     },
     {
         "country":"spain",
         "year":2017,
-        "children-out-school-male":43451,
-        "children-out-school-female":31428,
-        "children-out-school-total":74969
+        "children_out_school_male":43451,
+        "children_out_school_female":31428,
+        "children_out_school_total":74969
     },
     {
         "country":"france",
         "year":2016,
-        "children-out-school-male":6482,
-        "children-out-school-female":523,
-        "children-out-school-total":7005
+        "children_out_school_male":6482,
+        "children_out_school_female":523,
+        "children_out_school_total":7005
     },
     {
         "country":"greece",
         "year":2017,
-        "children-out-school-male":4374,
-        "children-out-school-female":3774,
-        "children-out-school-total":8148
+        "children_out_school_male":4374,
+        "children_out_school_female":3774,
+        "children_out_school_total":8148
     },
     {
         "country":"angola",
         "year":2011,
-        "children-out-school-male":170490,
-        "children-out-school-female":603347,
-        "children-out-school-total":773837
+        "children_out_school_male":170490,
+        "children_out_school_female":603347,
+        "children_out_school_total":773837
     }
 ];
 
@@ -72,9 +72,9 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
     res.sendStatus(200);
 });
       
-//GET children-out-school Devuelve la lista de recursos (array JSON)   w/ query
-    app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req,res)=>{
-        console.log("New GET .../children-out-schoool");
+//GET children-out-school Devuelve la lista de recursos (array JSON) w/ query
+app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req,res)=>{
+    console.log("New GET .../children-out-school");
 
         var query = req.query;
 
@@ -92,13 +92,13 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
         if(query.hasOwnProperty("year")){
             query.year = parseInt(query.year);
         }
-        if(query.hasOwnProperty("children-out-school-male")){
+        if(query.hasOwnProperty("children_out_school_male")){
             query.children_out_school_male = parseInt(query.children_out_school_male);
         }
-        if(query.hasOwnProperty("children-out-school-female")){
+        if(query.hasOwnProperty("children_out_school_female")){
             query.children_out_school_female = parseInt(query.children_out_school_female);
         }
-        if(query.hasOwnProperty("children-out-school-total")){
+        if(query.hasOwnProperty("children_out_school_total")){
             query.children_out_school_total = parseInt(query.children_out_school_total);
         }
 
@@ -116,6 +116,7 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
                     data.forEach( (d) =>{
                     delete d._id;
                     });
+
                     res.send(JSON.stringify(data, null, 2));
                     console.log("Data sent:"+JSON.stringify(data, null, 2));
                 }
@@ -139,9 +140,9 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
                 if(data.length == 0){
                     if (!newData.country 
                         || !newData.year 
-                        || !newData['children-out-school-male'] 
-                        || !newData['children-out-school-female'] 
-                        || !newData['children-out-school-total']
+                        || !newData['children_out_school_male'] 
+                        || !newData['children_out_school_female'] 
+                        || !newData['children_out_school_total']
                         || Object.keys(newData).length != 5) {
             
                         console.log("The data is not correctly provided");
@@ -163,7 +164,7 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
 
 //GET children-out-school/:country/:year
 app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH+ "/:country/:year", (req, res) => {
-	console.log("New GET .../children-out-school/:country");
+	console.log("New GET .../children-out-school/:country/:year");
 
 	var country = req.params.country;
     var year = req.params.year;
@@ -225,9 +226,9 @@ app.put(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => {
 
 	if (!newData.country 
         || !newData.year 
-        || !newData['children-out-school-male'] 
-        || !newData['children-out-school-female'] 
-        || !newData['children-out-school-total'] 
+        || !newData['children_out_school_male'] 
+        || !newData['children_out_school_female'] 
+        || !newData['children_out_school_total'] 
         || country != newData.country 
         || year != newData.year
         || Object.keys(newData).length != 5){
@@ -245,7 +246,6 @@ app.put(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => {
 			    if(numReplaced == 0){
 				    res.sendStatus(404);
 				    console.log("There is no such data in the database");
-
 			    }
 			    else{
 				    res.sendStatus(200);
