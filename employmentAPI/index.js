@@ -128,6 +128,7 @@ module.exports.init = (app) => {
             query.percent_children_employment_t = parseFloat(query.percent_children_employment_t);
         }
 
+        
 
         db.find(query).skip(offset).limit(limit).exec((err, data) => {
             if(err){
