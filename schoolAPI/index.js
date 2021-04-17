@@ -115,6 +115,7 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req,res)=>{
                     data.forEach( (d) =>{
                     delete d._id;
                     });
+                    
                     res.send(JSON.stringify(data, null, 2));
                     console.log("Data sent:"+JSON.stringify(data, null, 2));
                 }
