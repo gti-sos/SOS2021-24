@@ -38,9 +38,9 @@ module.exports.init = (app) => {
     {
         "country":"spain",
         "year":2017,
-        "children-out-school-male":43451,
-        "children-out-school-female":31428,
-        "children-out-school-total":74969
+        "children_out_school_male":43451,
+        "children_out-school_female":31428,
+        "children_out_school_total":74969
     },
     {
         "country":"france",
@@ -74,7 +74,7 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
       
 //GET children-out-school Devuelve la lista de recursos (array JSON)   w/ query
     app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req,res)=>{
-        console.log("New GET .../children-out-schoool");
+        console.log("New GET .../children-out-school");
 
         var query = req.query;
 
