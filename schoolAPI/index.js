@@ -162,7 +162,7 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
 
 //GET children-out-school/:country/:year
 app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH+ "/:country/:year", (req, res) => {
-	console.log("New GET .../children-out-school/:country");
+	console.log("New GET .../children-out-school/:country/:year");
 
 	var country = req.params.country;
     var year = req.params.year;
@@ -224,9 +224,9 @@ app.put(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => {
 
 	if (!newData.country 
         || !newData.year 
-        || !newData['children-out-school-male'] 
-        || !newData['children-out-school-female'] 
-        || !newData['children-out-school-total'] 
+        || !newData['children_out_school_male'] 
+        || !newData['children_out_school_female'] 
+        || !newData['children_out_school_total'] 
         || country != newData.country 
         || year != newData.year
         || Object.keys(newData).length != 5){
