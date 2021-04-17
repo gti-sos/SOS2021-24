@@ -12,5 +12,6 @@ jobs:
       - run: npm install
       - run: npm start &
       - run: npx newman run tests/school_integration2.json
+      
       - run: npx newman run tests/hiv_integration.json
       

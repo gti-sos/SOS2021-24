@@ -88,6 +88,7 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
 
         //Si la query contiene alguno de los atributos numerico, hay que pasarlos de string a int
         //Primero comprobamos si la query tiene alguno de estos atributos
+        
         if(query.hasOwnProperty("year")){
             query.year = parseInt(query.year);
         }
