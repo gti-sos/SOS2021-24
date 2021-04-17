@@ -92,13 +92,13 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
             query.year = parseInt(query.year);
         }
         if(query.hasOwnProperty("children_out_school_male")){
-            query.children_out_school_male = parseFloat(query.children_out_school_male);
+            query.children_out_school_male = parseInt(query.children_out_school_male);
         }
         if(query.hasOwnProperty("children_out_school_female")){
-            query.children_out_school_female = parseFloat(query.children_out_school_female);
+            query.children_out_school_female = parseInt(query.children_out_school_female);
         }
         if(query.hasOwnProperty("children_out_school_total")){
-            query.children_out_school_total = parseFloat(query.children_out_school_total);
+            query.children_out_school_total = parseInt(query.children_out_school_total);
         }
 
         db.find(query).skip(offset).limit(limit).exec((err, data) => {
