@@ -73,7 +73,7 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
 });
       
 //GET children-out-school Devuelve la lista de recursos (array JSON) w/ query
-    app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req,res)=>{
+app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req,res)=>{
         console.log("New GET .../children-out-school");
 
         var query = req.query;
