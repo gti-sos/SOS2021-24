@@ -112,20 +112,20 @@ module.exports.init = (app) => {
         delete query.offset;
         delete query.limit;
 
-        //Si la query contiene alguno de los atributos numerico, hay que pasarlos de string a int
+        //Si la query contiene alguno de los atributos numerico, hay que pasarlos de string a int o float
         //Primero comprobamos si la query tiene alguno de estos atributos
         
         if(query.hasOwnProperty("year")){
             query.year = parseInt(query.year);
         }
         if(query.hasOwnProperty("percent_children_employment_m")){
-            query.percent_children_employment_m = parseInt(query.percent_children_employment_m);
+            query.percent_children_employment_m = parseFloat(query.percent_children_employment_m);
         }
         if(query.hasOwnProperty("percent_children_employment_f")){
-            query.percent_children_employment_f = parseInt(query.percent_children_employment_f);
+            query.percent_children_employment_f = parseFloat(query.percent_children_employment_f);
         }
         if(query.hasOwnProperty("percent_children_employment_t")){
-            query.percent_children_employment_t = parseInt(query.percent_children_employment_t);
+            query.percent_children_employment_t = parseFloat(query.percent_children_employment_t);
         }
 
 
