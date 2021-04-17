@@ -113,6 +113,7 @@ module.exports.init = (app) => {
         delete query.limit;
 
         //Si la query contiene alguno de los atributos numerico, hay que pasarlos de string a int o float
+        
         //Primero comprobamos si la query tiene alguno de estos atributos
         
         if(query.hasOwnProperty("year")){
