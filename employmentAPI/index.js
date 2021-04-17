@@ -49,38 +49,38 @@ module.exports.init = (app) => {
     var employmentData = [
         {
             "country":"argentina",
-            "year":"2012",
-            "percent-children-employment-m":6.4,
-            "percent-children-employment-f":3.5,
-            "percent-children-employment-t":5
+            "year":2012,
+            "percent_children_employment_m":6.4,
+            "percent_children_employment_f":3.5,
+            "percent_children_employment_t":5
         },
         {
             "country":"cameroon",
-            "year":"2011",
-            "percent-children-employment-m":63.6,
-            "percent-children-employment-f":60.4,
-            "percent-children-employment-t":62
+            "year":2011,
+            "percent_children_employment_m":63.6,
+            "percent_children_employment_f":60.4,
+            "percent_children_employment_t":62
         },
         {
             "country":"morocco",
-            "year":"2004",
-            "percent-children-employment-m":6,
-            "percent-children-employment-f":3,
-            "percent-children-employment-t":4.5
+            "year":2004,
+            "percent_children_employment_m":6,
+            "percent_children_employment_f":3,
+            "percent_children_employment_t":4.5
         },
         {
             "country":"costa-rica",
-            "year":"2016",
-            "percent-children-employment-m":1.9,
-            "percent-children-employment-f":0.6,
-            "percent-children-employment-t":1.2
+            "year":2016,
+            "percent_children_employment_m":1.9,
+            "percent_children_employment_f":0.6,
+            "percent_children_employment_t":1.2
         },
         {
             "country":"georgia",
-            "year":"2006",
-            "percent-children-employment-m":33.6,
-            "percent-children-employment-f":29.9,
-            "percent-children-employment-t":31.8
+            "year":2006,
+            "percent_children_employment_m":33.6,
+            "percent_children_employment_f":29.9,
+            "percent_children_employment_t":31.8
         },
       
     ];
@@ -118,13 +118,13 @@ module.exports.init = (app) => {
         if(query.hasOwnProperty("year")){
             query.year = parseInt(query.year);
         }
-        if(query.hasOwnProperty("percent-children-employment-m")){
+        if(query.hasOwnProperty("percent_children_employment_m")){
             query.percent_children_employment_m = parseInt(query.percent_children_employment_m);
         }
-        if(query.hasOwnProperty("percent-children-employment-f")){
+        if(query.hasOwnProperty("percent_children_employment_f")){
             query.percent_children_employment_f = parseInt(query.percent_children_employment_f);
         }
-        if(query.hasOwnProperty("percent-children-employment-t")){
+        if(query.hasOwnProperty("percent_children_employment_t")){
             query.percent_children_employment_t = parseInt(query.percent_children_employment_t);
         }
 
@@ -164,9 +164,9 @@ module.exports.init = (app) => {
                 if(data.length == 0){
                     if (!newData.country 
                         || !newData.year 
-                        || !newData['percent-children-employment-m'] 
-                        || !newData['percent-children-employment-f'] 
-                        || !newData['percent-children-employment-t']
+                        || !newData['percent_children_employment_m'] 
+                        || !newData['percent_children_employment_f'] 
+                        || !newData['percent_children_employment_t']
                         || Object.keys(newData).length != 5){
                         console.log("The data is not correctly provided");
                         return res.sendStatus(400);
@@ -251,9 +251,9 @@ module.exports.init = (app) => {
     
         if (!newData.country 
             || !newData.year 
-            || !newData['percent-children-employment-m'] 
-            || !newData['percent-children-employment-f'] 
-            || !newData['percent-children-employment-t']
+            || !newData['percent_children_employment_m'] 
+            || !newData['percent_children_employment_f'] 
+            || !newData['percent_children_employment_t']
             || country != newData.country 
             || year != newData.year
             || Object.keys(newData).length != 5){
