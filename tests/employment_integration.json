@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a241ad59-391c-459e-aef4-d57656d18341",
+		"_postman_id": "a16b45dd-006e-4478-833c-3af212a4e6cd",
 		"name": "SOS2021-24-children-employment",
 		"description": "Children out school management API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -89,6 +89,262 @@
 			"response": []
 		},
 		{
+			"name": "Query by Country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Resources with country named cameroon = 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment?country=cameroon",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "cameroon"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query by Year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Resources with year 2011 = 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment?year=2011",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2011"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query by Country and Year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Current resources = 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment?country=argentina&year=2012",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "argentina"
+						},
+						{
+							"key": "year",
+							"value": "2012"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search offset = 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment?offset=2",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search offset = 0 & limit = 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment?percent_children_employment_m=63.6",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment"
+					],
+					"query": [
+						{
+							"key": "percent_children_employment_m",
+							"value": "63.6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "POST resources",
 			"event": [
 				{
@@ -108,7 +364,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"acerbaijan\",\r\n\"year\": 2005,\r\n\"percent-children-employment-m\": 6,\r\n\"percent-children-employment-f\": 4.4,\r\n\"percent-children-employment-t\": 5.2\r\n}",
+					"raw": "{\r\n\"country\": \"acerbaijan\",\r\n\"year\": 2005,\r\n\"percent_children_employment_m\": 6,\r\n\"percent_children_employment_f\": 4.4,\r\n\"percent_children_employment_t\": 5.2\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -133,7 +389,95 @@
 			"response": []
 		},
 		{
-			"name": "GET resources after PUT",
+			"name": "POST resources (Error data format)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"spain\",\r\n\"year\": 2000,\r\n\"percent_children_employment_m\": 55,\r\n\"percent_children_employment_f\": 55\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST resources (Duplicated country and year))",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {\r",
+							"    pm.response.to.have.status(409);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"acerbaijan\",\r\n\"year\": 2005,\r\n\"percent_children_employment_m\": 6,\r\n\"percent_children_employment_f\": 4.4,\r\n\"percent_children_employment_t\": 5.2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET resources after POST",
 			"event": [
 				{
 					"listen": "test",
@@ -158,8 +502,8 @@
 				"method": "GET",
 				"header": [],
 				"body": {
-					"mode": "formdata",
-					"formdata": []
+					"mode": "raw",
+					"raw": ""
 				},
 				"url": {
 					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment",
@@ -187,7 +531,8 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
-							"});"
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
@@ -197,7 +542,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment/acerbaijan/2005",
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment/argentina/2012",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -208,8 +553,46 @@
 						"api",
 						"v1",
 						"children-employment",
-						"acerbaijan",
-						"2005"
+						"argentina",
+						"2012"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET a resource(Error, not found)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment/argentina/2017",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment",
+						"argentina",
+						"2017"
 					]
 				}
 			},
@@ -253,6 +636,43 @@
 			"response": []
 		},
 		{
+			"name": "DELETE a resource(Error, not found)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment/acerbaijan/2005",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment",
+						"acerbaijan",
+						"2005"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "GET resources after DELETE",
 			"event": [
 				{
@@ -262,7 +682,10 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							""
+							"pm.test(\"Current resources = 5\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(5);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
@@ -279,7 +702,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-out-school",
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -289,7 +712,7 @@
 					"path": [
 						"api",
 						"v1",
-						"children-out-school"
+						"children-employment"
 					]
 				}
 			},
@@ -315,7 +738,53 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": \"2012\",\r\n\"percent-children-employment-m\": 10,\r\n\"percent-children-employment-f\": 6,\r\n\"percent-children-employment-t\": 8\r\n}",
+					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": \"2012\",\r\n\"percent_children_employment_m\": 10,\r\n\"percent_children_employment_f\": 6,\r\n\"percent_children_employment_t\": 8\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment/argentina/2012",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment",
+						"argentina",
+						"2012"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT a resource ERROR",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": \"2012\",\r\n\"percent_children_employment_m\": 10,\r\n\"percent_children_employment_f\": 6\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -449,25 +918,33 @@
 			"response": []
 		},
 		{
-			"name": "LoadInitialData Copy",
+			"name": "GET resources after DELETE ALL",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							"pm.test(\"Status code is 200\", function () {\r",
-							"    pm.response.to.have.status(200);\r",
-							"});"
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
 			"request": {
 				"method": "GET",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment/loadInitialData",
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -477,8 +954,42 @@
 					"path": [
 						"api",
 						"v1",
-						"children-employment",
-						"loadInitialData"
+						"children-employment"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE resources EMPTY",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-employment",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-employment"
 					]
 				}
 			},
