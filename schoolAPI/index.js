@@ -115,7 +115,7 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req,res)=>{
                     data.forEach( (d) =>{
                     delete d._id;
                     });
-                    
+
                     res.send(JSON.stringify(data, null, 2));
                     console.log("Data sent:"+JSON.stringify(data, null, 2));
                 }
@@ -245,7 +245,6 @@ app.put(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => {
 			    if(numReplaced == 0){
 				    res.sendStatus(404);
 				    console.log("There is no such data in the database");
-
 			    }
 			    else{
 				    res.sendStatus(200);
