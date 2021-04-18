@@ -197,44 +197,44 @@ app.delete(BASE_CHILDREN_WITH_HIV_API_PATH + "/:country/:year", (req, res) => {
 });
 
 //PUT children-with-hiv/:country/:year
-app.put(BASE_CHILDREN_WITH_HIV_API_PATH + "/:country/:year", (req, res) => {
-	console.log("New PUT .../children-with-hiv/:country/:year");
+app.put(BASE_CHILDREN_WITH_HIV_API_PATH +"/:country/:year",(req,res)=>{
+    console.log("New PUT .../children-with-hiv/:country/:year");
+    var country = req.params.country;
+    var year = req.params.year;
+    var newData = req.body;
+    var query = {"country":country, "year":parseInt(year)};
 
-	var country = req.params.country;
-	var year = req.params.year;
-	var newData = req.body;
-	var query = {"country":country, "year":parseInt(year)};
-
-	if (!newData.country 
+    if (!newData.country 
         || !newData.year 
         || !newData['living_with'] 
         || !newData['newly_infected'] 
-        || !newData['total_infected'] 
+        || !newData['total_infected']
         || country != newData.country 
         || year != newData.year
         || Object.keys(newData).length != 5){
 
         console.log("The data is not correctly provided");
         return res.sendStatus(400);
-	} 
-    else { 
-		db.update(query,newData,(err,numReplaced) =>{
+    }
+    else {
+        db.update(query,newData,(err,numReplaced) =>{
             if(err){
                 console.error("ERROR accesing DB in PUT");
                 res.sendStatus(500);
             }
             else{
-			    if(numReplaced == 0){
-				    res.sendStatus(404);
-				    console.log("There is no such data in the database");
-			    }
-			    else{
-				    res.sendStatus(200);
-				    console.log("Database updated");
-			    }
+                if(numReplaced == 0){
+                    res.sendStatus(404);
+                    console.log("There is no such data in the database");
+
+                }
+                else{
+                    res.sendStatus(200);
+                    console.log("Database updated");
+                }
             }
-		});
-	}
+        });
+    }
 });
     
 //POST: Post a un recurso -> error método no permitido
