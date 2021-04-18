@@ -65,6 +65,7 @@ module.exports.init = (app) => {
     }
 ];
 
+//Delete the database
 db.remove({}, {multi: true});
 
 //GET loadInitialData children-out-school
