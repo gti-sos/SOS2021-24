@@ -7,46 +7,47 @@ module.exports.init = (app) => {
     var db = new Datastore({filename: dbFile, autoload: true });
 
     var HIVData = [
-        {
-            "country":"france",
-            "year":2016,
-            "living_with":500,
-            "newly_infected":100,
-            "total_infected":600
-        },
-        {
-            "country":"angola",
-            "year":2006,
-            "living_with":17000,
-            "newly_infected":5100,
-            "total_infected":22100
-        },
-        {
-            "country":"ethiopia",
-            "year":2004,
-            "living_with":120000,
-            "newly_infected":15000,
-            "total_infected":135000
-        },
-        {
-            "country":"morocco",
-            "year":2003,
-            "living_with":500,
-            "newly_infected":100,
-            "total_infected":600
-        },
-        {
-            "country":"spain",
-            "year":2016,
-            "living_with":100,
-            "newly_infected":100,
-            "total_infected":200
-        }
+    {
+        "country":"france",
+        "year":2016,
+        "living_with":500,
+        "newly_infected":100,
+        "total_infected":600
+    },
+    {
+        "country":"angola",
+        "year":2006,
+        "living_with":1700,
+        "newly_infected":5100,
+        "total_infected":22100
+    },
+    {
+        "country":"ethiopia",
+        "year":2004,
+        "living_with":120000,
+        "newly_infected":15000,
+        "total_infected":135000
+    },
+    {
+        "country":"morocco",
+        "year":2003,
+        "living_with":500,
+        "newly_infected":100,
+        "total_infected":600
+    },
+    {
+        "country":"spain",
+        "year":2018,
+        "living_with":100,
+        "newly_infected":100,
+        "total_infected":200
+    }
 ];
 
+//Delete the database
 db.remove({}, {multi: true});
 
-//GET loadInitialData children-with-hiv 
+//GET loadInitialData children-with-hiv
 app.get(BASE_CHILDREN_WITH_HIV_API_PATH  + "/loadInitialData", (req, res) => {
     db.insert(HIVData);
     console.log(`Initial data: <${JSON.stringify(HIVData, null, 2)}>`);
@@ -63,7 +64,7 @@ app.get(BASE_CHILDREN_WITH_HIV_API_PATH, (req,res)=>{
         var offset = query.offset;
         var limit = query.limit;
 
-        //Los quitamos de la query para no tener que parsearlos 
+        //Los quitamos de la query para no tener que parsearlos
         delete query.offset;
         delete query.limit;
 
@@ -197,44 +198,44 @@ app.delete(BASE_CHILDREN_WITH_HIV_API_PATH + "/:country/:year", (req, res) => {
 });
 
 //PUT children-with-hiv/:country/:year
-app.put(BASE_CHILDREN_WITH_HIV_API_PATH +"/:country/:year",(req,res)=>{
-    console.log("New PUT .../children-with-hiv/:country/:year");
-    var country = req.params.country;
-    var year = req.params.year;
-    var newData = req.body;
-    var query = {"country":country, "year":parseInt(year)};
+app.put(BASE_CHILDREN_WITH_HIV_API_PATH + "/:country/:year", (req, res) => {
+	console.log("New PUT .../children-with-hiv/:country/:year");
 
-    if (!newData.country 
+	var country = req.params.country;
+	var year = req.params.year;
+	var newData = req.body;
+	var query = {"country":country, "year":parseInt(year)};
+
+	if (!newData.country 
         || !newData.year 
         || !newData['living_with'] 
         || !newData['newly_infected'] 
-        || !newData['total_infected']
+        || !newData['total_infected'] 
         || country != newData.country 
         || year != newData.year
         || Object.keys(newData).length != 5){
 
         console.log("The data is not correctly provided");
         return res.sendStatus(400);
-    }
+	} 
     else {
-        db.update(query,newData,(err,numReplaced) =>{
+		db.update(query,newData,(err,numReplaced) =>{
             if(err){
                 console.error("ERROR accesing DB in PUT");
                 res.sendStatus(500);
             }
             else{
-                if(numReplaced == 0){
-                    res.sendStatus(404);
-                    console.log("There is no such data in the database");
-
-                }
-                else{
-                    res.sendStatus(200);
-                    console.log("Database updated");
-                }
+			    if(numReplaced == 0){
+				    res.sendStatus(404);
+				    console.log("There is no such data in the database");
+			    }
+			    else{
+				    res.sendStatus(200);
+				    console.log("Database updated");
+			    }
             }
-        });
-    }
+		});
+	}
 });
     
 //POST: Post a un recurso -> error método no permitido
