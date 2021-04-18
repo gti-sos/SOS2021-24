@@ -46,7 +46,7 @@ module.exports.init = (app) => {
 
 db.remove({}, {multi: true});
 
-//GET loadInitialData children-with-hiv
+//GET loadInitialData children-with-hiv 
 app.get(BASE_CHILDREN_WITH_HIV_API_PATH  + "/loadInitialData", (req, res) => {
     db.insert(HIVData);
     console.log(`Initial data: <${JSON.stringify(HIVData, null, 2)}>`);
