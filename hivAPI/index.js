@@ -44,6 +44,8 @@ module.exports.init = (app) => {
         }
 ];
 
+db.remove({}, {multi: true});
+
 //GET loadInitialData children-with-hiv
 app.get(BASE_CHILDREN_WITH_HIV_API_PATH  + "/loadInitialData", (req, res) => {
     db.insert(HIVData);
