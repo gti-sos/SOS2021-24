@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "5.2 https://sos2021-24.herokuapp.com/info/children-with-hiv",
+			"name": "LoadInitialData",
 			"event": [
 				{
 					"listen": "test",
@@ -43,7 +43,7 @@
 			"response": []
 		},
 		{
-			"name": "6.1 https://sos2021-24.herokuapp.com/api/v1/children-with-hiv",
+			"name": "Get resources",
 			"event": [
 				{
 					"listen": "test",
@@ -83,7 +83,368 @@
 			"response": []
 		},
 		{
-			"name": "6.2 https://sos2021-24.herokuapp.com/api/v1/children-with-hiv",
+			"name": "Query por país",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Resources with country named spain = 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv?country=spain",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-with-hiv"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "spain"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query por año",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Resources with year 2018 = 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv?year=2018",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-with-hiv"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query por país y año",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Current resources = 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv?country=spain&year=2018",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-with-hiv"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "spain"
+						},
+						{
+							"key": "year",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search by living-with",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Current resources = 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv?living_with=120000",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-with-hiv"
+					],
+					"query": [
+						{
+							"key": "living_with",
+							"value": "120000"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv?living_with=0",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-with-hiv"
+					],
+					"query": [
+						{
+							"key": "living_with",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pagination limit = 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv?limit=2",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-with-hiv"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pagination offset = 0 & limit = 4",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv?offset=0&limit=4",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-with-hiv"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post Chile",
 			"event": [
 				{
 					"listen": "test",
@@ -102,7 +463,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "\r\n           {\r\n\"country\": \"chile\",\r\n\"year\": \"2015\",\r\n\"living-with\": 500,\r\n\"newly-infected\": 100,\r\n\"total-infected\": 600\r\n}",
+					"raw": "\r\n           {\r\n\"country\": \"chile\",\r\n\"year\": 2015,\r\n\"living_with\": 500,\r\n\"newly_infected\": 100,\r\n\"total_infected\": 600\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -127,7 +488,97 @@
 			"response": []
 		},
 		{
-			"name": "6.3 https://sos2021-24.herokuapp.com/api/v1/children-with-hiv/:country/:year",
+			"name": "Post (Error data format)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"mexico\",\r\n\"year\": 2017\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-out-school",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-out-school"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET resources after POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Current resources = 6\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(6);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-with-hiv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a Resource",
 			"event": [
 				{
 					"listen": "test",
@@ -164,7 +615,7 @@
 			"response": []
 		},
 		{
-			"name": "6.4 https://sos2021-24.herokuapp.com/api/v1/children-with-hiv/:country/:year",
+			"name": "Delete a Resource",
 			"event": [
 				{
 					"listen": "test",
@@ -201,24 +652,50 @@
 			"response": []
 		},
 		{
-			"name": "6.5 https://sos2021-24.herokuapp.com/api/v1/children-with-hiv/:country/:date",
+			"name": "DELETE a resource(Error)",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
 						"exec": [
-							""
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
 						],
 						"type": "text/javascript"
 					}
 				}
 			],
 			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-out-school/chile/2014",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-out-school",
+						"chile",
+						"2014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Put Spain",
+			"request": {
 				"method": "PUT",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"france\",\r\n\"year\": \"2016\",\r\n\"living-with\": 500,\r\n\"newly-infected\": 0,\r\n\"total-infected\": 500\r\n}",
+					"raw": "{\r\n\"country\": \"spain\",\r\n\"year\": 2018,\r\n\"living_with\": 100,\r\n\"newly_infected\": 10,\r\n\"total_infected\": 200\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -226,7 +703,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv/france/2016",
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv/spain/2018",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -237,15 +714,61 @@
 						"api",
 						"v1",
 						"children-with-hiv",
-						"france",
-						"2016"
+						"spain",
+						"2018"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "6.6 https://sos2021-24.herokuapp.com/api/v1/children-with-hiv/:country/:year",
+			"name": "Put Spain (ERROR)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"spain\",\r\n\"year\": \"2018\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv/spain/2018",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-with-hiv",
+						"spain",
+						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Post a Resource (Error)",
 			"event": [
 				{
 					"listen": "test",
@@ -291,7 +814,7 @@
 			"response": []
 		},
 		{
-			"name": "6.7 https://sos2021-24.herokuapp.com/api/v1/children-with-hiv",
+			"name": "Put a Resource (Error)",
 			"event": [
 				{
 					"listen": "test",
@@ -326,7 +849,7 @@
 			"response": []
 		},
 		{
-			"name": "6.8 https://sos2021-24.herokuapp.com/api/v1/children-with-hiv",
+			"name": "Delete Resources",
 			"event": [
 				{
 					"listen": "test",
@@ -355,6 +878,84 @@
 						"api",
 						"v1",
 						"children-with-hiv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET resources after DELETE ALL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-with-hiv"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE resources Vacío",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-out-school",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"children-out-school"
 					]
 				}
 			},
