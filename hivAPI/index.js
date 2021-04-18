@@ -1,199 +1,268 @@
-var BASE_CHILDREN_WITH_HIV_API_PATH = "/api/v1/children-with-hiv"
-
-var HIVData = [];
-
 module.exports.init = (app) => {
-    //=======================F03 /info=====================
-    app.get("/info/children-with-hiv", (req, res) => {
-        res.sendStatus(200);
-        res.send(
-            `<html>
-            <style>
-                table,td{ border: 1px solid black}
-            </style>
-                <body>
-                    <table class = default> 
-                        <caption>Prevalence of HIV in young people between 0-14 years old</caption> 
-                        <tr> 
-                            <th>country</th>  <th>year</th> <th>living-with</th> <th>newly-infected</th> <th>total-infected</th> 
-                        </tr>
-                        <tr> 
-                            <th>france</th> <th>2016</th> <td>500</td> <td>100</td> <td>600</td> 
-                        </tr> 
-        
-                        <tr> 
-                            <th>angola </th> <th>2006 </th><td>17000</td> <td>5100 </td> <td>22100</td> 
-                        </tr> 
-        
-                        <tr> 
-                            <th>ethiopia </th><th>2004</th> <td>120000 </td> <td>15000 </td> <td>135000</td>
-                        </tr> 
-        
-                        <tr>  
-                            <th>morocco </th> <th>2003</th> <td>500 </td> <td>100 </td> <td>600</td>  
-                        </tr> 
-        
-                        <tr>  
-                            <th>spain </th> <th>2018</th> <td>100</td> <td>100</td> <td>200</td>
-                        </tr>  
-                    </table> 
-                </body> 
-        </html>`);
-    });
+    var BASE_CHILDREN_WITH_HIV_API_PATH = "/api/v1/children-with-hiv"
+    var Datastore = require("nedb");
+    var path = require('path');
 
-    app.get(BASE_CHILDREN_WITH_HIV_API_PATH  + "/loadInitialData", (req, res) => {
-        HIVData = [
-            {
+    var dbFile = path.join(__dirname, 'children-with-hiv.db');
+    var db = new Datastore({filename: dbFile, autoload: true });
+
+    var HIVData = [
+        {
             "country":"france",
             "year":2016,
-            "living-with":500,
-            "newly-infected":100,
-            "total-infected":600
+            "living_with":500,
+            "newly_infected":100,
+            "total_infected":600
         },
         {
             "country":"angola",
             "year":2006,
-            "living-with":17000,
-            "newly-infected":5100,
-            "total-infected":22100
+            "living_with":17000,
+            "newly_infected":5100,
+            "total_infected":22100
         },
         {
             "country":"ethiopia",
             "year":2004,
-            "living-with":120000,
-            "newly-infected":15000,
-            "total-infected":135000
+            "living_with":120000,
+            "newly_infected":15000,
+            "total_infected":135000
         },
         {
             "country":"morocco",
             "year":2003,
-            "living-with":500,
-            "newly-infected":100,
-            "total-infected":600
+            "living_with":500,
+            "newly_infected":100,
+            "total_infected":600
         },
         {
             "country":"spain",
             "year":2016,
-            "living-with":100,
-            "newly-infected":100,
-            "total-infected":200
+            "living_with":100,
+            "newly_infected":100,
+            "total_infected":200
         }
-    ];
-     console.log(`Initial data: <${JSON.stringify(HIVData, null, 2)}>`);
+];
+
+//GET loadInitialData children-with-hiv
+app.get(BASE_CHILDREN_WITH_HIV_API_PATH  + "/loadInitialData", (req, res) => {
+    db.insert(HIVData);
+    console.log(`Initial data: <${JSON.stringify(HIVData, null, 2)}>`);
     res.sendStatus(200);
-      });
+});
       
-    //6.1 GET: Devuelve la lista de recursos (array JSON)
-    app.get(BASE_CHILDREN_WITH_HIV_API_PATH, (req,res)=>{
-        if (HIVData.length != 0) {
-            res.send(JSON.stringify(HIVData, null, 2));
-            return res.sendStatus(200);
+//GET children-with-hiv Devuelve la lista de recursos (array JSON)  w/ query
+app.get(BASE_CHILDREN_WITH_HIV_API_PATH, (req,res)=>{
+    console.log("New GET .../children-with-hiv");
+
+        var query = req.query;
+
+        //Obtenemos los offset y limit de la query, si estan vacios devuelven null (NaN)
+        var offset = query.offset;
+        var limit = query.limit;
+
+        //Los quitamos de la query para no tener que parsearlos
+        delete query.offset;
+        delete query.limit;
+
+        //Si la query contiene alguno de los atributos numerico, hay que pasarlos de string a int
+        //Primero comprobamos si la query tiene alguno de estos atributos
+        
+        if(query.hasOwnProperty("year")){
+            query.year = parseInt(query.year);
         }
-        else {
-            res.send("No data found");
-            return res.sendStatus(404);
-          }
+        if(query.hasOwnProperty("living_with")){
+            query.living_with = parseInt(query.living_with);
+        }
+        if(query.hasOwnProperty("newly_infected")){
+            query.newly_infected = parseInt(query.newly_infected);
+        }
+        if(query.hasOwnProperty("total_infected")){
+            query.total_infected = parseInt(query.total_infected);
+        }
+
+        db.find(query).skip(offset).limit(limit).exec((err, data) => {
+            if(err){
+                console.error("ERROR accesing DB in GET");
+                res.sendStatus(500);
+            }
+            else{
+                if(data.length == 0){
+                    console.error("No data found");
+                    res.sendStatus(404);
+                }
+                else{
+                    data.forEach( (d) =>{
+                    delete d._id;
+                    });
+
+                    res.send(JSON.stringify(data, null, 2));
+                    console.log("Data sent:"+JSON.stringify(data, null, 2));
+                }
+            }
+        });
     });
-    
-    //6.2 POST: Crea un nuevo recurso
-    
+
+//POST children-with-hiv: Crea un nuevo recurso
     app.post(BASE_CHILDREN_WITH_HIV_API_PATH, (req, res) => {
+        console.log("New POST .../children-with-hiv");
         var newData = req.body;
         var country = req.body.country;
         var year = parseInt(req.body.year);
 
-        //Comprobamos si el recurso a crear ya existe
-        for (var stat of HIVData) {
-            if (stat.country === country && stat.date === date) {
-
-                console.log("Conflict detected");
-                return res.sendStatus(409);
+        db.find({"country":country, "year":year}).exec((err, data)=>{
+            if(err){
+                console.error("ERROR accesing DB in GET");
+                res.sendStatus(500);
             }
-        }
-        //Comprobamos los parametros
-        if (!newData.country 
-            || !newData.year 
-            || !newData['living-with'] 
-            || !newData['newly-infected'] 
-            || !newData['total-infected']
-            || Object.keys(newData).length != 5) {
-
-            console.log("Missing parameters");
-            return res.sendStatus(400);
-        } else {
-            //Añadimos
-            console.log(`new hiv data to be added: <${JSON.stringify(newData, null, 2)}>`);
-            HIVData.push(newData);
-            return res.sendStatus(201);
-        }
-    });
-
-    //6.3 GET: Get a un recurso -> devuelve ese recurso(objeto JSON)
-    app.get(BASE_CHILDREN_WITH_HIV_API_PATH + "/:country/:year", (req,res) => {
-        var req_data = req.params;
-        
-        console.log(`GET resource by country: <${req_data.country}> and year: <${req_data.year}>`);
-        for (var data of HIVData){
-            if (data.country === req_data.country && data.year === parseInt(req_data.year)){     
-                return res.status(200).send(JSON.stringify(data,null,2));
-            }
-        }
-        //si el recurso no existe:
-        return res.sendStatus(404);  
-      });
-    
-    //6.4 DELETE: Delete a un recurso -> borra ese recurso(JSON)
-    app.delete(BASE_CHILDREN_WITH_HIV_API_PATH +"/:country/:year", (req,res) => {
-        var del_data = req.params;
-        for(var i=0; i < HIVData.length; i++){
-            if(HIVData[i].country=== del_data.country && HIVData[i].year === parseInt(del_data.year)){
-            //al metodo splice le pasamos el índice del objeto a partir del cual vamos a borrar objetos del array y el número de objetos a eliminar
-                HIVData.splice(i, 1); 
-                res.send(`The country: <${del_data.country}> with year: <${del_data.year}> has been deleted`);
-                return res.sendStatus(200);
-            }
-        }
-        //si el recurso no existe:
-        return res.sendStatus(404);
-      });
-    
-    //6.5 PUT: Put a un recurso -> actualiza ese recurso
-    app.put(BASE_CHILDREN_WITH_HIV_API_PATH +"/:country/:year",(req,res)=>{
-        var put_data = req.params; //variable con el recurso a actualizar
-        var newData = req.body; //variable con el nuevo recurso (recurso actualizado)
-    
-        if (!newData.country || !newData.year || !newData['living-with'] || !newData['newly-infected'] || !newData['total-infected']) {
-            console.log("Faltan datos para actualizar el recurso");
-            return res.sendStatus(400);
-        }
-        else{
-            for(var i=0; i<HIVData.length; i++){
-                if(HIVData[i].country == put_data.country && HIVData[i].year==put_data.year){
-                    HIVData[i]=req.body;
-                    res.send("Updated Data");
-                    res.sendStatus(200);
+            else {
+                if(data.length == 0){
+                    if (!newData.country 
+                        || !newData.year 
+                        || !newData['living_with'] 
+                        || !newData['newly_infected'] 
+                        || !newData['total_infected']
+                        || Object.keys(newData).length != 5) {
+            
+                        console.log("The data is not correctly provided");
+                        return res.sendStatus(400);
+                    }
+                    else{
+                        console.log("Data imput:"+JSON.stringify(newData, null, 2));
+                        db.insert(newData);
+                        res.sendStatus(201);
+                    }
+                }
+                else{
+                    res.sendStatus(409);
+                    console.log("There is already a resource with that country and year in the DB");
                 }
             }   
-        }
+        });
     });
+
+//GET children-with-hiv/:country/:year
+app.get(BASE_CHILDREN_WITH_HIV_API_PATH+ "/:country/:year", (req, res) => {
+	console.log("New GET .../children-with-hiv/:country/:year");
+
+	var country = req.params.country;
+    var year = req.params.year;
+	var query = {"country":country, "year":parseInt(year)};
+
+	db.find(query).exec((err,data) => {
+        if(err){
+            console.error("ERROR accesing DB in GET");
+            res.sendStatus(500);
+        }
+        else{
+		    if (data.length >= 1) {
+			    delete data[0]._id;
+			    res.status(200).send(JSON.stringify(data[0], null, 2));
+			    console.log("Data sent:"+JSON.stringify(data[0], null, 2));
+		    } 
+            else {
+			    res.sendStatus(404);
+			    console.log("The data requested is empty");
+		    }
+        }   
+	});
+});
+
+//DELETE children-with-hiv/:country/:year
+app.delete(BASE_CHILDREN_WITH_HIV_API_PATH + "/:country/:year", (req, res) => {
+	console.log("New DELETE .../children-with-hiv/:country/:year");
+
+	var country = req.params.country;
+	var year = parseInt(req.params.year);
+	//var query = {"country":country, "year":year};
+
+	db.remove({country: country, year: year}, {multi:true}, (err, numRemoved) =>{
+        if(err){
+            console.error("ERROR accesing DB in GET");
+            res.sendStatus(500);
+        }
+        else{
+		    if(numRemoved == 0){
+			    res.sendStatus(404);
+			    console.log("There is no such data in the database");
+	    	}
+		    else{
+			    res.sendStatus(200);
+			    console.log("Object removed");
+		    }
+        }
+	});
+});
+
+//PUT children-with-hiv/:country/:year
+app.put(BASE_CHILDREN_WITH_HIV_API_PATH + "/:country/:year", (req, res) => {
+	console.log("New PUT .../children-with-hiv/:country/:year");
+
+	var country = req.params.country;
+	var year = req.params.year;
+	var newData = req.body;
+	var query = {"country":country, "year":parseInt(year)};
+
+	if (!newData.country 
+        || !newData.year 
+        || !newData['living_with'] 
+        || !newData['newly_infected'] 
+        || !newData['total_infected'] 
+        || country != newData.country 
+        || year != newData.year
+        || Object.keys(newData).length != 5){
+
+        console.log("The data is not correctly provided");
+        return res.sendStatus(400);
+	} 
+    else { 
+		db.update(query,newData,(err,numReplaced) =>{
+            if(err){
+                console.error("ERROR accesing DB in PUT");
+                res.sendStatus(500);
+            }
+            else{
+			    if(numReplaced == 0){
+				    res.sendStatus(404);
+				    console.log("There is no such data in the database");
+			    }
+			    else{
+				    res.sendStatus(200);
+				    console.log("Database updated");
+			    }
+            }
+		});
+	}
+});
     
+//POST: Post a un recurso -> error método no permitido
+app.post(BASE_CHILDREN_WITH_HIV_API_PATH + "/:country/:year", (req, res) => {
+    console.log("Method not allowed");
+    res.sendStatus(405);
+});
     
-    //6.6 POST: Post a un recurso -> error de método no permitido
-    app.post(BASE_CHILDREN_WITH_HIV_API_PATH + "/:country/:year", (req, res) => {
-        console.log("Method not allowed");
-        return res.sendStatus(405);
-      })
-    
-    //6.7 PUT: Put a la lista de recursos -> debe dar un error de método no permitido
+//PUT: Put a la lista de recursos -> debe dar un error de método no permitido
     app.put(BASE_CHILDREN_WITH_HIV_API_PATH, (req, res) => {
         console.log("Method not allowed");
-        return res.sendStatus(405);
-      })
+        res.sendStatus(405);
+      });
     
-    //6.8 DELETE: Borra todos los recursos
+//DELETE children-with-hiv: Borra todos los recursos
     app.delete(BASE_CHILDREN_WITH_HIV_API_PATH, (req, res) => {
-        HIVData.length = 0;
-        res.send('Resources deleted');
-        return res.sendStatus(200);
+        console.log("New DELETE .../children-with-hiv");
+        
+        db.remove({}, {multi: true },  (err, numRemoved)=> {
+            if (err) {
+                console.error("ERROR deleting DB resources");
+                res.sendStatus(500);
+            } else {
+                if (numRemoved == 0) {
+                    console.error("ERROR resources not found");
+                    res.sendStatus(404);
+                } else {
+                    res.sendStatus(200);
+                }
+            }
+        });
       })
 };
