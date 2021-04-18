@@ -61,7 +61,7 @@ app.get(BASE_CHILDREN_WITH_HIV_API_PATH, (req,res)=>{
         var offset = query.offset;
         var limit = query.limit;
 
-        //Los quitamos de la query para no tener que parsearlos
+        //Los quitamos de la query para no tener que parsearlos 
         delete query.offset;
         delete query.limit;
 
