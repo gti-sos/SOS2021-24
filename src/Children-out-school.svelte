@@ -53,7 +53,7 @@
 	
 		console.log("Fetching school data...");
 		
-		//Awaits lo que hace es esperar la finalización de la solicitud HTTP. El código se reanuda (para la iteración ...) solo después de completar cada solicitud.
+		//Awaits lo que hace es esperar la finalización de la solicitud HTTP. El código se reanuda solo después de completar cada solicitud.
 		const res = await fetch("/api/v1/children-out-school?limit=5");
 	
 		if(res.ok ){
