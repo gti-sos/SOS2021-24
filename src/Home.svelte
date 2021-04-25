@@ -33,11 +33,9 @@
             </ul>
             </li>
             <li class="has-line-data" data-line-start="14" data-line-end="18">
-            <p class="has-line-data" data-line-start="14" data-line-end="15"><strong>Links Postman</strong>:</p>
+            <p class="has-line-data" data-line-start="14" data-line-end="15"><strong>Postman Documentation</strong>:</p>
             <ul>
             <li class="has-line-data" data-line-start="15" data-line-end="16">V1 <a href="https://documenter.getpostman.com/view/14937153/TzJoDfw2">SOS2021-24 children-out-school API Doc</a> (developed by <a  href="https://github.com/enrike7lg">Enrique Luque García</a>)</li>
-            <li class="has-line-data" data-line-start="16" data-line-end="17"><a href="https://documenter.getpostman.com/view/14961891/TzJsed6w">school-dropouts</a> (developed by <a href="https://github.com/framacvaz">Francisco Javier Macero Vázquez</a>)</li>
-            <li class="has-line-data" data-line-start="17" data-line-end="18"><a href="https://documenter.getpostman.com/view/14966687/TzJoF1dY">drug_offences</a> (developed by  <a href="https://github.com/juaroltor">Juan Roldán Torres</a>)</li>
             </ul>
             </li>
         </ul>
