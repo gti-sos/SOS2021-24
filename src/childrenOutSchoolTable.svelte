@@ -142,6 +142,7 @@
 		}
 	}
     //SEARCH
+    /*
     async function searchSchoolData() {
  
         console.log("Searching data...");
@@ -182,6 +183,7 @@
             console.log("Data not found!");
         }
     }
+    */
     //getNextPage
     async function getNextPage() {
  
@@ -226,25 +228,6 @@
 
 <main>
     <h1>Children Out School</h1>
-
-      <Button color="primary" on:click={() => (isOpen = !isOpen)} class="mb-3">
-        Buscar
-      </Button>
-      
-      <Collapse {isOpen}>
-        <Table bordered responsive>
-            <tbody>
-                <tr>
-                    <td> <Button outline  color="primary" on:click={searchSchoolData}>Buscar</Button> </td>
-                    <td><input placeholder="País" bind:value="{searchSchoolData.country}"></td>
-                    <td><input placeholder="Año" bind:value="{searchSchoolData.year}"></td>
-                    <td><input placeholder="Abandono Escolar (Niños)" bind:value="{searchSchoolData.children_out_school_male}"></td>
-                    <td><input placeholder="Abandono Escolar (Niñas)" bind:value="{searchSchoolData.children_out_school_female}"></td>
-                    <td><input placeholder="Abandono Escolar (Total)" bind:value="{searchSchoolData.children_out_school_total}"></td>
-                </tr>
-            </tbody>
-        </Table>
-      </Collapse>
 
       {#await schoolData}
         Loading school data...
