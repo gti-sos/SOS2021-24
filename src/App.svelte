@@ -14,7 +14,7 @@
 <main>
 
     <body >
-        <Navbar color="secondary" secondary expand="md" >
+        <Navbar color="secondary" secondary >
             <NavbarBrand href="/">SOS2021-24</NavbarBrand>
             <Nav navbar >
               <NavItem  >
