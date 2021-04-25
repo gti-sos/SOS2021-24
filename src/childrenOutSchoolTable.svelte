@@ -38,7 +38,6 @@
             console.log("Ok:");
             const json = await res.json();
             schoolData = json;
-            
             console.log("Received " + schoolData.length + " School Data.");
         } else {
             errorMSG= res.status + ": " + res.statusText;
@@ -291,7 +290,7 @@
                 {/each}
             </tbody>
         </Table>
-          <Button color="success" on:click="{getSchoolData}">
+          <Button color="success" on:click="{loadInitialData}">
             Cargar datos inciales
         </Button>
         <Button color="danger" on:click="{deleteALL}">
