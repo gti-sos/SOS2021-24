@@ -61,10 +61,6 @@ import { get } from "svelte/store";
             console.log("Received " + schoolData.length + " school data.");
             okayMSG = "Datos cargados correctamente"
         } 
-        else if(res.status == 409){
-			errorMSG = "Ya hay datos cargados. Esta accion eliminaria los datos existentes. Si quiere cargar los datos iniciales, por favor, elimine todos los disponibles primero."
-			console.log("ERROR ALREADY LOADED DATA");
-		}
         else {
             console.log("ERROR!");
         }
