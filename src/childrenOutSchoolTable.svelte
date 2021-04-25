@@ -196,9 +196,11 @@ import { get } from "svelte/store";
         Loading school data...
     {:then schoolData}
     
+    <Alert isOpen={visible} toggle={() => (visible = false)}>
         {#if okayMSG}
 	        <p style="color: green">{okayMSG}</p>
 	    {/if}
+    </Alert>
         
         {#if errorMSG}
 		    <p style="color: red">ERROR: {errorMSG}</p>	
