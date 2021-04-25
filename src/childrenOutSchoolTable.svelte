@@ -270,32 +270,32 @@
             </thead>
             <tbody>
                 <tr>
-                    <td> <Button outline  color="primary" on:click={insertSchoolData}>Insertar</Button> </td>
                     <td><input bind:value="{newSchoolData.country}"></td>
                     <td><input bind:value="{newSchoolData.year}"></td>
                     <td><input bind:value="{newSchoolData.children_out_school_male}"></td> 
                     <td><input bind:value="{newSchoolData.children_out_school_female}"></td>    
-                    <td><input bind:value="{newSchoolData.children_out_school_total}"></td>             
+                    <td><input bind:value="{newSchoolData.children_out_school_total}"></td>  
+                    <td><Button outline color="primary" on:click={insertSchoolData}>Insertar</Button></td>           
                 </tr>
  
                 {#each schoolData as sc}
                     <tr>
-                        <td><Button outline color="danger" on:click="{deleteSchoolData(sc.country, sc.year)}">Borrar</Button></td>
                         <td><a href="#/children-out-school/{sc.country}/{sc.year}">{sc.country}</a></td>
                         <td>{sc.year}</td>
                         <td>{sc.children_out_school_male}</td>
                         <td>{sc.children_out_school_female}</td>
                         <td>{sc.children_out_school_total}</td>
+                        <td><Button outline color="danger" on:click="{deleteSchoolData(sc.country, sc.year)}">Borrar</Button></td>
                         
                     </tr>
                 {/each}
             </tbody>
         </Table>
           <Button color="success" on:click="{getSchoolData}">
-            Reiniciar ejemplos iniciales
+            Cargar datos inciales
         </Button>
         <Button color="danger" on:click="{deleteALL}">
-            Borrar todo
+            Eliminar todo
         </Button>
         <Button outline color="primary" on:click="{getPreviewPage}">
            Atrás
