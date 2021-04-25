@@ -65,15 +65,19 @@ module.exports.init = (app) => {
     }
 ];
 
+
 //GET loadInitialData children-out-school
 app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
-    if (schoolData.length >= 1) {
-		res.sendStatus(409, "CONFLICT, There is already loaded data");
+    console.log("New GET .../loadInitialData");
+	var schoolData = db.getAllData();
+	
+	if (schoolData.length >= 1) {
+		res.sendStatus(409, "CONFLICT(this action would remove the existing data)");
 		console.log("There is already loaded data");
 	}
     else{
-        db.insert(schoolData);
-        console.log(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
+        db.insert(initialSchoolData);
+        console.log(`Initial data: <${JSON.stringify(initialSchoolData, null, 2)}>`);
         res.sendStatus(200);
     }
 });
