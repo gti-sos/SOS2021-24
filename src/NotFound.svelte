@@ -10,11 +10,11 @@
       margin: 0 auto;
       max-width: 380px;
     }
-    h2{
+    h3{
       font-size: 100px;
     }
     h4{
-      color: white;
+      color: #333;
       padding: 10px;
       margin: 5px;
     }
