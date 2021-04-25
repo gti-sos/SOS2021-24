@@ -65,9 +65,6 @@ module.exports.init = (app) => {
     }
 ];
 
-//Delete the database
-db.remove({}, {multi: true});
-
 //GET loadInitialData children-out-school
 app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
     db.insert(schoolData);
