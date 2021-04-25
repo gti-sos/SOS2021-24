@@ -86,15 +86,15 @@ import { get } from "svelte/store";
                  if(res.status == 201){
                      getSchoolData();
                      console.log("Data introduced");
-                     okayMsg="Entrada introducida correctamente a la base de datos";
+                     okayMSG="Entrada introducida correctamente a la base de datos";
                  }
                  else if(res.status == 400){
                      console.log("ERROR Data was not correctly introduced");
-                     errorMsg= "Los datos de la entrada no fueron introducidos correctamente";
+                     errorMSG= "Los datos de la entrada no fueron introducidos correctamente";
                  }
                  else if(res.status == 409){
                      console.log("ERROR There is already a data with that country and year in the da tabase");
-                     errorMsg= "Ya existe una entrada en la base de datos con la fecha y el país introducido";
+                     errorMSG= "Ya existe una entrada en la base de datos con la fecha y el país introducido";
                  }
              });	
          }
@@ -133,12 +133,12 @@ import { get } from "svelte/store";
 				if(res.ok){
                     totaldata = 0;
 					getSchoolData();
-					okayMsg="Datos eliminados correctamente";
+					okayMSG="Datos eliminados correctamente";
 					console.log("OK All data erased");
 				}
 				else{
 					console.log("ERROR Data was not erased");
-					errorMsg= "No se han podido eliminar los datos";
+					errorMSG= "No se han podido eliminar los datos";
 				}
 			});
 		}
@@ -156,7 +156,7 @@ import { get } from "svelte/store";
         } else {
             page+=5
         }
-        console.log("Charging page " +page);
+        console.log("Charging page "+ page);
         const res = await fetch("/api/v1/children-out-school?limit=5&offset="+page);
         if (res.ok) {
             console.log("Ok:");
