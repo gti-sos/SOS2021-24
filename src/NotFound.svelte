@@ -1,6 +1,6 @@
 <main>
-    <h2>404</h2>
-  <h4>¡Esta Página no existe!</h4>
+    <h3>404</h3>
+    <h4>¡Esta Página no existe!</h4>
   </main>
   
   <style>
