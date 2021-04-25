@@ -28,6 +28,7 @@ import { get } from "svelte/store";
 	}
     
     let errorMSG = "";
+    let okayMSG = "";
     onMount(getSchoolData);
  
     //GET
@@ -58,6 +59,7 @@ import { get } from "svelte/store";
             schoolData = json;
             totaldata=8;
             console.log("Received " + schoolData.length + " school data.");
+            okayMSG = "Datos cargados correctamente"
         } else {
             errorMSG= res.status + ": " + res.statusText;
             console.log("ERROR!");
@@ -108,10 +110,9 @@ import { get } from "svelte/store";
             if (res.status==200) {
                 totaldata--;
                 color = "success";
-                errorMSG = name + " " + year + " borrado correctamente";
+                okayMSG = "Recurso" + country + year + "borrado correctamente";
                 console.log("Deleted " + name);            
             }else if (res.status==404) {
-                color = "danger";
                 errorMSG = "No se ha encontrado el objeto" + name;
                 console.log("SUICIDE NOT FOUND");            
             } else {
@@ -195,9 +196,14 @@ import { get } from "svelte/store";
         Loading school data...
     {:then schoolData}
     <Alert color={color} isOpen={visible} toggle={() => (visible = false)}>
+        
+        {#if okayMSG}
+	        <p style="color: green">{okayMSG}</p>
+	    {/if}
+        
         {#if errorMSG}
-            {errorMSG}
-        {/if}
+		    <p style="color: red">ERROR: {errorMSG}</p>	
+	    {/if}
     </Alert>
         <Table bordered responsive>
             <thead>
