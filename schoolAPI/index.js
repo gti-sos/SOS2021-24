@@ -65,22 +65,14 @@ module.exports.init = (app) => {
     }
 ];
 
-db.remove({}, {multi: true });
+//Delete the database
+db.remove({}, {multi: true});
 
 //GET loadInitialData children-out-school
 app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
-    console.log("New GET .../loadInitialData");
-	var schoolData = db.getAllData();
-	
-	if (schoolData.length >= 1) {
-		res.sendStatus(409, "CONFLICT(this action would remove the existing data)");
-		console.log("There is already loaded data");
-	}
-    else{
-        db.insert(initialSchoolData);
-        console.log(`Initial data: <${JSON.stringify(initialSchoolData, null, 2)}>`);
-        res.sendStatus(200);
-    }
+    db.insert(schoolData);
+    console.log(`Initial data: <${JSON.stringify(schoolData, null, 2)}>`);
+    res.sendStatus(200);
 });
       
 //GET children-out-school Devuelve la lista de recursos (array JSON)  w/ query
