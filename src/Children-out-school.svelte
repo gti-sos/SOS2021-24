@@ -224,7 +224,7 @@
 			</thead>
 			<tbody>
 					<tr>
-						<td><Input type="text" placeholder="Vatican City" bind:value="{newSchoolData.country}"/></td>
+						<td><Input type="text" placeholder="Sweden" bind:value="{newSchoolData.country}"/></td>
 						<td><Input type="number" placeholder="2019" min=1990 bind:value="{newSchoolData.year}"/></td>
 						<td><Input type="number" placeholder="20" min=0 bind:value="{newSchoolData.children_out_school_male}"/></td>
 						<td><Input type="number" placeholder="10" min=0 bind:value="{newSchoolData.children_out_school_female}"/></td>
@@ -234,13 +234,13 @@
 				{#each schoolData as data}
 					<tr>
 						<td>
-							<a href= "#/overdose-deaths/{data.country}/{data.year}">{data.country} </a>
+							<a href= "#/children-out-school/{data.country}/{data.year}">{data.country} </a>
 						</td>
 						<td>{data.year}</td>
 						<td>{data.children_out_school_male}</td>
 						<td>{data.children_out_school_female}</td>
 						<td>{data.children_out_school_total}</td>
-						<td><Button outline color="danger" on:click="{deleteSchoolData(data.country, data.year)}">Eliminar</Button></td>
+						<td><Button outline color="danger" on:click="{deleteOneSchoolData(data.country, data.year)}">Eliminar</Button></td>
 					</tr>
 				{/each}
 			</tbody>
@@ -249,11 +249,11 @@
 	<Pagination ariaLabel="Web pagination">
 		<!-- Si estamos en la pagina 1, no podemos darle al boton que nos lleva una pagina atras, no tendria sentido que pudiesemos darle-->
 		<PaginationItem class="{currentPage===1 ? 'disabled' : ''}">
-		  <PaginationLink previous href="#/overdose-deaths" on:click="{() => changePage(-1)}" />
+		  <PaginationLink previous href="#/children-out-school" on:click="{() => changePage(-1)}" />
 		</PaginationItem>
 		{#if moreData}
 		<PaginationItem>
-		  	<PaginationLink next href="#/overdose-deaths" on:click="{() => changePage(1)}" />
+		  	<PaginationLink next href="#/children-out-school" on:click="{() => changePage(1)}" />
 		</PaginationItem>
 		{/if}
 	  </Pagination>
