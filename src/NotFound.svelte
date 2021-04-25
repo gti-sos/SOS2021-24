@@ -1,5 +1,5 @@
 <main>
-    <h3>404</h3>
+    <h3>Error 404</h3>
     <h4>¡Esta Página no existe!</h4>
   </main>
   
@@ -11,7 +11,7 @@
       max-width: 380px;
     }
     h3{
-      font-size: 100px;
+      font-size: 90px;
     }
     h4{
       color: #333;

@@ -28,7 +28,6 @@
 	//Estas variables son para los errores
 	let okayMsg = "";
 	let errorMsg = "";
-	onMount(getSchoolData);
 	
 	async function loadSchoolData(){
 	
@@ -73,7 +72,7 @@
 			console.log("OK");
 			const json = await res.json();
 			const jsonAfter = await after.json();
-			overdose_deaths = json;
+			schoolData = json;
 			//Comprobamos si hay mas datos o no despues para activar o desactivar el boton
 			if(jsonAfter.length ==0){
 				moreData=false;
@@ -95,13 +94,13 @@
 		 
 		console.log("Inserting school data...");
 		//Comprobamos que el año y la fecha no estén vacíos, ***el string vacio no es null***
-		if (newOverdoseDeath.country == "" || newOverdoseDeath.country == null || newOverdoseDeath.year == "" || newOverdoseDeath.year == null) {
+		if (newSchoolData.country == "" || newSchoolData.country == null || newSchoolData.year == "" || newSchoolData.year == null) {
 			alert("Los campos 'Pais' y 'Año' no pueden estar vacios");
 		}
 		else{
 			const res = await fetch("/api/v3/overdose-deaths",{
 			method:"POST",
-			body:JSON.stringify(newOverdoseDeath),
+			body:JSON.stringify(newSchoolData),
 			headers:{
 				"Content-Type": "application/json"
 			}
@@ -183,17 +182,15 @@
 		currentPage += increment;
 		getSc();
 	}
+
+    onMount(getSchoolData);
 	</script>
-
-
 	
-
 <main>
 	{#await schoolData}
-		Loading overdose deaths...
+		Loading school data...
 	{:then schoolData}
 	
-
 	<Form class="form-inline" >
 		<Label for="country" class="mb-2 mr-sm-2">Busqueda por Pais:</Label>
 		<Input type="text" class="form-control mb-2 mr-sm-2" id="country" placeholder="Introduzca un país" name="country" bind:value="{searchCountry}"/>
@@ -216,9 +213,9 @@
 				<tr>
 					<th>País</th>
 					<th>Año</th>
-					<th>Niños abandono  </th>
-					<th>Niñas abandod</th>
-					<th>Total abandono</th>
+					<th>Abandono escolar (niños)</th>
+					<th>Abandono escolar (niñas)</th>
+					<th>Abandono escolar (Total)</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
