@@ -22,7 +22,7 @@
 	let moreData = true;
 	let currentPage=1; // No la utilizamos pero nos sirve para saber en que pagina estamos (quizas en un futuro)
 	
-	//Estas variables son para las busquedas
+	//Variables para busquedas
 	let searchCountry= "";
 	let searchYear = "";
 	//Estas variables son para los errores
@@ -47,11 +47,11 @@
 				console.log("ERROR");
 			}
 		});
-		
 	}
+
 	async function getSchoolData(){
 	
-		console.log("Fetching overdose deaths...");
+		console.log("Fetching school data...");
 		var url = "/api/v1/children-out-school?limit="+limit+"&offset="+(offset*limit);
 		var urlAfter = "/api/v1/children-out-school?limit="+limit+"&offset="+(limit*(offset+1));
 		if(searchCountry!="" &&searchCountry!=null){
@@ -80,14 +80,12 @@
 			else{
 				moreData=true;
 			}
-			console.log("Received "+ overdose_deaths.length +" overdose deaths." )
+			console.log("Received "+ schoolData.length +" resurces" )
 		}
 		else{
 			console.log("ERROR");
 			errorMsg= "Fallo del servidor en la solicitud"
 		}
-			
-		
 	}
 	
 	async function insertSchoolData(){
@@ -98,7 +96,7 @@
 			alert("Los campos 'Pais' y 'Año' no pueden estar vacios");
 		}
 		else{
-			const res = await fetch("/api/v3/overdose-deaths",{
+			const res = await fetch("/api/v1/children-out-school",{
 			method:"POST",
 			body:JSON.stringify(newSchoolData),
 			headers:{
@@ -143,9 +141,9 @@
 		}
 	}
 	async function deleteOneSchoolData(country,year) {
-		console.log("Inserting overdose death...");
+		console.log("Inserting school data...");
 		if(confirm("¿Está seguro de que desea eliminar esta entrada?")){
-			console.log("Deleting overdose death...");
+			console.log("Deleting school data...");
 			const res = await fetch("/api/v1/children-out-school/" + country + "/"+year,{
 				method:"DELETE"
 			}).then(function (res) {

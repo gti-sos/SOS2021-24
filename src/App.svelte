@@ -9,8 +9,8 @@
     let isOpen=false;
     const routes = {
 		"/":Home,
+        "/children-out-school": SchoolAPI,
 		'*': NotFound,
-        "/children-out-school": SchoolAPI
         };
 </script>
 
