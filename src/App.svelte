@@ -17,7 +17,7 @@
         <Jumbotron class="p-5" >
             <h1 style="text-align:center;" class="display-3">SOS2021-24</h1>
         </Jumbotron>
-        <Navbar color="dark" dark expand="md" >
+        <Navbar color="info" info expand="md" >
             <Nav navbar >
               <NavItem  >
                 <NavLink  active href="#/">Inicio</NavLink>

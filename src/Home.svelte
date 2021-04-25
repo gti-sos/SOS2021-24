@@ -2,7 +2,7 @@
     <head>
         <link rel='stylesheet' href='/global.css'>
         <link rel='stylesheet' href='/build/bundle.css'>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     </head>
     
     <body>
@@ -35,7 +35,9 @@
             <li class="has-line-data" data-line-start="14" data-line-end="18">
             <p class="has-line-data" data-line-start="14" data-line-end="15"><strong>Postman Documentation</strong>:</p>
             <ul>
-            <li class="has-line-data" data-line-start="15" data-line-end="16">V1 <a href="https://documenter.getpostman.com/view/14937153/TzJoDfw2">SOS2021-24 children-out-school API Doc</a> (developed by <a  href="https://github.com/enrike7lg">Enrique Luque García</a>)</li>
+            <li class="has-line-data" data-line-start="15" data-line-end="16"><a href="https://documenter.getpostman.com/view/14937153/TzJoDfw2">SOS2021-24 children-out-school API Doc</a> (developed by <a  href="https://github.com/enrike7lg">Enrique Luque García</a>)</li>
+            <li class="has-line-data" data-line-start="16" data-line-end="17"> (developed by <a  href="https://github.com/framacvaz">Francisco Javier Macero Vazquez</a>)</li>
+            <li class="has-line-data" data-line-start="17" data-line-end="18">(developed by <a  href="https://github.com/juaroltor">Juan Roldán Torres</a>)</li>
             </ul>
             </li>
         </ul>
