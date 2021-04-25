@@ -225,7 +225,7 @@
 			<tbody>
 					<tr>
 						<td><Input type="text" placeholder="Sweden" bind:value="{newSchoolData.country}"/></td>
-						<td><Input type="number" placeholder="2019" min=1990 bind:value="{newSchoolData.year}"/></td>
+						<td><Input type="number" placeholder="2019" min=1960 bind:value="{newSchoolData.year}"/></td>
 						<td><Input type="number" placeholder="20" min=0 bind:value="{newSchoolData.children_out_school_male}"/></td>
 						<td><Input type="number" placeholder="10" min=0 bind:value="{newSchoolData.children_out_school_female}"/></td>
 						<td><Input type="number" placeholder="30" min=0 bind:value="{newSchoolData.children_out_school_total}"/></td>
