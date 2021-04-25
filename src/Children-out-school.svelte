@@ -63,6 +63,7 @@
             console.log("ERROR!");
         }
     }
+    
     //INSERT
     async function insertSchoolData() {
  
@@ -304,5 +305,4 @@
          </Button>
          
     {/await}
-    
 </main>
