@@ -122,31 +122,25 @@
     }
     //DELETE ALL
     async function deleteALL() {
-        if(confirm("¿Está seguro de que desea eliminar todas las entradas?")){
-            const res = await fetch("/api/v1/children-out-school/", {
-                method: "DELETE"
-            }).then(function (res) {
-                getSchoolData();
-                visible = true;
-                if (res.status==200) {
-                    totaldata=0;
-                    color = "success";
-                    errorMSG = "Objetos borrados correctamente";
-                    console.log("Deleted all data.");            
-                }
-                else if (res.status==400) {
-                    color = "danger";
-                    errorMSG = "Ha ocurrido un error";
-                    console.log("BAD REQUEST");            
-                } 
-                else {
-                    color = "danger";
-                    errorMSG= res.status + ": " + res.statusText;
-                    console.log("ERROR!");
-                }   
-            });
-        }
-    }
+		console.log("Deleting school data...");
+		if(confirm("¿Está seguro de que desea eliminar todas las entradas?")){
+			console.log("Deleting all school data...");
+			const res = await fetch("/api/v1/children-out-school/", {
+				method: "DELETE"
+			}).then(function (res) {
+				if(res.ok){
+                    totaldata = 0;
+					getSchoolData();
+					okayMsg="Datos eliminados correctamente";
+					console.log("OK All data erased");
+				}
+				else{
+					console.log("ERROR Data was not erased");
+					errorMsg= "No se han podido eliminar los datos";
+				}
+			});
+		}
+	}
     //SEARCH
     async function searchSchoolData() {
  
