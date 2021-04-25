@@ -1,10 +1,26 @@
+<script>
+    import {
+        Button,
+        Icon,
+        Card,
+        CardBody,
+        CardFooter,
+        CardHeader,
+        CardSubtitle,
+        CardText,
+        CardTitle,
+        Col,
+        Container,
+        Row,
+      } from "sveltestrap";
+    </script>
+
 <main>
     <head>
         <link rel='stylesheet' href='/global.css'>
         <link rel='stylesheet' href='/build/bundle.css'>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     </head>
-    
     <body>
         <ul>
             <li class="has-line-data" data-line-start="2" data-line-end="6">
@@ -42,3 +58,26 @@
             </li>
         </ul>
 </main>
+
+<style>
+    main {
+      text-align: center;
+      padding: 1em;
+      max-width: 240px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: #ff3e00;
+      text-transform: uppercase;
+      font-size: 4em;
+      font-weight: 100;
+    }
+    b {
+      color: #00c1ff;
+    }
+    @media (min-width: 640px) {
+      main {
+        max-width: none;
+      }
+    }
+  </style>
