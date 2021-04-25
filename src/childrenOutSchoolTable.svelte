@@ -144,46 +144,7 @@ import { get } from "svelte/store";
 	}
     //SEARCH
     /*
-    async function searchSchoolData() {
- 
-        console.log("Searching data...");
-        if (searchSchoolData.country!=null) {
-            busquedas+="country="+searchSchoolData.country +"&";
-       }if (searchSchoolData.year!=null) {
-            busquedas+="year="+searchSchoolData.year +"&";
-        }
-        if (searchSchoolData.children_out_school_male!=null) {
-            busquedas+="children-out-school-male="+searchSchoolData.children_out_school_male +"&";
-        }
-        if (searchSchoolData.children_out_school_female!=null) {
-            busquedas+="children-out-school-female="+searchSchoolData.children_out_school_female +"&";
-        }
-        if (searchSchoolData.children_out_school_total!=null) {
-            busquedas+="children-out-school-total="+searchSchoolData.children_out_school_total +"&";
-        }
-        
-        const res = await fetch(busquedas);
-        busquedas="/api/v1/children-out-school?";
-        searchSchoolData = {
-            country: null,
-            year: null,
-            children_out_school_male: null,
-            children_out_school_female: null,
-            children_out_school_total: null
-        };
-        if (res.ok) {
-            visible = false;
-            console.log("Ok:");
-            const json = await res.json();
-            schoolData = json;
-            console.log("Received " + schoolData.length + " resources.");
-        } else {
-            visible = true;
-            color = "danger";
-            errorMSG = "No se ha encontrado ningún objeto";
-            console.log("Data not found!");
-        }
-    }
+    
     */
     //getNextPage
     async function getNextPage() {
