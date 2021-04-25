@@ -14,11 +14,11 @@
 <main>
 
     <body >
-        <Navbar color="light" light expand="md" >
+        <Navbar color="secondary" secindary expand="md" >
             <NavbarBrand href="/">SOS2021-24</NavbarBrand>
             <Nav navbar >
               <NavItem  >
-                <NavLink  active href="#/">Inicio</NavLink>
+                <NavLink href="#/">Inicio</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="#/children-out-school">Abandono escolar</NavLink>

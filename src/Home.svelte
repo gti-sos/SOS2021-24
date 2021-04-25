@@ -29,7 +29,7 @@
             <ul>
             <li class="has-line-data" data-line-start="10" data-line-end="11"><a href="https://sos2021-24.herokuapp.com/api/v1/children-out-school">https://sos2021-24.herokuapp.com/api/v1/children-out-school</a> (developed by <a href="https://github.com/enrike7lg">Enrique Luque García</a>)</li>
             <li class="has-line-data" data-line-start="11" data-line-end="12"><a href="https://sos2021-24.herokuapp.com/api/v1/children-employment">https://sos2021-24.herokuapp.com/api/v1/children-employment</a> (developed by <a href="https://github.com/framacvaz">Francisco Javier Macero Vázquez</a>)</li>
-            <li class="has-line-data" data-line-start="12" data-line-end="14"><a href="https://sos2021-24.herokuapp.com/api/v1/children-with-hiv">https://sos2021-24.herokuapp.com/api/v1/children-with-hiv</a> (developed by <a href="https://github.com/juaroltor">Juan Roldán Torres</a>)</li>
+            <li class="has-line-data" data-line-start="12" data-line-end="14"><a href="https://sos2021-24.herokuapp.com/api/v1/children-with-hiv">https://sos2021-24.herokuapp.com/api/v1/children-with-hiv</a> (developed by <a href="https://github.com/juaroltor">Juan Ignacio Roldán Torres</a>)</li>
             </ul>
             </li>
             <li class="has-line-data" data-line-start="14" data-line-end="18">
@@ -37,7 +37,7 @@
             <ul>
             <li class="has-line-data" data-line-start="15" data-line-end="16"><a href="https://documenter.getpostman.com/view/14937153/TzJoDfw2">SOS2021-24 children-out-school API Doc</a> (developed by <a  href="https://github.com/enrike7lg">Enrique Luque García</a>)</li>
             <li class="has-line-data" data-line-start="16" data-line-end="17"> (developed by <a  href="https://github.com/framacvaz">Francisco Javier Macero Vazquez</a>)</li>
-            <li class="has-line-data" data-line-start="17" data-line-end="18">(developed by <a  href="https://github.com/juaroltor">Juan Roldán Torres</a>)</li>
+            <li class="has-line-data" data-line-start="17" data-line-end="18">(developed by <a  href="https://github.com/juaroltor">Juan Ignacio Roldán Torres</a>)</li>
             </ul>
             </li>
         </ul>
