@@ -192,11 +192,10 @@ import { get } from "svelte/store";
 <main>
     <h1>Children Out School</h1>
 
-      {#await schoolData}
+    {#await schoolData}
         Loading school data...
     {:then schoolData}
-    <Alert color={color} isOpen={visible} toggle={() => (visible = false)}>
-        
+    
         {#if okayMSG}
 	        <p style="color: green">{okayMSG}</p>
 	    {/if}
@@ -204,7 +203,7 @@ import { get } from "svelte/store";
         {#if errorMSG}
 		    <p style="color: red">ERROR: {errorMSG}</p>	
 	    {/if}
-    </Alert>
+
         <Table bordered responsive>
             <thead>
                 <tr>
