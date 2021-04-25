@@ -87,7 +87,7 @@
                 console.log("BAD REQUEST");            
             }else if (res.status==409) {
                 color = "danger";
-                errorMSG = newSchoolData.country +" " +newSchoolData.year +"  ya existe, recuerde que Año y País son exclusivos.";
+                errorMSG = newSchoolData.country +" " +newSchoolData.year + " ya existe, recuerde que Año y País son exclusivos.";
                 console.log("This data already exits");            
             } else {
                 color = "danger";
@@ -122,26 +122,30 @@
     }
     //DELETE ALL
     async function deleteALL() {
-        const res = await fetch("/api/v1/children-out-school/", {
-            method: "DELETE"
-        }).then(function (res) {
-            getSchoolData();
-            visible = true;
-            if (res.status==200) {
-                totaldata=0;
-                color = "success";
-                errorMSG = "Objetos borrados correctamente";
-                console.log("Deleted all data.");            
-            }else if (res.status==400) {
-                color = "danger";
-                errorMSG = "Ha ocurrido un fallo";
-                console.log("BAD REQUEST");            
-            } else {
-                color = "danger";
-                errorMSG= res.status + ": " + res.statusText;
-                console.log("ERROR!");
-            }
-        });
+        if(confirm("¿Está seguro de que desea eliminar todas las entradas?")){
+            const res = await fetch("/api/v1/children-out-school/", {
+                method: "DELETE"
+            }).then(function (res) {
+                getSchoolData();
+                visible = true;
+                if (res.status==200) {
+                    totaldata=0;
+                    color = "success";
+                    errorMSG = "Objetos borrados correctamente";
+                    console.log("Deleted all data.");            
+                }
+                else if (res.status==400) {
+                    color = "danger";
+                    errorMSG = "Ha ocurrido un error";
+                    console.log("BAD REQUEST");            
+                } 
+                else {
+                    color = "danger";
+                    errorMSG= res.status + ": " + res.statusText;
+                    console.log("ERROR!");
+                }   
+            });
+        }
     }
     //SEARCH
     async function searchSchoolData() {
