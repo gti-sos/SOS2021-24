@@ -7,6 +7,7 @@
 	import { Alert } from 'sveltestrap';
     import { UncontrolledCollapse, Collapse, CardBody, Card } from "sveltestrap";
 	import { pop } from "svelte-spa-router";
+import { get } from "svelte/store";
 	
     
     let isOpen = false;
@@ -64,39 +65,39 @@
     }
     
     //INSERT
-    async function insertSchoolData() {
- 
-        console.log("Inserting school data..." + JSON.stringify(newSchoolData));
-        const res = await fetch("/api/v1/children-out-school", {
-            method: "POST",
-            body: JSON.stringify(newSchoolData),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then(function (res) {
-            
-            visible = true;
-            if (res.status==200) {
-                totaldata++;
-                color = "success";
-                errorMSG = newSchoolData.country +" creado correctamente";
-                console.log("Inserted "+newSchoolData.country +" school data.");            
-            }else if (res.status== 400) {
-                color = "danger";
-                errorMSG = "Formato incorrecto, compruebe que País y Año estén rellenos.";
-                console.log("BAD REQUEST");            
-            }else if (res.status==409) {
-                color = "danger";
-                errorMSG = newSchoolData.country +" " +newSchoolData.year + " ya existe, recuerde que Año y País son exclusivos.";
-                console.log("This data already exits");            
-            } else {
-                color = "danger";
-                errorMSG= "Formato incorrecto, compruebe que País y Añó estén rellenos.";
-                console.log("BAD REQUEST");
-            }
-        });
-         
-    }
+    
+    async function insertSchoolData(){
+		 
+         console.log("Inserting school dATA...");
+         //Comprobamos que el año y la fecha no estén vacíos, ojo cuidao que el string vacio no es null
+         if (newSchoolData.country == "" || newSchoolData.country == null || newSchoolData.year == "" || newSchoolData.year == null) {
+             alert("Los campos 'Pais' y 'Año' no pueden estar vacios");
+         }
+         else{
+             const res = await fetch("/api/v1/children-out-school",{
+             method:"POST",
+             body:JSON.stringify(newSchoolData),
+             headers:{
+                 "Content-Type": "application/json"
+             }
+             }).then(function (res) {
+                 if(res.status == 201){
+                     getSchoolData();
+                     console.log("Data introduced");
+                     okayMsg="Entrada introducida correctamente a la base de datos";
+                 }
+                 else if(res.status == 400){
+                     console.log("ERROR Data was not correctly introduced");
+                     errorMsg= "Los datos de la entrada no fueron introducidos correctamente";
+                 }
+                 else if(res.status == 409){
+                     console.log("ERROR There is already a data with that country and year in the da tabase");
+                     errorMsg= "Ya existe una entrada en la base de datos con la fecha y el país introducido";
+                 }
+             });	
+         }
+     }
+
     //DELETE SPECIFIC
     async function deleteSchoolData(name, year) {
         const res = await fetch("/api/v1/children-out-school/" + name + "/" + year, {
