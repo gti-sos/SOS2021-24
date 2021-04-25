@@ -2,7 +2,7 @@
 	import Router from 'svelte-spa-router';
 	import NotFound from './NotFound.svelte' ;  
 	import Home from './Home.svelte';
-    import SchoolAPI from './Children-out-school.svelte'
+    import SchoolAPI from './children-out-school.svelte'
 	import { Jumbotron } from "sveltestrap";
 	import { Collapse,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem } from 'sveltestrap';
 

@@ -169,7 +169,7 @@
             year: null,
             children_out_school_male: null,
             children_out_school_female: null,
-            children_out_school_total
+            children_out_school_total: null
         };
         if (res.ok) {
             visible = false;
@@ -303,10 +303,6 @@
             Siguiente
          </Button>
          
-        
     {/await}
     
-
-    
-
 </main>
