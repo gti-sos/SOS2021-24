@@ -17,7 +17,7 @@
 	}
 
 	//Variables para paginacion
-	let limit = 10;
+	let limit = 6;
 	let offset = 0;
 	let moreData = true;
 	let currentPage=1; // No la utilizamos pero nos sirve para saber en que pagina estamos (quizas en un futuro)
@@ -52,34 +52,14 @@
 	async function getSchoolData(){
 	
 		console.log("Fetching school data...");
-		var url = "/api/v1/children-out-school?limit="+limit+"&offset="+(offset*limit);
-		var urlAfter = "/api/v1/children-out-school?limit="+limit+"&offset="+(limit*(offset+1));
-		if(searchCountry!="" &&searchCountry!=null){
-			url = url+"&country="+searchCountry;
-			urlAfter= urlAfter+"&country="+searchCountry;
-		}
 		
-		if(searchYear!="" && searchYear!=null){
-			url = url+"&year="+searchYear;
-			urlAfter= urlAfter+"&year="+searchYear;
-		}
 		//Awaits lo que hace es esperar la finalización de la solicitud HTTP. El código se reanuda (para la iteración ...) solo después de completar cada solicitud.
-		const res = await fetch(url);
-		//Tenemos que preguntar tambien si hay mas datos, ya que, si no los hay, pasando de pagina estariamos haciendo una peticion a la api que 
-        //nos devolveria un error, un 400 BAD REQUEST data is empty
-		const after =  await fetch(urlAfter);
-		if(res.ok && after.ok){
+		const res = await fetch("/api/v1/children-out-school?limit=5");
+	
+		if(res.ok ){
 			console.log("OK");
 			const json = await res.json();
-			const jsonAfter = await after.json();
 			schoolData = json;
-			//Comprobamos si hay mas datos o no despues para activar o desactivar el boton
-			if(jsonAfter.length ==0){
-				moreData=false;
-			}
-			else{
-				moreData=true;
-			}
 			console.log("Received "+ schoolData.length +" resurces" )
 		}
 		else{
