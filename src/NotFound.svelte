@@ -11,7 +11,7 @@
       max-width: 380px;
     }
     h3{
-      font-size: 90px;
+      font-size: 60px;
     }
     h4{
       color: #333;
