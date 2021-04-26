@@ -36,8 +36,8 @@
             <p class="has-line-data" data-line-start="14" data-line-end="15"><strong>Postman Documentation</strong>:</p>
             <ul>
             <li class="has-line-data" data-line-start="15" data-line-end="16"><a href="https://documenter.getpostman.com/view/14937153/TzJoDfw2">Children-out-school API Doc</a> (developed by <a  href="https://github.com/enrike7lg">Enrique Luque García</a>)</li>
-            <li class="has-line-data" data-line-start="16" data-line-end="17"> (developed by <a  href="https://github.com/framacvaz">Francisco Javier Macero Vazquez</a>)</li>
-            <li class="has-line-data" data-line-start="17" data-line-end="18">(developed by <a  href="https://github.com/juaroltor">Juan Ignacio Roldán Torres</a>)</li>
+            <li class="has-line-data" data-line-start="16" data-line-end="17"> <a href="https://documenter.getpostman.com/view/14961891/TzJsed6w">Children-employment API Doc</a> (developed by <a  href="https://github.com/framacvaz">Francisco Javier Macero Vazquez</a>)</li>
+            <li class="has-line-data" data-line-start="17" data-line-end="18"><a href="https://documenter.getpostman.com/view/14966687/TzJoF1dY">Children-with-HIV API Doc</a> (developed by <a  href="https://github.com/juaroltor">Juan Ignacio Roldán Torres</a>)</li>
             </ul>
             </li>
         </ul>
