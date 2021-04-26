@@ -33,7 +33,7 @@
     async function getHIVData() {
  
         console.log("Fetching HIV Data...");
-        const res = await fetch("/api/v1/children-with-hiv?limit=5&offset=1");
+        const res = await fetch("/api/v1/children-with-hiv?limit=5&offset=0");
         if (res.ok) {
             console.log("Ok:");
             const json = await res.json();
@@ -50,7 +50,7 @@
  
         console.log("Fetching HIV data...");
         await fetch("/api/v1/children-with-hiv/loadInitialData");
-        const res = await fetch("/api/v1/children-with-hiv?limit=5&offset=1");
+        const res = await fetch("/api/v1/children-with-hiv?limit=5&offset=0");
         if (res.ok) {
             console.log("Ok:");
             const json = await res.json();
