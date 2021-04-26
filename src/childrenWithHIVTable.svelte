@@ -287,7 +287,7 @@
         </Table>
 
         {#if HIVData.length === 0}
-            <p>No se han encontrado datos, por favor, carga los datos iniciales.</p>
+            <p>No se han encontrado datos, por favor, carga los datos iniciales. </p>
         {/if}
 
         <Button color="success" on:click="{loadInitialData}">
