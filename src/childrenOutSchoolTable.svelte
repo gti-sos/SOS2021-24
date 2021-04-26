@@ -59,9 +59,12 @@ import { get } from "svelte/store";
             schoolData = json;
             totaldata=8;
             console.log("Received " + schoolData.length + " school data.");
-            okayMSG = "Datos cargados correctamente"
+            color = "success";
+            errorMSG = "Datos cargados correctamente";
         } 
         else {
+            color = "danger";
+            errorMSG= res.status + ": " + res.statusText;
             console.log("ERROR!");
         }
     }
@@ -70,8 +73,8 @@ import { get } from "svelte/store";
     
     async function insertSchoolData(){
 		 
-         console.log("Inserting school dATA...");
-         //Comprobamos que el año y la fecha no estén vacíos, ojo cuidao que el string vacio no es null
+         console.log("Inserting school data...");
+         //Comprobamos que el año y la fecha no estén vacíos, el string vacio no es null
          if (newSchoolData.country == "" || newSchoolData.country == null || newSchoolData.year == "" || newSchoolData.year == null) {
              alert("Los campos 'Pais' y 'Año' no pueden estar vacios");
          }
@@ -86,14 +89,17 @@ import { get } from "svelte/store";
                  if(res.status == 201){
                      getSchoolData();
                      console.log("Data introduced");
-                     okayMSG="Entrada introducida correctamente a la base de datos";
+                     color = "success";
+                     errorMSG="Entrada introducida correctamente a la base de datos";
                  }
                  else if(res.status == 400){
                      console.log("ERROR Data was not correctly introduced");
+                     color = "danger";
                      errorMSG= "Los datos de la entrada no fueron introducidos correctamente";
                  }
                  else if(res.status == 409){
                      console.log("ERROR There is already a data with that country and year in the da tabase");
+                     color = "danger";
                      errorMSG= "Ya existe una entrada en la base de datos con la fecha y el país introducido";
                  }
              });	
@@ -110,9 +116,10 @@ import { get } from "svelte/store";
             if (res.status==200) {
                 totaldata--;
                 color = "success";
-                okayMSG = "Recurso" + country + year + "borrado correctamente";
+                errorMSG = "Recurso" + country + year + "borrado correctamente";
                 console.log("Deleted " + name);            
             }else if (res.status==404) {
+                color = "danger";
                 errorMSG = "No se ha encontrado el objeto" + name;
                 console.log("SUICIDE NOT FOUND");            
             } else {
@@ -133,11 +140,13 @@ import { get } from "svelte/store";
 				if(res.ok){
                     totaldata = 0;
 					getSchoolData();
-					okayMSG="Datos eliminados correctamente";
+                    color = "success";
+					errorMSG="Datos eliminados correctamente";
 					console.log("OK All data erased");
 				}
 				else{
 					console.log("ERROR Data was not erased");
+                    color = "danger";
 					errorMSG= "No se han podido eliminar los datos";
 				}
 			});
@@ -197,14 +206,11 @@ import { get } from "svelte/store";
     {:then schoolData}
     
     <Alert isOpen={visible} toggle={() => (visible = false)}>
-        {#if okayMSG}
-	        <p style="color: green">{okayMSG}</p>
-	    {/if}
-    </Alert>
         
         {#if errorMSG}
-		    <p style="color: red">ERROR: {errorMSG}</p>	
+		    {errorMSG}
 	    {/if}
+    </Alert>
 
         <Table bordered responsive>
             <thead>
