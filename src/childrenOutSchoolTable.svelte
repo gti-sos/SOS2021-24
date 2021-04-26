@@ -256,7 +256,7 @@
 
         <!-- Table -->
 
-        <Table bordered responsive>
+        <Table bordered responsive hover>
             <thead>
                 <tr>
                     <th>País</th>
