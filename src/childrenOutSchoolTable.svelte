@@ -4,10 +4,9 @@
 	import Button from "sveltestrap/src/Button.svelte";
 	import { Pagination, PaginationItem, PaginationLink } from 'sveltestrap';
 	import { Form, FormGroup, FormText, Input, Label } from 'sveltestrap';
-	import { Alert } from 'sveltestrap';
+	import { Alert, UncontrolledAlert } from 'sveltestrap';
     import { UncontrolledCollapse, Collapse, CardBody, Card } from "sveltestrap";
-	import { pop } from "svelte-spa-router";
-import { get } from "svelte/store";
+	
 	
     
     let isOpen = false;
@@ -27,8 +26,7 @@ import { get } from "svelte/store";
 		children_out_school_total:""
 	}
     
-    let errorMSG = "";
-    let okayMSG = "";
+    let errorMSG = null;
     onMount(getSchoolData);
  
     //GET
@@ -42,7 +40,7 @@ import { get } from "svelte/store";
             schoolData = json;
             console.log("Received " + schoolData.length + " School Data.");
         } else {
-            errorMSG= res.status + ": " + res.statusText;
+            //errorMSG= res.status + ": " + res.statusText;
             console.log("ERROR!");
         }
     }
@@ -59,12 +57,14 @@ import { get } from "svelte/store";
             schoolData = json;
             totaldata=8;
             console.log("Received " + schoolData.length + " school data.");
-            color = "success";
-            errorMSG = "Datos cargados correctamente";
+            //color = "success";
+            //errorMSG = "Datos cargados correctamente";
+            errorMSG = 200;
         } 
         else {
-            color = "danger";
-            errorMSG= res.status + ": " + res.statusText;
+            //color = "danger";
+            //errorMSG= res.status + ": " + res.statusText;
+            errorMSG = 404;
             console.log("ERROR!");
         }
     }
@@ -89,18 +89,21 @@ import { get } from "svelte/store";
                  if(res.status == 201){
                      getSchoolData();
                      console.log("Data introduced");
-                     color = "success";
-                     errorMSG="Entrada introducida correctamente a la base de datos";
+                     //color = "success";
+                     //errorMSG="Entrada introducida correctamente a la base de datos";
+                     errorMSG = 201;
                  }
                  else if(res.status == 400){
                      console.log("ERROR Data was not correctly introduced");
-                     color = "danger";
-                     errorMSG= "Los datos de la entrada no fueron introducidos correctamente";
+                     //color = "danger";
+                     //errorMSG= "Los datos de la entrada no fueron introducidos correctamente";
+                     errorMSG = 400;
                  }
                  else if(res.status == 409){
-                     console.log("ERROR There is already a data with that country and year in the da tabase");
-                     color = "danger";
-                     errorMSG= "Ya existe una entrada en la base de datos con la fecha y el país introducido";
+                     console.log("ERROR There is already a data with that country and year in the database");
+                    //color = "danger";
+                     //errorMSG= "Ya existe una entrada en la base de datos con la fecha y el país introducido";
+                     errorMSG = 409;
                  }
              });	
          }
@@ -115,16 +118,18 @@ import { get } from "svelte/store";
             getSchoolData();      
             if (res.status==200) {
                 totaldata--;
-                color = "success";
-                errorMSG = "Recurso" + country + year + "borrado correctamente";
+                //color = "success";
+                //errorMSG = "Recurso" + country + year + "borrado correctamente";
+                errorMSG = 200;
                 console.log("Deleted " + name);            
             }else if (res.status==404) {
-                color = "danger";
-                errorMSG = "No se ha encontrado el objeto" + name;
-                console.log("SUICIDE NOT FOUND");            
+                //color = "danger";
+                //errorMSG = "No se ha encontrado el objeto" + name;
+                errorMSG = 404;
+                console.log("DATA NOT FOUND");            
             } else {
-                color = "danger";
-                errorMSG= res.status + ": " + res.statusText;
+                //color = "danger";
+                errorMSG= res.status;// + ": " + res.statusText;
                 console.log("ERROR!");
             }      
         });
@@ -140,14 +145,16 @@ import { get } from "svelte/store";
 				if(res.ok){
                     totaldata = 0;
 					getSchoolData();
-                    color = "success";
-					errorMSG="Datos eliminados correctamente";
+                    //color = "success";
+					//errorMSG="Datos eliminados correctamente";
+                    errorMSG = 200;
 					console.log("OK All data erased");
 				}
 				else{
 					console.log("ERROR Data was not erased");
-                    color = "danger";
-					errorMSG= "No se han podido eliminar los datos";
+                    //color = "danger";
+					//errorMSG= "No se han podido eliminar los datos";
+                    errorMSG = res.status;
 				}
 			});
 		}
@@ -205,11 +212,34 @@ import { get } from "svelte/store";
         Loading school data...
     {:then schoolData}
     
-    <Alert color={color} isOpen={visible} toggle={() => (visible = false)}>
-        {#if errorMSG}
-		    {errorMSG}
+        {#if errorMSG === 200}
+        <UncontrolledAlert  color="success" >
+            Operación realizada con éxito.
+        </UncontrolledAlert>
 	    {/if}
-    </Alert>
+    
+        {#if errorMSG === 404}
+        <UncontrolledAlert  color="danger" >
+            Recurso no encontrado.
+        </UncontrolledAlert>
+	    {/if}
+
+        {#if errorMSG === 404}
+        <UncontrolledAlert  color="danger" >
+            Recurso no encontrado.
+        </UncontrolledAlert>
+	    {/if}
+
+        {#if errorMSG === 409}
+        <UncontrolledAlert  color="danger" >
+            Conflicto detectado.
+        </UncontrolledAlert>
+	    {/if}
+
+        <!-- Table -->
+    {#if schoolData.length === 0}
+        <p>No se han encontrado datos, por favor carga los datos iniciales.</p>
+    {:else}
 
         <Table bordered responsive>
             <thead>
