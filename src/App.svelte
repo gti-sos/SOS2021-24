@@ -4,6 +4,7 @@
 	import Home from './Home.svelte';
     import SchoolAPI from './childrenOutSchoolTable.svelte'
     import EmploymentAPI from './childrenEmploymentTable.svelte'
+    import HivAPI from './childrenWithHIVTable.svelte'
 	import { Jumbotron } from "sveltestrap";
 	import { Collapse,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem } from 'sveltestrap';
 
@@ -12,6 +13,7 @@
 		"/":Home,
         "/children-out-school": SchoolAPI,
         "/children-employment": EmploymentAPI,
+        "/children-with-hiv": HivAPI,
         
 		    '*': NotFound,
       };
@@ -33,7 +35,7 @@
                 <NavLink href="#/children-employment">Niñ@s empleados</NavLink>
               </NavItem>
               <NavItem >
-                <NavLink href="#/children-with-hiv">TBD</NavLink>
+                <NavLink href="#/children-with-hiv">Niños/as con VIH</NavLink>
               </NavItem>
             </Nav>
         </Navbar>
