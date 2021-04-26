@@ -206,7 +206,7 @@
 </script>
 
 <main>
-    <h1>Children Out School</h1>
+    <h1 style="text-align: center;">Administrador de datos de abandono escolar</h1>
 
     {#await schoolData}
         Loading school data...
@@ -294,7 +294,7 @@
         {#if schoolData.length === 0}
             <p>No se han encontrado datos, por favor, carga los datos iniciales.</p>
         {/if}
-        
+
         <Button color="success" on:click="{loadInitialData}">
             Cargar datos inciales
         </Button>
