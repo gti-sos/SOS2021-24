@@ -84,9 +84,12 @@ module.exports.init = (app) => {
         },
       
     ];
+
+    //Delete the database
+    db.remove({}, {multi: true});
     
     app.get(BASE_CHILDREN_EMPLOYMENT_API_PATH + "/loadInitialData", (req, res) => {
-        
+        db.remove({}, {multi: true});
         db.insert(employmentData);
         console.log(`Initial data: <${JSON.stringify(employmentData, null, 2)}>`);
         res.sendStatus(200);
