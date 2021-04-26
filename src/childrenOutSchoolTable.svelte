@@ -219,13 +219,13 @@
 	    {/if}
 
         {#if errorMSG === 200.2}
-        <UncontrolledAlert  color="success" >
+        <UncontrolledAlert  color="warning" >
             Recurso eliminado con éxito.
         </UncontrolledAlert>
 	    {/if}
 
         {#if errorMSG === 200.3}
-        <UncontrolledAlert  color="success" >
+        <UncontrolledAlert  color="warning" >
             Elementos borrados con éxito.
         </UncontrolledAlert>
 	    {/if}
@@ -301,10 +301,10 @@
         <Button color="danger" on:click="{deleteALL}">
             Eliminar todo
         </Button>
-        <Button outline color="primary" on:click="{getPreviewPage}">
+        <Button outline color="info" on:click="{getPreviewPage}">
            Atrás
         </Button>
-        <Button outline color="primary" on:click="{getNextPage}">
+        <Button outline color="info" on:click="{getNextPage}">
             Siguiente
          </Button>
          
