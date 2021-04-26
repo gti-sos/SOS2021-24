@@ -154,7 +154,7 @@
 					console.log("ERROR Data was not erased");
                     //color = "danger";
 					//errorMSG= "No se han podido eliminar los datos";
-                    errorMSG = res.status;
+                    errorMSG = 404.2;
 				}
 			});
 		}
@@ -226,25 +226,31 @@
 
         {#if errorMSG === 200.3}
         <UncontrolledAlert  color="success" >
-            Datos cargados con éxito.
+            Elementos borrados con éxito.
         </UncontrolledAlert>
 	    {/if}
-    
-        {#if errorMSG === 404}
-        <UncontrolledAlert  color="danger" >
-            Recurso no encontrado.
+
+        {#if errorMSG === 201}
+        <UncontrolledAlert  color="success" >
+            Recurso instertado con éxito.
         </UncontrolledAlert>
 	    {/if}
 
         {#if errorMSG === 404}
         <UncontrolledAlert  color="danger" >
             Recurso no encontrado.
+        </UncontrolledAlert>
+	    {/if}
+
+        {#if errorMSG === 404.2}
+        <UncontrolledAlert  color="danger" >
+            La base de datos ya esta vacía.
         </UncontrolledAlert>
 	    {/if}
 
         {#if errorMSG === 409}
         <UncontrolledAlert  color="danger" >
-            Conflicto detectado.
+            Este recurso (País y Año) ya existe.
         </UncontrolledAlert>
 	    {/if}
 
