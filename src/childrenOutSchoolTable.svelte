@@ -237,12 +237,6 @@
         </UncontrolledAlert>
 	    {/if}
 
-        {#if errorMSG === 404}
-        <UncontrolledAlert  color="danger" >
-            Recurso no encontrado.
-        </UncontrolledAlert>
-	    {/if}
-
         {#if errorMSG === 404.2}
         <UncontrolledAlert  color="danger" >
             La base de datos ya esta vacía.
