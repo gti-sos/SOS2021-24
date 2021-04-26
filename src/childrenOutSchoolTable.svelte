@@ -149,6 +149,7 @@
 					//errorMSG="Datos eliminados correctamente";
                     errorMSG = 200.3;
 					console.log("OK All data erased");
+                    location.reload();
 				}
 				else{
 					console.log("ERROR Data was not erased");
