@@ -3,6 +3,7 @@
 	import NotFound from './NotFound.svelte' ;  
 	import Home from './Home.svelte';
     import SchoolAPI from './childrenOutSchoolTable.svelte'
+    import EmploymentAPI from './childrenEmploymentTable.svelte'
 	import { Jumbotron } from "sveltestrap";
 	import { Collapse,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem } from 'sveltestrap';
 
@@ -10,6 +11,7 @@
     const routes = {
 		"/":Home,
         "/children-out-school": SchoolAPI,
+        "/children-employment": EmploymentAPI,
 		'*': NotFound,
         };
 </script>
@@ -25,6 +27,9 @@
               </NavItem>
               <NavItem>
                 <NavLink href="#/children-out-school">Abandono escolar</NavLink>
+              </NavItem>
+              <NavItem >
+                <NavLink href="#/children-employment">Niñ@s empleados</NavLink>
               </NavItem>
             </Nav>
         </Navbar>
