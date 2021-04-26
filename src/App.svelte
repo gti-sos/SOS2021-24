@@ -12,8 +12,9 @@
 		"/":Home,
         "/children-out-school": SchoolAPI,
         "/children-employment": EmploymentAPI,
-		'*': NotFound,
-        };
+        
+		    '*': NotFound,
+      };
 </script>
 
 <main>
@@ -30,6 +31,9 @@
               </NavItem>
               <NavItem >
                 <NavLink href="#/children-employment">Niñ@s empleados</NavLink>
+              </NavItem>
+              <NavItem >
+                <NavLink href="#/children-with-hiv">TBD</NavLink>
               </NavItem>
             </Nav>
         </Navbar>
