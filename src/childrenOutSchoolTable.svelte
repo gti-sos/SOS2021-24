@@ -59,7 +59,7 @@
             console.log("Received " + schoolData.length + " school data.");
             //color = "success";
             //errorMSG = "Datos cargados correctamente";
-            errorMSG = 200;
+            errorMSG = 200.1;
         } 
         else {
             //color = "danger";
@@ -120,7 +120,7 @@
                 totaldata--;
                 //color = "success";
                 //errorMSG = "Recurso" + country + year + "borrado correctamente";
-                errorMSG = 200;
+                errorMSG = 200.2;
                 console.log("Deleted " + name);            
             }else if (res.status==404) {
                 //color = "danger";
@@ -147,7 +147,7 @@
 					getSchoolData();
                     //color = "success";
 					//errorMSG="Datos eliminados correctamente";
-                    errorMSG = 200;
+                    errorMSG = 200.3;
 					console.log("OK All data erased");
 				}
 				else{
@@ -212,9 +212,21 @@
         Loading school data...
     {:then schoolData}
     
-        {#if errorMSG === 200}
+        {#if errorMSG === 200.1}
         <UncontrolledAlert  color="success" >
-            Operación realizada con éxito.
+            Datos cargados con éxito.
+        </UncontrolledAlert>
+	    {/if}
+
+        {#if errorMSG === 200.2}
+        <UncontrolledAlert  color="success" >
+            Recurso eliminado con éxito.
+        </UncontrolledAlert>
+	    {/if}
+
+        {#if errorMSG === 200.3}
+        <UncontrolledAlert  color="success" >
+            Datos cargados con éxito.
         </UncontrolledAlert>
 	    {/if}
     
