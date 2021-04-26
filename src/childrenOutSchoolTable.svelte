@@ -255,9 +255,6 @@
 	    {/if}
 
         <!-- Table -->
-    {#if schoolData.length === 0}
-        <p>No se han encontrado datos, por favor carga los datos iniciales.</p>
-    {/if}
 
         <Table bordered responsive>
             <thead>
@@ -293,7 +290,12 @@
                 {/each}
             </tbody>
         </Table>
-          <Button color="success" on:click="{loadInitialData}">
+
+        {#if schoolData.length === 0}
+            <p>No se han encontrado datos, por favor, carga los datos iniciales.</p>
+        {/if}
+        
+        <Button color="success" on:click="{loadInitialData}">
             Cargar datos inciales
         </Button>
         <Button color="danger" on:click="{deleteALL}">
