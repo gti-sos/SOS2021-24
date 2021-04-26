@@ -40,7 +40,7 @@
             schoolData = json;
             console.log("Received " + schoolData.length + " School Data.");
         } else {
-            //errorMSG= res.status + ": " + res.statusText;
+            errorMSG= res.status;// + ": " + res.statusText;
             console.log("ERROR!");
         }
     }
