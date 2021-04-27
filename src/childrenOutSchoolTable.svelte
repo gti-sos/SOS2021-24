@@ -87,7 +87,8 @@
              }
              }).then(function (res) {
                  if(res.status == 201){
-                     getSchoolData();
+                     //getSchoolData();
+                     totaldata++;
                      console.log("Data introduced");
                      //color = "success";
                      //errorMSG="Entrada introducida correctamente a la base de datos";
@@ -146,12 +147,12 @@
 			}).then(function (res) {
 				if(res.ok){
                     totaldata = 0;
-					getSchoolData();
+					//getSchoolData();
                     //color = "success";
 					//errorMSG="Datos eliminados correctamente";
                     errorMSG = 200.3;
 					console.log("OK All data erased");
-                    location.reload();
+                    //location.reload();
 				}
 				else{
 					console.log("ERROR Data was not erased");
@@ -205,7 +206,6 @@
             console.log("ERROR!");
         }
     }
-    
 </script>
 
 <main>
@@ -216,43 +216,42 @@
     {:then schoolData}
     
         {#if errorMSG === 200.1}
-        <UncontrolledAlert  color="success" >
+        <UncontrolledAlert color="success" >
             Datos cargados con éxito.
         </UncontrolledAlert>
 	    {/if}
 
         {#if errorMSG === 200.2}
-        <UncontrolledAlert  color="warning" >
+        <UncontrolledAlert color="warning" >
             Recurso eliminado con éxito.
         </UncontrolledAlert>
 	    {/if}
 
         {#if errorMSG === 200.3}
-        <UncontrolledAlert  color="warning" >
+        <UncontrolledAlert color="warning" >
             Elementos borrados con éxito.
         </UncontrolledAlert>
 	    {/if}
 
         {#if errorMSG === 201}
-        <UncontrolledAlert  color="success" >
+        <UncontrolledAlert color="success" >
             Recurso instertado con éxito.
         </UncontrolledAlert>
 	    {/if}
 
         {#if errorMSG === 404.2}
-        <UncontrolledAlert  color="danger" >
+        <UncontrolledAlert color="danger" >
             La base de datos ya esta vacía.
         </UncontrolledAlert>
 	    {/if}
 
         {#if errorMSG === 409}
-        <UncontrolledAlert  color="danger" >
+        <UncontrolledAlert color="danger" >
             Este recurso (País y Año) ya existe.
         </UncontrolledAlert>
 	    {/if}
 
         <!-- Table -->
-
         <Table bordered responsive hover>
             <thead>
                 <tr>
@@ -268,7 +267,7 @@
                 <tr>
                     <td><input type="text" placeholder="China" bind:value="{newSchoolData.country}"></td>
                     <td><input type="number" placeholder="2019" min=1960 bind:value="{newSchoolData.year}"></td>
-                    <td><input type="number"  placeholder="10" min=0 bind:value="{newSchoolData.children_out_school_male}"></td> 
+                    <td><input type="number" placeholder="10" min=0 bind:value="{newSchoolData.children_out_school_male}"></td> 
                     <td><input type="number" placeholder="10" min=0 bind:value="{newSchoolData.children_out_school_female}"></td>    
                     <td><input type="number" placeholder="20" min=0 bind:value="{newSchoolData.children_out_school_total}"></td>  
                     <td><Button outline color="primary" on:click={insertSchoolData}>Insertar</Button></td>           
@@ -282,7 +281,6 @@
                         <td>{sc.children_out_school_female}</td>
                         <td>{sc.children_out_school_total}</td>
                         <td><Button outline color="danger" on:click="{deleteSchoolData(sc.country, sc.year)}">Borrar</Button></td>
-                        
                     </tr>
                 {/each}
             </tbody>
@@ -303,7 +301,7 @@
         </Button>
         <Button outline color="info" on:click="{getNextPage}">
             Siguiente
-         </Button>
+        </Button>
          
     {/await}
 </main>
