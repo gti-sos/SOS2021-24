@@ -266,11 +266,11 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><input bind:value="{newSchoolData.country}"></td>
-                    <td><input bind:value="{newSchoolData.year}"></td>
-                    <td><input bind:value="{newSchoolData.children_out_school_male}"></td> 
-                    <td><input bind:value="{newSchoolData.children_out_school_female}"></td>    
-                    <td><input bind:value="{newSchoolData.children_out_school_total}"></td>  
+                    <td><input type="text" placeholder="China" bind:value="{newSchoolData.country}"></td>
+                    <td><input type="number" placeholder="2019" bind:value="{newSchoolData.year}"></td>
+                    <td><input type="number" bind:value="{newSchoolData.children_out_school_male}"></td> 
+                    <td><input type="number" bind:value="{newSchoolData.children_out_school_female}"></td>    
+                    <td><input type="number" bind:value="{newSchoolData.children_out_school_total}"></td>  
                     <td><Button outline color="primary" on:click={insertSchoolData}>Insertar</Button></td>           
                 </tr>
  
