@@ -111,6 +111,7 @@
 
     //DELETE SPECIFIC
     async function deleteSchoolData(name, year) {
+        if(confirm("¿Está seguro de que desea eliminar esta entrada?")){
         const res = await fetch("/api/v1/children-out-school/" + name + "/" + year, {
             method: "DELETE"
         }).then(function (res) {
@@ -132,8 +133,9 @@
                 errorMSG= res.status;// + ": " + res.statusText;
                 console.log("ERROR!");
             }      
-        });
-    }
+         });
+        }
+    }   
     //DELETE ALL
     async function deleteALL() {
 		console.log("Deleting school data...");
