@@ -199,7 +199,7 @@ import { get } from "svelte/store";
 </script>
 
 <main>
-    <h1>Children Employment</h1>
+    <h1>Administrador de datos de niñ@s empleados</h1>
 
     {#await employmentData}
         Loading employment data...
