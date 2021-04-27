@@ -259,7 +259,7 @@
                     <th>Viviendo con VIH</th>
                     <th>Nuevos infectados de VIH</th>
                     <th>Suma total</th>
-                    <th>Actions</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
