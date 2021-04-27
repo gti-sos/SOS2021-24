@@ -260,7 +260,7 @@
                     <th>Abandono Escolar (Niños)</th>
                     <th>Abandono Escolar (Niñas)</th>
                     <th>Abandono Escolar (Total)</th>
-                    <th>Actions</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
