@@ -219,7 +219,7 @@ import { get } from "svelte/store";
                     <th>Niños con empleo </th>
                     <th>Niñas con empleo </th>
                     <th>Total de niñ@s con empleo</th>
-                    <th>Actions</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
