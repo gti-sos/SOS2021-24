@@ -267,10 +267,10 @@
             <tbody>
                 <tr>
                     <td><input type="text" placeholder="China" bind:value="{newSchoolData.country}"></td>
-                    <td><input type="number" placeholder="2019" bind:value="{newSchoolData.year}"></td>
-                    <td><input type="number" bind:value="{newSchoolData.children_out_school_male}"></td> 
-                    <td><input type="number" bind:value="{newSchoolData.children_out_school_female}"></td>    
-                    <td><input type="number" bind:value="{newSchoolData.children_out_school_total}"></td>  
+                    <td><input type="number" placeholder="2019" min=1950 bind:value="{newSchoolData.year}"></td>
+                    <td><input type="number" min=0 bind:value="{newSchoolData.children_out_school_male}"></td> 
+                    <td><input type="number" min=0 bind:value="{newSchoolData.children_out_school_female}"></td>    
+                    <td><input type="number" min=0 bind:value="{newSchoolData.children_out_school_total}"></td>  
                     <td><Button outline color="primary" on:click={insertSchoolData}>Insertar</Button></td>           
                 </tr>
  
