@@ -16,7 +16,7 @@
             </ul>
             </li>
             <li class="has-line-data" data-line-start="6" data-line-end="7">
-            <p class="has-line-data" data-line-start="6" data-line-end="7"><strong>Descripción del proyecto</strong>:Correlation between the number of children who drop out of school (primary education), the prevalence of HIV in young people between 0-14 years old and the percentage of employed children between 7-14 years old.</p>
+            <p class="has-line-data" data-line-start="6" data-line-end="7"><strong>Descripción del proyecto</strong>:Correlación entre el número de niños que abandonan la educación primaria,la prevalencia del VIH en jóvenes entre 0-14 años y el porcentaje de niños empleados entre 7-14 años.</p>
             </li>
             <li class="has-line-data" data-line-start="7" data-line-end="8">
             <p class="has-line-data" data-line-start="7" data-line-end="8"><strong>Repositorio</strong>: <a href="https://github.com/gti-sos/SOS2021-24">gti-sos/SOS2021-24</a></p>
