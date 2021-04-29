@@ -3,13 +3,13 @@
 	import NotFound from './NotFound.svelte' ;  
 	import Home from './Home.svelte';
   import Inicio from './Inicio.svelte'
-    import SchoolAPI from './schoolAPI/childrenOutSchoolTable.svelte'
-    import EmploymentAPI from './employmentAPI/childrenEmploymentTable.svelte'
-    import HivAPI from './hivAPI/childrenWithHIVTable.svelte'
-	import { Jumbotron } from "sveltestrap";
+  import SchoolAPI from './schoolGUI/childrenOutSchoolTable.svelte'
+  import EmploymentAPI from './employmentAPI/childrenEmploymentTable.svelte'
+  import HivAPI from './hivAPI/childrenWithHIVTable.svelte'
 	import { Collapse,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem } from 'sveltestrap';
 
     let isOpen=false;
+    
     const routes = {
       "/": Inicio,
 		  "/info":Home,
