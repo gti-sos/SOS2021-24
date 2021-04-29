@@ -1,24 +1,22 @@
 <script>
 import { Jumbotron } from "sveltestrap";
-import Button from "sveltestrap";
 </script>
 
 <main>
 	<Jumbotron>
-        <h1 class="display-3">Bienvenidos</h1>
+        <h1 class="display-3">Bienvenid@!</h1>
         <p class="lead">
-            En esta web encontrarás distintas APIs desarrolladas por:
+            <strong>En esta web encontrarás distintas APIs desarrolladas por:</strong>
         </p>
         <hr class="my-2" />
         <p>
-          Enrique Luque García
+            <a href="https://github.com/enrike7lg">Enrique Luque García</a>
         </p>
         <p>
-        Francisco Javier Macero Vázquez
+            <a href="https://github.com/framacvaz ">Francisco Javier Macero Vázquez</a>
         </p>
         <p>
-            Juan Ignacio Roldán Torres
+            <a href="https://github.com/juaroltor ">Juan Ignacio Roldán Torres </a>
         </p>
       </Jumbotron>
-	  
 </main>
