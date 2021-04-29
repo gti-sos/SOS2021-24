@@ -42,8 +42,8 @@
             <p class="has-line-data" data-line-start="14" data-line-end="15"><strong>API Frontend</strong>:</p>
             <ul>
                 <li class="has-line-data" data-line-start="15" data-line-end="16"><a href="/#/children-out-school"> <Button color="dark">Abandono escolar</Button></a> (desarrollado por <a href="https://github.com/enrike7lg">Enrique Luque García</a>)</li>
-                <li class="has-line-data" data-line-start="16" data-line-end="17"><a href="/#/children-employment"> <Button color="dark">Niños/as empleados</Button></a> </a> (desarrollado por <a href="https://github.com/framacvaz">Francisco Javier Macero Vázquez</a>)</li>
-                <li class="has-line-data" data-line-start="17" data-line-end="18"><a href="/#/children-with-hiv"> <Button color="dark">Niños/as con VIH</Button></a></a> (desarrollado por <a href="https://github.com/juaroltor">Juan Ignacio Roldán Torres</a>)</li>
+                <li class="has-line-data" data-line-start="16" data-line-end="17"><a href="/#/children-employment"> <Button color="dark">Niños/as empleados</Button></a> (desarrollado por <a href="https://github.com/framacvaz">Francisco Javier Macero Vázquez</a>)</li>
+                <li class="has-line-data" data-line-start="17" data-line-end="18"><a href="/#/children-with-hiv"> <Button color="dark">Niños/as con VIH</Button></a> (desarrollado por <a href="https://github.com/juaroltor">Juan Ignacio Roldán Torres</a>)</li>
             </ul>
             </li>
             <li class="has-line-data" data-line-start="18" data-line-end="22">
