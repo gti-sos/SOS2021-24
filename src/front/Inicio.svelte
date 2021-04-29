@@ -1,14 +1,24 @@
-<main>
-	<h1 class="display-4" style="text-align: center;" > ¡Bienvenido! </h1>
+<script>
+import { Jumbotron } from "sveltestrap";
+import Button from "sveltestrap";
+</script>
 
-	<div id=container>
-		En esta web podrás ver las APIs de 
-		<div id=flip>
-		  <div><div>Enrique Luque García</div></div>
-		  <div><div>Francisco Javier Macero Vázquez</div></div>
-		  <div><div>Juan Ignacio Roldán Torres</div></div>
-		</div>
-		¡Disfruta!
-	  </div>
+<main>
+	<Jumbotron>
+        <h1 class="display-3">Bienvenidos</h1>
+        <p class="lead">
+            En esta web encontrarás distintas APIs desarrolladas por:
+        </p>
+        <hr class="my-2" />
+        <p>
+          Enrique Luque García
+        </p>
+        <p>
+        Francisco Javier Macero Vázquez
+        </p>
+        <p>
+            Juan Ignacio Roldán Torres
+        </p>
+      </Jumbotron>
 	  
 </main>
