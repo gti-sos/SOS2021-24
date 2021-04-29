@@ -8,7 +8,6 @@ var Datastore = require("nedb");
 //Variables
 var app = express();
 var port = (process.env.PORT || 10000);
-var BASE_API_PATH = "/api/v1";
 
 //Server usages
 app.use(bodyParser.json()); 
