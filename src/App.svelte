@@ -23,11 +23,8 @@
 
     <body >
         <Navbar color="dark" dark expand = "md" >
-            <NavbarBrand>SOS2021-24</NavbarBrand>
+            <NavbarBrand href="#/info">SOS2021-24</NavbarBrand>
             <Nav navbar >
-              <NavItem  >
-                <NavLink href="#/info">Inicio</NavLink>
-              </NavItem>
               <NavItem>
                 <NavLink href="#/children-out-school">Abandono escolar</NavLink>
               </NavItem>
