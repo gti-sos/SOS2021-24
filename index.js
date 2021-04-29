@@ -16,13 +16,13 @@ app.use(express.json());
 app.use("/", express.static(path.join(__dirname,"public")));
 
 //APIs
-var schoolAPI = require("./schoolAPI");
+var schoolAPI = require("./src/back/schoolAPI");
 schoolAPI.init(app);
 
-var employmentAPI = require("./employmentAPI");
+var employmentAPI = require("./src/back/employmentAPI");
 employmentAPI.init(app);
 
-var hivAPI = require("./hivAPI");
+var hivAPI = require("./src/back/hivAPI");
 hivAPI.init(app);
 
 //========================F02 /cool====================
