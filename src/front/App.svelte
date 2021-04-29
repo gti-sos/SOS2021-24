@@ -2,6 +2,7 @@
 	import Router from 'svelte-spa-router';
 	import NotFound from './NotFound.svelte' ;  
 	import Home from './Home.svelte';
+  import Inicio from './Inicio.svelte'
     import SchoolAPI from './schoolAPI/childrenOutSchoolTable.svelte'
     import EmploymentAPI from './employmentAPI/childrenEmploymentTable.svelte'
     import HivAPI from './hivAPI/childrenWithHIVTable.svelte'
@@ -10,7 +11,7 @@
 
     let isOpen=false;
     const routes = {
-      "/": Home,
+      "/": Inicio,
 		  "/info":Home,
         "/children-out-school": SchoolAPI,
         "/children-employment": EmploymentAPI,
@@ -23,8 +24,11 @@
 
     <body >
         <Navbar color="dark" dark expand = "md" >
-            <NavbarBrand href="#/info">SOS2021-24</NavbarBrand>
+            <NavbarBrand href="#/">SOS2021-24</NavbarBrand>
             <Nav navbar >
+              <NavItem>
+                <NavLink href="#/info">Info</NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink href="#/children-out-school">Abandono escolar</NavLink>
               </NavItem>
