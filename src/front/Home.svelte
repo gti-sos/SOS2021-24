@@ -1,6 +1,6 @@
 <script>
     import {
-      Button,
+      Button,Jumbotron
     } from "sveltestrap";
   </script>
 
@@ -12,6 +12,7 @@
     </head>
     
     <body>
+        <Jumbotron>
         <ul>
             <li class="has-line-data" data-line-start="2" data-line-end="7">
             <p class="has-line-data" data-line-start="2" data-line-end="3"><strong>Equipo</strong></p>
@@ -55,4 +56,5 @@
             </ul>
             </li>
         </ul>
+    </Jumbotron>
 </main>

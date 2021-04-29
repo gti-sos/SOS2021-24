@@ -4,9 +4,9 @@ import { Jumbotron } from "sveltestrap";
 
 <main>
 	<Jumbotron>
-        <h1 class="display-3">Bienvenid@!</h1>
+        <h1 class="display-3">¡Bienvenid@!</h1>
         <p class="lead">
-            <strong>En esta web encontrarás distintas APIs desarrolladas por:</strong>
+            <strong>El contenido de esta web ha sido desarrollado por:</strong>
         </p>
         <hr class="my-2" />
         <p>
