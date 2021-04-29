@@ -14,8 +14,8 @@
     <body>
         <Jumbotron>
         <ul>
-            <li class="has-line-data" data-line-start="2" data-line-end="7">
-            <p class="has-line-data" data-line-start="2" data-line-end="3"><strong>Equipo</strong></p>
+            <li class="has-line-data" data-line-start="0" data-line-end="7">
+            <p class="has-line-data" data-line-start="1" data-line-end="2"><strong>Equipo</strong></p>
             <ul>
             <li class="has-line-data" data-line-start="3" data-line-end="4"><a href="https://github.com/enrike7lg">Enrique Luque García</a></li>
             <li class="has-line-data" data-line-start="4" data-line-end="5"><a href="https://github.com/framacvaz ">Francisco Javier Macero Vázquez</a></li>
@@ -43,8 +43,8 @@
             <p class="has-line-data" data-line-start="14" data-line-end="15"><strong>API Frontend</strong>:</p>
             <ul>
                 <li class="has-line-data" data-line-start="15" data-line-end="16"><a href="/#/children-out-school"> <Button color="dark">Abandono escolar</Button></a> (desarrollado por <a href="https://github.com/enrike7lg">Enrique Luque García</a>)</li>
-                <li class="has-line-data" data-line-start="16" data-line-end="17"><a href="/#/children-employment"> <Button color="dark">Niños/as empleados</Button></a> (desarrollado por <a href="https://github.com/framacvaz">Francisco Javier Macero Vázquez</a>)</li>
-                <li class="has-line-data" data-line-start="17" data-line-end="18"><a href="/#/children-with-hiv"> <Button color="dark">Niños/as con VIH</Button></a> (desarrollado por <a href="https://github.com/juaroltor">Juan Ignacio Roldán Torres</a>)</li>
+                <li class="has-line-data" data-line-start="16" data-line-end="17"><a href="/#/children-employment"> <Button color="info">Niños/as empleados</Button></a> (desarrollado por <a href="https://github.com/framacvaz">Francisco Javier Macero Vázquez</a>)</li>
+                <li class="has-line-data" data-line-start="17" data-line-end="18"><a href="/#/children-with-hiv"> <Button color="secondary">Niños/as con VIH</Button></a> (desarrollado por <a href="https://github.com/juaroltor">Juan Ignacio Roldán Torres</a>)</li>
             </ul>
             </li>
             <li class="has-line-data" data-line-start="18" data-line-end="22">
