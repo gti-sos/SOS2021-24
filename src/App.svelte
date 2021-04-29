@@ -10,11 +10,11 @@
 
     let isOpen=false;
     const routes = {
-		"/info":Home,
+      "/": Home,
+		  "/info":Home,
         "/children-out-school": SchoolAPI,
         "/children-employment": EmploymentAPI,
         "/children-with-hiv": HivAPI,
-        
 		    '*': NotFound,
       };
 </script>
