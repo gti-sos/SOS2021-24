@@ -10,7 +10,7 @@
 
     let isOpen=false;
     const routes = {
-		"/":Home,
+		"/info":Home,
         "/children-out-school": SchoolAPI,
         "/children-employment": EmploymentAPI,
         "/children-with-hiv": HivAPI,
@@ -23,10 +23,10 @@
 
     <body >
         <Navbar color="dark" dark expand = "md" >
-            <NavbarBrand href="/">SOS2021-24</NavbarBrand>
+            <NavbarBrand>SOS2021-24</NavbarBrand>
             <Nav navbar >
               <NavItem  >
-                <NavLink href="#/">Inicio</NavLink>
+                <NavLink href="#/info">Inicio</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="#/children-out-school">Abandono escolar</NavLink>
