@@ -32,7 +32,6 @@
         
       } else {
         errorMsg = res.status + ": " + res.statusText;
-        okMsg="";
         console.log("ERROR!" + errorMsg);
       }
     }
@@ -57,13 +56,12 @@
       ).then(function (res) {
         if (res.ok) {
           console.log("OK");
-          getStat();
+          getSchoolData();
           errorMsg = "";
           okMsg = "Entrada actualizada correctamente";
         } else {
           errorMsg = res.status + ": " + res.statusText;
-          okMsg = "";
-          getStat();
+          getSchoolData();
           console.log("ERROR!" + errorMsg);
         }
       });
@@ -73,9 +71,14 @@
   </script>
   
   <main>
-    <h2>
+    <h2 style="text-align: center;">
       Editar entrada: Abandono escolar en <strong>{params.country}</strong> en el año <strong>{params.year}</strong>
     </h2>
+    
+    {#await schoolData}
+        Loading school Data...
+    {:then school}
+
     {#if errorMsg}
         <p style="color: red">ERROR: {errorMsg}</p>
     {/if}
@@ -103,18 +106,11 @@
           <td><input type="number" bind:value={updateFemale} /></td>
           <td><input type="number" bind:value={updateTotal} /></td>
           <td>
-            <Button outline color="primary" on:click={updateSchoolData}>Actualizar</Button>
+            <Button outline color="warning" on:click={updateSchoolData}>Actualizar</Button>
           </td>
         </tr>
       </tbody>
     </Table>
+    {/await}
     <a href="#/children-out-school"> <Button outline color="secondary">Volver</Button></a>
   </main>
-  
-  <style>
-    main{
-      text-align: center;
-      padding: 1em;
-      margin: 0 auto;
-    }
-  </style>
