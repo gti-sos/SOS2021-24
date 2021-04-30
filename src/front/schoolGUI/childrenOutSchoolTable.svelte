@@ -7,10 +7,7 @@
 	import { Alert, UncontrolledAlert } from 'sveltestrap';
     import { UncontrolledCollapse, Collapse, CardBody, Card } from "sveltestrap";
 	
-	
-    
     let isOpen = false;
-    let busquedas = "/api/v1/children-out-school?";
     //ALERTAS
     let visible = false;
     let color = "danger";
@@ -58,12 +55,9 @@
             schoolData = json;
             totaldata=8;
             console.log("Received " + schoolData.length + " school data.");
-            //color = "success";
-            //errorMSG = "Datos cargados correctamente";
-            errorMSG = 200.1;
+            okayMSG = "Datos cargados con éxito";
         } 
         else {
-            //color = "danger";
             //errorMSG= res.status + ": " + res.statusText;
             errorMSG = 404;
             console.log("ERROR!");
@@ -91,19 +85,16 @@
                      getSchoolData();
                      totaldata++;
                      console.log("Data introduced");
-                     //color = "success";
                      //errorMSG="Entrada introducida correctamente a la base de datos";
-                     errorMSG = 201;
+                     okayMSG = "Recurso insertado con éxito";
                  }
                  else if(res.status == 400){
                      console.log("ERROR Data was not correctly introduced");
-                     //color = "danger";
                      //errorMSG= "Los datos de la entrada no fueron introducidos correctamente";
                      errorMSG = 400;
                  }
                  else if(res.status == 409){
                      console.log("ERROR There is already a data with that country and year in the database");
-                    //color = "danger";
                      //errorMSG= "Ya existe una entrada en la base de datos con la fecha y el país introducido";
                      errorMSG = 409;
                  }
@@ -121,17 +112,13 @@
             getSchoolData();      
             if (res.status==200) {
                 totaldata--;
-                //color = "success";
-                //errorMSG = "Recurso" + country + year + "borrado correctamente";
-                errorMSG = 200.2;
+                okayMSG = "Recurso eliminado con éxtio";
                 console.log("Deleted " + name);            
             }else if (res.status==404) {
-                //color = "danger";
                 //errorMSG = "No se ha encontrado el objeto" + name;
                 errorMSG = 404;
                 console.log("DATA NOT FOUND");            
             } else {
-                //color = "danger";
                 errorMSG= res.status;// + ": " + res.statusText;
                 console.log("ERROR!");
             }      
@@ -150,8 +137,6 @@
                     //totaldata = 0;
                     schoolData = [];
 					getSchoolData();
-                    //color = "success";
-					//errorMSG="Datos eliminados correctamente";
                     okayMSG = "Entradas eliminadas con éxito"
                     errorMSG = 200.3;
 					console.log("OK All data erased");
@@ -159,7 +144,6 @@
 				}
 				else{
 					console.log("ERROR Data was not erased");
-                    //color = "danger";
 					//errorMSG= "No se han podido eliminar los datos";
                     errorMSG = 404.2;
 				}
@@ -254,8 +238,8 @@
         </UncontrolledAlert>
 	    {/if}
 
-        {#if okMsg}
-            <p style="color: green">{okMsg}</p>
+        {#if okayMSG}
+            <p style="color: green">{okayMSG}</p>
         {/if}
 
         <!-- Table -->
