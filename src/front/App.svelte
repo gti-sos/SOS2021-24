@@ -15,7 +15,7 @@
       "/": Inicio,
 		  "/info":Home,
         "/children-out-school": SchoolAPI,
-        "children-out-school/:country/:year":EditSchool,
+        "/children-out-school/:country/:year":EditSchool,
         "/children-employment": EmploymentAPI,
         "/children-with-hiv": HivAPI,
 		    '*': NotFound,

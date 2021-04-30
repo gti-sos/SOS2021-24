@@ -108,9 +108,7 @@
         </tr>
       </tbody>
     </Table>
-    <a href="#/children-out-school"
-      ><Button outline color="secondary">Volver</Button></a
-    >
+    <a href="#/children-out-school"> <Button outline color="secondary">Volver</Button></a>
   </main>
   
   <style>
