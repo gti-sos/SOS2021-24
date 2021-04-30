@@ -146,13 +146,14 @@
 				method: "DELETE"
 			}).then(function (res) {
 				if(res.ok){
-                    totaldata = 0;
-					//getSchoolData();
+                    //totaldata = 0;
+                    schoolData = [];
+					getSchoolData();
                     //color = "success";
 					//errorMSG="Datos eliminados correctamente";
                     errorMSG = 200.3;
 					console.log("OK All data erased");
-                    location.reload();
+                    //location.reload();
 				}
 				else{
 					console.log("ERROR Data was not erased");
