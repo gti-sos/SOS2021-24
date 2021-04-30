@@ -27,6 +27,7 @@
 	}
     
     let errorMSG = null;
+    let okayMSG = "";
     onMount(getSchoolData);
  
     //GET
@@ -151,6 +152,7 @@
 					getSchoolData();
                     //color = "success";
 					//errorMSG="Datos eliminados correctamente";
+                    okayMSG = "Entradas eliminadas con éxito"
                     errorMSG = 200.3;
 					console.log("OK All data erased");
                     //location.reload();
@@ -251,6 +253,10 @@
             Este recurso (País y Año) ya existe.
         </UncontrolledAlert>
 	    {/if}
+
+        {#if okMsg}
+            <p style="color: green">{okMsg}</p>
+        {/if}
 
         <!-- Table -->
         <Table bordered responsive hover>
