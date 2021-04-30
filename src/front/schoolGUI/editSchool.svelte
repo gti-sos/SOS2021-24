@@ -24,7 +24,7 @@
         const json = await res.json();
         schoolData = json;
         updateCountry = schoolData.country;
-        updateDate = schoolData.year;
+        updateYear = schoolData.year;
         updateMale = schoolData["children_out_school_male"];
         updateFemale = schoolData["children_out_school_female"];
         updateTotal = schoolData["children_out_school_total"];
@@ -40,7 +40,7 @@
     async function updateSchoolData() {
         if(confirm("¿Está seguro de que desea actualizar esta entrada?")){
             console.log("Updating stat..." + JSON.stringify(params.country) + JSON.stringify(params.year));
-            const res = await fetch("/api/v1/children-out-school/" + params.country +"/" + params.date,
+            const res = await fetch("/api/v1/children-out-school/" + params.country +"/" + params.year,
             {
                 method: "PUT",
                 body: JSON.stringify({
@@ -73,14 +73,14 @@
   </script>
   
   <main>
-    <h3>
-      Editar entrada: Abandono escolar en <strong>{params.country}</strong> en el año <strong>{params.date}</strong>
-    </h3>
+    <h2>
+      Editar entrada: Abandono escolar en <strong>{params.country}</strong> en el año <strong>{params.year}</strong>
+    </h2>
     {#if errorMsg}
-      <p style="color: red">ERROR: {errorMsg}</p>
+        <p style="color: red">ERROR: {errorMsg}</p>
     {/if}
     {#if okMsg}
-    <p style="color: green">{okMsg}</p>
+        <p style="color: green">{okMsg}</p>
     {/if}
 
     <Table bordered>
