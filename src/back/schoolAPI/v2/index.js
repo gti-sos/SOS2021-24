@@ -8,11 +8,18 @@ module.exports.init = (app) => {
 
     var schoolData = [
     {
-        "country":"Argentina",
-        "year":1970,
-        "children_out_school_male":94757,
-        "children_out_school_female":61145,
-        "children_out_school_total":155902
+        "country":"Angola",
+        "year":2010,
+        "children_out_school_male":215471,
+        "children_out_school_female":515304,
+        "children_out_school_total":730775
+    },
+    {
+        "country":"Angola",
+        "year":2011,
+        "children_out_school_male":170490,
+        "children_out_school_female":603347,
+       "children_out_school_total":773837
     },
     {
         "country":"Brazil",
@@ -30,10 +37,24 @@ module.exports.init = (app) => {
     },
     {
         "country":"Italy",
-        "year":1976,
-        "children_out_school_male":55165,
-        "children_out_school_female":18496,
-        "children_out_school_total":73661
+        "year":2015,
+        "children_out_school_male":20839,
+        "children_out_school_female":21264,
+        "children_out_school_total":42103
+    },
+    {
+        "country":"Italy",
+        "year":2016,
+        "children_out_school_male":28629,
+        "children_out_school_female":29659,
+        "children_out_school_total":58288
+    },
+    {
+        "country":"Italy",
+        "year":2017,
+        "children_out_school_male":34673,
+        "children_out_school_female":37168,
+        "children_out_school_total":71841
     },
     {
         "country":"Italy",
@@ -41,6 +62,20 @@ module.exports.init = (app) => {
         "children_out_school_male":43567,
         "children_out_school_female":45651,
         "children_out_school_total":89218
+    },
+    {
+        "country":"Portugal",
+        "year":2016,
+        "children_out_school_male":4545,
+        "children_out_school_female":6625,
+        "children_out_school_total":11170
+    },
+    {
+        "country":"Portugal",
+        "year":2017,
+        "children_out_school_male":184,
+        "children_out_school_female":3478,
+        "children_out_school_total":3662
     },
     {
         "country":"Spain",
@@ -57,11 +92,46 @@ module.exports.init = (app) => {
         "children_out_school_total":74969
     },
     {
+        "country":"Sweden",
+        "year":2006,
+        "children_out_school_male":15232,
+        "children_out_school_female":15701,
+        "children_out_school_total":30933
+    },
+    {
+        "country":"Sweden",
+        "year":2007,
+        "children_out_school_male":10568,
+        "children_out_school_female":11390,
+        "children_out_school_total":21958
+    },
+    {
+        "country":"Sweden",
+        "year":2008,
+        "children_out_school_male":2888,
+        "children_out_school_female":4867,
+        "children_out_school_total":7755
+    },
+    {
+        "country":"France",
+        "year":2015,
+        "children_out_school_male":12578,
+        "children_out_school_female":8912,
+        "children_out_school_total":21490
+    },
+    {
         "country":"France",
         "year":2016,
         "children_out_school_male":6482,
         "children_out_school_female":523,
         "children_out_school_total":7005
+    },
+    {
+        "country":"Germany",
+        "year":2015,
+        "children_out_school_male":31346,
+        "children_out_school_female":21244,
+        "children_out_school_total":52590
     },
     {
         "country":"Germany",
@@ -83,20 +153,6 @@ module.exports.init = (app) => {
         "children_out_school_male":5390,
         "children_out_school_female":3856,
         "children_out_school_total":9246
-    },
-    {
-        "country":"Angola",
-        "year":2010,
-        "children_out_school_male":215471,
-        "children_out_school_female":515304,
-        "children_out_school_total":730775
-    },
-    {
-        "country":"Angola",
-        "year":2011,
-        "children_out_school_male":170490,
-        "children_out_school_female":603347,
-        "children_out_school_total":773837
     }
 ];
 
@@ -156,7 +212,6 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req,res)=>{
                     data.forEach( (d) =>{
                     delete d._id;
                     });
-
                     res.send(JSON.stringify(data, null, 2));
                     console.log("Data sent:"+JSON.stringify(data, null, 2));
                 }
@@ -235,7 +290,6 @@ app.delete(BASE_CHILDREN_OUT_SCHOOL_API_PATH + "/:country/:year", (req, res) => 
 
 	var country = req.params.country;
 	var year = parseInt(req.params.year);
-	//var query = {"country":country, "year":year};
 
 	db.remove({country: country, year: year}, {multi:true}, (err, numRemoved) =>{
         if(err){
