@@ -83,7 +83,6 @@
              }).then(function (res) {
                  if(res.status == 201){
                      getSchoolData();
-                     totaldata++;
                      console.log("Data introduced");
                      //errorMSG="Entrada introducida correctamente a la base de datos";
                      okayMSG = "Recurso insertado con éxito";
@@ -105,17 +104,17 @@
     //DELETE SPECIFIC
     async function deleteSchoolData(name, year) {
         if(confirm("¿Está seguro de que desea eliminar esta entrada?")){
-        const res = await fetch("/api/v1/children-out-school/" + name + "/" + year, {
+        const res = await fetch("/api/v1/children-out-school/" + country + "/" + year, {
             method: "DELETE"
         }).then(function (res) {
             visible = true;
             getSchoolData();      
             if (res.status==200) {
                 totaldata--;
-                okayMSG = "Recurso eliminado con éxtio";
-                console.log("Deleted " + name);            
+                okayMSG = "Recurso eliminado con éxito";
+                console.log("Deleted " + country);            
             }else if (res.status==404) {
-                //errorMSG = "No se ha encontrado el objeto" + name;
+                //errorMSG = "No se ha encontrado el objeto" + country;
                 errorMSG = 404;
                 console.log("DATA NOT FOUND");            
             } else {
@@ -134,11 +133,9 @@
 				method: "DELETE"
 			}).then(function (res) {
 				if(res.ok){
-                    //totaldata = 0;
                     schoolData = [];
 					getSchoolData();
                     okayMSG = "Entradas eliminadas con éxito"
-                    errorMSG = 200.3;
 					console.log("OK All data erased");
                     //location.reload();
 				}
@@ -201,30 +198,6 @@
     {#await schoolData}
         Loading school data...
     {:then schoolData}
-    
-        {#if errorMSG === 200.1}
-        <UncontrolledAlert color="success" >
-            Datos cargados con éxito.
-        </UncontrolledAlert>
-	    {/if}
-
-        {#if errorMSG === 200.2}
-        <UncontrolledAlert color="warning" >
-            Recurso eliminado con éxito.
-        </UncontrolledAlert>
-	    {/if}
-
-        {#if errorMSG === 200.3}
-        <UncontrolledAlert color="warning" >
-            Elementos borrados con éxito.
-        </UncontrolledAlert>
-	    {/if}
-
-        {#if errorMSG === 201}
-        <UncontrolledAlert color="success" >
-            Recurso instertado con éxito.
-        </UncontrolledAlert>
-	    {/if}
 
         {#if errorMSG === 404.2}
         <UncontrolledAlert color="danger" >
@@ -239,7 +212,7 @@
 	    {/if}
 
         {#if okayMSG}
-            <p style="color: green">{okayMSG}</p>
+        <UncontrolledAlert><p style="color: green">{okayMSG}</p></UncontrolledAlert>
         {/if}
 
         <!-- Table -->
