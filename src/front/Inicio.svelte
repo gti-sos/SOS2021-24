@@ -1,5 +1,5 @@
 <script>
-import { Jumbotron } from "sveltestrap";
+import { Jumbotron, Button } from "sveltestrap";
 </script>
 
 <main>
@@ -17,6 +17,12 @@ import { Jumbotron } from "sveltestrap";
         </p>
         <p>
             <a href="https://github.com/juaroltor ">Juan Ignacio Roldán Torres </a>
+        </p>
+        <p>
+            Para más información, haz click aquí:
+        </p>
+        <p class="lead">
+            <a href="#/info"><Button color="dark">Sobre Nosotros</Button>
         </p>
       </Jumbotron>
 </main>
