@@ -1,0 +1,1234 @@
+{
+	"info": {
+		"_postman_id": "9ed62530-e278-4f7a-99b3-c075cc828cb1",
+		"name": "SOS2021-24-children-school v2",
+		"description": "Children out school management API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "LoadInitialData",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school/loadInitialData",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET resources",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Current resources = 14\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(14);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query by Country",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Resources with country named spain = 2\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(2);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school?country=Spain",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Spain"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query by Year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Resources with year 2018 = 3\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(3);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school?year=2018",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					],
+					"query": [
+						{
+							"key": "year",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query by Country and Year",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Current resources = 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school?country=Spain&year=2018",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Spain"
+						},
+						{
+							"key": "year",
+							"value": "2018"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search by male field",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Current resources = 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school?children_out_school_male=50956",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					],
+					"query": [
+						{
+							"key": "children_out_school_male",
+							"value": "50956"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search by ALL FIELDS",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Current resources = 1\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school?country=Spain&year=2018&children_out_school_male=50956&children_out_school_female=40830&children_out_school_total=91786",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					],
+					"query": [
+						{
+							"key": "country",
+							"value": "Spain"
+						},
+						{
+							"key": "year",
+							"value": "2018"
+						},
+						{
+							"key": "children_out_school_male",
+							"value": "50956"
+						},
+						{
+							"key": "children_out_school_female",
+							"value": "40830"
+						},
+						{
+							"key": "children_out_school_total",
+							"value": "91786"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Query error",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school?children_out_school_male=0",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					],
+					"query": [
+						{
+							"key": "children_out_school_male",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pagination limit = 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school?limit=2",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pagination offset=0&limit=10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school?offset=0&limit=10",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "0"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pagination offset=10&limit=10",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school?offset=10&limit=10",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					],
+					"query": [
+						{
+							"key": "offset",
+							"value": "10"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Chile",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"Chile\",\r\n\"year\": 2018,\r\n\"children_out_school_male\": 550,\r\n\"children_out_school_female\": 550,\r\n\"children_out_school_total\": 1100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST (Error data format)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"mexico\",\r\n\"year\": 2017,\r\n\"children-out-school-male\": 55,\r\n\"children-out-school-female\": 55\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Error (Duplicated country and year)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 409\", function () {\r",
+							"    pm.response.to.have.status(409);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"Chile\",\r\n\"year\": 2018,\r\n\"children-out-school-male\": 55,\r\n\"children-out-school-female\": 55,\r\n\"children-out-school-total\": 100\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET resources after POST",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Current resources = 15\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(15);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET a resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school/Italy/2018",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school",
+						"Italy",
+						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET a resource(Error, not found)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school/Italy/2022",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school",
+						"Italy",
+						"2022"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE a resource",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school/Chile/2018",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school",
+						"Chile",
+						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE a resource(Error, not found)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school/Chile/2014",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school",
+						"Chile",
+						"2014"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET resources after DELETE",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Current resources = 14\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.length).to.eql(14);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Italy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"Italy\",\r\n\"year\": \"2018\",\r\n\"children_out_school_male\": 1,\r\n\"children_out_school_female\": 1,\r\n\"children_out_school_total\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school/Italy/2018",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school",
+						"Italy",
+						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT Italy (ERROR)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 400\", function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"country\": \"Italy\",\r\n\"year\": \"2018\",\r\n\"children-out-school-male\": 55165,\r\n\"children-out-school-female\": 18496\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school/Italy/2018",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school",
+						"Italy",
+						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST a resource (ERROR)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school/Spain/2018",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school",
+						"Spain",
+						"2018"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PUT resources (ERROR)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 405\", function () {\r",
+							"    pm.response.to.have.status(405);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE resources",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school/",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET resources after DELETE ALL",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE resources EMPTY",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"    pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
