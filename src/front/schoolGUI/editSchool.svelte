@@ -1,6 +1,7 @@
 <script>
     import { onMount } from "svelte";
-    import { Table, Button } from "sveltestrap";
+    import { Table, Button} from "sveltestrap";
+    import UncontrolledAlert from "sveltestrap";
     const BASE_CONTACT_API_PATH = "/api/v1";
 
     export let params = {};
@@ -80,20 +81,21 @@
     {:then school}
 
     {#if errorMsg}
-        <p style="color: red">ERROR: {errorMsg}</p>
-    {/if}
-    {#if okMsg}
-        <p style="color: green">{okMsg}</p>
-    {/if}
+            <UncontrolledAlert color="danger" >{errorMsg}</UncontrolledAlert>
+	    {/if}
 
-    <Table bordered>
+        {#if okMsg}
+            <UncontrolledAlert color = "success">{okMsg}</UncontrolledAlert>
+        {/if}
+
+    <Table bordered responsive hover>
       <thead>
         <tr>
           <th>País </th>
           <th>Año </th>
-          <th>Abandono escolar (Niños) </th>
-          <th>Abandono escolar (Niñas) </th>
-          <th>Abandono escolar (Total) </th>
+          <th>Abandono escolar (Niños)</th>
+          <th>Abandono escolar (Niñas)</th>
+          <th>Abandono escolar (Total)</th>
           <th>Acciones</th>
         </tr>
       </thead>
