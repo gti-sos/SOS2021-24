@@ -1,7 +1,7 @@
 <script>
     import { onMount } from "svelte";
     import { Table, Button} from "sveltestrap";
-    import UncontrolledAlert from "sveltestrap";
+    import {UncontrolledAlert} from "sveltestrap";
     const BASE_CONTACT_API_PATH = "/api/v1";
 
     export let params = {};
