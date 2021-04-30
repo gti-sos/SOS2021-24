@@ -1,8 +1,8 @@
 <script>
     import { onMount } from "svelte";
     import { Table, Button} from "sveltestrap";
+    import {pop} from "svelte-spa-router";
     import {UncontrolledAlert} from "sveltestrap";
-    const BASE_CONTACT_API_PATH = "/api/v1";
 
     export let params = {};
     let schoolData = {};
@@ -18,7 +18,7 @@
     
     async function getSchoolData() {
       console.log("Fetching stat..." + params.country + " " + params.year);
-      const res = await fetch("api/v1/children-out-school/" + params.country +"/" + params.year
+      const res = await fetch("api/v2/children-out-school/" + params.country +"/" + params.year
       );
       if (res.ok) {
         console.log("Ok:");
@@ -40,7 +40,7 @@
     async function updateSchoolData() {
         if(confirm("¿Está seguro de que desea actualizar esta entrada?")){
             console.log("Updating stat..." + JSON.stringify(params.country) + JSON.stringify(params.year));
-            const res = await fetch("/api/v1/children-out-school/" + params.country +"/" + params.year,
+            const res = await fetch("/api/v2/children-out-school/" + params.country +"/" + params.year,
             {
                 method: "PUT",
                 body: JSON.stringify({
@@ -114,5 +114,5 @@
       </tbody>
     </Table>
     {/await}
-    <a href="#/children-out-school"> <Button outline color="secondary">Volver</Button></a>
+   <Button outline color="secondary" on:click="{pop}">Volver</Button>
   </main>

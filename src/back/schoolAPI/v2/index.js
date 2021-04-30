@@ -8,20 +8,6 @@ module.exports.init = (app) => {
 
     var schoolData = [
     {
-        "country":"Angola",
-        "year":2010,
-        "children_out_school_male":215471,
-        "children_out_school_female":515304,
-        "children_out_school_total":730775
-    },
-    {
-        "country":"Angola",
-        "year":2011,
-        "children_out_school_male":170490,
-        "children_out_school_female":603347,
-       "children_out_school_total":773837
-    },
-    {
         "country":"Brazil",
         "year":2009,
         "children_out_school_male":218767,
@@ -64,20 +50,6 @@ module.exports.init = (app) => {
         "children_out_school_total":89218
     },
     {
-        "country":"Portugal",
-        "year":2016,
-        "children_out_school_male":4545,
-        "children_out_school_female":6625,
-        "children_out_school_total":11170
-    },
-    {
-        "country":"Portugal",
-        "year":2017,
-        "children_out_school_male":184,
-        "children_out_school_female":3478,
-        "children_out_school_total":3662
-    },
-    {
         "country":"Spain",
         "year":2018,
         "children_out_school_male":50956,
@@ -90,27 +62,6 @@ module.exports.init = (app) => {
         "children_out_school_male":43451,
         "children_out_school_female":31428,
         "children_out_school_total":74969
-    },
-    {
-        "country":"Sweden",
-        "year":2006,
-        "children_out_school_male":15232,
-        "children_out_school_female":15701,
-        "children_out_school_total":30933
-    },
-    {
-        "country":"Sweden",
-        "year":2007,
-        "children_out_school_male":10568,
-        "children_out_school_female":11390,
-        "children_out_school_total":21958
-    },
-    {
-        "country":"Sweden",
-        "year":2008,
-        "children_out_school_male":2888,
-        "children_out_school_female":4867,
-        "children_out_school_total":7755
     },
     {
         "country":"France",

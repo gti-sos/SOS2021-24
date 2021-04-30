@@ -10,10 +10,18 @@
     let isOpen = false;
     //ALERTAS
     let visible = false;
-    let color = "danger";
+
+    //Variables para paginacion
+	let limit = 10;
+	let offset = 0;
+	let moreData = true;
+	let currentPage=1; // No la utilizamos pero nos sirve para saber en que pagina estamos (quizas en un futuro)
+
+    //Busquedas
+	let searchCountry= "";
+	let searchYear = "";
     
-    let page = 1;
-    let totaldata=8;
+    let totaldata=0;
     let schoolData = [];
 	let newSchoolData = {
 		country: "",
@@ -23,57 +31,80 @@
 		children_out_school_total:""
 	}
     
-    let errorMSG = null;
+    let errorMSG = "";
     let okayMSG = "";
     onMount(getSchoolData);
  
     //GET
-    async function getSchoolData() {
- 
-        console.log("Fetching school Data...");
-        const res = await fetch("/api/v1/children-out-school?limit=5&offset=1");
-        if (res.ok) {
-            console.log("Ok:");
-            const json = await res.json();
-            schoolData = json;
-            console.log("Received " + schoolData.length + " School Data.");
-        } else {
-            //errorMSG= res.status + ": " + res.statusText;
-            console.log("ERROR!");
-        }
+    async function getSchoolData(){
+	
+    console.log("Fetching school data..");
+    var url = "/api/v2/children-out-school?limit="+limit+"&offset="+(offset*limit);
+    var urlAfter = "/api/v2/children-out-school?limit="+limit+"&offset="+(limit*(offset+1));
+  
+    if(searchCountry!="" &&searchCountry!=null){
+        url = url+"&country="+searchCountry;
+        urlAfter= urlAfter+"&country="+searchCountry;
     }
- 
-    //GET INITIALDATA
-    async function loadInitialData() {
- 
-        console.log("Fetching school data...");
-        await fetch("/api/v1/children-out-school/loadInitialData");
-        const res = await fetch("/api/v1/children-out-school?limit=5&offset=1");
-        if (res.ok) {
-            console.log("Ok:");
-            const json = await res.json();
-            schoolData = json;
-            totaldata=8;
-            console.log("Received " + schoolData.length + " school data.");
-            okayMSG = "Datos cargados con éxito";
-        } 
-        else {
+    
+    if(searchYear!="" && searchYear!=null){
+        url = url+"&year="+searchYear;
+        urlAfter= urlAfter+"&year="+searchYear;
+    }
+    //Awaits lo que hace es esperar la finalización de la solicitud HTTP. El código se reanuda después de completar cada solicitud.
+    const res = await fetch(url);
+   
+    //Tenemos que preguntar tambien si hay mas datos, ya que si no los hay,
+    //al pasar de pagina estariamos haciendo una peticion a la api que nos devolveria un error
+    const after =  await fetch(urlAfter);
+    if(res.ok && after.ok){
+        console.log("OK");
+        const json = await res.json();
+        const jsonAfter = await after.json();
+        schoolData= json;
+        //Comprobamos si hay mas datos o no despues para activar o desactivar el boton
+        if(jsonAfter.length ==0){
+            moreData=false;
+        }
+        else{
+            moreData=true;
+        }
+        console.log("Received "+ schoolData.length +" resources." )
+    }
+    else{
+        console.log("ERROR");
+        errorMsg= "Fallo del servidor en la solicitud"
+    }
+        
+    
+}
+    //LOAD INITIALDATA
+	async function loadInitialData(){
+	
+    console.log("Fetching school data...");
+    const res = await fetch("/api/v2/children-out-school/loadInitialData").then(function(res){
+        if (res.ok){
+            console.log("OK");
+            getSchoolData();
+            totaldata=21;
+            okayMSG= "Datos cargados con éxito."
+        }
+        else{
             errorMSG= "Error al cargar los datos"
-            console.log("ERROR!");
+            console.log("ERROR");
         }
-    }
-    
+    });
+}
     //INSERT
-    
     async function insertSchoolData(){
 		 
          console.log("Inserting school data...");
          //Comprobamos que el año y la fecha no estén vacíos, el string vacio no es null
-         if (newSchoolData.country == "" || newSchoolData.country == null || newSchoolData.year == "" || newSchoolData.year == null) {
+         if (newSchoolData.country == "" || newSchoolData.country == null || newSchoolData.year == "" || newSchoolData.year == null){
              alert("Los campos 'Pais' y 'Año' no pueden estar vacios");
          }
          else{
-             const res = await fetch("/api/v1/children-out-school",{
+             const res = await fetch("/api/v2/children-out-school",{
              method:"POST",
              body:JSON.stringify(newSchoolData),
              headers:{
@@ -101,7 +132,7 @@
     //DELETE SPECIFIC
     async function deleteSchoolData(name, year) {
         if(confirm("¿Está seguro de que desea eliminar esta entrada?")){
-        const res = await fetch("/api/v1/children-out-school/" + country + "/" + year, {
+        const res = await fetch("/api/v2/children-out-school/" + country + "/" + year, {
             method: "DELETE"
         }).then(function (res) {
             visible = true;
@@ -110,10 +141,12 @@
                 totaldata--;
                 okayMSG = "Recurso eliminado con éxito";
                 console.log("Deleted " + country);            
-            }else if (res.status==404) {
+            }
+            else if (res.status==404) {
                 errorMSG = "No se ha encontrado el objeto" + country;
                 console.log("DATA NOT FOUND");            
-            } else {
+            } 
+            else {
                 errorMSG= res.status + ": " + res.statusText;
                 console.log("ERROR!");
             }      
@@ -125,7 +158,7 @@
 		console.log("Deleting school data...");
 		if(confirm("¿Está seguro de que desea eliminar todas las entradas?")){
 			console.log("Deleting all school data...");
-			const res = await fetch("/api/v1/children-out-school/", {
+			const res = await fetch("/api/v2/children-out-school/", {
 				method: "DELETE"
 			}).then(function (res) {
 				if(res.ok){
@@ -150,38 +183,42 @@
     async function getNextPage() {
  
         console.log(totaldata);
-        if (page+5 > totaldata) {
-            page = 1
+        if (offset+10 > totaldata) {
+            offset = 0
+            currentpage = 1;
         } else {
-            page+=5
+            offset +=10
+            currentPage=2;
         }
-        console.log("Charging page "+ page);
-        const res = await fetch("/api/v1/children-out-school?limit=5&offset="+page);
+        console.log("Charging page "+ offset);
+        const res = await fetch("/api/v2/children-out-school?limit="+limit+"&offset="+offset);
         if (res.ok) {
             console.log("Ok:");
             const json = await res.json();
             schoolData = json;
             console.log("Received " + schoolData.length + " data.");
         } else {
-            errorMSG= res.status + ": " + res.statusText;
             console.log("ERROR!");
         }
     }
     //getPreviewPage
     async function getPreviewPage() {
  
-        if (page-5>=1) {
-            page-=5; 
-        } else page = 1
-        console.log("Charging page " +page);
-        const res = await fetch("/api/v1/children-out-school?limit=5&offset="+page);
+        if (offset-10>=1) {
+            offset-=10; 
+            currentPage-=1;
+        } else {
+            offset = 0
+            currentPage = 1;
+        }
+        console.log("Charging page " +offset);
+        const res = await fetch("/api/v2/children-out-school?limit="+limit+"&offset="+offset);
         if (res.ok) {
             console.log("Ok:");
             const json = await res.json();
             schoolData = json;
             console.log("Received " + schoolData.length + " resources.");
         } else {
-            errorMSG= res.status + ": " + res.statusText;
             console.log("ERROR!");
         }
     }
@@ -241,18 +278,17 @@
             <p>No se han encontrado datos, por favor, carga los datos iniciales.</p>
         {/if}
 
+        <Button outline color="info" on:click="{getPreviewPage}">Atrás</Button>
+            <Button>{currentPage}</Button>
+        <Button outline color="info" on:click="{getNextPage}">Siguiente</Button>
+
+        <p></p>
         <Button color="success" on:click="{loadInitialData}">
             Cargar datos inciales
         </Button>
         <Button color="danger" on:click="{deleteALL}">
             Eliminar todo
         </Button>
-        <Button outline color="info" on:click="{getPreviewPage}">
-           Atrás
-        </Button>
-        <Button outline color="info" on:click="{getNextPage}">
-            Siguiente
-        </Button>
-         
+        
     {/await}
 </main>
