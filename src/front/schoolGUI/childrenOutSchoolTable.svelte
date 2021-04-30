@@ -212,7 +212,7 @@
 	    {/if}
 
         {#if okayMSG}
-        <UncontrolledAlert><p style="color: green">{okayMSG}</p></UncontrolledAlert>
+        <UncontrolledAlert color = "success">{okayMSG}</UncontrolledAlert>
         {/if}
 
         <!-- Table -->
