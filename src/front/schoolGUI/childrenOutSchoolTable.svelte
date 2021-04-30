@@ -38,7 +38,7 @@
             schoolData = json;
             console.log("Received " + schoolData.length + " School Data.");
         } else {
-            errorMSG= res.status;// + ": " + res.statusText;
+            errorMSG= res.status + ": " + res.statusText;
             console.log("ERROR!");
         }
     }
@@ -58,8 +58,7 @@
             okayMSG = "Datos cargados con éxito";
         } 
         else {
-            //errorMSG= res.status + ": " + res.statusText;
-            errorMSG = 404;
+            errorMSG= res.status + ": " + res.statusText;
             console.log("ERROR!");
         }
     }
@@ -82,20 +81,18 @@
              }
              }).then(function (res) {
                  if(res.status == 201){
+                     totaldata++;
                      getSchoolData();
                      console.log("Data introduced");
-                     //errorMSG="Entrada introducida correctamente a la base de datos";
                      okayMSG = "Recurso insertado con éxito";
                  }
                  else if(res.status == 400){
                      console.log("ERROR Data was not correctly introduced");
-                     //errorMSG= "Los datos de la entrada no fueron introducidos correctamente";
-                     errorMSG = 400;
+                     errorMSG= "Los datos de la entrada no fueron introducidos correctamente";
                  }
                  else if(res.status == 409){
                      console.log("ERROR There is already a data with that country and year in the database");
-                     //errorMSG= "Ya existe una entrada en la base de datos con la fecha y el país introducido";
-                     errorMSG = 409;
+                     errorMSG= "Ya existe una entrada en la base de datos con la fecha y el país introducido";
                  }
              });	
          }
@@ -114,11 +111,10 @@
                 okayMSG = "Recurso eliminado con éxito";
                 console.log("Deleted " + country);            
             }else if (res.status==404) {
-                //errorMSG = "No se ha encontrado el objeto" + country;
-                errorMSG = 404;
+                errorMSG = "No se ha encontrado el objeto" + country;
                 console.log("DATA NOT FOUND");            
             } else {
-                errorMSG= res.status;// + ": " + res.statusText;
+                errorMSG= res.status + ": " + res.statusText;
                 console.log("ERROR!");
             }      
          });
@@ -141,8 +137,7 @@
 				}
 				else{
 					console.log("ERROR Data was not erased");
-					//errorMSG= "No se han podido eliminar los datos";
-                    errorMSG = 404.2;
+					errorMSG= "La base de datos ya esta vacía";
 				}
 			});
 		}
@@ -193,26 +188,18 @@
 </script>
 
 <main>
-    <h1 style="text-align: center;">Administrador de datos de abandono escolar</h1>
+    <h1 style="text-align: center;">Administrador de datos de <strong>Abandono escolar</strong></h1>
 
     {#await schoolData}
         Loading school data...
     {:then schoolData}
 
-        {#if errorMSG === 404.2}
-        <UncontrolledAlert color="danger" >
-            La base de datos ya esta vacía.
-        </UncontrolledAlert>
-	    {/if}
-
-        {#if errorMSG === 409}
-        <UncontrolledAlert color="danger" >
-            Este recurso (País y Año) ya existe.
-        </UncontrolledAlert>
+        {#if errorMSG}
+            <UncontrolledAlert color="danger" >{errorMSG}</UncontrolledAlert>
 	    {/if}
 
         {#if okayMSG}
-        <UncontrolledAlert color = "success">{okayMSG}</UncontrolledAlert>
+            <UncontrolledAlert color = "success">{okayMSG}</UncontrolledAlert>
         {/if}
 
         <!-- Table -->
@@ -251,7 +238,7 @@
         </Table>
 
         {#if schoolData.length === 0}
-            <p>No se han encontrado datos, por favor, carga los datos iniciales.</p>
+            <p style="color: orange">No se han encontrado datos, por favor, carga los datos iniciales.</p>
         {/if}
 
         <Button color="success" on:click="{loadInitialData}">
