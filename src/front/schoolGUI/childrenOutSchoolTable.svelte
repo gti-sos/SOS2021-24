@@ -38,7 +38,7 @@
             schoolData = json;
             console.log("Received " + schoolData.length + " School Data.");
         } else {
-            errorMSG= res.status + ": " + res.statusText;
+            //errorMSG= res.status + ": " + res.statusText;
             console.log("ERROR!");
         }
     }
@@ -58,7 +58,7 @@
             okayMSG = "Datos cargados con éxito";
         } 
         else {
-            errorMSG= res.status + ": " + res.statusText;
+            errorMSG= "Error al cargar los datos"
             console.log("ERROR!");
         }
     }
@@ -238,7 +238,7 @@
         </Table>
 
         {#if schoolData.length === 0}
-            <p style="color: orange">No se han encontrado datos, por favor, carga los datos iniciales.</p>
+            <p>No se han encontrado datos, por favor, carga los datos iniciales.</p>
         {/if}
 
         <Button color="success" on:click="{loadInitialData}">
