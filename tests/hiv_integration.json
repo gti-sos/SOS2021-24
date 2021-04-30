@@ -515,7 +515,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-out-school",
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -525,7 +525,7 @@
 					"path": [
 						"api",
 						"v1",
-						"children-out-school"
+						"children-with-hiv"
 					]
 				}
 			},
@@ -670,7 +670,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-out-school/chile/2014",
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv/chile/2014",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -680,7 +680,7 @@
 					"path": [
 						"api",
 						"v1",
-						"children-out-school",
+						"children-with-hiv",
 						"chile",
 						"2014"
 					]
@@ -945,7 +945,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-out-school",
+					"raw": "https://sos2021-24.herokuapp.com/api/v1/children-with-hiv",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -955,7 +955,7 @@
 					"path": [
 						"api",
 						"v1",
-						"children-out-school"
+						"children-with-hiv"
 					]
 				}
 			},
