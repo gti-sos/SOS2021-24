@@ -86,7 +86,7 @@
         if (res.ok){
             console.log("OK");
             getSchoolData();
-            totaldata=21;
+            totaldata=14;
             okayMSG= "Datos cargados con éxito."
         }
         else{
