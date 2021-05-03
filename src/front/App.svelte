@@ -7,7 +7,8 @@
   import EditSchool from './schoolGUI/editSchool.svelte'
   import EmploymentAPI from './employmentGUI/childrenEmploymentTable.svelte'
   import EditEmployment from './employmentGUI/editEmployment.svelte'
-  import HivAPI from './hivAPI/childrenWithHIVTable.svelte'
+  import HivAPI from './hivGUI/childrenWithHIVTable.svelte'
+  import EditHIV from './hivGUI/editHIV.svelte'
 	import { Collapse,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem } from 'sveltestrap';
   
 
@@ -21,6 +22,7 @@
         "/children-employment": EmploymentAPI,
         "/children-employment/:country/:year":EditEmployment,
         "/children-with-hiv": HivAPI,
+        "/children-with-hiv/:country/:year":EditHIV,
 		    '*': NotFound,
       };
 </script>

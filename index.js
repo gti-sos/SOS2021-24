@@ -21,7 +21,7 @@ schoolAPI.init(app);
 var employmentAPI = require("./src/back/employmentAPI/v2");
 employmentAPI.init(app);
 
-var hivAPI = require("./src/back/hivAPI");
+var hivAPI = require("./src/back/hivAPI/v2");
 hivAPI.init(app);
 
 //========================F02 /cool====================
