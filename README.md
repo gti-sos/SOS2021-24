@@ -14,6 +14,6 @@
 - **POSTMAN DOC**:
     -  Children Out School API [Doc V1](https://documenter.getpostman.com/view/14937153/TzJoDfw2)/ /[Doc V2](https://documenter.getpostman.com/view/14937153/TzRLkAN8)(developed by [Enrique Luque García](https://github.com/enrike7lg))
     -  [SOS2021-24 children-employment/doc](https://documenter.getpostman.com/view/14961891/TzJsed6w) (developed by [Francisco Javier Macero Vázquez](https://github.com/framacvaz))
-    -  [SOS2021-24 children-with-HIV/doc](https://documenter.getpostman.com/view/14966687/TzJoF1dY) (developed by [Juan Ignacio Roldán Torres](https://github.com/juaroltor))
+    -  Children With HIV API [Doc v1](https://documenter.getpostman.com/view/14966687/TzJoF1dY)/ /[Doc v2](https://documenter.getpostman.com/view/14966687/TzRNE9RG) (developed by [Juan Ignacio Roldán Torres](https://github.com/juaroltor))
 
    
