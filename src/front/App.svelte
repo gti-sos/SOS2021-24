@@ -5,7 +5,7 @@
   import Inicio from './Inicio.svelte'
   import SchoolAPI from './schoolGUI/childrenOutSchoolTable.svelte'
   import EditSchool from './schoolGUI/editSchool.svelte'
-  import EmploymentAPI from './employmentAPI/childrenEmploymentTable.svelte'
+  import EmploymentAPI from './employmentGUI/childrenEmploymentTable.svelte'
   import EditEmployment from './employmentGUI/editEmployment.svelte';
   import HivAPI from './hivAPI/childrenWithHIVTable.svelte'
 	import { Collapse,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem } from 'sveltestrap';
