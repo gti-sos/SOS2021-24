@@ -130,7 +130,7 @@
      }
 
     //DELETE SPECIFIC
-    async function deleteEmploymentData(name, year) {
+    async function deleteEmploymentData(country, year) {
         if(confirm("¿Está seguro de que desea eliminar esta entrada?")){
         const res = await fetch("/api/v2/children-employment/" + country + "/" + year, {
             method: "DELETE"
