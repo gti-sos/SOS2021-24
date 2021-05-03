@@ -253,11 +253,11 @@
             </thead>
             <tbody>
                 <tr>
-                    <td><input type="text" placeholder="China" bind:value="{newEmploymentData.country}"></td>
-                    <td><input type="number" placeholder="2019" min=1960 bind:value="{newEmploymentData.year}"></td>
-                    <td><input type="number" placeholder="10" min=0 bind:value="{newEmploymentData.percent_children_employment_m}"></td> 
-                    <td><input type="number" placeholder="10" min=0 bind:value="{newEmploymentData.percent_children_employment_f}"></td>    
-                    <td><input type="number" placeholder="20" min=0 bind:value="{newEmploymentData.percent_children_employment_t}"></td>  
+                    <td><input type="text" placeholder="acerbaijan" bind:value="{newEmploymentData.country}"></td>
+                    <td><input type="number" placeholder="2005" min=1960 bind:value="{newEmploymentData.year}"></td>
+                    <td><input type="number" placeholder="6" min=0 bind:value="{newEmploymentData.percent_children_employment_m}"></td> 
+                    <td><input type="number" placeholder="4.4" min=0 bind:value="{newEmploymentData.percent_children_employment_f}"></td>    
+                    <td><input type="number" placeholder="5.2" min=0 bind:value="{newEmploymentData.percent_children_employment_t}"></td>  
                     <td><Button outline color="primary" on:click={insertEmploymentData}>Insertar</Button></td>           
                 </tr>
  
