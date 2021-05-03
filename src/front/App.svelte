@@ -19,7 +19,7 @@
         "/children-out-school": SchoolAPI,
         "/children-out-school/:country/:year":EditSchool,
         "/children-employment": EmploymentAPI,
-        "/children-out-school/:country/:year":EditEmployment,
+        "/children-employment/:country/:year":EditEmployment,
         "/children-with-hiv": HivAPI,
 		    '*': NotFound,
       };
