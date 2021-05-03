@@ -18,7 +18,7 @@ app.use("/", express.static(path.join(__dirname,"public")));
 var schoolAPI = require("./src/back/schoolAPI/v2");
 schoolAPI.init(app);
 
-var employmentAPI = require("./src/back/employmentAPI");
+var employmentAPI = require("./src/back/employmentAPI/v2");
 employmentAPI.init(app);
 
 var hivAPI = require("./src/back/hivAPI");

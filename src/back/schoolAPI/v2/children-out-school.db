@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {"country":"Spain","year":2018,"children_out_school_male":50956,"children_out_school_female":40830,"children_out_school_total":91786,"_id":"4Cump0XP00eXdo1W"}
 {"country":"Italy","year":2017,"children_out_school_male":34673,"children_out_school_female":37168,"children_out_school_total":71841,"_id":"CGgc78WNTCs0KYJS"}
 {"country":"France","year":2015,"children_out_school_male":12578,"children_out_school_female":8912,"children_out_school_total":21490,"_id":"GpfAqt6mUcHx9rPj"}
@@ -96,3 +97,19 @@
 {"country":"Germany","year":2016,"children_out_school_male":12033,"children_out_school_female":2469,"children_out_school_total":14502,"_id":"jGf423ZqO1pEqjDq"}
 {"country":"Greece","year":2017,"children_out_school_male":4374,"children_out_school_female":3774,"children_out_school_total":8148,"_id":"HimqPp6V74tnISS9"}
 {"country":"Greece","year":2018,"children_out_school_male":5390,"children_out_school_female":3856,"children_out_school_total":9246,"_id":"CfQRz3sPgBQED7L6"}
+=======
+{"country":"Brazil","year":2009,"children_out_school_male":218767,"children_out_school_female":95884,"children_out_school_total":314651,"_id":"FEIbmJXrI7Hw8pia"}
+{"country":"Brazil","year":2011,"children_out_school_male":228102,"children_out_school_female":261214,"children_out_school_total":489316,"_id":"r8eAkn9KRGbFksu7"}
+{"country":"Italy","year":2015,"children_out_school_male":20839,"children_out_school_female":21264,"children_out_school_total":42103,"_id":"V6ev9q7URfdmAC09"}
+{"country":"Italy","year":2016,"children_out_school_male":28629,"children_out_school_female":29659,"children_out_school_total":58288,"_id":"ocfDBV5Iyu0pRhXW"}
+{"country":"Italy","year":2017,"children_out_school_male":34673,"children_out_school_female":37168,"children_out_school_total":71841,"_id":"9bTQosN5zTAt3RkO"}
+{"country":"Italy","year":2018,"children_out_school_male":43567,"children_out_school_female":45651,"children_out_school_total":89218,"_id":"hfzMo7EhZ9gfXgAO"}
+{"country":"Spain","year":2018,"children_out_school_male":50956,"children_out_school_female":40830,"children_out_school_total":91786,"_id":"hUsNtTBnZtBmFK9I"}
+{"country":"Spain","year":2017,"children_out_school_male":43451,"children_out_school_female":31428,"children_out_school_total":74969,"_id":"NP8kj39l2QKyz77B"}
+{"country":"France","year":2015,"children_out_school_male":12578,"children_out_school_female":8912,"children_out_school_total":21490,"_id":"FZDedLisWjunfYMU"}
+{"country":"France","year":2016,"children_out_school_male":6482,"children_out_school_female":523,"children_out_school_total":7005,"_id":"j8WkwzA1EPJWmC2O"}
+{"country":"Germany","year":2015,"children_out_school_male":31346,"children_out_school_female":21244,"children_out_school_total":52590,"_id":"7dQre0TEMvTVhEiG"}
+{"country":"Germany","year":2016,"children_out_school_male":12033,"children_out_school_female":2469,"children_out_school_total":14502,"_id":"06eOrlUiIZ9KVM9j"}
+{"country":"Greece","year":2017,"children_out_school_male":4374,"children_out_school_female":3774,"children_out_school_total":8148,"_id":"g1DsLtAeWNF0aByS"}
+{"country":"Greece","year":2018,"children_out_school_male":5390,"children_out_school_female":3856,"children_out_school_total":9246,"_id":"4dJjSJ1X8irRvAGD"}
+>>>>>>> c9d295f8d7c22b7f771204db319ae00c2db28463

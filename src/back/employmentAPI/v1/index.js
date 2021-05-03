@@ -1,5 +1,3 @@
-
-
 module.exports.init = (app) => {
 
     var BASE_CHILDREN_EMPLOYMENT_API_PATH = "/api/v1/children-employment"
