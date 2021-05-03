@@ -130,13 +130,13 @@
      }
 
     //DELETE SPECIFIC
-    async function deleteSchoolData(name, year) {
+    async function deleteSchoolData(country, year) {
         if(confirm("¿Está seguro de que desea eliminar esta entrada?")){
         const res = await fetch("/api/v2/children-out-school/" + country + "/" + year, {
             method: "DELETE"
         }).then(function (res) {
-            visible = true;
-            getSchoolData();      
+            visible = true; 
+            getSchoolData();  
             if (res.status==200) {
                 totaldata--;
                 okayMSG = "Recurso eliminado con éxito";
