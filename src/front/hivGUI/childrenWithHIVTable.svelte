@@ -12,7 +12,7 @@
     let visible = false;
 
     //Variables para paginacion
-	let limit = 10;
+	let limit = 8;
 	let offset = 0;
 	let moreData = true;
 	let currentPage=1; // No la utilizamos pero nos sirve para saber en que pagina estamos (quizas en un futuro)
