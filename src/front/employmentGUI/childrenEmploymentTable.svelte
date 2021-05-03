@@ -86,7 +86,7 @@
         if (res.ok){
             console.log("OK");
             getEmploymentData();
-            totaldata=5;
+            totaldata=21;
             okayMSG= "Datos cargados con éxito."
         }
         else{
