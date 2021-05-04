@@ -34,9 +34,9 @@
             <li class="has-line-data" data-line-start="9" data-line-end="14">
             <p class="has-line-data" data-line-start="9" data-line-end="10"><strong>API Backend</strong>:</p>
             <ul>
-            <li class="has-line-data" data-line-start="10" data-line-end="11"><a href="https://sos2021-24.herokuapp.com/api/v1/children-out-school">https://sos2021-24.herokuapp.com/api/v1/children-out-school</a> (desarrollado por <a href="https://github.com/enrike7lg">Enrique Luque García</a>)</li>
-            <li class="has-line-data" data-line-start="11" data-line-end="12"><a href="https://sos2021-24.herokuapp.com/api/v1/children-employment">https://sos2021-24.herokuapp.com/api/v1/children-employment</a> (desarrollado por <a href="https://github.com/framacvaz">Francisco Javier Macero Vázquez</a>)</li>
-            <li class="has-line-data" data-line-start="12" data-line-end="13"><a href="https://sos2021-24.herokuapp.com/api/v1/children-with-hiv">https://sos2021-24.herokuapp.com/api/v1/children-with-hiv</a> (desarrollado por <a href="https://github.com/juaroltor">Juan Ignacio Roldán Torres</a>)</li>
+            <li class="has-line-data" data-line-start="10" data-line-end="11"><a href="https://sos2021-24.herokuapp.com/api/v1/children-out-school">https://sos2021-24.herokuapp.com/api/v2/children-out-school</a> (desarrollado por <a href="https://github.com/enrike7lg">Enrique Luque García</a>)</li>
+            <li class="has-line-data" data-line-start="11" data-line-end="12"><a href="https://sos2021-24.herokuapp.com/api/v1/children-employment">https://sos2021-24.herokuapp.com/api/v2/children-employment</a> (desarrollado por <a href="https://github.com/framacvaz">Francisco Javier Macero Vázquez</a>)</li>
+            <li class="has-line-data" data-line-start="12" data-line-end="13"><a href="https://sos2021-24.herokuapp.com/api/v1/children-with-hiv">https://sos2021-24.herokuapp.com/api/v2/children-with-hiv</a> (desarrollado por <a href="https://github.com/juaroltor">Juan Ignacio Roldán Torres</a>)</li>
             </ul>
             </li>
             <li class="has-line-data" data-line-start="14" data-line-end="18">
