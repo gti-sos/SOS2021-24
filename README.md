@@ -11,6 +11,7 @@
     - [https://sos2021-24.herokuapp.com/api/v1/children-out-school](https://sos2021-24.herokuapp.com/api/v1/children-out-school) (developed by [Enrique Luque García](https://github.com/enrike7lg))
     - [https://sos2021-24.herokuapp.com/api/v1/percent-children-employment](https://sos2021-24.herokuapp.com/api/v1/percent-children-employment) (developed by [Francisco Javier Macero Vázquez](https://github.com/framacvaz))
     - [https://sos2021-24.herokuapp.com/api/v1/children-with-hiv](https://sos2021-24.herokuapp.com/api/v1/children-with-hiv) (developed by [Juan Ignacio Roldán Torres](https://github.com/juaroltor))
+ -**API V2**:
      - [https://sos2021-24.herokuapp.com/api/v2/children-out-school](https://sos2021-24.herokuapp.com/api/v2/children-out-school) (developed by [Enrique Luque García](https://github.com/enrike7lg))
     - [https://sos2021-24.herokuapp.com/api/v2/percent-children-employment](https://sos2021-24.herokuapp.com/api/v2/percent-children-employment) (developed by [Francisco Javier Macero Vázquez](https://github.com/framacvaz))
     - [https://sos2021-24.herokuapp.com/api/v2/children-with-hiv](https://sos2021-24.herokuapp.com/api/v2/children-with-hiv) (developed by [Juan Ignacio Roldán Torres](https://github.com/juaroltor))
