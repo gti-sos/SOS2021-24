@@ -26,7 +26,7 @@
             <p class="has-line-data" data-line-start="6" data-line-end="7"><strong>Descripción del proyecto:</strong> Correlación entre el número de niños que abandonan la educación primaria,la prevalencia del VIH en jóvenes entre 0-14 años y el porcentaje de niños empleados entre 7-14 años.</p>
             </li>
             <li class="has-line-data" data-line-start="7" data-line-end="8">
-            <p class="has-line-data" data-line-start="7" data-line-end="8"><strong>Repositorio</strong>: <a href="https://github.com/gti-sos/SOS2021-24">gti-sos/SOS2021-24</a></p>
+            <p class="has-line-data" data-line-start="7" data-line-end="8"><strong>Repositorio</strong>: <a href="https://github.com/gti-sos/SOS2021-24"> <Button color="primary">SOS2021-24</Button></a></p>
             </li>
             <li class="has-line-data" data-line-start="8" data-line-end="9">
             <p class="has-line-data" data-line-start="8" data-line-end="9"><strong>URL</strong>: <a href="https://sos2021-24.herokuapp.com">https://sos2021-24.herokuapp.com</a></p>
@@ -34,13 +34,13 @@
             <li class="has-line-data" data-line-start="9" data-line-end="14">
             <p class="has-line-data" data-line-start="9" data-line-end="10"><strong>API Backend</strong>:</p>
             <ul>
-                 <li>API V1</li>
+                 <p>API V1</p>
             <li class="has-line-data" data-line-start="10" data-line-end="11"><a href="https://sos2021-24.herokuapp.com/api/v1/children-out-school">https://sos2021-24.herokuapp.com/api/v1/children-out-school</a> (desarrollado por <a href="https://github.com/enrike7lg">Enrique Luque García</a>)</li>
             <li class="has-line-data" data-line-start="11" data-line-end="12"><a href="https://sos2021-24.herokuapp.com/api/v1/children-employment">https://sos2021-24.herokuapp.com/api/v1/children-employment</a> (desarrollado por <a href="https://github.com/framacvaz">Francisco Javier Macero Vázquez</a>)</li>
             <li class="has-line-data" data-line-start="12" data-line-end="13"><a href="https://sos2021-24.herokuapp.com/api/v1/children-with-hiv">https://sos2021-24.herokuapp.com/api/v1/children-with-hiv</a> (desarrollado por <a href="https://github.com/juaroltor">Juan Ignacio Roldán Torres</a>)</li>
             </ul>
             <ul>
-                <li>API V2</li>
+                <p>API V2</p>
                 <li class="has-line-data" data-line-start="13" data-line-end="11"><a href="https://sos2021-24.herokuapp.com/api/v2/children-out-school">https://sos2021-24.herokuapp.com/api/v2/children-out-school</a> (desarrollado por <a href="https://github.com/enrike7lg">Enrique Luque García</a>)</li>
                 <li class="has-line-data" data-line-start="11" data-line-end="12"><a href="https://sos2021-24.herokuapp.com/api/v2/children-employment">https://sos2021-24.herokuapp.com/api/v2/children-employment</a> (desarrollado por <a href="https://github.com/framacvaz">Francisco Javier Macero Vázquez</a>)</li>
                 <li class="has-line-data" data-line-start="12" data-line-end="13"><a href="https://sos2021-24.herokuapp.com/api/v2/children-with-hiv">https://sos2021-24.herokuapp.com/api/v2/children-with-hiv</a> (desarrollado por <a href="https://github.com/juaroltor">Juan Ignacio Roldán Torres</a>)</li>
