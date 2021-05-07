@@ -76,6 +76,20 @@ module.exports.init = (app) => {
             "living_with":100,
             "newly_infected":100,
             "total_infected":200
+        },
+        {
+            "country":"Spain",
+            "year":2017,
+            "living_with":100,
+            "newly_infected":100,
+            "total_infected":200
+        },
+        {
+            "country":"Spain",
+            "year":2004,
+            "living_with":200,
+            "newly_infected":200,
+            "total_infected":400
         }
 ];
 

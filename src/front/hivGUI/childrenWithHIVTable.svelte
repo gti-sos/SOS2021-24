@@ -86,7 +86,7 @@
         if (res.ok){
             console.log("OK");
             getHIVData();
-            totaldata=10;
+            totaldata=12;
             okayMSG= "Datos cargados con éxito."
         }
         else{
@@ -183,11 +183,11 @@
     async function getNextPage() {
  
         console.log(totaldata);
-        if (offset+10 > totaldata) {
+        if (offset+8 > totaldata) {
             offset = 0
             currentpage = 1;
         } else {
-            offset +=10
+            offset +=8
             currentPage=2;
         }
         console.log("Charging page "+ offset);
@@ -204,8 +204,8 @@
     //getPreviewPage
     async function getPreviewPage() {
  
-        if (offset-10>=1) {
-            offset-=10; 
+        if (offset-8>=1) {
+            offset-=8; 
             currentPage-=1;
         } else {
             offset = 0
