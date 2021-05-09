@@ -1,294 +1,559 @@
-<script>
-	import { onMount } from "svelte";
-	import Table from "sveltestrap/src/Table.svelte"; 
-	import Button from "sveltestrap/src/Button.svelte";
-	import { Pagination, PaginationItem, PaginationLink } from 'sveltestrap';
-	import { Form, FormGroup, FormText, Input, Label } from 'sveltestrap';
-	import { Alert, UncontrolledAlert } from 'sveltestrap';
-    import { UncontrolledCollapse, Collapse, CardBody, Card } from "sveltestrap";
-	
-    let isOpen = false;
-    //ALERTAS
-    let visible = false;
-
-    //Variables para paginacion
-	let limit = 8;
-	let offset = 0;
-	let moreData = true;
-	let currentPage=1; // No la utilizamos pero nos sirve para saber en que pagina estamos (quizas en un futuro)
-
-    //Busquedas
-	let searchCountry= "";
-	let searchYear = "";
-    
-    let totaldata=0;
-    let HIVData = [];
-	let newHIVData = {
-		country: "",
-		year: "",
-		living_with:"",
-		newly_infected:"",
-		total_infected:""
-	}
-    
-    let errorMSG = "";
-    let okayMSG = "";
-    onMount(getHIVData);
- 
-    //GET
-    async function getHIVData(){
-	
-    console.log("Fetching hiv data..");
-    var url = "/api/v2/children-with-hiv?limit="+limit+"&offset="+(offset*limit);
-    var urlAfter = "/api/v2/children-with-hiv?limit="+limit+"&offset="+(limit*(offset+1));
-  
-    if(searchCountry!="" &&searchCountry!=null){
-        url = url+"&country="+searchCountry;
-        urlAfter= urlAfter+"&country="+searchCountry;
-    }
-    
-    if(searchYear!="" && searchYear!=null){
-        url = url+"&year="+searchYear;
-        urlAfter= urlAfter+"&year="+searchYear;
-    }
-    //Awaits lo que hace es esperar la finalización de la solicitud HTTP. El código se reanuda después de completar cada solicitud.
-    const res = await fetch(url);
+<script lang="ts">
    
-    //Tenemos que preguntar tambien si hay mas datos, ya que si no los hay,
-    //al pasar de pagina estariamos haciendo una peticion a la api que nos devolveria un error
-    const after =  await fetch(urlAfter);
-    if(res.ok && after.ok){
-        console.log("OK");
-        const json = await res.json();
-        const jsonAfter = await after.json();
-        HIVData= json;
-        //Comprobamos si hay mas datos o no despues para activar o desactivar el boton
-        if(jsonAfter.length ==0){
-            moreData=false;
-        }
-        else{
-            moreData=true;
-        }
-        console.log("Received "+ HIVData.length +" resources." )
-    }
-    else{
-        console.log("ERROR");
-        errorMsg= "Fallo del servidor en la solicitud"
-    }
-        
-    
-}
-    //LOAD INITIALDATA
-	async function loadInitialData(){
-	
-    console.log("Fetching hiv data...");
-    const res = await fetch("/api/v2/children-with-hiv/loadInitialData").then(function(res){
-        if (res.ok){
-            console.log("OK");
-            getHIVData();
-            totaldata=12;
-            okayMSG= "Datos cargados con éxito."
-        }
-        else{
-            errorMSG= "Error al cargar los datos"
-            console.log("ERROR");
-        }
-    });
-}
-    //INSERT
-    async function insertHIVData(){
-		 
-         console.log("Inserting hiv data...");
-         //Comprobamos que el año y la fecha no estén vacíos, el string vacio no es null
-         if (newHIVData.country == "" || newHIVData.country == null || newHIVData.year == "" || newHIVData.year == null){
-             alert("Los campos 'País' y 'Año' no pueden estar vacios");
+    import {
+         Nav,
+         Modal,
+         ModalBody,
+         ModalFooter,
+         ModalHeader,
+         NavItem,
+         NavLink,
+         Button,
+         Table,
+         UncontrolledAlert,
+         Card,
+         CardBody,
+         CardFooter,
+         CardHeader,
+         CardSubtitle,
+         CardText,
+         CardTitle,
+     } from "sveltestrap";
+     
+     import {
+        pop
+     } from "svelte-spa-router";
+ 
+     
+     const BASE_API_URL = "/api/v2/children-with-hiv"; //tiene que llamar a la API para tratar los datos
+     
+     let cargados = false;
+     let HIVData = [];
+ 
+     let isOpen = false;
+ 
+     let limit =10;
+     let offset =0;
+     let pagina = (offset/10)+1;
+     let num_paginas=0;
+     let flags ="";
+     let filtros_act= false;
+ 
+     getHIVData();
+ 
+     let newHIVData = {
+             country:"",
+             year:"",
+             living_with: "" ,
+             newly_infected:"",
+             total_infected:""
          }
-         else{
-             const res = await fetch("/api/v2/children-with-hiv",{
-             method:"POST",
-             body:JSON.stringify(newHIVData),
-             headers:{
-                 "Content-Type": "application/json"
+         let HIVDatabusqueda = {
+            country:"",
+             year:"",
+             living_with: "" ,
+             newly_infected:"",
+             total_infected:""
+         }
+         
+      //funcion asincrona para cargar (get) los recursos existentes
+      async function getNumPaginas() {
+             console.log("Fetching hiv resourcers...");
+             const res = await fetch(BASE_API_URL);
+             let datos=[]
+             if(res.ok){
+                 const json = await res.json();
+                 datos = json;
+                 num_paginas=(datos.length/10)+1|0;
+                 if(datos.length%10==0&&num_paginas!==1){
+                     num_paginas--;
+                 }
+ 
+             }else{
+                 console.log("ERROR!");
              }
-             }).then(function (res) {
-                 if(res.status == 201){
-                     totaldata++;
-                     getHIVData();
-                     console.log("Data introduced");
-                     okayMSG = "Recurso insertado con éxito";
+ 
+         }
+ 
+ 
+      async function getHIVData() {
+             getNumPaginas()
+             console.log(num_paginas)
+             console.log("Fetching hiv resourcers...");
+           
+             const res = await fetch(BASE_API_URL+"?limit="+limit+"&offset="+offset+flags);
+             if(res.status==200){
+                 const json = await res.json();
+                 HIVData = json;
+                 console.log(`Received ${HIVData.length} resources`);
+                 pagina = (offset/10)+1
+ 
+                 let mes="Hemos encontrado "+ HIVData.length +" elementos que concuerden con la búsqueda";
+                 if(filtros_act) lanzamensaje(res.status,res.statusText,"Advertencia",mes,null)
+             }else{
+                 console.log("ERROR!");
+                 lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","",true)
+             }
+ 
+         }
+ 
+         async function insertHIVData() { //insertar un recurso en concreto
+             console.log("Inserting new resource " + JSON.stringify(newHIVData));
+             newHIVData.country=newHIVData.country.replace(" ","_")
+             const res = await fetch(BASE_API_URL, {
+                 method: "POST",
+                 
+                 body: JSON.stringify(newHIVData),
+                 headers: {
+                     "Content-Type": "application/json",
                  }
-                 else if(res.status == 400){
-                     console.log("ERROR Data was not correctly introduced");
-                     errorMSG= "Los datos de la entrada no fueron introducidos correctamente";
+             }
+             ).then( (res) => {
+                 getHIVData();
+                 switch (res.status){
+                     case 409:
+                     lanzamensaje(res.status,res.statusText,"Se ha producido un error en el Insert","Ya existe un dato que con los mismos creedenciales",true)
+                     break
+ 
+                     case 409:
+                     lanzamensaje(res.status,res.statusText,"Se ha producido un error en el Insert","Ha habido un problema con el cuerpo de la petición",true)
+                     break
+ 
+                     case 201:
+                         let mensajeaux= "El dato: "+newHIVData.country+"/"+newHIVData.year+" ya forma parte de la base de datos." 
+                     lanzamensaje(res.status,res.statusText,"El dato se ha insertado satisfactoriamente",mensajeaux,null)
+                     break
+ 
+                     default:
+                     lanzamensaje(res.status,res.statusText,"Se ha producido un error en el Insert","",true)
+                     break
                  }
-                 else if(res.status == 409){
-                     console.log("ERROR There is already a data with that country and year in the database");
-                     errorMSG= "Ya existe una entrada en la base de datos con la fecha y el país introducido";
-                 }
-             });	
+             })
+             
+         }
+ 
+         async function deleteHIVData( a, b) { //elimina un recurso en concreto
+             
+             console.log("Deleting resource " + JSON.stringify(HIVData));
+             const res = await fetch(BASE_API_URL+"/"+a+"/"+b, {
+                 method: "DELETE",
+               
+             })
+             switch(res.status){
+             case 200:
+             let mensajeaux= "El dato: "+a+"/"+b+" ya forma no parte de la base de datos." 
+                     lanzamensaje(res.status,res.statusText,"El dato se ha eliminado satisfactoriamente",mensajeaux,null)
+                     if(HIVData.length==1&&num_paginas>1){
+                         offset-=10; getHIVData()
+                      }else{
+                         getHIVData();
+                     }
+             break;
+             case 404:
+             let mensajeaux2= "El dato: "+a+"/"+b+" no se ha encontrado"    
+             lanzamensaje(res.status,res.statusText,"Se ha producido un error al intentar borrar el elemento",mensajeaux2,true)
+ 
+             break;
+             default:
+             lanzamensaje(res.status,res.statusText,"Se ha producido un error al intentar borrar el elemento","Vaya... Algo ha salido mal. Probablemente la Base de Datos haya tenido un problema. Vuelva a intentarlo mas adelante",true)
+             break;
+             
+         }
+         }
+ 
+         async function loadStats(){
+         deleteStats();
+         console.log("Loading HIVData...");
+         const carga =  await fetch(BASE_API_URL + "/loadInitialData");
+         cargados = true;
+         if (carga.ok){
+             console.log("Ok.");
+             const res = await fetch(BASE_API_URL);
+             if(res.ok){
+                 console.log("Ok. Obtaining HIVData...")
+                 const json = await res.json();
+                 HIVData = json;
+                 console.log('Received ${HIVData.length} life stats.');
+                 let mensajeaux = " Se han cargado un total de " + HIVData.length+ " elementos."
+                 lanzamensaje(res.status,res.statusText,"Los datos se han cargado satisfactoriamente",mensajeaux,null)
+             }else{
+                 lanzamensaje(res.status,res.statusText,"Se ha producido un error al intentar cargar los datos",
+                 "",
+                 true)
+                    
+                 console.log("Error, there is no HIVData.")
+             }
+         }else{
+             lanzamensaje(carga.status,carga.statusText,"Se ha producido un error al intentar cargar los datos","",true)
+                    
+             console.log("Error loading HIVData.");
          }
      }
-
-    //DELETE SPECIFIC
-    async function deleteHIVData(country, year) {
-        if(confirm("¿Está seguro de que desea eliminar esta entrada?")){
-        const res = await fetch("/api/v2/children-with-hiv/" + country + "/" + year, {
-            method: "DELETE"
-        }).then(function (res) {
-            visible = true;
-            getHIVData();      
-            if (res.status==200) {
-                totaldata--;
-                okayMSG = "Recurso eliminado con éxito";
-                console.log("Deleted " + country);            
-            }
-            else if (res.status==404) {
-                errorMSG = "No se ha encontrado el objeto" + country;
-                console.log("DATA NOT FOUND");            
-            } 
-            else {
-                errorMSG= res.status + ": " + res.statusText;
-                console.log("ERROR!");
-            }      
-         });
-        }
-    }   
-    //DELETE ALL
-    async function deleteALL() {
-		console.log("Deleting hiv data...");
-		if(confirm("¿Está seguro de que desea eliminar todas las entradas?")){
-			console.log("Deleting all hiv data...");
-			const res = await fetch("/api/v2/children-with-hiv/", {
-				method: "DELETE"
-			}).then(function (res) {
-				if(res.ok){
-                    HIVData = [];
-					getHIVData();
-                    okayMSG = "Entradas eliminadas con éxito"
-					console.log("OK All data erased");
-                    //location.reload();
-				}
-				else{
-					console.log("ERROR Data was not erased");
-					errorMSG= "La base de datos ya esta vacía";
-				}
-			});
-		}
-	}
-    //SEARCH
-    /*
     
-    */
-    //getNextPage
-    async function getNextPage() {
+     async function deleteStats() {
+         console.log("Deleting life stats...");
+         cargados=false;
+         const res = await fetch(BASE_API_URL, {
+             method: "DELETE"
+         }).then(function (res) {
+             if (res.status==200){
+                 console.log("Ok.");
+                 let mensajeespecifico ="Se han eliminado "+HIVData.length+" elementos."
+                 HIVData = [];
+                 lanzamensaje(res.status,res.statusText,"Los datos se han eliminado satisfactoriamente",mensajeespecifico ,null)
+             } else if (res.status==404){ //no HIVData found
+                 console.log("No HIVData found");
+                 lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos","No existen datos que eliminar" ,true)
+             } else  { 
+                 console.log("Error deleting DB stats");
+                 lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos",
+                 "" 
+                 ,true)
+             }
+             
+         });
+          
+      
+     }
  
-        console.log(totaldata);
-        if (offset+8 > totaldata) {
-            offset = 0
-            currentpage = 1;
-        } else {
-            offset +=8
-            currentPage=2;
-        }
-        console.log("Charging page "+ offset);
-        const res = await fetch("/api/v2/children-with-hiv?limit="+limit+"&offset="+offset);
-        if (res.ok) {
-            console.log("Ok:");
-            const json = await res.json();
-            HIVData = json;
-            console.log("Received " + HIVData.length + " data.");
-        } else {
-            console.log("ERROR!");
-        }
-    }
-    //getPreviewPage
-    async function getPreviewPage() {
+      //Insert
+     let open1 = false;
+     const toggle1 = () => (open1 = !open1);
+     const toggle1P = () => {
+         open1 = !open1;
+         console.log("Imprimo: "+newHIVData.country.length)
+         if(newHIVData.country.replace(' ', '').length!=0 
+         &&newHIVData.year.replace(' ', '').length!=0 
+         && newHIVData.living_with.length!=0 
+         && newHIVData.newly_infected.length!=0 
+         && newHIVData.total_infected.length!=0){
  
-        if (offset-8>=1) {
-            offset-=8; 
-            currentPage-=1;
-        } else {
-            offset = 0
-            currentPage = 1;
-        }
-        console.log("Charging page " +offset);
-        const res = await fetch("/api/v2/children-with-hiv?limit="+limit+"&offset="+offset);
-        if (res.ok) {
-            console.log("Ok:");
-            const json = await res.json();
-            HIVData = json;
-            console.log("Received " + HIVData.length + " resources.");
-        } else {
-            console.log("ERROR!");
-        }
-    }
-</script>
-
-<main>
+         insertHIVData()
+         getHIVData();
+         }
+         else{
+ 
+             console.log("Nada añadido")
+             popinsert=true;
+         }
+ 
+     };
+ 
+     let popinsert = false;
+     const togglepop = () => (popinsert = !popinsert);
+     const togglepopok = () => {
+         popinsert = !popinsert;
+         open1=true}
+     
+     function gotoupdate(a,b) {
+     location.href = '#/children-with-hiv/'+a+'/'+b;
+ }
+ //paginacion
+ 
+ const siguiente= () => {offset+=10; getHIVData()}
+ const anterior= () => {offset-=10; getHIVData()}
+ 
+ //Busqueda especifica
+ 
+ 
+ 
+     let popbusqueda = false;
+     const cancelarbusqueda = () => (popbusqueda = !popbusqueda);
+     const buscar = () => {
+         popbusqueda = !popbusqueda
+        
+         if(HIVDatabusqueda.country.replace(" ","").length!=0){
+             flags= flags+"&country="+HIVDatabusqueda.country;
+         }
+         if(HIVDatabusqueda.year.replace(" ","").length!=0){
+             flags= flags+"&year="+HIVDatabusqueda.year;
+         }
+         if(HIVDatabusqueda.living_with.replace(" ","").length!=0){
+             flags= flags+"&living_with="+HIVDatabusqueda.living_with;
+         }
+         if(HIVDatabusqueda.newly_infected.replace(" ","").length!=0){
+             flags= flags+"&newly_infected="+HIVDatabusqueda.newly_infected;
+         }
+         if(HIVDatabusqueda.total_infected.replace(" ","").length!=0){
+             flags= flags+"&total_infected="+HIVDatabusqueda.total_infected;
+         }
+         
+         filtros_act=true
+         getHIVData()
+     }
+ 
+         const quitafiltros =() => {
+             flags="";
+             filtros_act=false;
+             getHIVData();
+         }
+ 
+ //Modal alerta
+ let rescodigo=0;
+ let mensaje= "";
+ let resstatus="";
+ let mensajeespecifico="";
+ let error=false;
+ 
+ let alerta=false;
+ const lanzamensaje=(rc,rs,m,me,err)=>{
+ 
+     rescodigo=rc;
+     resstatus=rs;
+     mensaje=m;
+     mensajeespecifico=me;
+     error=err;//booleano
+ 
+     alerta=true;
+ }
+ const togglealerta=()=>{
+     alerta=!alerta;
+ }
+ 
+ </script>
+   
+ 
+ <!-- svelte-ignore missing-declaration -->
+ <main>
     <h1 style="text-align: center;">Administrador de datos de <strong>Niños/as con VIH</strong></h1>
-
-    {#await HIVData}
-        Loading hiv data...
-    {:then HIVData}
-
-        {#if errorMSG}
-            <UncontrolledAlert color="danger" >{errorMSG}</UncontrolledAlert>
-	    {/if}
-
-        {#if okayMSG}
-            <UncontrolledAlert color = "success">{okayMSG}</UncontrolledAlert>
-        {/if}
-
-        <!-- Table -->
-        <Table bordered responsive hover>
-            <thead>
-                <tr>
-                    <th>País</th>
-                    <th>Año</th>
-                    <th>Viviendo con VIH</th>
-                    <th>Nuevos infectados</th>
-                    <th>Total de infectados</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><input type="text" placeholder="Perú" bind:value="{newHIVData.country}"></td>
-                    <td><input type="number" placeholder="2020" min=1960 bind:value="{newHIVData.year}"></td>
-                    <td><input type="number" placeholder="100" min=0 bind:value="{newHIVData.living_with}"></td> 
-                    <td><input type="number" placeholder="100" min=0 bind:value="{newHIVData.newly_infected}"></td>    
-                    <td><input type="number" placeholder="200" min=0 bind:value="{newHIVData.total_infected}"></td>  
-                    <td><Button outline color="primary" on:click={insertHIVData}>Insertar</Button></td>           
-                </tr>
+     <div>
+               <!-- Modal para insertar -->
+             <div id="modal">
+             <Modal isOpen={open1} toggle={toggle1} transitionOptions>
+                 <ModalHeader {toggle1}>¿Quieres insertar un nuevo dato?</ModalHeader>
+                 <ModalBody >
+                     Por favor, rellene el formulario. Todos los campos deben tener un valor, de lo contrario, no se añadirá nada.
+                     <tr>
+                         <Table >
+                             
+                             <tbody>
+                                   <tr>
+                                         <td>País</td>
+                                         <td><input bind:value="{newHIVData.country}"></td>
+                                         
+                                         
+                                     </tr><tr>
+                                         <td>Año</td>
+                                         <td><input bind:value="{newHIVData.year}"> </td>
+                                    
+                                         
+                                     </tr><tr>
+                                         <td>Viviendo con VIH</td>
+                                         <td><input bind:value="{newHIVData.living_with}"> </td>
+                                        
+                                     </tr><tr>
+                                         <td>Nuevos infectados</td>
+                                         <td><input bind:value="{newHIVData.newly_infected}"> </td>
+                                         
+                                         
+                                     </tr><tr>
+                                         <td>Total de infectados</td>
+                                         <td><input bind:value="{newHIVData.total_infected}"> </td>
+                                    </tr>
+   
+                             </tbody>
+                         </Table >
+                     </tr>
+                 </ModalBody>
+                 <ModalFooter>
+                     <Button color="primary" on:click={toggle1P}>Insertar</Button>
+                     <Button color="secondary" on:click={toggle1}
+                         >Cancelar</Button
+                     >
+                 </ModalFooter>
+             </Modal>
  
-                {#each HIVData as sc}
-                    <tr>
-                        <td><a href="#/children-with-hiv/{sc.country}/{sc.year}">{sc.country}</a></td>
-                        <td>{sc.year}</td>
-                        <td>{sc.living_with}</td>
-                        <td>{sc.newly_infected}</td>
-                        <td>{sc.total_infected}</td>
-                        <td><Button outline color="danger" on:click="{deleteHIVData(sc.country, sc.year)}">Borrar</Button></td>
-                    </tr>
-                {/each}
-            </tbody>
-        </Table>
+             <!-- Modal para la busqueda -->
+ 
+             <Modal isOpen={popbusqueda} toggle={cancelarbusqueda} transitionOptions>
+                 <ModalHeader {cancelarbusqueda}>¿Desea hacer una búsqueda específica?</ModalHeader>
+                 <ModalBody >
+                    Por favor, introduzca los valores.
+                     <tr>
+                         <Table >
+                             
+                             <tbody>
+                                    
+                                     <tr>
+                                         <td>País</td>
+                                         <td><input bind:value="{HIVDatabusqueda.country}"></td>
+                                         
+                                         
+                                     </tr><tr>
+                                         <td>Año</td>
+                                         <td><input bind:value="{HIVDatabusqueda.year}"> </td>
+                                    
+                                         
+                                     </tr><tr>
+                                         <td>Viviendo con VIH</td>
+                                         <td><input bind:value="{HIVDatabusqueda.living_with}"> </td>
+                                        
+                                     </tr><tr>
+                                         <td>Nuevos infectados</td>
+                                         <td><input bind:value="{HIVDatabusqueda.newly_infected}"> </td>
+                                         
+                                         
+                                     </tr><tr>
+                                         <td>Total de infectados</td>
+                                         <td><input bind:value="{HIVDatabusqueda.total_infected}"> </td>
+                                    </tr>   
+                             </tbody>
+                         </Table >
+                     </tr>
+                 </ModalBody>
+                 <ModalFooter>
+                     <Button color="primary" on:click={buscar}>Buscar</Button>
+                     <Button color="secondary" on:click={cancelarbusqueda}
+                         >Cancelar</Button
+                     >
+                 </ModalFooter>
+             </Modal>
+ 
+             <Modal isOpen={popinsert} toggle={togglepop} transitionOptions>
+                 <ModalHeader {togglepop}>Se ha producido un error</ModalHeader>
+                 <ModalBody >
+                     No se ha podido insertar el dato.
+                    
+                 </ModalBody>
+                 <ModalFooter>
+                     <Button color="primary" on:click={togglepopok}>Probar de nuevo</Button>
+                     <Button color="secondary" on:click={togglepop}>Cancelar</Button>
+                 </ModalFooter>
+             </Modal>
+ 
+             <Modal isOpen={alerta} toggle={togglealerta} transitionOptions>
+                 <ModalHeader toggle={togglealerta} style="text-align: center;">{mensaje}
+                 
+                     
+                 </ModalHeader>
+                 <ModalBody style="text-align: center;">
+                     {#if error!=null}
+                         {#if error}
+                         Tras realizar la operación hemos obtenido un codigo de error:
+                         <p></p>
+                         <a href="https://docs.google.com/presentation/d/1i79Yihxsynbjtar05xFXLXHChqEbsO44oaxg8mXWL6g/edit#slide=id.g10ecd5ec32_1_14"> 
+                             {rescodigo} ({resstatus}).
+                         </a>
+                          
+                         <p>{mensajeespecifico}</p>
+                         
+                         {/if}
+                     {:else}
+                     <p>{mensajeespecifico}</p>
+                     {/if}
+ 
+                     <div>
+                         <p></p>
+                     <Button color="secondary" on:click={togglealerta}>Volver</Button>
+                 </div>
+                 </ModalBody>
+                 
+             </Modal>
+         </div>
+ 
+ 
+     </div>
+     
+   
+     {#if HIVData.length != 0}
+         <br/>
+         <Table bordered responsive hover>
+         <thead>
+             
+             <tr>
+                 <td>País</td>
+                 <td>Año</td>
+                 <td>Viviendo con VIH</td>
+                 <td>Nuevos infectados</td>
+                 <td>Total de infectados</td>
+                 <td>Acciones</td>
+             </tr>
+             <tr>
+                <td><input type="text" placeholder="Perú" bind:value="{newHIVData.country}"></td>
+                <td><input type="number" placeholder="2020" min=1960 bind:value="{newHIVData.year}"></td>
+                <td><input type="number" placeholder="100" min=0 bind:value="{newHIVData.living_with}"></td> 
+                <td><input type="number" placeholder="100" min=0 bind:value="{newHIVData.newly_infected}"></td>    
+                <td><input type="number" placeholder="200" min=0 bind:value="{newHIVData.total_infected}"></td>  
+                <td><Button outline color="primary" on:click={insertHIVData}>Insertar</Button></td>           
+            </tr>
+         </thead>
+         <tbody>
+             {#each HIVData as HIVData}
+                 <tr>
+                     <td><a href="#/children-with-hiv/{HIVData.country}/{HIVData.year}">{HIVData.country}</a></td>
+                     <td>{HIVData.year}</td>
+                     <td>{HIVData.living_with}</td>
+                     <td>{HIVData.newly_infected}</td>
+                     <td>{HIVData.total_infected}</td>
 
-        {#if HIVData.length === 0}
+                     <td>
+                         <Button outline color="danger" on:click={() =>deleteHIVData(HIVData.country,HIVData.year)}> Borrar </Button>
+                         <Button outline color="success" on:click={() =>gotoupdate(HIVData.country,HIVData.year) }> Actualizar</Button>
+                     </td>
+                   
+ 
+ 
+ 
+                 </tr>
+             {/each}
+         </tbody>
+     </Table >
+
+     
+        
+ 
+         
+     
+ 
+ 
+         
+         
+     {:else}
+     <br/>
+     <p style="text-align: center; background-color: antiquewhite;">Lo sentimos, no existe ningun dato</p>
+     
+     {/if}
+
+     {#if HIVData.length === 0}
             <p>No se han encontrado datos, por favor, carga los datos iniciales.</p>
         {/if}
 
-        <Button outline color="info" on:click="{getPreviewPage}">Atrás</Button>
-            <Button>{currentPage}</Button>
-        <Button outline color="info" on:click="{getNextPage}">Siguiente</Button>
-
         <p></p>
-        <Button color="success" on:click="{loadInitialData}">
+        <Button outline color="success" on:click="{loadStats}">
             Cargar datos inciales
         </Button>
-        <Button color="danger" on:click="{deleteALL}">
+        <Button outline color="danger" on:click="{deleteStats}">
             Eliminar todo
         </Button>
+        {#if !filtros_act} 
+        <Button outline color="info" on:click={cancelarbusqueda}> Buscar </Button>
+        {:else}
+        <Button outline color="info" on:click={quitafiltros}> Quitar filtros </Button>
+        <p style="text-align: rigth; background-color: antiquewhite;">Desactive los filtros para realizar otra búsqueda</p>
+        {/if}
+        <p></p>
+        <Button color="dark" on:click={pop}>Volver</Button>
+
+        {#if HIVData.length !== 0}
+        <div style="text-align: center; " >
+            {#if pagina != 1}
+            <Button outline color="info" on:click={anterior}>Anterior</Button>
+            {/if}
+            <Button color="dark" >Pag. Nº: {pagina} / {num_paginas}</Button>    
+            {#if num_paginas-pagina!=0 }
+             <Button outline color="info" on:click={siguiente}>Siguiente</Button>
+             {/if}
+        </div>
         
-    {/await}
-</main>
+        {/if}
+ 
+ </main>
+ 
+ 
+ <style>
+    
+     a:hover {
+         color:white;
+     }
+ 
+ </style>
