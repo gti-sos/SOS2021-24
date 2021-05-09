@@ -220,8 +220,3 @@ const togglealerta=()=>{
 
 
 </main>
-
-
-<style>
-  
-</style>

@@ -1,294 +1,397 @@
-<script>
-	import { onMount } from "svelte";
-	import Table from "sveltestrap/src/Table.svelte"; 
-	import Button from "sveltestrap/src/Button.svelte";
-	import { Pagination, PaginationItem, PaginationLink } from 'sveltestrap';
-	import { Form, FormGroup, FormText, Input, Label } from 'sveltestrap';
-	import { Alert, UncontrolledAlert } from 'sveltestrap';
-    import { UncontrolledCollapse, Collapse, CardBody, Card } from "sveltestrap";
-	
-    let isOpen = false;
-    //ALERTAS
-    let visible = false;
-
-    //Variables para paginacion
-	let limit = 10;
-	let offset = 0;
-	let moreData = true;
-	let currentPage=1; // No la utilizamos pero nos sirve para saber en que pagina estamos (quizas en un futuro)
-
-    //Busquedas
-	let searchCountry= "";
-	let searchYear = "";
-    
-    let totaldata=0;
-    let schoolData = [];
-	let newSchoolData = {
-		country: "",
-		year: "",
-		children_out_school_male:"",
-		children_out_school_female:"",
-		children_out_school_total:""
-	}
-    
-    let errorMSG = "";
-    let okayMSG = "";
-    onMount(getSchoolData);
- 
-    //GET
-    async function getSchoolData(){
-	
-    console.log("Fetching school data..");
-    var url = "/api/v2/children-out-school?limit="+limit+"&offset="+(offset*limit);
-    var urlAfter = "/api/v2/children-out-school?limit="+limit+"&offset="+(limit*(offset+1));
-  
-    if(searchCountry!="" &&searchCountry!=null){
-        url = url+"&country="+searchCountry;
-        urlAfter= urlAfter+"&country="+searchCountry;
-    }
-    
-    if(searchYear!="" && searchYear!=null){
-        url = url+"&year="+searchYear;
-        urlAfter= urlAfter+"&year="+searchYear;
-    }
-    //Awaits lo que hace es esperar la finalización de la solicitud HTTP. El código se reanuda después de completar cada solicitud.
-    const res = await fetch(url);
+<script lang="ts">
    
-    //Tenemos que preguntar tambien si hay mas datos, ya que si no los hay,
-    //al pasar de pagina estariamos haciendo una peticion a la api que nos devolveria un error
-    const after =  await fetch(urlAfter);
-    if(res.ok && after.ok){
-        console.log("OK");
-        const json = await res.json();
-        const jsonAfter = await after.json();
-        schoolData= json;
-        //Comprobamos si hay mas datos o no despues para activar o desactivar el boton
-        if(jsonAfter.length ==0){
-            moreData=false;
-        }
-        else{
-            moreData=true;
-        }
-        console.log("Received "+ schoolData.length +" resources." )
-    }
-    else{
-        console.log("ERROR");
-        errorMsg= "Fallo del servidor en la solicitud"
-    }
-        
-    
-}
-    //LOAD INITIALDATA
-	async function loadInitialData(){
-	
-    console.log("Fetching school data...");
-    const res = await fetch("/api/v2/children-out-school/loadInitialData").then(function(res){
-        if (res.ok){
-            console.log("OK");
-            getSchoolData();
-            totaldata=14;
-            okayMSG= "Datos cargados con éxito."
-        }
-        else{
-            errorMSG= "Error al cargar los datos"
-            console.log("ERROR");
-        }
-    });
-}
-    //INSERT
-    async function insertSchoolData(){
-		 
-         console.log("Inserting school data...");
-         //Comprobamos que el año y la fecha no estén vacíos, el string vacio no es null
-         if (newSchoolData.country == "" || newSchoolData.country == null || newSchoolData.year == "" || newSchoolData.year == null){
-             alert("Los campos 'Pais' y 'Año' no pueden estar vacios");
+    import {
+         Nav,
+         Modal,
+         ModalBody,
+         ModalFooter,
+         ModalHeader,
+         NavItem,
+         NavLink,
+         Button,
+         Table,
+         Alert,
+         Card,
+         CardBody,
+         CardFooter,
+         CardHeader,
+         CardSubtitle,
+         CardText,
+         CardTitle,
+     } from "sveltestrap";
+     
+     import {pop} from "svelte-spa-router";
+ 
+     
+     const BASE_API_URL = "/api/v2/children-out-school"; //tiene que llamar a la API para tratar los datos
+     
+     let cargados = false;
+     let schoolData = [];
+ 
+     let isOpen = false;
+ 
+     let limit =10;
+     let offset =0;
+     let pagina = (offset/10)+1;
+     let num_paginas=0;
+     let flags ="";
+     let filtros_act= false;
+ 
+     //getSchoolData();
+ 
+     let newSchoolData = {
+             country:"",
+             year:"",
+             children_out_school_male: "" ,
+             children_out_school_female:"",
+             children_out_school_total:""
          }
-         else{
-             const res = await fetch("/api/v2/children-out-school",{
-             method:"POST",
-             body:JSON.stringify(newSchoolData),
-             headers:{
-                 "Content-Type": "application/json"
+         let schoolDatabusqueda = {
+            country:"",
+             year:"",
+             children_out_school_male: "" ,
+             children_out_school_female:"",
+             children_out_school_total:""
+         }
+         
+      //funcion asincrona para cargar (get) los recursos existentes
+      async function getNumPaginas() {
+             console.log("Fetching school data...");
+             const res = await fetch(BASE_API_URL);
+             let datos=[]
+             if(res.ok){
+                 const json = await res.json();
+                 datos = json;
+                 num_paginas=(datos.length/10)+1|0;
+                 if(datos.length%10==0&&num_paginas!==1){
+                     num_paginas--;
+                 }
              }
-             }).then(function (res) {
-                 if(res.status == 201){
-                     totaldata++;
-                     getSchoolData();
-                     console.log("Data introduced");
-                     okayMSG = "Recurso insertado con éxito";
+             else{
+                 console.log("ERROR!");
+             }
+         }
+ 
+ 
+      async function getSchoolData() {
+             getNumPaginas()
+             console.log(num_paginas)
+             console.log("Fetching school data...");
+           
+             const res = await fetch(BASE_API_URL+"?limit="+limit+"&offset="+offset+flags);
+             if(res.status==200){
+                 const json = await res.json();
+                 schoolData = json;
+                 console.log(`Received ${schoolData.length} resources`);
+                 pagina = (offset/10)+1
+ 
+                 let mes="Se han encontrado "+ schoolData.length +" elementos que coinciden con la búsqueda";
+                 if(filtros_act) lanzamensaje(res.status,res.statusText,"Advertencia",mes,null)
+             }
+             else{
+                 console.log("ERROR!");
+                 //lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","",true)
+             }
+ 
+         }
+ 
+         async function insertSchoolData() { //insertar un recurso en concreto
+             console.log("Inserting new resource " + JSON.stringify(newSchoolData));
+             newSchoolData.country=newSchoolData.country.replace(" ","_")
+             const res = await fetch(BASE_API_URL, {
+                 method: "POST",
+                 body: JSON.stringify(newSchoolData),
+                 headers: {
+                     "Content-Type": "application/json",
                  }
-                 else if(res.status == 400){
-                     console.log("ERROR Data was not correctly introduced");
-                     errorMSG= "Los datos de la entrada no fueron introducidos correctamente";
+             }
+             ).then( (res) => {
+                 getSchoolData();
+                 switch (res.status){
+                     case 409:
+                     lanzamensaje(res.status,res.statusText,"Se ha producido un error:","Ya existe un dato con el mismo 'País' y 'Año' ",true)
+                     break
+ 
+                     case 400:
+                     lanzamensaje(res.status,res.statusText,"Se ha producido un error:","Los datos de la entrada no fueron introducidos correctamente",true)
+                     break
+ 
+                     case 201:
+                    let mensajeaux= "El dato "+newSchoolData.country+" / "+newSchoolData.year+" fue insertado con éxito." 
+                     lanzamensaje(res.status,res.statusText,"Recurso insertado con éxito",mensajeaux,null)
+                     break
+ 
+                     default:
+                     lanzamensaje(res.status,res.statusText,"Se ha producido un error:","",true)
+                     break
                  }
-                 else if(res.status == 409){
-                     console.log("ERROR There is already a data with that country and year in the database");
-                     errorMSG= "Ya existe una entrada en la base de datos con la fecha y el país introducido";
-                 }
-             });	
+             })  
+         }
+ 
+         async function deleteSchoolData( a, b) { //elimina un recurso en concreto
+             console.log("Deleting resource " + JSON.stringify(schoolData));
+             const res = await fetch(BASE_API_URL+"/"+a+"/"+b, {
+                 method: "DELETE",   
+             })
+             switch(res.status){
+             case 200:
+             let mensajeaux= "Recurso "+a+" / "+b+" eliminado con éxito" 
+                     lanzamensaje(res.status,res.statusText,"Recurso eliminado",mensajeaux,null)
+                     if(schoolData.length==1&&num_paginas>1){
+                         offset-=10; getSchoolData()
+                      }else{
+                         getSchoolData();
+                     }
+             break;
+             case 404:
+             let mensajeaux2= "Recuso "+a+"/"+b+" no encontrado"    
+             lanzamensaje(res.status,res.statusText,"Se ha producido un error al intentar borrar el elemento",mensajeaux2,true)
+ 
+             break;
+             default:
+             lanzamensaje(res.status,res.statusText,"Se ha producido un error","Vaya... Algo ha salido mal. Probablemente la Base de Datos haya tenido un problema. Vuelva a intentarlo mas tarde",true)
+             break;
+         }
+        }
+ 
+         async function loadStats(){
+         console.log("Loading school Data...");
+         const carga =  await fetch(BASE_API_URL + "/loadInitialData");
+         cargados = true;
+         if (carga.ok){
+             console.log("Ok.");
+             const res = await fetch(BASE_API_URL);
+             if(res.ok){
+                 console.log("Ok. Obtaining school Data...")
+                 const json = await res.json();
+                 schoolData = json;
+                 console.log('Received ${schoolData.length} life stats.');
+                 lanzamensaje(res.status,res.statusText,"Datos cargados con exito","Se han cargado un total de " + schoolData.length+ " elementos.",null)
+             }else{
+                 lanzamensaje(res.status,res.statusText,"Error al cargar los datos","",true) 
+                 console.log("Error, there is no data.")
+             }
+         }else{
+             lanzamensaje(carga.status,carga.statusText,"Error cargar los datos","",true)
+             console.log("Error loading data.");
          }
      }
-
-    //DELETE SPECIFIC
-    async function deleteSchoolData(country, year) {
-        if(confirm("¿Está seguro de que desea eliminar esta entrada?")){
-        const res = await fetch("/api/v2/children-out-school/" + country + "/" + year, {
-            method: "DELETE"
-        }).then(function (res) {
-            visible = true; 
-            getSchoolData();  
-            if (res.status==200) {
-                totaldata--;
-                okayMSG = "Recurso eliminado con éxito";
-                console.log("Deleted " + country);            
-            }
-            else if (res.status==404) {
-                errorMSG = "No se ha encontrado el objeto" + country;
-                console.log("DATA NOT FOUND");            
-            } 
-            else {
-                errorMSG= res.status + ": " + res.statusText;
-                console.log("ERROR!");
-            }      
-         });
-        }
-    }   
-    //DELETE ALL
-    async function deleteALL() {
-		console.log("Deleting school data...");
-		if(confirm("¿Está seguro de que desea eliminar todas las entradas?")){
-			console.log("Deleting all school data...");
-			const res = await fetch("/api/v2/children-out-school/", {
-				method: "DELETE"
-			}).then(function (res) {
-				if(res.ok){
-                    schoolData = [];
-					getSchoolData();
-                    okayMSG = "Entradas eliminadas con éxito"
-					console.log("OK All data erased");
-                    //location.reload();
-				}
-				else{
-					console.log("ERROR Data was not erased");
-					errorMSG= "La base de datos ya esta vacía";
-				}
-			});
-		}
-	}
-    //SEARCH
-    /*
     
-    */
-    //getNextPage
-    async function getNextPage() {
+     async function deleteStats() {
+         console.log("Deleting life stats...");
+         cargados=false;
+         const res = await fetch(BASE_API_URL, {
+             method: "DELETE"
+         }).then(function (res) {
+             if (res.status==200){
+                 console.log("Ok.");
+                 let mensajeespecifico ="Recursos eliminados con éxito"
+                 schoolData = [];
+                 lanzamensaje(res.status,res.statusText,"Recursos eliminados",mensajeespecifico ,null)
+             } else if (res.status==404){ //no Data found
+                 console.log("No Data found");
+                 lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos","La base de datos ya esta vacía" ,true)
+             } else  { 
+                 console.log("Error deleting DB stats");
+                 lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos","" ,true)
+             }  
+         });
+     }
+     
+    function gotoupdate(a,b) {
+    location.href = '#/children-out-school/'+a+'/'+b;
+ }
+ //paginacion
  
-        console.log(totaldata);
-        if (offset+10 > totaldata) {
-            offset = 0
-            currentpage = 1;
-        } else {
-            offset +=10
-            currentPage=2;
-        }
-        console.log("Charging page "+ offset);
-        const res = await fetch("/api/v2/children-out-school?limit="+limit+"&offset="+offset);
-        if (res.ok) {
-            console.log("Ok:");
-            const json = await res.json();
-            schoolData = json;
-            console.log("Received " + schoolData.length + " data.");
-        } else {
-            console.log("ERROR!");
-        }
-    }
-    //getPreviewPage
-    async function getPreviewPage() {
+ const siguiente= () => {offset+=10; getSchoolData()}
+ const anterior= () => {offset-=10; getSchoolData()}
  
-        if (offset-10>=1) {
-            offset-=10; 
-            currentPage-=1;
-        } else {
-            offset = 0
-            currentPage = 1;
-        }
-        console.log("Charging page " +offset);
-        const res = await fetch("/api/v2/children-out-school?limit="+limit+"&offset="+offset);
-        if (res.ok) {
-            console.log("Ok:");
-            const json = await res.json();
-            schoolData = json;
-            console.log("Received " + schoolData.length + " resources.");
-        } else {
-            console.log("ERROR!");
-        }
+ //Busqueda especifica
+ 
+     let popbusqueda = false;
+     const cancelarbusqueda = () => (popbusqueda = !popbusqueda);
+     const buscar = () => {
+         popbusqueda = !popbusqueda
+        
+         if(schoolDatabusqueda.country.replace(" ","").length!=0){
+             flags= flags+"&country="+schoolDatabusqueda.country;
+         }
+         if(schoolDatabusqueda.year.replace(" ","").length!=0){
+             flags= flags+"&year="+schoolDatabusqueda.year;
+         }
+         if(schoolDatabusqueda.children_out_school_male.replace(" ","").length!=0){
+             flags= flags+"&children_out_school_male="+schoolDatabusqueda.children_out_school_male;
+         }
+         if(schoolDatabusqueda.children_out_school_female.replace(" ","").length!=0){
+             flags= flags+"&children_out_school_female="+schoolDatabusqueda.children_out_school_female;
+         }
+         if(schoolDatabusqueda.children_out_school_total.replace(" ","").length!=0){
+             flags= flags+"&children_out_school_total="+schoolDatabusqueda.children_out_school_total;
+         }
+         
+         filtros_act=true
+         getSchoolData()
+     }
+ 
+    const quitafiltros =() => {
+        flags="";
+        filtros_act=false;
+        getSchoolData();
     }
-</script>
+ 
+ //Modal alerta
+ let rescodigo=0;
+ let mensaje= "";
+ let resstatus="";
+ let mensajeespecifico="";
+ let error=false;
+ 
+ let alerta=false;
+ const lanzamensaje=(rc,rs,m,me,err)=>{
+     rescodigo=rc;
+     resstatus=rs;
+     mensaje=m;
+     mensajeespecifico=me;
+     error=err;//booleano
+     alerta=true;
+ }
+ const togglealerta=()=>{
+     alerta=!alerta;
+ }
+ 
+ </script>
+   
+ <main>
+    <h1 style="text-align: center;">Administrador de datos de <strong>Abandono Escolar</strong></h1>
+     <div>
+             <!-- Modal para la busqueda -->
+ 
+             <Modal isOpen={popbusqueda} toggle={cancelarbusqueda} transitionOptions>
+                 <ModalHeader {cancelarbusqueda}>¿Desea hacer una búsqueda específica?</ModalHeader>
+                 <ModalBody >
+                    Por favor, introduzca los valores para la búsqueda.
+                         <Table >
+                             <tbody>
+                                <tr>
+                                    <th>País</th>
+                                    <td><input bind:value="{schoolDatabusqueda.country}"></td> 
+                                </tr>
+                                <tr>
+                                    <th>Año</th>
+                                    <td><input type = "number" placeholder = "2019" bind:value="{schoolDatabusqueda.year}"> </td>
+                                </tr>
+                                <tr>
+                                    <th>Abandono Escolar (Niños)</th>
+                                    <td><input type = "number" placeholder = "0" bind:value="{schoolDatabusqueda.children_out_school_male}"> </td>   
+                                </tr>
+                                <tr>
+                                    <th>Abandono Escolar (Niñas)</th>
+                                    <td><input type = "number" placeholder = "0" bind:value="{schoolDatabusqueda.children_out_school_female}"> </td>
+                                </tr>
+                                <tr>
+                                    <th>Abandono Escolar (Total)</th>
+                                    <td><input type = "number" placeholder = "0" bind:value="{schoolDatabusqueda.children_out_school_total}"> </td>
+                                </tr>   
+                             </tbody>
+                         </Table >
+                 </ModalBody>
+                 <ModalFooter>
+                     <Button color="primary" on:click={buscar}>Buscar</Button>
+                     <Button color="secondary" on:click={cancelarbusqueda}>Cancelar</Button>
+                 </ModalFooter>
+             </Modal>
+ 
+             <Modal isOpen={alerta} toggle={togglealerta} transitionOptions>
+                 <ModalHeader toggle={togglealerta} style="text-align: center;">{mensaje}
+                 </ModalHeader>
+                 <ModalBody style="text-align: center;">
+                     {#if error!=null}
+                         {#if error}
+                         ERROR
+                         <Alert color="danger" ><p> {rescodigo} {resstatus}</p>{mensajeespecifico}</Alert>
+                         {/if}
+                     {:else}
+                     <Alert color="success" >{mensajeespecifico}</Alert>
+                     {/if}
+ 
+                     <div>
+                         <p></p>
+                     <Button color="secondary" on:click={togglealerta}>Volver</Button>
+                 </div>
+                 </ModalBody>
+                 
+             </Modal>
+         </div>
 
-<main>
-    <h1 style="text-align: center;">Administrador de datos de <strong>Abandono escolar</strong></h1>
-
-    {#await schoolData}
-        Loading school data...
-    {:then schoolData}
-
-        {#if errorMSG}
-            <UncontrolledAlert color="danger" >{errorMSG}</UncontrolledAlert>
-	    {/if}
-
-        {#if okayMSG}
-            <UncontrolledAlert color = "success">{okayMSG}</UncontrolledAlert>
+     {#if !filtros_act} 
+        <Button color="info" on:click={cancelarbusqueda}> Buscar </Button>
+        {:else}
+        <Button color="warning" on:click={quitafiltros}> Quitar filtros </Button>
+        <p style="background-color: #777799;">Desactive los filtros para realizar otra búsqueda</p>
         {/if}
+     
+         <br/>
+         <Table bordered responsive hover>
+         <thead>
+             
+             <tr>
+                 <th>País</th>
+                 <th>Año</th>
+                 <th>Abandono Escolar (Niños)</th>
+                 <th>Abandono Escolar (Niñas)</th>
+                 <th>Abandono Escolar (Total)</th>
+                 <td>Acciones</td>
+             </tr>
+             <tr>
+                <td><input type="text" placeholder="China" bind:value="{newSchoolData.country}"></td>
+                <td><input type="number" placeholder="2019" min=1960 bind:value="{newSchoolData.year}"></td>
+                <td><input type="number" placeholder="10" min=0 bind:value="{newSchoolData.children_out_school_male}"></td> 
+                <td><input type="number" placeholder="10" min=0 bind:value="{newSchoolData.children_out_school_female}"></td>    
+                <td><input type="number" placeholder="20" min=0 bind:value="{newSchoolData.children_out_school_total}"></td>  
+                <td><Button outline color="primary" on:click={insertSchoolData}>Insertar</Button></td>           
+            </tr>
+         </thead>
+         <tbody>
+             {#each schoolData as sc}
+                 <tr>
+                     <td><a href="#/children-out-school/{sc.country}/{sc.year}">{sc.country}</a></td>
+                     <td>{sc.year}</td>
+                     <td>{sc.children_out_school_male}</td>
+                     <td>{sc.children_out_school_female}</td>
+                     <td>{sc.children_out_school_total}</td>
 
-        <!-- Table -->
-        <Table bordered responsive hover>
-            <thead>
-                <tr>
-                    <th>País</th>
-                    <th>Año</th>
-                    <th>Abandono Escolar (Niños)</th>
-                    <th>Abandono Escolar (Niñas)</th>
-                    <th>Abandono Escolar (Total)</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><input type="text" placeholder="China" bind:value="{newSchoolData.country}"></td>
-                    <td><input type="number" placeholder="2019" min=1960 bind:value="{newSchoolData.year}"></td>
-                    <td><input type="number" placeholder="10" min=0 bind:value="{newSchoolData.children_out_school_male}"></td> 
-                    <td><input type="number" placeholder="10" min=0 bind:value="{newSchoolData.children_out_school_female}"></td>    
-                    <td><input type="number" placeholder="20" min=0 bind:value="{newSchoolData.children_out_school_total}"></td>  
-                    <td><Button outline color="primary" on:click={insertSchoolData}>Insertar</Button></td>           
-                </tr>
- 
-                {#each schoolData as sc}
-                    <tr>
-                        <td><a href="#/children-out-school/{sc.country}/{sc.year}">{sc.country}</a></td>
-                        <td>{sc.year}</td>
-                        <td>{sc.children_out_school_male}</td>
-                        <td>{sc.children_out_school_female}</td>
-                        <td>{sc.children_out_school_total}</td>
-                        <td><Button outline color="danger" on:click="{deleteSchoolData(sc.country, sc.year)}">Borrar</Button></td>
-                    </tr>
-                {/each}
-            </tbody>
-        </Table>
+                     <td>
+                         <Button outline color="danger" on:click={() =>deleteSchoolData(sc.country,sc.year)}> Borrar </Button>
+                         <Button outline color="success" on:click={() =>gotoupdate(sc.country,sc.year) }> Actualizar</Button>
+                     </td>
+                 </tr>
+             {/each}
+         </tbody>
+     </Table >
+     
 
-        {#if schoolData.length === 0}
+     {#if schoolData.length === 0}
             <p>No se han encontrado datos, por favor, carga los datos iniciales.</p>
         {/if}
 
-        <Button outline color="info" on:click="{getPreviewPage}">Atrás</Button>
-            <Button>{currentPage}</Button>
-        <Button outline color="info" on:click="{getNextPage}">Siguiente</Button>
-
         <p></p>
-        <Button color="success" on:click="{loadInitialData}">
+        <Button color="success" on:click="{loadStats}">
             Cargar datos inciales
         </Button>
-        <Button color="danger" on:click="{deleteALL}">
+        <Button color="danger" on:click="{deleteStats}">
             Eliminar todo
         </Button>
-        
-    {/await}
-</main>
+
+        {#if schoolData.length !== 0}
+        <div style="text-align: center; " >
+            {#if pagina != 1}
+            <Button outline color="info" on:click={anterior}>Anterior</Button>
+            {/if}
+            <Button color="dark" >Pag. Nº: {pagina} / {num_paginas}</Button>    
+            {#if num_paginas-pagina!=0 }
+             <Button outline color="info" on:click={siguiente}>Siguiente</Button>
+             {/if}
+        </div>
+        {/if}
+ </main>
+ 

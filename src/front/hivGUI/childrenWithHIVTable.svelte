@@ -68,18 +68,17 @@
                  if(datos.length%10==0&&num_paginas!==1){
                      num_paginas--;
                  }
- 
-             }else{
+             }
+             else{
                  console.log("ERROR!");
              }
- 
          }
  
  
       async function getHIVData() {
              getNumPaginas()
              console.log(num_paginas)
-             console.log("Fetching hiv resourcers...");
+             console.log("Fetching hiv resources...");
            
              const res = await fetch(BASE_API_URL+"?limit="+limit+"&offset="+offset+flags);
              if(res.status==200){
@@ -90,7 +89,8 @@
  
                  let mes="Hemos encontrado "+ HIVData.length +" elementos que concuerden con la búsqueda";
                  if(filtros_act) lanzamensaje(res.status,res.statusText,"Advertencia",mes,null)
-             }else{
+             }
+             else{
                  console.log("ERROR!");
                  lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","",true)
              }
@@ -102,7 +102,6 @@
              newHIVData.country=newHIVData.country.replace(" ","_")
              const res = await fetch(BASE_API_URL, {
                  method: "POST",
-                 
                  body: JSON.stringify(newHIVData),
                  headers: {
                      "Content-Type": "application/json",
@@ -133,11 +132,9 @@
          }
  
          async function deleteHIVData( a, b) { //elimina un recurso en concreto
-             
              console.log("Deleting resource " + JSON.stringify(HIVData));
              const res = await fetch(BASE_API_URL+"/"+a+"/"+b, {
-                 method: "DELETE",
-               
+                 method: "DELETE",   
              })
              switch(res.status){
              case 200:
@@ -157,9 +154,8 @@
              default:
              lanzamensaje(res.status,res.statusText,"Se ha producido un error al intentar borrar el elemento","Vaya... Algo ha salido mal. Probablemente la Base de Datos haya tenido un problema. Vuelva a intentarlo mas adelante",true)
              break;
-             
          }
-         }
+        }
  
          async function loadStats(){
          deleteStats();
@@ -206,11 +202,8 @@
                  lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos","No existen datos que eliminar" ,true)
              } else  { 
                  console.log("Error deleting DB stats");
-                 lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos",
-                 "" 
-                 ,true)
-             }
-             
+                 lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos","" ,true)
+             }  
          });
           
       
@@ -254,8 +247,6 @@
  const anterior= () => {offset-=10; getHIVData()}
  
  //Busqueda especifica
- 
- 
  
      let popbusqueda = false;
      const cancelarbusqueda = () => (popbusqueda = !popbusqueda);
@@ -324,7 +315,6 @@
                      Por favor, rellene el formulario. Todos los campos deben tener un valor, de lo contrario, no se añadirá nada.
                      <tr>
                          <Table >
-                             
                              <tbody>
                                    <tr>
                                          <td>País</td>
@@ -356,9 +346,7 @@
                  </ModalBody>
                  <ModalFooter>
                      <Button color="primary" on:click={toggle1P}>Insertar</Button>
-                     <Button color="secondary" on:click={toggle1}
-                         >Cancelar</Button
-                     >
+                     <Button color="secondary" on:click={toggle1}>Cancelar</Button>
                  </ModalFooter>
              </Modal>
  
@@ -370,19 +358,15 @@
                     Por favor, introduzca los valores necesarios.
                      <tr>
                          <Table >
-                             
                              <tbody>
-                                    
                                      <tr>
                                          <td>País</td>
                                          <td><input bind:value="{HIVDatabusqueda.country}"></td>
-                                         
                                          
                                      </tr><tr>
                                          <td>Año</td>
                                          <td><input bind:value="{HIVDatabusqueda.year}"> </td>
                                     
-                                         
                                      </tr><tr>
                                          <td>Viviendo con VIH</td>
                                          <td><input bind:value="{HIVDatabusqueda.living_with}"> </td>
@@ -390,8 +374,7 @@
                                      </tr><tr>
                                          <td>Nuevos infectados</td>
                                          <td><input bind:value="{HIVDatabusqueda.newly_infected}"> </td>
-                                         
-                                         
+                                          
                                      </tr><tr>
                                          <td>Total de infectados</td>
                                          <td><input bind:value="{HIVDatabusqueda.total_infected}"> </td>
@@ -402,9 +385,7 @@
                  </ModalBody>
                  <ModalFooter>
                      <Button color="primary" on:click={buscar}>Buscar</Button>
-                     <Button color="secondary" on:click={cancelarbusqueda}
-                         >Cancelar</Button
-                     >
+                     <Button color="secondary" on:click={cancelarbusqueda}>Cancelar</Button>
                  </ModalFooter>
              </Modal>
  
@@ -412,7 +393,6 @@
                  <ModalHeader {togglepop}>Se ha producido un error</ModalHeader>
                  <ModalBody >
                      No se ha podido insertar el dato.
-                    
                  </ModalBody>
                  <ModalFooter>
                      <Button color="primary" on:click={togglepopok}>Probar de nuevo</Button>
@@ -422,8 +402,6 @@
  
              <Modal isOpen={alerta} toggle={togglealerta} transitionOptions>
                  <ModalHeader toggle={togglealerta} style="text-align: center;">{mensaje}
-                 
-                     
                  </ModalHeader>
                  <ModalBody style="text-align: center;">
                      {#if error!=null}
@@ -449,11 +427,8 @@
                  
              </Modal>
          </div>
- 
- 
      </div>
      
-   
      {#if HIVData.length != 0}
          <br/>
          <Table bordered responsive hover>
@@ -489,10 +464,6 @@
                          <Button outline color="danger" on:click={() =>deleteHIVData(HIVData.country,HIVData.year)}> Borrar </Button>
                          <Button outline color="success" on:click={() =>gotoupdate(HIVData.country,HIVData.year) }> Actualizar</Button>
                      </td>
-                   
- 
- 
- 
                  </tr>
              {/each}
          </tbody>
@@ -530,16 +501,11 @@
              <Button outline color="info" on:click={siguiente}>Siguiente</Button>
              {/if}
         </div>
-        
         {/if}
- 
  </main>
  
- 
  <style>
-    
      a:hover {
          color:white;
      }
- 
  </style>
