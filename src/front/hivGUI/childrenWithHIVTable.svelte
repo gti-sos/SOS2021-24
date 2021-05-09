@@ -90,10 +90,7 @@
                  let mes="Hemos encontrado "+ HIVData.length +" elementos que concuerden con la búsqueda";
                  if(filtros_act) lanzamensaje(res.status,res.statusText,"Advertencia",mes,null)
              }
-             else{
-                 console.log("ERROR!");
-                 lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","",true)
-             }
+             
  
          }
  
@@ -124,7 +121,7 @@
                      break
  
                      default:
-                     lanzamensaje(res.status,res.statusText,"Se ha producido un error en el Insert","",true)
+                     lanzamensaje(res.status,res.statusText,"Se ha producido un error al insertar un nuevo valor","No se han insertado los datos correctamente. Pruebe de nuevo",true)
                      break
                  }
              })
@@ -180,7 +177,7 @@
                  console.log("Error, there is no HIVData.")
              }
          }else{
-             lanzamensaje(carga.status,carga.statusText,"Se ha producido un error al intentar cargar los datos","",true)
+             lanzamensaje(carga.status,carga.statusText,"Se ha producido un error al intentar cargar los datos","Vuelva a intentar cargar los datos o compruebe que existen valores",true)
                     
              console.log("Error loading HIVData.");
          }
@@ -194,7 +191,7 @@
          }).then(function (res) {
              if (res.status==200){
                  console.log("Ok.");
-                 let mensajeespecifico ="Se han eliminado "+HIVData.length+" elementos."
+                 let mensajeespecifico ="Se han eliminado todos los elementos."
                  HIVData = [];
                  lanzamensaje(res.status,res.statusText,"Los datos se han eliminado satisfactoriamente",mensajeespecifico ,null)
              } else if (res.status==404){ //no HIVData found
@@ -202,7 +199,7 @@
                  lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos","No existen datos que eliminar" ,true)
              } else  { 
                  console.log("Error deleting DB stats");
-                 lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos","" ,true)
+                 lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos","Lo siento, no hemos podido eliminar los datos." ,true)
              }  
          });
           
