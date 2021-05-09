@@ -138,8 +138,9 @@
                  console.log("Ok. Obtaining school Data...")
                  const json = await res.json();
                  schoolData = json;
+                 getSchoolData()
                  console.log('School data received.');
-                 lanzamensaje(res.status,res.statusText,"Datos cargados con éxito","Se han cargado un total de " + schoolData.length+ " elementos.",null)
+                 lanzamensaje(res.status,res.statusText,"Datos cargados con éxito","Se han cargado con éxito (" + schoolData.length+ ") elementos.",null)
              }else{
                  lanzamensaje(res.status,res.statusText,"Error al cargar los datos","",true) 
                  console.log("Error, there is no data.")

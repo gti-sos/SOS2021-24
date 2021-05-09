@@ -90,20 +90,6 @@ module.exports.init = (app) => {
         "children_out_school_male":12033,
         "children_out_school_female":2469,
         "children_out_school_total":14502
-    },
-    {
-        "country":"Greece",
-        "year":2017,
-        "children_out_school_male":4374,
-        "children_out_school_female":3774,
-        "children_out_school_total":8148
-    },
-    {
-        "country":"Greece",
-        "year":2018,
-        "children_out_school_male":5390,
-        "children_out_school_female":3856,
-        "children_out_school_total":9246
     }
 ];
 
