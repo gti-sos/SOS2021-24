@@ -166,6 +166,7 @@
                  console.log("Ok. Obtaining HIVData...")
                  const json = await res.json();
                  HIVData = json;
+                 getHIVData();
                  console.log('Received ${HIVData.length} life stats.');
                  let mensajeaux = " Se han cargado un total de " + HIVData.length+ " elementos."
                  lanzamensaje(res.status,res.statusText,"Los datos se han cargado satisfactoriamente",mensajeaux,null)
