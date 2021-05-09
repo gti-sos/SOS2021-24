@@ -312,7 +312,6 @@
  
  </script>
    
- 
  <!-- svelte-ignore missing-declaration -->
  <main>
     <h1 style="text-align: center;">Administrador de datos de <strong>Niños/as con VIH</strong></h1>
@@ -368,7 +367,7 @@
              <Modal isOpen={popbusqueda} toggle={cancelarbusqueda} transitionOptions>
                  <ModalHeader {cancelarbusqueda}>¿Desea hacer una búsqueda específica?</ModalHeader>
                  <ModalBody >
-                    Por favor, introduzca los valores.
+                    Por favor, introduzca los valores necesarios.
                      <tr>
                          <Table >
                              
