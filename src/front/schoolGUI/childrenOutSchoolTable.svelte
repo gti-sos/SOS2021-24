@@ -33,43 +33,41 @@
     }
          
     async function getNumPaginas() {
-             console.log("Fetching school data...");
-             const res = await fetch(BASE_API_URL);
-             let datos=[]
-             if(res.ok){
-                 const json = await res.json();
-                 datos = json;
-                 num_paginas=(datos.length/10)+1|0;
-                 if(datos.length%10==0&&num_paginas!==1){
-                     num_paginas--;
-                 }
-             }
-             else{
-                 console.log("ERROR!");
-             }
-         }
+        console.log("Fetching school data...");
+        const res = await fetch(BASE_API_URL);
+        let datos=[]
+        if(res.ok){
+            const json = await res.json();
+            datos = json;
+            num_paginas=(datos.length/10)+1|0;
+            if(datos.length%10==0&&num_paginas!==1){
+                num_paginas--;
+            }
+        }
+        else{
+            console.log("ERROR!");
+        }
+    }
  
+    async function getSchoolData() {
+        getNumPaginas()
+        console.log(num_paginas)
+        console.log("Fetching school data...");
+        const res = await fetch(BASE_API_URL+"?limit="+limit+"&offset="+offset+flags);
+        if(res.status==200){
+            const json = await res.json();
+            schoolData = json;
+            console.log(`Received ${schoolData.length} resources`);
+            pagina = (offset/10)+1
+            let mes="Se han encontrado "+ schoolData.length +" elementos que coinciden con la búsqueda";
+            if(filtros_act) lanzamensaje(res.status,res.statusText,"Resultados",mes,null)
+        }
+        else{
+            console.log("ERROR!");
+        }
+    }
  
-      async function getSchoolData() {
-             getNumPaginas()
-             console.log(num_paginas)
-             console.log("Fetching school data...");
-           
-             const res = await fetch(BASE_API_URL+"?limit="+limit+"&offset="+offset+flags);
-             if(res.status==200){
-                 const json = await res.json();
-                 schoolData = json;
-                 console.log(`Received ${schoolData.length} resources`);
-                 pagina = (offset/10)+1
-                 let mes="Se han encontrado "+ schoolData.length +" elementos que coinciden con la búsqueda";
-                 if(filtros_act) lanzamensaje(res.status,res.statusText,"Resultados",mes,null)
-             }
-             else{
-                 console.log("ERROR!");
-             }
-         }
- 
-         async function insertSchoolData() { //insertar un recurso en concreto
+    async function insertSchoolData() {
              console.log("Inserting new resource " + JSON.stringify(newSchoolData));
              newSchoolData.country=newSchoolData.country.replace(" ","_")
              const res = await fetch(BASE_API_URL, {
@@ -140,8 +138,8 @@
                  console.log("Ok. Obtaining school Data...")
                  const json = await res.json();
                  schoolData = json;
-                 console.log('Received ${schoolData.length} life stats.');
-                 lanzamensaje(res.status,res.statusText,"Datos cargados con exito","Se han cargado un total de " + schoolData.length+ " elementos.",null)
+                 console.log('School data received.');
+                 lanzamensaje(res.status,res.statusText,"Datos cargados con éxito","Se han cargado un total de " + schoolData.length+ " elementos.",null)
              }else{
                  lanzamensaje(res.status,res.statusText,"Error al cargar los datos","",true) 
                  console.log("Error, there is no data.")
@@ -239,40 +237,40 @@
  <main>
     <h1 style="text-align: center;">Administrador de datos de <strong>Abandono Escolar</strong></h1>
      <div>
-             <!-- Modal para la busqueda -->
-             <Modal isOpen={popbusqueda} toggle={cancelarbusqueda} transitionOptions>
-                 <ModalHeader {cancelarbusqueda}>Búsqueda por parámetros</ModalHeader>
-                 <ModalBody >
-                         <Table >
-                             <tbody>
-                                <tr>
-                                    <th>País</th>
-                                    <td><input bind:value="{schoolDatabusqueda.country}"></td> 
-                                </tr>
-                                <tr>
-                                    <th>Año</th>
-                                    <td><input type = "number" placeholder = "2019" bind:value="{schoolDatabusqueda.year}"> </td>
-                                </tr>
-                                <tr>
-                                    <th>Abandono Escolar (Niños)</th>
-                                    <td><input type = "number" placeholder = "0" bind:value="{schoolDatabusqueda.children_out_school_male}"> </td>   
-                                </tr>
-                                <tr>
-                                    <th>Abandono Escolar (Niñas)</th>
-                                    <td><input type = "number" placeholder = "0" bind:value="{schoolDatabusqueda.children_out_school_female}"> </td>
-                                </tr>
-                                <tr>
-                                    <th>Abandono Escolar (Total)</th>
-                                    <td><input type = "number" placeholder = "0" bind:value="{schoolDatabusqueda.children_out_school_total}"> </td>
-                                </tr>   
-                             </tbody>
-                         </Table >
-                 </ModalBody>
-                 <ModalFooter>
-                     <Button color="primary" on:click={buscar}>Buscar</Button>
-                     <Button color="secondary" on:click={cancelarbusqueda}>Cancelar</Button>
-                 </ModalFooter>
-             </Modal>
+        <!-- Modal para la busqueda -->
+        <Modal isOpen={popbusqueda} toggle={cancelarbusqueda} transitionOptions>
+            <ModalHeader {cancelarbusqueda}>Búsqueda por parámetros</ModalHeader>
+                <ModalBody >
+                    <Table >
+                        <tbody>
+                            <tr>
+                                <th>País</th>
+                                <td><input placeholder ="Spain" bind:value="{schoolDatabusqueda.country}"></td> 
+                            </tr>
+                            <tr>
+                                <th>Año</th>
+                                <td><input type ="number" placeholder ="2018" bind:value="{schoolDatabusqueda.year}"></td>
+                            </tr>
+                            <tr>
+                                <th>Abandono Escolar (Niños)</th>
+                                 <td><input type="number" placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_male}"></td>   
+                            </tr>
+                            <tr>
+                                <th>Abandono Escolar (Niñas)</th>
+                                <td><input type="number" placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_female}"></td>
+                            </tr>
+                            <tr>
+                                <th>Abandono Escolar (Total)</th>
+                                <td><input type="number" placeholder ="0" bind:value="{schoolDatabusqueda.children_out_school_total}"></td>
+                            </tr>   
+                        </tbody>
+                    </Table >
+                </ModalBody>
+                <ModalFooter>
+                    <Button color="primary" on:click={buscar}>Buscar</Button>
+                    <Button color="secondary" on:click={cancelarbusqueda}>Cancelar</Button>
+                </ModalFooter>
+        </Modal>
  
              <Modal isOpen={alerta} toggle={togglealerta} transitionOptions>
                  <ModalHeader toggle={togglealerta} style="text-align: center;">{mensaje}
@@ -313,9 +311,9 @@
              <tr>
                 <td><input type="text" placeholder="China" bind:value="{newSchoolData.country}"></td>
                 <td><input type="number" placeholder="2019" min=1960 bind:value="{newSchoolData.year}"></td>
-                <td><input type="number" placeholder="10" min=0 bind:value="{newSchoolData.children_out_school_male}"></td> 
-                <td><input type="number" placeholder="10" min=0 bind:value="{newSchoolData.children_out_school_female}"></td>    
-                <td><input type="number" placeholder="20" min=0 bind:value="{newSchoolData.children_out_school_total}"></td>  
+                <td><input type="number" placeholder="0" min=0 bind:value="{newSchoolData.children_out_school_male}"></td> 
+                <td><input type="number" placeholder="0" min=0 bind:value="{newSchoolData.children_out_school_female}"></td>    
+                <td><input type="number" placeholder="0" min=0 bind:value="{newSchoolData.children_out_school_total}"></td>  
                 <td><Button outline color="primary" on:click={insertSchoolData}>Insertar</Button></td>           
             </tr>
          </thead>
