@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     import { Table, Button} from "sveltestrap";
     import {pop} from "svelte-spa-router";
-    import {UncontrolledAlert} from "sveltestrap";
+    import {UncontrolledAlert,Nav,NavItem,NavLink} from "sveltestrap";
 
     export let params = {};
     let schoolData = {};
@@ -114,5 +114,5 @@
       </tbody>
     </Table>
     {/await}
-   <Button outline color="secondary" on:click="{pop}">Volver</Button>
+   <Button outline color="secondary" href="#/children-out-school">Volver</Button>
   </main>

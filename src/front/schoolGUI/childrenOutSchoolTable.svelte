@@ -1,61 +1,38 @@
-<script lang="ts">
-   
-    import {
-         Nav,
-         Modal,
-         ModalBody,
-         ModalFooter,
-         ModalHeader,
-         NavItem,
-         NavLink,
-         Button,
-         Table,
-         Alert,
-         Card,
-         CardBody,
-         CardFooter,
-         CardHeader,
-         CardSubtitle,
-         CardText,
-         CardTitle,
-     } from "sveltestrap";
+<script>
+    import {Modal,ModalBody,ModalFooter,ModalHeader,Button,Table,Alert} from "sveltestrap";
+    
+    const BASE_API_URL = "/api/v2/children-out-school"; //tiene que llamar a la API para tratar los datos
      
-     import {pop} from "svelte-spa-router";
+    let cargados = false;
+    let schoolData = [];
  
-     
-     const BASE_API_URL = "/api/v2/children-out-school"; //tiene que llamar a la API para tratar los datos
-     
-     let cargados = false;
-     let schoolData = [];
+    let isOpen = false;
  
-     let isOpen = false;
+    let limit =10;
+    let offset =0;
+    let pagina = (offset/10)+1;
+    let num_paginas=0;
+    let flags ="";
+    let filtros_act= false;
  
-     let limit =10;
-     let offset =0;
-     let pagina = (offset/10)+1;
-     let num_paginas=0;
-     let flags ="";
-     let filtros_act= false;
+    getSchoolData();
  
-     //getSchoolData();
- 
-     let newSchoolData = {
-             country:"",
-             year:"",
-             children_out_school_male: "" ,
-             children_out_school_female:"",
-             children_out_school_total:""
-         }
-         let schoolDatabusqueda = {
-            country:"",
-             year:"",
-             children_out_school_male: "" ,
-             children_out_school_female:"",
-             children_out_school_total:""
-         }
+    let newSchoolData = {
+        country:"",
+        year:"",
+        children_out_school_male: "" ,
+        children_out_school_female:"",
+        children_out_school_total:""
+    }
+    let schoolDatabusqueda = {
+        country:"",
+        year:"",
+        children_out_school_male: "" ,
+        children_out_school_female:"",
+        children_out_school_total:""
+    }
          
-      //funcion asincrona para cargar (get) los recursos existentes
-      async function getNumPaginas() {
+    async function getNumPaginas() {
              console.log("Fetching school data...");
              const res = await fetch(BASE_API_URL);
              let datos=[]
@@ -84,15 +61,12 @@
                  schoolData = json;
                  console.log(`Received ${schoolData.length} resources`);
                  pagina = (offset/10)+1
- 
                  let mes="Se han encontrado "+ schoolData.length +" elementos que coinciden con la búsqueda";
-                 if(filtros_act) lanzamensaje(res.status,res.statusText,"Advertencia",mes,null)
+                 if(filtros_act) lanzamensaje(res.status,res.statusText,"Resultados",mes,null)
              }
              else{
                  console.log("ERROR!");
-                 //lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","",true)
              }
- 
          }
  
          async function insertSchoolData() { //insertar un recurso en concreto
@@ -128,7 +102,7 @@
              })  
          }
  
-         async function deleteSchoolData( a, b) { //elimina un recurso en concreto
+        async function deleteSchoolData( a, b) { //elimina un recurso en concreto
              console.log("Deleting resource " + JSON.stringify(schoolData));
              const res = await fetch(BASE_API_URL+"/"+a+"/"+b, {
                  method: "DELETE",   
@@ -158,6 +132,7 @@
          console.log("Loading school Data...");
          const carga =  await fetch(BASE_API_URL + "/loadInitialData");
          cargados = true;
+         filtros_act = false;
          if (carga.ok){
              console.log("Ok.");
              const res = await fetch(BASE_API_URL);
@@ -180,15 +155,15 @@
      async function deleteStats() {
          console.log("Deleting life stats...");
          cargados=false;
+         filtros_act = false;
          const res = await fetch(BASE_API_URL, {
              method: "DELETE"
          }).then(function (res) {
              if (res.status==200){
                  console.log("Ok.");
-                 let mensajeespecifico ="Recursos eliminados con éxito"
                  schoolData = [];
-                 lanzamensaje(res.status,res.statusText,"Recursos eliminados",mensajeespecifico ,null)
-             } else if (res.status==404){ //no Data found
+                 lanzamensaje(res.status,res.statusText,"Recursos eliminados","Recursos eliminados con éxito" ,null)
+             } else if (res.status==404){ 
                  console.log("No Data found");
                  lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos","La base de datos ya esta vacía" ,true)
              } else  { 
@@ -198,9 +173,9 @@
          });
      }
      
-    function gotoupdate(a,b) {
-    location.href = '#/children-out-school/'+a+'/'+b;
- }
+    function gotoupdate(country,year) {
+        location.href = '#/children-out-school/'+ country +'/'+ year;
+    }
  //paginacion
  
  const siguiente= () => {offset+=10; getSchoolData()}
@@ -265,11 +240,9 @@
     <h1 style="text-align: center;">Administrador de datos de <strong>Abandono Escolar</strong></h1>
      <div>
              <!-- Modal para la busqueda -->
- 
              <Modal isOpen={popbusqueda} toggle={cancelarbusqueda} transitionOptions>
-                 <ModalHeader {cancelarbusqueda}>¿Desea hacer una búsqueda específica?</ModalHeader>
+                 <ModalHeader {cancelarbusqueda}>Búsqueda por parámetros</ModalHeader>
                  <ModalBody >
-                    Por favor, introduzca los valores para la búsqueda.
                          <Table >
                              <tbody>
                                 <tr>
@@ -313,11 +286,7 @@
                      {:else}
                      <Alert color="success" >{mensajeespecifico}</Alert>
                      {/if}
- 
-                     <div>
-                         <p></p>
-                     <Button color="secondary" on:click={togglealerta}>Volver</Button>
-                 </div>
+                        <Button color="secondary" on:click={togglealerta}>Volver</Button>
                  </ModalBody>
                  
              </Modal>
@@ -327,20 +296,19 @@
         <Button color="info" on:click={cancelarbusqueda}> Buscar </Button>
         {:else}
         <Button color="warning" on:click={quitafiltros}> Quitar filtros </Button>
-        <p style="background-color: #777799;">Desactive los filtros para realizar otra búsqueda</p>
+        <Alert color="warning">Desactive los filtros para realizar otra búsqueda</Alert>
         {/if}
      
          <br/>
          <Table bordered responsive hover>
          <thead>
-             
              <tr>
                  <th>País</th>
                  <th>Año</th>
                  <th>Abandono Escolar (Niños)</th>
                  <th>Abandono Escolar (Niñas)</th>
                  <th>Abandono Escolar (Total)</th>
-                 <td>Acciones</td>
+                 <th>Acciones</th>
              </tr>
              <tr>
                 <td><input type="text" placeholder="China" bind:value="{newSchoolData.country}"></td>
@@ -359,7 +327,6 @@
                      <td>{sc.children_out_school_male}</td>
                      <td>{sc.children_out_school_female}</td>
                      <td>{sc.children_out_school_total}</td>
-
                      <td>
                          <Button outline color="danger" on:click={() =>deleteSchoolData(sc.country,sc.year)}> Borrar </Button>
                          <Button outline color="success" on:click={() =>gotoupdate(sc.country,sc.year) }> Actualizar</Button>
@@ -371,8 +338,8 @@
      
 
      {#if schoolData.length === 0}
-            <p>No se han encontrado datos, por favor, carga los datos iniciales.</p>
-        {/if}
+        <Alert color="warning">No se han encontrado datos, por favor, carga los datos inciales.</Alert>
+    {/if}
 
         <p></p>
         <Button color="success" on:click="{loadStats}">
