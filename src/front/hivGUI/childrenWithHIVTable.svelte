@@ -497,19 +497,6 @@
              {/each}
          </tbody>
      </Table >
-
-     
-        
- 
-         
-     
- 
- 
-         
-         
-     {:else}
-     <br/>
-     <p style="text-align: center; background-color: antiquewhite;">Lo sentimos, no existe ningun dato</p>
      
      {/if}
 
