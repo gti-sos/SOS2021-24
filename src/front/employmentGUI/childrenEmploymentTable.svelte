@@ -58,7 +58,7 @@
          
       //funcion asincrona para cargar (get) los recursos existentes
       async function getNumPaginas() {
-             console.log("Fetching hiv resourcers...");
+             console.log("Fetching employment resourcers...");
              const res = await fetch(BASE_API_URL);
              let datos=[]
              if(res.ok){
@@ -90,10 +90,11 @@
  
                  let mes="Hemos encontrado "+ employmentData.length +" elementos que concuerden con la búsqueda";
                  if(filtros_act) lanzamensaje(res.status,res.statusText,"Advertencia",mes,null)
-             }else{
+             }
+             /*else{
                  console.log("ERROR!");
                  lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","",true)
-             }
+             }*/
  
          }
  
@@ -125,7 +126,7 @@
                      break
  
                      default:
-                     lanzamensaje(res.status,res.statusText,"Se ha producido un error en el Insert","",true)
+                     lanzamensaje(res.status,res.statusText,"Se ha producido un error al insertar un nuevo valor","No se han insertado los datos correctamente. Pruebe de nuevo",true)
                      break
                  }
              })
@@ -173,8 +174,9 @@
                  console.log("Ok. Obtaining employmentData...")
                  const json = await res.json();
                  employmentData = json;
+                 getEmploymentData();
                  console.log('Received ${employmentData.length} life stats.');
-                 let mensajeaux = " Se han cargado un total de " + employmentData.length+ " elementos."
+                 let mensajeaux = " Se han cargado un total de " + employmentData.length + " elementos."
                  lanzamensaje(res.status,res.statusText,"Los datos se han cargado satisfactoriamente",mensajeaux,null)
              }else{
                  lanzamensaje(res.status,res.statusText,"Se ha producido un error al intentar cargar los datos",
@@ -184,8 +186,8 @@
                  console.log("Error, there is no employmentData.")
              }
          }else{
-             lanzamensaje(carga.status,carga.statusText,"Se ha producido un error al intentar cargar los datos","",true)
-                    
+             lanzamensaje(carga.status,carga.statusText,"Se ha producido un error al intentar cargar los datos","Vuelva a intentar cargar los datos o compruebe que existen valores",true)
+                          
              console.log("Error loading employmentData.");
          }
      }
@@ -198,7 +200,7 @@
          }).then(function (res) {
              if (res.status==200){
                  console.log("Ok.");
-                 let mensajeespecifico ="Se han eliminado "+employmentData.length+" elementos."
+                 let mensajeespecifico ="Se han eliminado todos los elementos."
                  employmentData = [];
                  lanzamensaje(res.status,res.statusText,"Los datos se han eliminado satisfactoriamente",mensajeespecifico ,null)
              } else if (res.status==404){ //no employmentData found
@@ -206,9 +208,7 @@
                  lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos","No existen datos que eliminar" ,true)
              } else  { 
                  console.log("Error deleting DB stats");
-                 lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos",
-                 "" 
-                 ,true)
+                 lanzamensaje(res.status,res.statusText,"Fallo al eliminar los datos","Lo siento, no hemos podido eliminar los datos." ,true)
              }
              
          });
