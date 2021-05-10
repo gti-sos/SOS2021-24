@@ -91,10 +91,10 @@
                  let mes="Hemos encontrado "+ employmentData.length +" elementos que concuerden con la búsqueda";
                  if(filtros_act) lanzamensaje(res.status,res.statusText,"Advertencia",mes,null)
              }
-             /*else{
+             else{
                  console.log("ERROR!");
-                 lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","",true)
-             }*/
+                 lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","No hemos encontrado ningún valor que concuerde con su búsqueda.",true)
+             }
  
          }
  
@@ -261,7 +261,7 @@
      const cancelarbusqueda = () => (popbusqueda = !popbusqueda);
      const buscar = () => {
          popbusqueda = !popbusqueda
-        
+         
          if(employmentDatabusqueda.country.replace(" ","").length!=0){
              flags= flags+"&country="+employmentDatabusqueda.country;
          }
@@ -295,6 +295,7 @@
  let mensajeespecifico="";
  let error=false;
  
+ 
  let alerta=false;
  const lanzamensaje=(rc,rs,m,me,err)=>{
  
@@ -303,6 +304,7 @@
      mensaje=m;
      mensajeespecifico=me;
      error=err;//booleano
+     
  
      alerta=true;
  }
