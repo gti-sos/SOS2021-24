@@ -64,7 +64,7 @@
         }
         else{
             console.log("ERROR!");
-            lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","No hemos encontrado ningún valor que concuerde con la búsqueda.",true)
+            //lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","No hemos encontrado ningún valor que concuerde con la búsqueda.",true)
         }
     }
  
@@ -295,9 +295,12 @@
      {#if !filtros_act} 
         <Button color="info" on:click={cancelarbusqueda}> Buscar </Button>
         {:else}
-        <Button color="warning" on:click={quitafiltros}> Quitar filtros </Button>
+        <Button color="warning" on:click={quitafiltros}> Quitar filtros </Button> 
         <Alert color="warning">Desactive los filtros para realizar otra búsqueda</Alert>
+        {#if cancelarbusqueda.length === 0}
+            <Alert color="danger">No se han encontrado elementos que concuerden con la búsqueda.</Alert>
         {/if}
+    {/if}
      
          <br/>
          <Table bordered responsive hover>
