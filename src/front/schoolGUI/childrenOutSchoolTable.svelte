@@ -64,6 +64,7 @@
         }
         else{
             console.log("ERROR!");
+            lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","No hemos encontrado ningún valor que concuerde con la búsqueda.",true)
         }
     }
  
