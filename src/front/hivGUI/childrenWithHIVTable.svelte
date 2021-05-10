@@ -108,7 +108,7 @@
                  getHIVData();
                  switch (res.status){
                      case 409:
-                     lanzamensaje(res.status,res.statusText,"Se ha producido un error en el Insert","Ya existe un dato que con los mismos creedenciales",true)
+                     lanzamensaje(res.status,res.statusText,"Se ha producido un error al insertar","Ya existe un dato que con los mismos creedenciales",true)
                      break
  
                      case 409:
@@ -166,8 +166,9 @@
                  console.log("Ok. Obtaining HIVData...")
                  const json = await res.json();
                  HIVData = json;
+                 getHIVData();
                  console.log('Received ${HIVData.length} life stats.');
-                 let mensajeaux = " Se han cargado un total de " + HIVData.length+ " elementos."
+                 let mensajeaux = " Se han cargado un total de " + HIVData.length + " elementos."
                  lanzamensaje(res.status,res.statusText,"Los datos se han cargado satisfactoriamente",mensajeaux,null)
              }else{
                  lanzamensaje(res.status,res.statusText,"Se ha producido un error al intentar cargar los datos",
