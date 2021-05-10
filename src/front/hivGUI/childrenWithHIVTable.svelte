@@ -1,23 +1,7 @@
 <script lang="ts">
    
     import {
-         Nav,
-         Modal,
-         ModalBody,
-         ModalFooter,
-         ModalHeader,
-         NavItem,
-         NavLink,
-         Button,
-         Table,
-         UncontrolledAlert,
-         Card,
-         CardBody,
-         CardFooter,
-         CardHeader,
-         CardSubtitle,
-         CardText,
-         CardTitle,
+         Modal,ModalBody,ModalFooter,ModalHeader,Button,Table,Alert
      } from "sveltestrap";
      
      import {
@@ -92,7 +76,7 @@
                  if(filtros_act) lanzamensaje(res.status,res.statusText,"Advertencia",mes,null)
              }else{
                  console.log("ERROR!");
-                 lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","No hemos encontrado ningún valor que concuerde con su búsqueda.",true)
+                 //lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","No hemos encontrado ningún valor que concuerde con su búsqueda.",true)
              }
              
  
@@ -308,6 +292,17 @@
  <!-- svelte-ignore missing-declaration -->
  <main>
     <h1 style="text-align: center;">Administrador de datos de <strong>Niños/as con VIH</strong></h1>
+    {#if !filtros_act} 
+            <Button outline color="info" on:click={cancelarbusqueda}> Buscar </Button>
+            <p></p>
+            {:else}
+            <Button outline color="info" on:click={quitafiltros}> Quitar filtros </Button>
+            <p></p>
+            <Alert color="warning">Desactive los filtros para realizar otra búsqueda</Alert>
+            {#if cancelarbusqueda.length === 0}
+                <Alert color="danger">No se han encontrado elementos que concuerden con la búsqueda.</Alert>
+            {/if}
+        {/if}
      <div>
                <!-- Modal para insertar -->
              <div id="modal">
@@ -483,12 +478,6 @@
         <Button outline color="danger" on:click="{deleteStats}">
             Eliminar todo
         </Button>
-        {#if !filtros_act} 
-        <Button outline color="info" on:click={cancelarbusqueda}> Buscar </Button>
-        {:else}
-        <Button outline color="info" on:click={quitafiltros}> Quitar filtros </Button>
-        <p style="text-align: rigth; background-color: antiquewhite;">Desactive los filtros para realizar otra búsqueda</p>
-        {/if}
         <p></p>
         <Button color="dark" on:click={pop}>Volver</Button>
 

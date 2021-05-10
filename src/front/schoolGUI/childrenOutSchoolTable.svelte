@@ -175,8 +175,8 @@
     function gotoupdate(country,year) {
         location.href = '#/children-out-school/'+ country +'/'+ year;
     }
- //paginacion
- 
+
+ //Paginacion
  const siguiente= () => {offset+=10; getSchoolData()}
  const anterior= () => {offset-=10; getSchoolData()}
  
@@ -294,9 +294,12 @@
      {#if !filtros_act} 
         <Button color="info" on:click={cancelarbusqueda}> Buscar </Button>
         {:else}
-        <Button color="warning" on:click={quitafiltros}> Quitar filtros </Button>
+        <Button color="warning" on:click={quitafiltros}> Quitar filtros </Button> 
         <Alert color="warning">Desactive los filtros para realizar otra búsqueda</Alert>
+        {#if cancelarbusqueda.length === 0}
+            <Alert color="danger">No se han encontrado elementos que concuerden con la búsqueda.</Alert>
         {/if}
+    {/if}
      
          <br/>
          <Table bordered responsive hover>
