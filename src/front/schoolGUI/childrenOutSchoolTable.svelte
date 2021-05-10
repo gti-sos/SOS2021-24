@@ -64,7 +64,6 @@
         }
         else{
             console.log("ERROR!");
-            //lanzamensaje(res.status,res.statusText,"Error al obtener los elementos","No hemos encontrado ningún valor que concuerde con la búsqueda.",true)
         }
     }
  
@@ -176,8 +175,8 @@
     function gotoupdate(country,year) {
         location.href = '#/children-out-school/'+ country +'/'+ year;
     }
- //paginacion
- 
+
+ //Paginacion
  const siguiente= () => {offset+=10; getSchoolData()}
  const anterior= () => {offset-=10; getSchoolData()}
  
