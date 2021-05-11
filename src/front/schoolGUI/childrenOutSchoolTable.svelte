@@ -190,17 +190,17 @@
          if(schoolDatabusqueda.country.replace(" ","").length!=0){
              flags= flags+"&country="+schoolDatabusqueda.country;
          }
-         if(schoolDatabusqueda.year.replace(" ","").length!=0){
-             flags= flags+"&year="+schoolDatabusqueda.year;
+         else if(schoolDatabusqueda.year.replace(" ","").length!=0){
+             flags= flags+"&year="+parseInt(schoolDatabusqueda.year);
          }
-         if(schoolDatabusqueda.children_out_school_male.replace(" ","").length!=0){
-             flags= flags+"&children_out_school_male="+schoolDatabusqueda.children_out_school_male;
+         else if(schoolDatabusqueda.children_out_school_male.replace(" ","").length!=0){
+             flags= flags+"&children_out_school_male="+parseInt(schoolDatabusqueda.children_out_school_male);
          }
-         if(schoolDatabusqueda.children_out_school_female.replace(" ","").length!=0){
-             flags= flags+"&children_out_school_female="+schoolDatabusqueda.children_out_school_female;
+         else if(schoolDatabusqueda.children_out_school_female.replace(" ","").length!=0){
+             flags= flags+"&children_out_school_female="+parseInt(schoolDatabusqueda.children_out_school_female);
          }
-         if(schoolDatabusqueda.children_out_school_total.replace(" ","").length!=0){
-             flags= flags+"&children_out_school_total="+schoolDatabusqueda.children_out_school_total;
+         else if(schoolDatabusqueda.children_out_school_total.replace(" ","").length!=0){
+             flags= flags+"&children_out_school_total="+parseInt(schoolDatabusqueda.children_out_school_total);
          }
          
          filtros_act=true
@@ -250,19 +250,19 @@
                             </tr>
                             <tr>
                                 <th>Año</th>
-                                <td><input type ="number" placeholder ="2018" bind:value="{schoolDatabusqueda.year}"></td>
+                                <td><input placeholder ="2018" bind:value="{schoolDatabusqueda.year}"></td>
                             </tr>
                             <tr>
                                 <th>Abandono Escolar (Niños)</th>
-                                 <td><input type="number" placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_male}"></td>   
+                                 <td><input placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_male}"></td>   
                             </tr>
                             <tr>
                                 <th>Abandono Escolar (Niñas)</th>
-                                <td><input type="number" placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_female}"></td>
+                                <td><input placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_female}"></td>
                             </tr>
                             <tr>
                                 <th>Abandono Escolar (Total)</th>
-                                <td><input type="number" placeholder ="0" bind:value="{schoolDatabusqueda.children_out_school_total}"></td>
+                                <td><input placeholder ="0" bind:value="{schoolDatabusqueda.children_out_school_total}"></td>
                             </tr>   
                         </tbody>
                     </Table >
