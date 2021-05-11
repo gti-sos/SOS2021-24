@@ -296,9 +296,6 @@
         {:else}
         <Button color="warning" on:click={quitafiltros}> Quitar filtros </Button> 
         <Alert color="warning">Desactive los filtros para realizar otra búsqueda</Alert>
-        {#if cancelarbusqueda.length === 0}
-            <Alert color="danger">No se han encontrado elementos que concuerden con la búsqueda.</Alert>
-        {/if}
     {/if}
      
          <br/>
