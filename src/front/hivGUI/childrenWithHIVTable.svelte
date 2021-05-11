@@ -299,9 +299,6 @@
             <Button outline color="info" on:click={quitafiltros}> Quitar filtros </Button>
             <p></p>
             <Alert color="warning">Desactive los filtros para realizar otra búsqueda</Alert>
-                {#if HIVData.length === 0}
-                    <Alert color="danger">No se han encontrado datos que concuerden con la búsqueda.</Alert>
-                {/if}
         {/if}
      <div>
                <!-- Modal para insertar -->
