@@ -15,9 +15,9 @@
   //Imports para analytics
 	import AnalyticsSchool from "./analytics/school/schoolAnalytics.svelte";
 
-  import AnalyticsAll from "./analytics/analyticsAll.svelte";
+  import AnalyticsALL from "./analytics/analyticsALL.svelte";
 
-	import { Collapse,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem } from 'sveltestrap';
+	import {Collapse,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem} from 'sveltestrap';
   
 
     let isOpen=false;
@@ -35,7 +35,7 @@
       "/children-with-hiv": HivAPI,
       "/children-with-hiv/:country/:year":EditHIV,
 
-      "/analytics": AnalyticsAll,
+      "/analytics": AnalyticsALL,
 		  '*': NotFound,
     };
 </script>
