@@ -14,6 +14,7 @@
 
   //Imports para analytics
 	import AnalyticsSchool from "./analytics/school/schoolAnalytics.svelte";
+  import AnalyticsHIV from "./analytics/HIV/HIVAnalytics.svelte";
 
   import AnalyticsALL from "./analytics/analyticsALL.svelte";
 
@@ -34,6 +35,7 @@
 
       "/children-with-hiv": HivAPI,
       "/children-with-hiv/:country/:year":EditHIV,
+      "/analytics/children-with-hiv": AnalyticsHIV,
 
       "/analytics": AnalyticsALL,
 		  '*': NotFound,
@@ -65,6 +67,7 @@
                 <DropdownMenu>
                   <DropdownItem header>Gráficas</DropdownItem>
                   <DropdownItem href="#/analytics/children-out-school">Abandono Escolar</DropdownItem>
+                  <DropdownItem href="#/analytics/children-with-hiv">Niños/as con VIH</DropdownItem>
 
                   <DropdownItem divider />
                   <DropdownItem href="#/analytics">Todos</DropdownItem>

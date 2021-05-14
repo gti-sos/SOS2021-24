@@ -475,6 +475,7 @@
         <Button outline color="danger" on:click="{deleteStats}">
             Eliminar todo
         </Button>
+        <Button outline color="dark" href="#/analytics/children-with-hiv">Ver analítica</Button>
         <p></p>
         <Button color="dark" on:click={pop}>Volver</Button>
 
