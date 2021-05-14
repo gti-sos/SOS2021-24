@@ -347,6 +347,7 @@
         <Button color="danger" on:click="{deleteStats}">
             Eliminar todo
         </Button>
+        <Button color="dark" href="#/analytics/children-out-school">Ver analítica</Button>
 
         {#if schoolData.length !== 0}
         <div style="text-align: center; " >
