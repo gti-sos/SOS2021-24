@@ -16,9 +16,9 @@
 	import AnalyticsSchool from "./analytics/school/schoolAnalytics.svelte";
   import AnalyticsHIV from "./analytics/HIV/HIVAnalytics.svelte";
 
-  import AnalyticsALL from "./analytics/analyticsALL.svelte";
+  import AnalyticsALL from "./analytics/commonChart.svelte";
 
-	import {Collapse,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem} from 'sveltestrap';
+	import {Collapse,Jumbotron,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem} from 'sveltestrap';
   
 
     let isOpen=false;
@@ -43,8 +43,10 @@
 </script>
 
 <main>
-
-    <body >
+    <body>
+      <Jumbotron style="background-color:mediumpurple;"class="p-3" >
+        <h1 style="text-align:center; " class="display-4">SOS2021-24</h1>
+      </Jumbotron>
         <Navbar color="dark" dark expand = "md" >
             <NavbarBrand href="#/">SOS2021-24</NavbarBrand>
             <Nav navbar >
