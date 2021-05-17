@@ -206,7 +206,7 @@
           Gráfico de líneas básico que muestra la correlación entre:<br> 
           - El total de niños/as que abanandonan la escuela<br>
           - El total de niños/as que están infectados por VIH<br> 
-          - El total de niños/as que están empleados (por cada 100000).
+          - El total de niños/as que están empleados.
         </p>
       </figure>
     {/if}
