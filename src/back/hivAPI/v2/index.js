@@ -9,7 +9,7 @@ module.exports.init = (app) => {
     var HIVData = [
         {
             "country":"France",
-            "year":2016,
+            "year":2017,
             "living_with":500,
             "newly_infected":100,
             "total_infected":600
@@ -22,25 +22,39 @@ module.exports.init = (app) => {
             "total_infected":600
         },
         {
-            "country":"Angola",
-            "year":2006,
-            "living_with":1700,
-            "newly_infected":5100,
-            "total_infected":22100
+            "country":"France",
+            "year":2013,
+            "living_with":500,
+            "newly_infected":100,
+            "total_infected":600
         },
         {
             "country":"Angola",
-            "year":2002,
-            "living_with":11000,
-            "newly_infected":3800,
-            "total_infected":14800
+            "year":2014,
+            "living_with":29000,
+            "newly_infected":5400,
+            "total_infected":34400
+        },
+        {
+            "country":"Angola",
+            "year":2015,
+            "living_with":30000,
+            "newly_infected":5800,
+            "total_infected":35800
+        },
+        {
+            "country":"Angola",
+            "year":2016,
+            "living_with":31000,
+            "newly_infected":5800,
+            "total_infected":36800
         },
         {
             "country":"Ethiopia",
-            "year":2004,
-            "living_with":120000,
-            "newly_infected":15000,
-            "total_infected":135000
+            "year":2015,
+            "living_with":59000,
+            "newly_infected":4000,
+            "total_infected":63000
         },
         {
             "country":"Ethiopia",
@@ -51,24 +65,45 @@ module.exports.init = (app) => {
         },
         {
             "country":"Ethiopia",
-            "year":1999,
-            "living_with":110000,
-            "newly_infected":23000,
-            "total_infected":133000
+            "year":2012,
+            "living_with":76000,
+            "newly_infected":5500,
+            "total_infected":81500
         },
         {
             "country":"Ethiopia",
-            "year":2007,
-            "living_with":110000,
-            "newly_infected":11000,
-            "total_infected":121000
+            "year":2018,
+            "living_with":47000,
+            "newly_infected":2900,
+            "total_infected":49900
+        },
+        {
+            "country":"Eswatini",
+            "year":2012,
+            "living_with":15000,
+            "newly_infected":1400,
+            "total_infected":16400
+        },
+        {
+            "country":"Eswatini",
+            "year":2013,
+            "living_with":14000,
+            "newly_infected":1200,
+            "total_infected":15200
         },
         {
             "country":"Morocco",
-            "year":2003,
+            "year":2014,
             "living_with":500,
             "newly_infected":100,
             "total_infected":600
+        },
+        {
+            "country":"Morocco",
+            "year":2016,
+            "living_with":1000,
+            "newly_infected":100,
+            "total_infected":1100
         },
         {
             "country":"Spain",
@@ -86,10 +121,10 @@ module.exports.init = (app) => {
         },
         {
             "country":"Spain",
-            "year":2004,
-            "living_with":200,
-            "newly_infected":200,
-            "total_infected":400
+            "year":2016,
+            "living_with":100,
+            "newly_infected":100,
+            "total_infected":200
         }
 ];
 
