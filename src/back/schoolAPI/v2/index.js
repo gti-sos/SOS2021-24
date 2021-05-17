@@ -99,6 +99,13 @@ module.exports.init = (app) => {
         "children_out_school_total":8147
     },
     {
+        "country":"Greece",
+        "year":2013,
+        "children_out_school_male":4392,
+        "children_out_school_female":8879,
+        "children_out_school_total":13271
+    },
+    {
         "country":"Germany",
         "year":2011,
         "children_out_school_male":35399,
