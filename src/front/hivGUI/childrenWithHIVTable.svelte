@@ -358,19 +358,19 @@
                                          <td><input placeholder ="Hungary" bind:value="{HIVDatabusqueda.country}"></td>  
                                      </tr><tr>
                                          <td>Año</td>
-                                         <td><input type ="number" placeholder ="2018" bind:value="{HIVDatabusqueda.year}"></td>
+                                         <td><input placeholder ="2018" bind:value="{HIVDatabusqueda.year}"></td>
                                     
                                      </tr><tr>
                                          <td>Viviendo con VIH</td>
-                                         <td><input type="number" placeholder="100" bind:value="{HIVDatabusqueda.living_with}"></td>
+                                         <td><input placeholder="100" bind:value="{HIVDatabusqueda.living_with}"></td>
                                         
                                      </tr><tr>
                                          <td>Nuevos infectados</td>
-                                         <td><input type="number" placeholder="100" bind:value="{HIVDatabusqueda.newly_infected}"></td>
+                                         <td><input placeholder="100" bind:value="{HIVDatabusqueda.newly_infected}"></td>
                                           
                                      </tr><tr>
                                          <td>Total de infectados</td>
-                                         <td><input type="number" placeholder ="200" bind:value="{HIVDatabusqueda.total_infected}"></td>
+                                         <td><input placeholder ="200" bind:value="{HIVDatabusqueda.total_infected}"></td>
                                     </tr>   
                              </tbody>
                          </Table >
@@ -475,6 +475,7 @@
         <Button outline color="danger" on:click="{deleteStats}">
             Eliminar todo
         </Button>
+        <Button outline color="dark" href="#/analytics/children-with-hiv">Ver analítica</Button>
         <p></p>
         <Button color="dark" on:click={pop}>Volver</Button>
 

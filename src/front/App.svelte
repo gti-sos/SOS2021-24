@@ -3,13 +3,22 @@
 	import NotFound from './NotFound.svelte' ;  
 	import Home from './Home.svelte';
   import Inicio from './Inicio.svelte'
+
+  //Imports para APIs
   import SchoolAPI from './schoolGUI/childrenOutSchoolTable.svelte'
   import EditSchool from './schoolGUI/editSchool.svelte'
   import EmploymentAPI from './employmentGUI/childrenEmploymentTable.svelte'
   import EditEmployment from './employmentGUI/editEmployment.svelte'
   import HivAPI from './hivGUI/childrenWithHIVTable.svelte'
   import EditHIV from './hivGUI/editHIV.svelte'
-	import { Collapse,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem } from 'sveltestrap';
+
+  //Imports para analytics
+	import AnalyticsSchool from "./analytics/school/schoolAnalytics.svelte";
+  import AnalyticsHIV from "./analytics/HIV/HIVAnalytics.svelte";
+
+  import AnalyticsALL from "./analytics/commonChart.svelte";
+
+	import {Collapse,Jumbotron,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem} from 'sveltestrap';
   
 
     let isOpen=false;
@@ -17,19 +26,27 @@
     const routes = {
       "/": Inicio,
 		  "/info":Home,
-        "/children-out-school": SchoolAPI,
-        "/children-out-school/:country/:year":EditSchool,
-        "/children-employment": EmploymentAPI,
-        "/children-employment/:country/:year":EditEmployment,
-        "/children-with-hiv": HivAPI,
-        "/children-with-hiv/:country/:year":EditHIV,
-		    '*': NotFound,
-      };
+      "/children-out-school": SchoolAPI,
+      "/children-out-school/:country/:year":EditSchool,
+      "/analytics/children-out-school": AnalyticsSchool,
+
+      "/children-employment": EmploymentAPI,
+      "/children-employment/:country/:year":EditEmployment,
+
+      "/children-with-hiv": HivAPI,
+      "/children-with-hiv/:country/:year":EditHIV,
+      "/analytics/children-with-hiv": AnalyticsHIV,
+
+      "/analytics": AnalyticsALL,
+		  '*': NotFound,
+    };
 </script>
 
 <main>
-
-    <body >
+    <body>
+      <Jumbotron style="background-color:mediumpurple;"class="p-3" >
+        <h1 style="text-align:center; " class="display-4">SOS2021-24</h1>
+      </Jumbotron>
         <Navbar color="dark" dark expand = "md" >
             <NavbarBrand href="#/">SOS2021-24</NavbarBrand>
             <Nav navbar >
@@ -45,6 +62,19 @@
               <NavItem >
                 <NavLink href="#/children-with-hiv">Niños/as con VIH</NavLink>
               </NavItem>
+              <Dropdown  nav {isOpen} toggle="{() => isOpen = !isOpen}" >
+                <DropdownToggle nav caret>
+                  Analíticas
+                </DropdownToggle>
+                <DropdownMenu>
+                  <DropdownItem header>Gráficas</DropdownItem>
+                  <DropdownItem href="#/analytics/children-out-school">Abandono Escolar</DropdownItem>
+                  <DropdownItem href="#/analytics/children-with-hiv">Niños/as con VIH</DropdownItem>
+
+                  <DropdownItem divider />
+                  <DropdownItem href="#/analytics">Todos</DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
             </Nav>
         </Navbar>
     </body>
