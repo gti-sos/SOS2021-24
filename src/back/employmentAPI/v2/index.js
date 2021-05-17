@@ -21,13 +21,13 @@ module.exports.init = (app) => {
         "percent_children_employment_f":60.4,
         "percent_children_employment_t":62
     },
-    {
+    /*{
         "country":"morocco",
         "year":2004,
         "percent_children_employment_m":6,
         "percent_children_employment_f":3,
         "percent_children_employment_t":4.5
-    },
+    },*/
     {
         "country":"costa-rica",
         "year":2016,
@@ -35,13 +35,13 @@ module.exports.init = (app) => {
         "percent_children_employment_f":0.6,
         "percent_children_employment_t":1.2
     },
-    {
+    /*{
         "country":"georgia",
         "year":2006,
         "percent_children_employment_m":33.6,
         "percent_children_employment_f":29.9,
         "percent_children_employment_t":31.8
-    },
+    },*/
     {
         "country":"bolivia",
         "year":2015,
@@ -99,10 +99,25 @@ module.exports.init = (app) => {
         "percent_children_employment_t":13
     },
     {
+        "country":"sudan",
         "year":2014,
         "percent_children_employment_m":34.3,
         "percent_children_employment_f":26.9,
         "percent_children_employment_t":30.6
+    },
+    {
+        "country":"jordan",
+        "year":2016,
+        "percent_children_employment_m":2,
+        "percent_children_employment_f":0.4,
+        "percent_children_employment_t":1.2
+    },
+    {
+        "country":"peru",
+        "year":2015,
+        "percent_children_employment_m":23.1,
+        "percent_children_employment_f":22,
+        "percent_children_employment_t":22.6
     }
 ];
 
