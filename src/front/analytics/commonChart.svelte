@@ -97,7 +97,7 @@
           years.forEach((e) => {
             var yAxis = employmentData
               .filter((d) => d.year === e)
-              .map((qli) => qli["percent_children_employment_t"])
+              .map((qli) => qli["percent_children_employment_t"]*1000)
               .reduce((acc, qli) => qli + acc,0);
             console.log("YAxis: " + yAxis);
             employmentChartData.push(Math.round(yAxis));
@@ -114,7 +114,7 @@
       console.log("employment Chart Data: " + employmentChartData);
       Highcharts.chart("container", {
         title: {
-          text: "children-with-hiv / children-out-school / children-employment",
+          text: "Abandono escolar / Niñ@s empleados / Niñ@s con VIH",
         },
         yAxis: {
           title: {
@@ -149,15 +149,15 @@
         ],
         series: [
           {
-            name: "Total de personas infectadas",
+            name: "Total de niños/as infectadas",
             data: HIVChartData,
           },
           {
-            name: "Total de niños fuera del colegio",
+            name: "Total de niños/as fuera del colegio",
             data: schoolChartData,
           },
           {
-            name: "Porcentaje de niños/as empleados",
+            name: "Total de niños/as empleados",
             data: employmentChartData,
           }
         ],
@@ -192,14 +192,9 @@
   </svelte:head>
   
   <main>
-    <Nav>
-      <NavItem>
-        <NavLink href="/">Volver</NavLink>
-      </NavItem>
-    </Nav>
-  
+
     <div>
-      <h2>Análiticas</h2>
+      <h1>Gráfica Común</h1>
     </div>
   
     {#if msg}
@@ -208,8 +203,8 @@
       <figure class="highcharts-figure">
         <div id="container" />
         <p class="highcharts-description">
-          Gráfico de líneas básico que muestra el total de 
-          niños y niñas infectados por VIH, fuera de la escuela y empleados.
+          Gráfico de líneas básico que muestra la correlación entre el total de 
+          niños y niñas que abanandonan la escuela que están infectados por VIH, y que están empleados.
         </p>
       </figure>
     {/if}

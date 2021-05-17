@@ -8,18 +8,18 @@ module.exports.init = (app) => {
 
     var schoolData = [
     {
-        "country":"Brazil",
-        "year":2009,
-        "children_out_school_male":218767,
-        "children_out_school_female":95884,
-        "children_out_school_total":314651
+        "country":"Cuba",
+        "year":2013,
+        "children_out_school_male":7601,
+        "children_out_school_female":8098,
+        "children_out_school_total":15699
     },
     {
-        "country":"Brazil",
-        "year":2011,
-        "children_out_school_male":228102,
-        "children_out_school_female":261214,
-        "children_out_school_total":489316
+        "country":"Germany",
+        "year":2014,
+        "children_out_school_male":50187,
+        "children_out_school_female":48415,
+        "children_out_school_total":98692
     },
     {
         "country":"Italy",
@@ -97,6 +97,20 @@ module.exports.init = (app) => {
         "children_out_school_male":4374,
         "children_out_school_female":3773,
         "children_out_school_total":8147
+    },
+    {
+        "country":"Germany",
+        "year":2011,
+        "children_out_school_male":35399,
+        "children_out_school_female":36126,
+        "children_out_school_total":71525
+    },
+    {
+        "country":"Germany",
+        "year":2012,
+        "children_out_school_male":50194,
+        "children_out_school_female":45040,
+        "children_out_school_total":95234
     },
     {
         "country":"Germany",
