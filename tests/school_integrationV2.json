@@ -52,9 +52,9 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"Current resources = 14\", function () {\r",
+							"pm.test(\"Current resources = 17\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(14);\r",
+							"    pm.expect(jsonData.length).to.eql(17);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -711,9 +711,9 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"Current resources = 15\", function () {\r",
+							"pm.test(\"Current resources = 18\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(15);\r",
+							"    pm.expect(jsonData.length).to.eql(18);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -907,9 +907,9 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"Current resources = 14\", function () {\r",
+							"pm.test(\"Current resources = 17\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(14);\r",
+							"    pm.expect(jsonData.length).to.eql(17);\r",
 							"});"
 						],
 						"type": "text/javascript"

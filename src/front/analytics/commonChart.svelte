@@ -203,8 +203,10 @@
       <figure class="highcharts-figure">
         <div id="container" />
         <p class="highcharts-description">
-          Gráfico de líneas básico que muestra la correlación entre el total de 
-          niños y niñas que abanandonan la escuela que están infectados por VIH, y que están empleados.
+          Gráfico de líneas básico que muestra la correlación entre:<br> 
+          - El total de niños/as que abanandonan la escuela<br>
+          - El total de niños/as que están infectados por VIH<br> 
+          - El total de niños/as que están empleados.
         </p>
       </figure>
     {/if}
