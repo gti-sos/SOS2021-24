@@ -114,7 +114,7 @@
       console.log("employment Chart Data: " + employmentChartData);
       Highcharts.chart("container", {
         title: {
-          text: "Abandono escolar / Niñ@s empleados / Niñ@s con VIH",
+          text: "Abandono escolar || Niños/as empleados || Niños/as con VIH",
         },
         yAxis: {
           title: {
@@ -206,7 +206,7 @@
           Gráfico de líneas básico que muestra la correlación entre:<br> 
           - El total de niños/as que abanandonan la escuela<br>
           - El total de niños/as que están infectados por VIH<br> 
-          - El total de niños/as que están empleados.
+          - El total de niños/as que están empleados (por cada 100000).
         </p>
       </figure>
     {/if}
