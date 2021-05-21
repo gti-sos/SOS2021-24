@@ -32,6 +32,7 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "cool-ascii-faces": "^1.3.4",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
     "nedb": "^1.8.0",
     "svelte-router-spa": "^6.0.2",
