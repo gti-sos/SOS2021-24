@@ -14,6 +14,7 @@ var port = (process.env.PORT || 10000);
 app.use(bodyParser.json()); 
 app.use(express.json());
 app.use(cors());
+
 app.use("/", express.static(path.join(__dirname,"public")));
 
 //APIs
