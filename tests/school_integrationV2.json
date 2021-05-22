@@ -52,9 +52,9 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"Current resources = 17\", function () {\r",
+							"pm.test(\"Current resources = 18\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(17);\r",
+							"    pm.expect(jsonData.length).to.eql(18);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -98,9 +98,9 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"Resources with country named spain = 2\", function () {\r",
+							"pm.test(\"Resources with country named spain = 3\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(2);\r",
+							"    pm.expect(jsonData.length).to.eql(3);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -711,9 +711,9 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"Current resources = 18\", function () {\r",
+							"pm.test(\"Current resources = 19\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(18);\r",
+							"    pm.expect(jsonData.length).to.eql(19);\r",
 							"});"
 						],
 						"type": "text/javascript"
@@ -907,9 +907,9 @@
 							"pm.test(\"Status code is 200\", function () {\r",
 							"    pm.response.to.have.status(200);\r",
 							"});\r",
-							"pm.test(\"Current resources = 17\", function () {\r",
+							"pm.test(\"Current resources = 18\", function () {\r",
 							"    var jsonData = pm.response.json();\r",
-							"    pm.expect(jsonData.length).to.eql(17);\r",
+							"    pm.expect(jsonData.length).to.eql(18);\r",
 							"});"
 						],
 						"type": "text/javascript"
