@@ -64,6 +64,13 @@ module.exports.init = (app) => {
         "children_out_school_total":74969
     },
     {
+        "country":"Spain",
+        "year":2016,
+        "children_out_school_male":18911,
+        "children_out_school_female":8845,
+        "children_out_school_total":27756
+    },
+    {
         "country":"France",
         "year":2015,
         "children_out_school_male":12578,
