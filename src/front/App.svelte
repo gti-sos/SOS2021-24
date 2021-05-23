@@ -73,11 +73,16 @@
                   <DropdownItem href="#/analytics/children-out-school">Abandono Escolar</DropdownItem>
                   <DropdownItem href="#/analytics/children-employment">Niñ@s emplead@s</DropdownItem>
                   <DropdownItem href="#/analytics/children-with-hiv">Niños/as con VIH</DropdownItem>
-
                   <DropdownItem divider />
                   <DropdownItem href="#/analytics">Todos</DropdownItem>
                 </DropdownMenu>
               </Dropdown>
+              <NavItem>
+                <NavLink>Integraciones</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink>Videos</NavLink>
+              </NavItem>
             </Nav>
         </Navbar>
     </body>
