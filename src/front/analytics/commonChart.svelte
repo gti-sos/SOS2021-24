@@ -113,6 +113,9 @@
       console.log("HIV Chart DaTa: " + HIVChartData);
       console.log("employment Chart Data: " + employmentChartData);
       Highcharts.chart("container", {
+        chart: {
+          type: 'column',
+        },
         title: {
           text: "Abandono escolar || Niños/as empleados || Niños/as con VIH",
         },

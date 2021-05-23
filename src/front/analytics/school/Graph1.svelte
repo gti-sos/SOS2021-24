@@ -24,7 +24,11 @@ async function loadChart() {
     }
     
     console.log("Children out school chart: " + schoolChartData);
+    
     Highcharts.chart("container", {
+      chart: {
+        type: 'column',
+    },
       title: {
         text: "Abandono escolar Siglo XXI",
       },
@@ -63,14 +67,17 @@ async function loadChart() {
         {
           name: "Abandono escolar (Niños)",
           data: schoolChartchildrenOutSchoolMale,
+          color: "#3c8dbc"
         },
         {
           name: "Abandono escolar (Niñas)",
           data: schoolChartchildrenOutSchoolFemale,
+          color: "#7DCEA0",
         },
         {
           name: "Abandono escolar (Total)",
           data: schoolChartchildrenOutSchoolTotal,
+          color: "#EC7063",
         }
         
       ],
