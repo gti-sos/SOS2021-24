@@ -1229,6 +1229,42 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "LoadInitialData END",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-out-school/loadInitialData",
+					"protocol": "https",
+					"host": [
+						"sos2021-24",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"api",
+						"v2",
+						"children-out-school",
+						"loadInitialData"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
