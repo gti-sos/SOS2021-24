@@ -136,7 +136,7 @@ module.exports.init = (app) => {
 ];
 
 //Delete the database
-db.remove({}, {multi: true});
+//db.remove({}, {multi: true});
 
 //GET loadInitialData children-out-school
 app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH  + "/loadInitialData", (req, res) => {
@@ -189,7 +189,7 @@ app.get(BASE_CHILDREN_OUT_SCHOOL_API_PATH, (req,res)=>{
                 }
                 else{
                     data.forEach( (d) =>{
-                    delete d._id;
+                    delete d._id; //borramos el id
                     });
                     res.send(JSON.stringify(data, null, 2));
                     console.log("Data sent:"+JSON.stringify(data, null, 2));
