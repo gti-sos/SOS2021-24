@@ -3,6 +3,7 @@
 	import NotFound from './NotFound.svelte' ;  
 	import Home from './Home.svelte';
   import Inicio from './Inicio.svelte'
+  import {Collapse,Jumbotron,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem} from 'sveltestrap';
 
   //Imports para APIs
   import SchoolAPI from './schoolGUI/childrenOutSchoolTable.svelte'
@@ -19,7 +20,11 @@
 
   import AnalyticsALL from "./analytics/commonChart.svelte";
 
-	import {Collapse,Jumbotron,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem} from 'sveltestrap';
+  //Imports para Integraciones
+  //School
+  import IntegrationRestCountries from "./Integrations/school/paisesExternos.svelte"
+  import IntegrationObesity from "./Integrations/school/obesityStats.svelte"
+  import IntegreationsAll from './Integrations/IntegreationsALL.svelte';
   
 
     let isOpen=false;
@@ -27,9 +32,14 @@
     const routes = {
       "/": Inicio,
 		  "/info":Home,
+      //===============School===============
       "/children-out-school": SchoolAPI,
       "/children-out-school/:country/:year":EditSchool,
       "/analytics/children-out-school": AnalyticsSchool,
+      "/integrations/children-out-school/restcountries": IntegrationRestCountries,
+      "/integrations/children-out-school/restcountries": IntegrationObesity,
+      //==================================
+
 
       "/children-employment": EmploymentAPI,
       "/children-employment/:country/:year":EditEmployment,
@@ -39,6 +49,7 @@
       "/children-with-hiv/:country/:year":EditHIV,
       "/analytics/children-with-hiv": AnalyticsHIV,
 
+      "/integrations":IntegreationsAll,
       "/analytics": AnalyticsALL,
 		  '*': NotFound,
     };
@@ -78,7 +89,7 @@
                 </DropdownMenu>
               </Dropdown>
               <NavItem>
-                <NavLink>Integraciones</NavLink>
+                <NavLink href= "#/integrations">Integraciones</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink>Videos</NavLink>
