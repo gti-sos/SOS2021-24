@@ -55,8 +55,9 @@ app.use(pathFoodStats, function(req, res){
 */
 //Grupo 10: obesity-stats
 
-var remoteAPI1 = "https://sos2021-10.herokuapp.com/api/integration/foodconsumption-stats"
-app.use("/proxyFoodStats", function(req,res){
+var remoteAPI1 = "https://digimon-api.herokuapp.com/api/digimon"
+var pathDigi = "/api/digimon"
+app.use(pathDigi, function(req,res){
 	console.log("Piped:" + req.baseUrl + req.url);
 	req.pipe(request(remoteAPI1).pipe(res));
 });

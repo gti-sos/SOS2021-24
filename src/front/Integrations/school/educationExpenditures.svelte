@@ -37,10 +37,10 @@
         Highcharts.chart('container', {
         chart: {
             type: 'packedbubble',
-            height: '90%'
+            height: '85%'
         },
         title: {
-            text: 'Abandono escolar y gasto en educación por millones de euros.'
+            text: 'Abandono escolar y Gasto en educación por millones de euros.'
         },
         tooltip: {
             useHTML: true
@@ -48,7 +48,7 @@
         plotOptions: {
             packedbubble: {
                 minSize: '20%',
-                maxSize: '65%',
+                maxSize: '70%',
                 zMin: 0,
                 zMax: 1000,
                 layoutAlgorithm: {

@@ -9,11 +9,13 @@
     let employmentChartData = [];
     var years = [];
     let msg = "";
+
     function distinctRecords(MYJSON, prop) {
       return MYJSON.filter((obj, pos, arr) => {
         return arr.map((mapObj) => mapObj[prop]).indexOf(obj[prop]) === pos;
       });
     }
+
     async function loadChart() {
       console.log("Fetching data...");
       const res = await fetch(BASE_CONTACT_API_PATH_v2 + "/children-with-hiv");
@@ -64,7 +66,6 @@
           console.log("Distinct years: " + years);
           //Sumamos los valores para las fechas iguales
           
-          
           //HIVChartData.push("");
           
           years.forEach((e) => {
@@ -74,7 +75,6 @@
               .reduce((acc, nr) => nr + acc,0);
             console.log("YAxis: " + yAxis);
             HIVChartData.push(Math.round(yAxis));
-            
           });
           msg = "";
         }
@@ -100,12 +100,12 @@
               .map((qli) => qli["percent_children_employment_t"]*1000)
               .reduce((acc, qli) => qli + acc,0);
             console.log("YAxis: " + yAxis);
-            employmentChartData.push(Math.round(yAxis));
-            
+            employmentChartData.push(Math.round(yAxis)); 
           });
           msg = "";
         }
-      } else {
+      } 
+      else {
         console.log("ERROR MSG");
         msg = "Por favor primero cargue los datos en al menos una de las APIs";
       }
@@ -189,9 +189,7 @@
     <script src="https://code.highcharts.com/modules/series-label.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
-    <script
-      src="https://code.highcharts.com/modules/accessibility.js"
-      on:load={loadChart}></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js" on:load={loadChart}></script>
   </svelte:head>
   
   <main>

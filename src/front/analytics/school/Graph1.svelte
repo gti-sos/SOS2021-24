@@ -1,7 +1,6 @@
 <script>
-import { onMount } from "svelte";
   
-const BASE_CONTACT_API_PATH = "/api/v2";
+const BASE_API_PATH = "/api/v2";
 let schoolData = [];
 let schoolChartData = [];
 let schoolChartCountryDateData = [];
@@ -11,7 +10,7 @@ let schoolChartchildrenOutSchoolTotal = [];
 
 async function loadChart() {
     console.log("Fetching data...");
-    const res = await fetch(BASE_CONTACT_API_PATH + "/children-out-school");
+    const res = await fetch(BASE_API_PATH + "/children-out-school");
     schoolData = await res.json();
     if (res.ok) {
         schoolData.forEach(stat => {
@@ -119,12 +118,10 @@ async function loadChart() {
   <script src="https://code.highcharts.com/modules/cylinder.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
-  <script
-    src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 </svelte:head>
 
 <main>
-
     <div>
         <h1 style="text-align: center;">Analítica <strong>(Abandono Escolar)</strong></h1>
       </div>
@@ -137,5 +134,4 @@ async function loadChart() {
           </p>
         </figure>
       </div>
-
 </main>
