@@ -30,13 +30,13 @@ async function loadChart() {
         options3d: {
             enabled: true,
             alpha: 15,
-            beta: 10,
+            beta: 20,
             depth: 50,
-            viewDistance: 80
+            viewDistance: 60
         }
     },
       title: {
-        text: "Abandono escolar Siglo XXI",
+        text: "Abandono escolar en el Siglo XXI",
       },
       yAxis: {
         title: {
@@ -45,7 +45,7 @@ async function loadChart() {
       },
       xAxis: {
         title: {
-          text: "País/Año",
+          text: "",
         },
         categories: schoolChartCountryDateData,
       },
@@ -64,7 +64,7 @@ async function loadChart() {
             {
               point: "min",
               text: "Min",
-              backgroundColor: "white",
+              backgroundColor: "gray",
             },
           ],
         },
@@ -97,7 +97,7 @@ async function loadChart() {
         rules: [
           {
             condition: {
-              maxWidth: 11700,
+              maxWidth: 3700,
             },
             chartOptions: {
               legend: {
@@ -132,8 +132,8 @@ async function loadChart() {
     <div>
         <figure class="highcharts-figure">
           <div id="container" />
-          <p class="highcharts-description">
-            Gráfico de líneas básico que muestra los diferentes valores de abandono escolar en varios países.
+          <p style="text-align: center;" class="highcharts-description">
+            Gráfico 3D que muestra los diferentes valores de abandono escolar en varios países y años.
           </p>
         </figure>
       </div>

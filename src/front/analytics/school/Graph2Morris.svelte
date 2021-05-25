@@ -41,12 +41,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
     </svelte:head>
-    <h5 style="text-align: center">Abandono escolar total por año (2011 - 2017)</h5>
+    <h2 style="text-align: center">Abandono escolar Total por año (2011 - 2017)</h2>
     
     <div id="AwesomeChart" style="height: 250px;"></div>
-    
-    <p></p>
-    <p></p>
     <p></p>
     <p></p>
     <h6 style="text-align: center">Gráfica diseñada con Morris.js</h6>
