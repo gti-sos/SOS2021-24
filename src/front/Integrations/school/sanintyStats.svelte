@@ -3,45 +3,46 @@
     import { pop } from "svelte-spa-router";
     
     async function loadChart(){
-        var myDataTrans={
+        var myDataF={
             name: 'Abandono escolar (Total)',
             data: []
         };
-        var extDataTrans={
-            name: 'Gasto escolar por millones(€)',
+        var extDataF={
+            name: 'Nº de camas de hospital',
             data: []
         };
         var allData =[];
         const resData = await fetch("/api/v2/children-out-school");
         const MyData = await resData.json();  
 
-        const res2Data = await fetch("https://education-expenditures.herokuapp.com/api/v1");
+        const res2Data = await fetch("https://sanity-integration.herokuapp.com/sanity-stats");
         const extData = await res2Data.json();  
         
         MyData.forEach((v) => {
-        myDataTrans['data'].push({
+        myDataF['data'].push({
             name:v.country  + " " +v.year,
             value: v.children_out_school_total
             });
         });
 
         extData.forEach((v) => {
-        extDataTrans['data'].push({
+        extDataF['data'].push({
             name: v.country + " " + v.year,
-            value: v.education_expenditure_per_millions
+            value: v.hospital_bed
             });
         });
         
-        allData.push(myDataTrans);
-        allData.push(extDataTrans);
+        allData.push(myDataF);
+        allData.push(extDataF);
         
+        //Grafica
         Highcharts.chart('container', {
         chart: {
             type: 'packedbubble',
             height: '85%'
         },
         title: {
-            text: 'Abandono escolar y Gasto en educación por millones de euros.'
+            text: 'Abandono escolar y Numero de camas en hospitales.'
         },
         tooltip: {
             useHTML: true
@@ -49,15 +50,12 @@
         plotOptions: {
             packedbubble: {
                 minSize: '20%',
-                maxSize: '70%',
+                maxSize: '100%',
                 zMin: 0,
                 zMax: 1000,
                 layoutAlgorithm: {
                     gravitationalConstant: 0.02,
-                    splitSeries: true,
-                    seriesInteraction: false,
-                    dragBetweenSeries: true,
-                    parentNodeLimit: true
+                    splitSeries: false,
                 },
                 dataLabels: {
                     enabled: true,
@@ -95,7 +93,7 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            Esta grafica muestra el total de niños y niñas que abandona la escuela y el gasto en educación por millones de euros en los últimos años.
+            Esta grafica muestra el total de niños y niñas que abandona la escuela y el número de camas de hospital disponibles en países y años concretos.
         </p>
     </figure>
     <Button outline color="secondary" on:click="{pop}"> Atrás</Button>
@@ -106,7 +104,7 @@
 <style>
     .highcharts-figure, .highcharts-data-table table {
     min-width: 320px; 
-    max-width: 800px;
+    max-width: 1000px;
     margin: 1em auto;
     }
     .highcharts-data-table table {

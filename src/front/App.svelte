@@ -25,7 +25,7 @@
 
   //School
   import IntegrationExpenditures from "./Integrations/school/educationExpenditures.svelte"
-  import IntegrationObesity from "./Integrations/school/obesityStats.svelte"
+  import IntegrationSanity from "./Integrations/school/sanintyStats.svelte"
   import IntegrationDigi from "./Integrations/school/integrationExtDigimon.svelte"
   import IntegracionExt2 from "./Integrations/school/integracionExt2.svelte"
   import IntegracionExt3 from "./Integrations/school/integracionExt3Proxy.svelte"
@@ -43,7 +43,7 @@
       "/children-out-school/:country/:year":EditSchool,
       "/analytics/children-out-school": AnalyticsSchool,
       "/integrations/children-out-school/expenditures": IntegrationExpenditures,
-      "/integrations/children-out-school/obesity": IntegrationObesity,
+      "/integrations/children-out-school/sanity": IntegrationSanity,
       "/integrations/children-out-school/digimon": IntegrationDigi,
       "/integrations/children-out-school/yugioh": IntegracionExt2,
       "/integrations/children-out-school/quote": IntegracionExt3,

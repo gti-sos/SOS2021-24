@@ -16,7 +16,10 @@
        <p></p>
        <h4>Integraciones de Abandono Escolar (Enrique Luque García)</h4>
        <div class="div-home">
-           <p><Button color="success" href="#/integrations/children-out-school/expenditures">Integracíon Education Expenditures</Button></p>
+           <p>
+               <Button color="success" href="#/integrations/children-out-school/expenditures">Integracíon Education Expenditures</Button>
+               <Button color="success" href="#/integrations/children-out-school/sanity">Integracíon Sanity Stats</Button>
+            </p>
            <h6>Integracion APIs Externas</h6> 
            <Button color="warning" href="#/integrations/children-out-school/digimon">Integracíon Ext. Digimon</Button>
            <Button color="warning" href="#/integrations/children-out-school/yugioh">Integracíon Ext. YU-GI-OH</Button>

@@ -53,7 +53,6 @@ app.use(pathFoodStats, function(req, res){
 	req.pipe(request(url).pipe(res));
 });
 */
-//Grupo 10: obesity-stats
 
 //Grupo 4: education expenditures
 var remoteAPI_2 = "http://education-expenditures.herokuapp.com/api/v1"
