@@ -13,8 +13,7 @@
        <p></p>
        <h4>Integraciones de Abandono Escolar (Enrique Luque García)</h4>
        <div class="div-home">
-           <Button color="dark" href="#/integrations/children-out-school/restcountries">Integracíon Externa 1</Button>
-           <Button color="primary" href="#/integrations/children-out-school/restcountries">Integracíon Obesity Stats</Button>
+           <Button color="warning" href="#/integrations/children-out-school/expenditures">Integracíon Education Expenditures</Button>
        </div>
    
    </body>

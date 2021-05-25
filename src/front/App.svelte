@@ -21,10 +21,13 @@
   import AnalyticsALL from "./analytics/commonChart.svelte";
 
   //Imports para Integraciones
-  //School
-  import IntegrationRestCountries from "./Integrations/school/paisesExternos.svelte"
-  import IntegrationObesity from "./Integrations/school/obesityStats.svelte"
   import IntegreationsAll from './Integrations/IntegreationsALL.svelte';
+
+  //School
+  import IntegrationExpenditures from "./Integrations/school/educationExpenditures.svelte"
+  import IntegrationObesity from "./Integrations/school/obesityStats.svelte"
+  import Integration1 from "./Integrations/school/integration2.svelte"
+  
   
 
     let isOpen=false;
@@ -36,8 +39,9 @@
       "/children-out-school": SchoolAPI,
       "/children-out-school/:country/:year":EditSchool,
       "/analytics/children-out-school": AnalyticsSchool,
-      "/integrations/children-out-school/restcountries": IntegrationRestCountries,
-      "/integrations/children-out-school/restcountries": IntegrationObesity,
+      "/integrations/children-out-school/expenditures": IntegrationExpenditures,
+      "/integrations/children-out-school/obesity": IntegrationObesity,
+      "/integrations/children-out-school/1": Integration1,
       //==================================
 
 

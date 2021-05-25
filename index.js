@@ -32,6 +32,7 @@ hivAPI.init(app);
 
 //================Proxys de Enrique================
 
+/*
 //Grupo 10: obesity-stats
 var pathObesityStats = "/api/integration/obesity-stats"
 var apiObesityStats = "http://sos2021-10.herokuapp.com"
@@ -51,36 +52,15 @@ app.use(pathFoodStats, function(req, res){
 	console.log("Piped:" + req.baseUrl + req.url);
 	req.pipe(request(url).pipe(res));
 });
+*/
+//Grupo 10: obesity-stats
 
-//Grupo 4: education-expenditures
-var pathEducation = "/api/v1"
-var apiEducation = "https://education-expenditures.herokuapp.com"
-
-app.use(pathEducation, function(req, res){
-	var url = apiEducation + req.baseUrl + req.url;
+var remoteAPI1 = "https://sos2021-10.herokuapp.com/api/integration/foodconsumption-stats"
+app.use("/proxyFoodStats", function(req,res){
 	console.log("Piped:" + req.baseUrl + req.url);
-	req.pipe(request(url).pipe(res));
+	req.pipe(request(remoteAPI1).pipe(res));
 });
 
-//Grupo 2: wine-production-stats
-var pathWineStats = "/api/v2/wine-production-stats"
-var apiWineStats = "http://sos2021-02.herokuapp.com"
-
-app.use(pathWineStats, function(req, res){
-	var url = apiWineStats + req.baseUrl + req.url;
-	console.log("Piped:" + req.baseUrl + req.url);
-	req.pipe(request(url).pipe(res));
-});
-
-//Grupo 2: oil-production-stats
-var pathOilStats = "/api/v2/oil-production-stats"
-var apiOilStats = "http://oilstats.herokuapp.com"
-
-app.use(pathOilStats, function(req, res){
-	var url = apiOilStats + req.baseUrl + req.url;
-	console.log("Piped:" + req.baseUrl + req.url);
-	req.pipe(request(url).pipe(res));
-});
 
 
 //========================F02 /cool====================
