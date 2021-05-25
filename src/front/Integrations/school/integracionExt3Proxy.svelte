@@ -1,14 +1,12 @@
 <script>
 	import {pop} from "svelte-spa-router";
-	import Table from "sveltestrap/src/Table.svelte";
     import Button from "sveltestrap/src/Button.svelte";
     
-    const url = "http://api.quotable.io/random";
     let Quote = [];
 
 	async function loadGraph(){
         console.log("");	
-		const res = await fetch(url); 
+		const res = await fetch("/random");  //Piped proxy
 		if (res.ok) {
 			console.log("Ok, loaded successfully");
 			const json = await res.json();

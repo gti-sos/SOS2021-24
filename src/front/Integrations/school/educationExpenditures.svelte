@@ -15,7 +15,7 @@
         const resData = await fetch("/api/v2/children-out-school");
         const MyData = await resData.json();  
 
-        const res2Data = await fetch("https://education-expenditures.herokuapp.com/api/v1"); //No funciona el proxy?
+        const res2Data = await fetch("https://education-expenditures.herokuapp.com/api/v1");
         const extData = await res2Data.json();  
         MyData.forEach((v) => {
         myDataTrans['data'].push({
@@ -64,7 +64,7 @@
                     filter: {
                         property: 'y',
                         operator: '>',
-                        value: 250
+                        value: 200
                     },
                     style: {
                         color: 'black',

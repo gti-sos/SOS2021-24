@@ -28,7 +28,7 @@
   import IntegrationObesity from "./Integrations/school/obesityStats.svelte"
   import IntegrationDigi from "./Integrations/school/integrationExtDigimon.svelte"
   import IntegracionExt2 from "./Integrations/school/integracionExt2.svelte"
-  import IntegracionExt3 from "./Integrations/school/integracionExt3.svelte"
+  import IntegracionExt3 from "./Integrations/school/integracionExt3Proxy.svelte"
   import IntegracionExt4 from "./Integrations/school/intregacionExt4.svelte"
   
   

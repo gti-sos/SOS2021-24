@@ -88,7 +88,7 @@
 }
 
 .highcharts-data-table table {
-	font-family: Verdana, sans-serif;
+	font-family: Arial, sans-serif;
 	border-collapse: collapse;
 	border: 1px solid #EBEBEB;
 	margin: 10px auto;

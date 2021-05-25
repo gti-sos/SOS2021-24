@@ -55,11 +55,19 @@ app.use(pathFoodStats, function(req, res){
 */
 //Grupo 10: obesity-stats
 
-var remoteAPI1 = "https://digimon-api.herokuapp.com/api/digimon"
-var pathDigi = "/api/digimon"
-app.use(pathDigi, function(req,res){
+//Grupo 4: education expenditures
+var remoteAPI_2 = "http://education-expenditures.herokuapp.com/api/v1"
+var pathEducation = "/api/v1"
+app.use(pathEducation, function(req,res){
 	console.log("Piped:" + req.baseUrl + req.url);
-	req.pipe(request(remoteAPI1).pipe(res));
+	req.pipe(request(remoteAPI_2)).pipe(res);
+});
+
+var remoteAPI1 = "http://api.quotable.io/random"
+var pathQuote = "/random"
+app.use(pathQuote, function(req,res){
+	console.log("Piped:" + req.baseUrl + req.url);
+	req.pipe(request(remoteAPI1)).pipe(res);
 });
 
 
