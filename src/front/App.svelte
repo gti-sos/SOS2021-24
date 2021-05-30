@@ -19,6 +19,7 @@
   import AnalyticsHIV from "./analytics/HIV/HIVAnalytics.svelte";
 
   import AnalyticsALL from "./analytics/commonChart.svelte";
+  import AnalyticsHub from "./analytics/analyticsHub.svelte"
 
   //Imports para Integraciones
   import IntegreationsAll from './Integrations/IntegreationsALL.svelte';
@@ -60,6 +61,7 @@
       "/analytics/children-with-hiv": AnalyticsHIV,
 
       "/integrations":IntegreationsAll,
+      "/analytics/hub":AnalyticsHub,
       "/analytics": AnalyticsALL,
 		  '*': NotFound,
     };
@@ -85,19 +87,9 @@
               <NavItem >
                 <NavLink href="#/children-with-hiv">Niños/as con VIH</NavLink>
               </NavItem>
-              <Dropdown  nav {isOpen} toggle="{() => isOpen = !isOpen}" >
-                <DropdownToggle nav caret>
-                  Analíticas
-                </DropdownToggle>
-                <DropdownMenu>
-                  <DropdownItem header>Gráficas</DropdownItem>
-                  <DropdownItem href="#/analytics/children-out-school">Abandono Escolar</DropdownItem>
-                  <DropdownItem href="#/analytics/children-employment">Niñ@s emplead@s</DropdownItem>
-                  <DropdownItem href="#/analytics/children-with-hiv">Niños/as con VIH</DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem href="#/analytics">Todos</DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
+              <NavItem>
+                <NavLink href= "#/analytics/hub">Analíticas</NavLink>
+              </NavItem>
               <NavItem>
                 <NavLink href= "#/integrations">Integraciones</NavLink>
               </NavItem>

@@ -246,29 +246,29 @@
                         <tbody>
                             <tr>
                                 <th>País</th>
-                                <td><input placeholder ="Spain" bind:value="{schoolDatabusqueda.country}"></td> 
+                                <td><input id = "country_s" placeholder="Spain" bind:value="{schoolDatabusqueda.country}"></td> 
                             </tr>
                             <tr>
                                 <th>Año</th>
-                                <td><input placeholder ="2018" bind:value="{schoolDatabusqueda.year}"></td>
+                                <td><input id = "year_s" placeholder="2018" bind:value="{schoolDatabusqueda.year}"></td>
                             </tr>
                             <tr>
                                 <th>Abandono Escolar (Niños)</th>
-                                 <td><input placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_male}"></td>   
+                                 <td><input id = "male_s" placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_male}"></td>   
                             </tr>
                             <tr>
                                 <th>Abandono Escolar (Niñas)</th>
-                                <td><input placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_female}"></td>
+                                <td><input id = "female_s" placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_female}"></td>
                             </tr>
                             <tr>
                                 <th>Abandono Escolar (Total)</th>
-                                <td><input placeholder ="0" bind:value="{schoolDatabusqueda.children_out_school_total}"></td>
+                                <td><input id = "total_s" placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_total}"></td>
                             </tr>   
                         </tbody>
                     </Table >
                 </ModalBody>
                 <ModalFooter>
-                    <Button color="primary" on:click={buscar}>Buscar</Button>
+                    <Button  id= "search" color="primary" on:click={buscar}>Buscar</Button>
                     <Button color="secondary" on:click={cancelarbusqueda}>Cancelar</Button>
                 </ModalFooter>
         </Modal>
@@ -285,7 +285,7 @@
                      {:else}
                      <Alert color="success" >{mensajeespecifico}</Alert>
                      {/if}
-                        <Button color="secondary" on:click={togglealerta}>Volver</Button>
+                        <Button id="cerrar" color="secondary" on:click={togglealerta}>Volver</Button>
                  </ModalBody>
                  
              </Modal>
@@ -310,12 +310,12 @@
                  <th>Acciones</th>
              </tr>
              <tr>
-                <td><input type="text" placeholder="China" bind:value="{newSchoolData.country}"></td>
-                <td><input type="number" placeholder="2019" min=1960 bind:value="{newSchoolData.year}"></td>
-                <td><input type="number" placeholder="0" min=0 bind:value="{newSchoolData.children_out_school_male}"></td> 
-                <td><input type="number" placeholder="0" min=0 bind:value="{newSchoolData.children_out_school_female}"></td>    
-                <td><input type="number" placeholder="0" min=0 bind:value="{newSchoolData.children_out_school_total}"></td>  
-                <td><Button outline color="primary" on:click={insertSchoolData}>Insertar</Button></td>           
+                <td><input id="country" type="text" placeholder="China" bind:value="{newSchoolData.country}"></td>
+                <td><input id="year" type="number" placeholder="2019" min=1960 bind:value="{newSchoolData.year}"></td>
+                <td><input id="male" type="number" placeholder="0" min=0 bind:value="{newSchoolData.children_out_school_male}"></td> 
+                <td><input id="female" type="number" placeholder="0" min=0 bind:value="{newSchoolData.children_out_school_female}"></td>    
+                <td><input id="total" type="number" placeholder="0" min=0 bind:value="{newSchoolData.children_out_school_total}"></td>  
+                <td><Button id="insertData" outline color="primary" on:click={insertSchoolData}>Insertar</Button></td>           
             </tr>
          </thead>
          <tbody>
@@ -327,8 +327,8 @@
                      <td>{sc.children_out_school_female}</td>
                      <td>{sc.children_out_school_total}</td>
                      <td>
-                         <Button outline color="danger" on:click={() =>deleteSchoolData(sc.country,sc.year)}> Borrar </Button>
-                         <Button outline color="success" on:click={() =>gotoupdate(sc.country,sc.year) }> Actualizar</Button>
+                         <Button id="delete_button_{sc.country}_{sc.year}" outline color="danger" on:click={() =>deleteSchoolData(sc.country,sc.year)}> Borrar </Button>
+                         <Button id="edit_button_{sc.country}_{sc.year}" outline color="success" on:click={() =>gotoupdate(sc.country,sc.year) }> Actualizar</Button>
                      </td>
                  </tr>
              {/each}
@@ -341,10 +341,10 @@
     {/if}
 
         <p></p>
-        <Button color="success" on:click="{loadStats}">
+        <Button id="loadData" color="success" on:click="{loadStats}">
             Cargar datos inciales
         </Button>
-        <Button color="danger" on:click="{deleteStats}">
+        <Button id="deleteAll" color="danger" on:click="{deleteStats}">
             Eliminar todo
         </Button>
         <Button color="dark" href="#/analytics/children-out-school">Ver analítica</Button>
