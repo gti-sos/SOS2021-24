@@ -204,7 +204,7 @@
       <figure class="highcharts-figure">
         <div id="container" />
         <p class="highcharts-description">
-          Gráfico de líneas básico que muestra la correlación entre:<br> 
+          Gráfico de barras básico que muestra la correlación entre:<br> 
           - El total de niños/as que abanandonan la escuela<br>
           - El total de niños/as que están infectados por VIH<br> 
           - El total de niños/as que están empleados.

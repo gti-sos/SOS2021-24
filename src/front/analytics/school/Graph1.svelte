@@ -2,7 +2,6 @@
   
 const BASE_API_PATH = "/api/v2";
 let schoolData = [];
-let schoolChartData = [];
 let schoolChartCountryDateData = [];
 let schoolChartchildrenOutSchoolMale = [];
 let schoolChartchildrenOutSchoolFemale = [];
@@ -21,7 +20,7 @@ async function loadChart() {
       });
     }
     
-    console.log("Children out school chart: " + schoolChartData);
+    console.log("Children out school chart: " + schoolData);
     
     Highcharts.chart("container", {
       chart: {
@@ -68,7 +67,7 @@ async function loadChart() {
           ],
         },
       ],
-      plotOptions: {
+     plotOtions: {
         series: {
             depth: 30,
             colorByPoint: false

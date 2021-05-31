@@ -30,7 +30,9 @@
   import IntegrationDigi from "./Integrations/school/integrationExtDigimon.svelte"
   import IntegracionExt2 from "./Integrations/school/integracionExt2.svelte"
   import IntegracionExt3 from "./Integrations/school/integracionExt3Proxy.svelte"
-  import IntegracionExt4 from "./Integrations/school/intregacionExt4.svelte"
+  import IntegracionExt4 from "./Integrations/school/integracionExt4.svelte"
+  import IntegracionExt5 from "./Integrations/school/integracionExt5.svelte"
+  import IntegracionObesity from "./Integrations/school/integracionObesity.svelte"
   
   
 
@@ -48,7 +50,9 @@
       "/integrations/children-out-school/digimon": IntegrationDigi,
       "/integrations/children-out-school/yugioh": IntegracionExt2,
       "/integrations/children-out-school/quote": IntegracionExt3,
-      "/integrations/children-out-school/4": IntegracionExt4,
+      "/integrations/children-out-school/restcountries": IntegracionExt4,
+      "/integrations/children-out-school/btc": IntegracionExt5,
+      "/integrations/children-out-school/obesity": IntegracionObesity,
       //==================================
 
 
