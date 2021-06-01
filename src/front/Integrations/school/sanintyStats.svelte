@@ -1,8 +1,10 @@
 <script>
     import Button from "sveltestrap/src/Button.svelte";
     import { pop } from "svelte-spa-router";
-    
+    //NO va a contar...
+
     async function loadChart(){
+        var allData =[];
         var myDataF={
             name: 'Abandono escolar (Total)',
             data: []
@@ -11,7 +13,7 @@
             name: 'Nº de camas de hospital',
             data: []
         };
-        var allData =[];
+        
         const resData = await fetch("/api/v2/children-out-school");
         const MyData = await resData.json();  
 

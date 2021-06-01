@@ -114,14 +114,14 @@
       console.log("employment Chart Data: " + employmentChartData);
       Highcharts.chart("container", {
         chart: {
-          type: 'column',
+          type: 'bar',
         },
         title: {
           text: "Abandono escolar || Niños/as empleados || Niños/as con VIH",
         },
         yAxis: {
           title: {
-            text: "Ratio",
+            text: "Valor",
           },
         },
         xAxis: {

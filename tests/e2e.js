@@ -63,7 +63,7 @@ await page.screenshot({ path: './tests/screenshots/06_integrations.png' });
 //Abandono escolar
 console.log("School integration with education");//Esta sale en blanco el screenshot porque hay demasiados datos...
 await page.click("body > table > ul:nth-child(2) > a:nth-child(1)");
-await page.waitForTimeout(7000);
+await page.waitForTimeout(9000);
 await page.screenshot({ path: './tests/screenshots/07_integrations_school1.png' });
 //Volver
 await page.click("body > main > main > button");
@@ -76,9 +76,16 @@ await page.screenshot({ path: './tests/screenshots/08_integrations_school2.png' 
 await page.click("body > main > main > button");
 
 console.log("School integration with obesity")
-await page.click("body > table > ul:nth-child(2) > a.list-group-item-action.list-group-item-primary.list-group-item");
+await page.click("body > table > ul:nth-child(2) > a:nth-child(3)");
 await page.waitForTimeout(6000);
 await page.screenshot({ path: './tests/screenshots/09_integrations_school3.png' });
+//Volver
+await page.click("body > main > main > div:nth-child(2) > button");
+
+console.log("School integration with food")
+await page.click("body > table > ul:nth-child(2) > a:nth-child(4)");
+await page.waitForTimeout(6000);
+await page.screenshot({ path: './tests/screenshots/09.5_integrations_school3.png' });
 //Volver
 await page.click("body > main > main > div:nth-child(2) > button");
 
@@ -175,7 +182,7 @@ await page.screenshot({ path: './tests/screenshots/19_school_load.png'});
 console.log("Search school data button");
 await page.click("body > main > main > button.btn.btn-info"),
 await page.waitForTimeout(1000);
-await page.screenshot({ path: './tests/screenshots/18_school_search_01.png' });
+await page.screenshot({ path: './tests/screenshots/20_school_search_01.png' });
 */
 
 //Cerrar

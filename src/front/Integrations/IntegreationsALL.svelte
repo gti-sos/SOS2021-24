@@ -16,6 +16,7 @@
         <ListGroupItem  color=info href="#/integrations/children-out-school/expenditures" action>Integracíon API grupo 4 Education Expenditures</ListGroupItem>
         <ListGroupItem color=info href="#/integrations/children-out-school/sanity" action>Integracíon API grupo 10 Sanity Stats</ListGroupItem>
         <ListGroupItem color=primary href="#/integrations/children-out-school/obesity" action>Uso API grupo 10 Obesity Stats</ListGroupItem>
+        <ListGroupItem color=primary href="#/integrations/children-out-school/food" action>Uso API grupo 10 Food Consumption</ListGroupItem>
         </ListGroup>
         <br>
         <h6>Integraciones/Usos APIs Externas</h6>
