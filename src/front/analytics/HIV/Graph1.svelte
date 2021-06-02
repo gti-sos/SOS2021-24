@@ -105,7 +105,7 @@
     <main>
     
         <div>
-            <h1 style="text-align: center;">Analítica <strong>(Niños/as con VIH)</strong></h1>
+            <h1 style="text-align: center;"> Analítica <strong>(Niños/as con VIH)</strong></h1>
           </div>
         
         <div>
