@@ -15,7 +15,7 @@
         const resData = await fetch("/api/v2/children-out-school");
         const MyData = await resData.json();  
 
-        const res2Data = await fetch("https://education-expenditures.herokuapp.com/api/v1");
+        const res2Data = await fetch("https://education-expenditures.herokuapp.com/api/v1/reduced");
         const extData = await res2Data.json();  
         
         MyData.forEach((v) => {
