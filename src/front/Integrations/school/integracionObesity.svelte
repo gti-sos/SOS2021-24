@@ -8,7 +8,7 @@ let obesityMale= [];
 let obesityFemale = [];
 
 async function loadChart() {
-    const res = await fetch("http://sos2021-10.herokuapp.com/api/integration/obesity-stats");
+    const res = await fetch("https://sos2021-10.herokuapp.com/api/integration/obesity-stats");
     obesityData = await res.json();
     if (res.ok) {
       obesityData.forEach((stat) => {
