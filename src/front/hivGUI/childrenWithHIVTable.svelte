@@ -59,7 +59,6 @@
              }
          }
  
- 
       async function getHIVData() {
              getNumPaginas()
              console.log(num_paginas)
