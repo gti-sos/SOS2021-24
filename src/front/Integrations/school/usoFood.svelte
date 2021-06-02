@@ -37,13 +37,10 @@
         reversed: false,
         title: {
             enabled: true,
-            text: 'Número de camas'
+            text: 'Pais/Año'
         },
         labels: {
             format: '{value}'
-        },
-        accessibility: {
-            rangeDescription: 'Range: 0 to 80 km.'
         },
         maxPadding: 0.05,
         showLastLabel: true,
@@ -151,5 +148,4 @@
 .highcharts-data-table tr:hover {
     background: #f1f7ff;
 }
-
     </style>
