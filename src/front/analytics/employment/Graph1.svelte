@@ -3,7 +3,6 @@
       
     const BASE_CONTACT_API_PATH = "/api/v2";
     let employmentData = [];
-    let employmentChartData = [];
     let employmentChartCountryDateData = [];
     let employmentChartchildrenEmploymentMale = [];
     let employmentChartchildrenEmploymentFemale = [];
@@ -23,83 +22,77 @@
       });
     }
     
-    console.log("Children employment chart: " + employmentChartData);
-    Highcharts.chart("container", {
-      title: {
-        text: "Niños empleados Siglo XXI",
-      },
-      yAxis: {
-        title: {
-          text: "Valor",
-        },
-      },
-      xAxis: {
-        title: {
-          text: "País/Año",
-        },
+    console.log("Children employment chart: " + employmentData);
+    Highcharts.chart('container', {
+    chart: {
+        type: 'areaspline'
+    },
+    title: {
+        text: 'Niños empleados en el siglo XXI'
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'left',
+        verticalAlign: 'top',
+        x: 150,
+        y: 100,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF'
+    },
+    xAxis: {
         categories: employmentChartCountryDateData,
-      },
-      legend: {
-        layout: "vertical",
-        align: "right",
-        verticalAlign: "middle",
-      },
-      annotations: [
-        {
-          labels: [
-            {
-              point: "date",
-              text: "",
-            },
-            {
-              point: "min",
-              text: "Min",
-              backgroundColor: "white",
-            },
-          ],
-        },
-      ],
-      series: [
-        {
+        plotBands: [{ // visualize the years
+            from: 4.5,
+            to: 6.5,
+            color: 'rgba(68, 170, 213, .2)'
+        }]
+    },
+    yAxis: {
+        title: {
+            text: 'Valor'
+        }
+    },
+    tooltip: {
+        shared: true,
+        valueSuffix: ' units'
+    },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        areaspline: {
+            fillOpacity: 0.5
+        }
+    },
+    series: [{
           name: "Niños empleados",
           data: employmentChartchildrenEmploymentMale,
+          //color: "#3c8dbc"
         },
         {
           name: "Niñas empleadas",
           data: employmentChartchildrenEmploymentFemale,
+          //color: "#7DCEA0",
         },
         {
           name: "Total de niñ@s emplead@s",
           data: employmentChartchildrenEmploymentTotal,
-        }
-        
-      ],
-      responsive: {
-        rules: [
-          {
-            condition: {
-              maxWidth: 500,
-            },
-            chartOptions: {
-              legend: {
-                layout: "horizontal",
-                align: "center",
-                verticalAlign: "bottom",
-              },
-            },
-          },
-        ],
-      },
-    });
+          //color: "#EC7063",
+        }]
+  });
   }
 </script>
 <svelte:head>
   <script src="https://code.highcharts.com/highcharts.js" on:load={loadChart}></script>
-  <script src="https://code.highcharts.com/modules/series-label.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
-  <script src="https://code.highcharts.com/modules/export-data.js"></script>
-  <script
-    src="https://code.highcharts.com/modules/accessibility.js"></script>
+      
+      <script src="https://code.highcharts.com/modules/exporting.js"></script>
+      <script src="https://code.highcharts.com/modules/export-data.js"></script>
+      <script
+        src="https://code.highcharts.com/modules/accessibility.js"></script>
+    
+
 </svelte:head>
 
 <main>
@@ -120,15 +113,42 @@
 </main>
 
 <style>
-    main {
-      text-align: center;
-      padding: 1em;
-      margin: 0 auto;
-    }
-    div{
-      margin-bottom: 15px;
-    }
-    p {
-      display: inline;
-    }
-  </style>
+    #container {
+    height: 400px; 
+}
+
+.highcharts-figure, .highcharts-data-table table {
+    min-width: 310px; 
+    max-width: 800px;
+    margin: 1em auto;
+}
+
+.highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #8d0404;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 500px;
+}
+.highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+}
+.highcharts-data-table th {
+	font-weight: 600;
+    padding: 0.5em;
+}
+.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
+    padding: 0.5em;
+}
+.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f867;
+}
+.highcharts-data-table tr:hover {
+    background: #1241805e;
+}
+
+</style>
