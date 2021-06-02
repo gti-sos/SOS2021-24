@@ -346,7 +346,7 @@ module.exports.init = (app) => {
 ];
 
 //Delete the database
-db.remove({}, {multi: true});
+//db.remove({}, {multi: true});
 
 //GET loadInitialData children-with-hiv
 app.get(BASE_CHILDREN_WITH_HIV_API_PATH  + "/loadInitialData", (req, res) => {
