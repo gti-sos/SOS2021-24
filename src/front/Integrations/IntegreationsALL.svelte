@@ -44,9 +44,6 @@
             <ListGroupItem id="externalapi2" color=dark href="#/integrations/children-with-hiv/jugadores" action>Uso API Ext. Jugadores de pádel</ListGroupItem>
         </ListGroup>
     </Table>
-    
-       <br>
-       <h4>Integraciones del resto</h4>
    
    </body>
    </main>
