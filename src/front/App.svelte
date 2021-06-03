@@ -34,6 +34,7 @@
   import IntegracionExt5 from "./Integrations/school/integracionExt5.svelte"
   import IntegracionObesity from "./Integrations/school/integracionObesity.svelte"
   import IntegracionFood from "./Integrations/school/usoFood.svelte"
+  import IntegracionExt6 from "./Integrations/school/integracionEXT6.svelte"
 
   //HIV
   import IntegracionNatality from "./Integrations/HIV/natalityStats.svelte"
@@ -60,6 +61,7 @@
       "/integrations/children-out-school/quote": IntegracionExt3,
       "/integrations/children-out-school/restcountries": IntegracionExt4,
       "/integrations/children-out-school/5": IntegracionExt5,
+      "/integrations/children-out-school/6": IntegracionExt6,
       "/integrations/children-out-school/obesity": IntegracionObesity,
       "/integrations/children-out-school/food": IntegracionFood,
       //==================================

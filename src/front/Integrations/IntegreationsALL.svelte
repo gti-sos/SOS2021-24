@@ -10,7 +10,6 @@
        <p></p>
        <p></p>
        <h4 style="text-align: center;">Integraciones de Abandono Escolar (Enrique Luque García)</h4>
-        <Table>
        <h6>Integraciones/Usos APIs Alumnos de SOS</h6>
        <ListGroup>
         <ListGroupItem  color=info href="#/integrations/children-out-school/expenditures" action>Integracíon API grupo 4 Education Expenditures</ListGroupItem>
@@ -26,8 +25,7 @@
             <ListGroupItem id="extapi3" color=secondary href="#/integrations/children-out-school/quote" action>Uso API Ext. Random Quotes</ListGroupItem>
             <ListGroupItem id="extapi4" color=dark href="#/integrations/children-out-school/restcountries" action>Uso API Ext. Restcountries</ListGroupItem>
         </ListGroup>
-    </Table>
-
+ 
     <h4 style="text-align: center;">Integraciones de Niños/as con VIH (Juan Ignacio Roldán Torres)</h4>
         <Table>
        <h6>Integraciones/Usos APIs Alumnos de SOS</h6>
