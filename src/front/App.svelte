@@ -34,6 +34,14 @@
   import IntegracionExt5 from "./Integrations/school/integracionExt5.svelte"
   import IntegracionObesity from "./Integrations/school/integracionObesity.svelte"
   import IntegracionFood from "./Integrations/school/usoFood.svelte"
+
+  //HIV
+  import IntegracionNatality from "./Integrations/HIV/natalityStats.svelte"
+  import IntegracionLife from "./Integrations/HIV/lifeStats.svelte"
+  import IntegracionHDI from "./Integrations/HIV/hdiStats.svelte"
+  import IntegracionMH from "./Integrations/HIV/mhStats.svelte"
+  import IntegracionExtPalas from "./Integrations/HIV/palasExt.svelte"
+  import IntegracionExtJugadores from "./Integrations/HIV/jugadoresExt.svelte"
   
   
 
@@ -62,9 +70,18 @@
       "/children-employment/:country/:year":EditEmployment,
       "/analytics/children-employment": AnalyticsEmployment,
 
+
+      //===============HIV===============
       "/children-with-hiv": HivAPI,
       "/children-with-hiv/:country/:year":EditHIV,
       "/analytics/children-with-hiv": AnalyticsHIV,
+      "/integrations/children-with-hiv/natality":IntegracionNatality,
+      "/integrations/children-with-hiv/life":IntegracionLife,
+      "/integrations/children-with-hiv/hdi":IntegracionHDI,
+      "/integrations/children-with-hiv/mh":IntegracionMH,
+      "/integrations/children-with-hiv/palas":IntegracionExtPalas,
+      "/integrations/children-with-hiv/jugadores":IntegracionExtJugadores,
+
 
       "/integrations":IntegreationsAll,
       "/analytics/hub":AnalyticsHub,
