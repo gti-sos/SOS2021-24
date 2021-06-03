@@ -5,7 +5,6 @@ const puppeteer = require('puppeteer');
     const page = await browser.newPage();
     await page.setViewport({width: 1500, height: 1200 });
 
-
 //Landing page
 await page.goto('http://localhost:10000/');
 console.log("Landing page opened");
@@ -35,19 +34,19 @@ await page.click("body > a.btn.btn-dark");
 await page.waitForTimeout(9000);
 await page.click("body > main > main > button");
 await page.click("body > a.btn.btn-dark");
-await page.waitForTimeout(7000);
+await page.waitForTimeout(3000);
+await page.click("body > main > main > button")
+await page.click("body > a.btn.btn-dark");
+await page.waitForTimeout(2000);
 await page.click("body > main > main > button")
 await page.click("body > a.btn.btn-dark");
 await page.waitForTimeout(5000);
-await page.click("body > main > main > button")
-await page.click("body > a.btn.btn-dark");
-await page.waitForTimeout(7000);
 await page.screenshot({ path: './tests/screenshots/04_analytics_school.png' });
 await page.click("body > main > main > button")
 
 console.log("Common chart")
 await page.click("body > a.btn.btn-primary");
-await page.waitForTimeout(9000);
+await page.waitForTimeout(8000);
 await page.screenshot({ path: './tests/screenshots/05_common_chart.png' });
 
 
@@ -60,7 +59,7 @@ await Promise.all([
 await page.waitForTimeout(1000);
 await page.screenshot({ path: './tests/screenshots/06_integrations.png' });
 
-//Abandono escolar
+//=====================Abandono escolar
 console.log("School integration with education");//Esta sale en blanco el screenshot porque hay demasiados datos...
 await page.click("body > table > ul:nth-child(2) > a:nth-child(1)");
 await page.waitForTimeout(9000);
@@ -121,7 +120,7 @@ await page.click("body > main > main > div:nth-child(2) > button");
 
 
 //==========================Tablas===============================
-//Abandono escolar
+//=======================Abandono escolar
 await Promise.all([
     page.waitForNavigation(),
     page.click("body > nav > ul > li:nth-child(2) > a"),
@@ -178,14 +177,14 @@ await page.click("#loadData");
 await page.waitForTimeout(1000);
 await page.screenshot({ path: './tests/screenshots/19_school_load.png'});
 
-
+/*
 console.log("Search school data button");
 await page.focus("#buscar"),
 await page.click("#buscar"),
 await page.waitForSelector('#buscar', { visible: true });
 //await page.waitForTimeout(1000);
 await page.screenshot({ path: './tests/screenshots/20_school_search_01.png' });
-
+*/
 
 //Cerrar
 await page.close();
