@@ -2,7 +2,8 @@
 	import Router from 'svelte-spa-router';
 	import NotFound from './NotFound.svelte' ;  
 	import Home from './Home.svelte';
-  import Inicio from './Inicio.svelte'
+  import Inicio from './Inicio.svelte';
+  import About from "./About.svelte";
   import {Collapse,Jumbotron,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem} from 'sveltestrap';
 
   //Imports para APIs
@@ -50,6 +51,7 @@
     const routes = {
       "/": Inicio,
 		  "/info":Home,
+      "/about":About,
       //===============School===============
       "/children-out-school": SchoolAPI,
       "/children-out-school/:country/:year":EditSchool,
@@ -118,7 +120,7 @@
                 <NavLink href= "#/integrations">Integraciones</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Videos</NavLink>
+                <NavLink href="#/about">Videos</NavLink>
               </NavItem>
             </Nav>
         </Navbar>
