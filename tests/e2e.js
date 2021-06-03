@@ -162,7 +162,7 @@ await page.click("#insertData"),
 await page.waitForTimeout(1000);
 console.log("New school data added");
 await page.screenshot({ path: './tests/screenshots/17_school_insert_final.png' });
-await page.click("body > main > main > div:nth-child(2) > div > div.modal.show.d-block > div > div > div.modal-header > button > span")
+await page.click("#insertData")
 
 console.log("Deleted all school data");
 await page.click("#deleteAll");
@@ -178,12 +178,14 @@ await page.click("#loadData");
 await page.waitForTimeout(1000);
 await page.screenshot({ path: './tests/screenshots/19_school_load.png'});
 
-/*
+
 console.log("Search school data button");
-await page.click("body > main > main > button.btn.btn-info"),
-await page.waitForTimeout(1000);
+await page.focus("#buscar"),
+await page.click("#buscar"),
+await page.waitForSelector('#buscar', { visible: true });
+//await page.waitForTimeout(1000);
 await page.screenshot({ path: './tests/screenshots/20_school_search_01.png' });
-*/
+
 
 //Cerrar
 await page.close();

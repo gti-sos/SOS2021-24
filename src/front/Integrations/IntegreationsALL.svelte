@@ -14,7 +14,7 @@
        <h6>Integraciones/Usos APIs Alumnos de SOS</h6>
        <ListGroup>
         <ListGroupItem  color=info href="#/integrations/children-out-school/expenditures" action>Integracíon API grupo 4 Education Expenditures</ListGroupItem>
-        <ListGroupItem color=info href="#/integrations/children-out-school/sanity" action>Integracíon API grupo 10 Sanity Stats</ListGroupItem>
+        <ListGroupItem color=warning href="#/integrations/children-out-school/sanity" action>Integracíon API grupo 10 Sanity Stats</ListGroupItem>
         <ListGroupItem color=primary href="#/integrations/children-out-school/obesity" action>Uso API grupo 10 Obesity Stats</ListGroupItem>
         <ListGroupItem color=primary href="#/integrations/children-out-school/food" action>Uso API grupo 10 Food Consumption</ListGroupItem>
         </ListGroup>
@@ -27,8 +27,6 @@
             <ListGroupItem id="extapi4" color=dark href="#/integrations/children-out-school/restcountries" action>Uso API Ext. Restcountries</ListGroupItem>
         </ListGroup>
     </Table>
-
-   
     
        <br>
        <h4>Integraciones del resto</h4>

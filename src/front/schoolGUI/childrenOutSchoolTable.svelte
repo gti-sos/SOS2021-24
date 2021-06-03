@@ -238,7 +238,7 @@
  <main>
     <h1 style="text-align: center;">Administrador de datos de <strong>Abandono Escolar</strong></h1>
     {#if !filtros_act} 
-        <Button color="info" on:click={cancelarbusqueda}> Buscar </Button>
+        <Button id="buscar" color="info" on:click={cancelarbusqueda}> Buscar </Button>
     {:else}
         <Button color="warning" on:click={quitafiltros}> Quitar filtros </Button> 
         <Alert color="warning">Desactive los filtros para realizar otra búsqueda</Alert>

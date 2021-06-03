@@ -95,7 +95,7 @@ async function loadChart() {
         rules: [
           {
             condition: {
-              maxWidth: 3700,
+              maxWidth: 3000,
             },
             chartOptions: {
               legend: {
@@ -133,3 +133,11 @@ async function loadChart() {
         </figure>
       </div>
 </main>
+
+<style>
+  .highcharts-figure {
+      min-width: 320px; 
+      max-width: 1400px;
+      margin: 1em auto;
+  }
+</style>
