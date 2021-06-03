@@ -31,45 +31,12 @@ hivAPI.init(app);
 //INTEGRACIONES
 
 //================Proxys de Enrique================
-
-/*
-//Grupo 10: obesity-stats
-var pathObesityStats = "/api/integration/obesity-stats"
-var apiObesityStats = "http://sos2021-10.herokuapp.com"
-
-app.use(pathObesityStats, function(req, res){
-	var url = apiObesityStats + req.baseUrl + req.url;
-	console.log("Piped:" + req.baseUrl + req.url);
-	req.pipe(request(url).pipe(res));
-});
-
-//Grupo 10: foodconsumption-stats
-var pathFoodStats = "/api/integration/foodconsumption-stats"
-var apiFoodStats = "http://sos2021-10.herokuapp.com"
-
-app.use(pathFoodStats, function(req, res){
-	var url = apiFoodStats + req.baseUrl + req.url;
-	console.log("Piped:" + req.baseUrl + req.url);
-	req.pipe(request(url).pipe(res));
-});
-*/
-
-//Grupo 4: education expenditures
-var remoteAPI_2 = "http://education-expenditures.herokuapp.com/api/v1"
-var pathEducation = "/api/v1"
-app.use(pathEducation, function(req,res){
-	console.log("Piped:" + req.baseUrl + req.url);
-	req.pipe(request(remoteAPI_2)).pipe(res);
-});
-
 var remoteAPI1 = "http://api.quotable.io/random"
 var pathQuote = "/random"
 app.use(pathQuote, function(req,res){
 	console.log("Piped:" + req.baseUrl + req.url);
 	req.pipe(request(remoteAPI1)).pipe(res);
 });
-
-
 
 //========================F02 /cool====================
 app.get("/cool", (request,response) => {

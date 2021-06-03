@@ -210,7 +210,6 @@
          getHIVData();
          }
          else{
- 
              console.log("Nada añadido")
              popinsert=true;
          }
@@ -300,7 +299,7 @@
             <Alert color="warning">Desactive los filtros para realizar otra búsqueda</Alert>
         {/if}
      <div>
-               <!-- Modal para insertar -->
+            <!-- Modal para insertar -->
              <div id="modal">
              <Modal isOpen={open1} toggle={toggle1} transitionOptions>
                  <ModalHeader {toggle1}>¿Quieres insertar un nuevo dato?</ModalHeader>
