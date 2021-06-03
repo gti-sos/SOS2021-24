@@ -49,7 +49,7 @@
         }
     },
     series: [{
-        name: 'Porcentaje',
+        name: 'Digimons',
         data: clasesDigimons
     }]
 });

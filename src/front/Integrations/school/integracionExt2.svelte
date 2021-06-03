@@ -55,7 +55,7 @@ async function loadChart(){
         }
     },
     series: [{
-        name: 'Número de cartas',
+        name: 'Porcentaje de cartas',
         data: cardTypes
     }]
 });
