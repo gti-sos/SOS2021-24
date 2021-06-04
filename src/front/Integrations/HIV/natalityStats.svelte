@@ -36,7 +36,7 @@
 				HIVChartTotalInfected.push(stat["total_infected"]); 
       		});
     	}
-
+        
 	Highcharts.chart('container', {
     chart: {
         type: 'columnpyramid'

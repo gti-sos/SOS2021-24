@@ -57,15 +57,10 @@ app.use(path01, function(req, res) {
 	console.log('piped: ' + req.baseUrl + req.url);
 	req.pipe(request(url)).pipe(res);
   });
-  
 
-
-
-
-//==========================
 
 //================Proxy de Juan================
-var urlNatality = "https://sos2021-natality-stats.herokuapp.com/api/v2/natality-stats?country=moldova&date=2018";
+var urlNatality = "";
 var grupo01 = "/proxy";
 app.use(grupo01, function(req,res){
 	console.log("Piped:" + req.baseUrl + req.url);
