@@ -60,11 +60,11 @@ app.use(path01, function(req, res) {
 
 
 //================Proxy de Juan================
-var urlMH = "https://sos2021-23.herokuapp.com";
-var grupo23 = "/api/v1/mh-stats";
-app.use(grupo23, function(req,res){
+var urlLS = "https://sos2021-01-life-stats.herokuapp.com";
+var grupo01 = "/api/v2/life-stats";
+app.use(grupo01, function(req,res){
 	console.log("Piped:" + req.baseUrl + req.url);
-	req.pipe(request(urlMH)).pipe(res);
+	req.pipe(request(urlLS)).pipe(res);
 });
 
 
