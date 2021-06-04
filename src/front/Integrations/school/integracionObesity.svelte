@@ -97,7 +97,7 @@ async function loadChart() {
             Gráfico de área que muestra los diferentes valores de sobrepeso en varios países y años.
           </p>
         </figure>
-        <Button outline color="secondary" on:click="{pop}"> Atrás</Button>
+        <Button id="back" outline color="secondary" on:click="{pop}"> Atrás</Button>
       </div>
 </main>
 <style>
