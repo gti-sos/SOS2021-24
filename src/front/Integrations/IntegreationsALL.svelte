@@ -30,7 +30,7 @@
         <Table>
        <h6>Integraciones/Usos APIs Alumnos de SOS</h6>
        <ListGroup>
-        <ListGroupItem color=primary href="#/integrations/children-with-hiv/natality" action>API grupo 1 Natality Stats</ListGroupItem>
+        <ListGroupItem color=primary href="#/integrations/children-with-hiv/natality" action>Integración API grupo 1 Natality Stats</ListGroupItem>
         <ListGroupItem color=primary href="#/integrations/children-with-hiv/life" action>API grupo 1 Life Stats</ListGroupItem>
         <ListGroupItem color=primary href="#/integrations/children-with-hiv/hdi" action>API grupo 23 HDI Stats</ListGroupItem>
         <ListGroupItem color=primary href="#/integrations/children-with-hiv/mh" action>API grupo 23 Mental Health Consumption</ListGroupItem>

@@ -85,7 +85,7 @@
 	<main>
 	<figure class="highcharts-figure">
 		<div id="container"></div>
-		<p class="highcharts-description">
+		<p style="text-align: center;"class="highcharts-description">
 		Gráfica que muestra la relación entre el número de niños moldavos infectados y los que nacen cada año.
 		</p>
 	</figure>
