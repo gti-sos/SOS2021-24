@@ -36,13 +36,13 @@
 				HIVChartTotalInfected.push(stat["total_infected"]); 
       		});
     	}
-        
+
 	Highcharts.chart('container', {
     chart: {
         type: 'columnpyramid'
     },
     title: {
-        text: 'The 5 highest pyramids in the World'
+        text: 'Relación entre los niños infectados y recien nacidos por VIH en Moldavia/2018'
     },
     colors: ['#C79D6D', '#B5927B'],
     xAxis: {
@@ -66,7 +66,7 @@
     series: [{
         name: 'Total',
         data: [
-            ['Niños/as infectados en Etiopía',parseInt(HIVChartTotalInfected)],
+            ['Niños/as infectados',parseInt(HIVChartTotalInfected)],
             ['Niños/as recien nacidos',parseInt(Born)],
         ],
     },
@@ -86,7 +86,7 @@
 	<figure class="highcharts-figure">
 		<div id="container"></div>
 		<p class="highcharts-description">
-			Niños y cosas
+		Gráfica que muestra la relación entre el número de niños moldavos infectados y los que nacen cada año.
 		</p>
 	</figure>
 	</main>
