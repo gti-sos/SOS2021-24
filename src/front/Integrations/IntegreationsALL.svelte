@@ -31,6 +31,20 @@
    
     
        <br>
+       <h4 style="text-align: center;">Integraciones de Niñ@s Emplead@s (Fco Javier Macero Vázquez)</h4>
+       <Table>
+        <h6>Integraciones/Usos APIs Alumnos de SOS</h6>
+        <ListGroup>
+         <ListGroupItem  color=info href="#/integrations/children-employment/unemployment" action>Integracíon API grupo 23 unemployment-stats</ListGroupItem>
+         
+         </ListGroup>
+
+        </Table>
+
+
+
+
+
        <h4>Integraciones del resto</h4>
    
    </body>

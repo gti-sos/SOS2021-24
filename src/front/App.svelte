@@ -36,6 +36,10 @@
   import IntegracionFood from "./Integrations/school/usoFood.svelte"
   
   
+  //Employment
+  import IntegrationUnemployment from "./Integrations/employment/unenploymentStats.svelte"
+
+
 
     let isOpen=false;
     
@@ -57,10 +61,18 @@
       "/integrations/children-out-school/food": IntegracionFood,
       //==================================
 
-
+      //=================Employment=============
       "/children-employment": EmploymentAPI,
       "/children-employment/:country/:year":EditEmployment,
       "/analytics/children-employment": AnalyticsEmployment,
+      "/integrations/children-employment/unemployment": IntegrationUnemployment,
+      //========================================
+
+
+
+
+
+      
 
       "/children-with-hiv": HivAPI,
       "/children-with-hiv/:country/:year":EditHIV,
