@@ -47,6 +47,7 @@
   
   //Employment
   import IntegrationUnemployment from "./Integrations/employment/unenploymentStats.svelte"
+  import IntegrationDivorce from "./Integrations/employment/IntegrationG01.svelte"
 
 
 
@@ -77,6 +78,7 @@
       "/children-employment/:country/:year":EditEmployment,
       "/analytics/children-employment": AnalyticsEmployment,
       "/integrations/children-employment/unemployment": IntegrationUnemployment,
+      "/integrations/children-employment/divorce": IntegrationDivorce,
       //========================================
 
 
