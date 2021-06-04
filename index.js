@@ -38,6 +38,32 @@ app.use(pathQuote, function(req,res){
 	req.pipe(request(remoteAPI1)).pipe(res);
 });
 
+//========Proxys Javi============
+//Grupo 23: unemployment-stats
+var api23 = " https://sos2021-23.herokuapp.com";
+var path23 = "/api/v2/unemployment-stats";
+
+app.use(path23, function(req, res) {
+  var url = api23 + req.baseUrl + req.url;
+  console.log('piped: ' + req.baseUrl + req.url);
+  req.pipe(request(url)).pipe(res);
+});
+
+//Grupo 01: divorce-stats
+var api01 = "https://sos2021-01.herokuapp.com";
+var path01 = "/api/v1/divorce-stats";
+app.use(path01, function(req, res) {
+	var url = api01 + req.baseUrl + req.url;
+	console.log('piped: ' + req.baseUrl + req.url);
+	req.pipe(request(url)).pipe(res);
+  });
+  
+
+
+
+
+//==========================
+
 //================Proxy de Juan================
 var urlNatality = "https://sos2021-natality-stats.herokuapp.com/api/v2/natality-stats?country=moldova&date=2018";
 var grupo01 = "/proxy";
