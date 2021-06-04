@@ -122,7 +122,7 @@ module.exports.init = (app) => {
 ];
 
 //Delete the database
-db.remove({}, {multi: true});
+//db.remove({}, {multi: true});
 
 //GET loadInitialData children-employment
 app.get(BASE_CHILDREN_EMPLOYMENT_API_PATH  + "/loadInitialData", (req, res) => {

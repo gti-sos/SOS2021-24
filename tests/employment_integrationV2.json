@@ -222,7 +222,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-employment?country=argentina&year=2012",
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-employment?country=Argentina&year=2012",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -237,7 +237,7 @@
 					"query": [
 						{
 							"key": "country",
-							"value": "argentina"
+							"value": "Argentina"
 						},
 						{
 							"key": "year",
@@ -330,7 +330,7 @@
 					"formdata": []
 				},
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-employment?country=argentina&year=2012&percent_children_employment_m=6.4&percent_children_employment_f=3.5&percent_children_employment_t=5",
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-employment?country=Argentina&year=2012&percent_children_employment_m=6.4&percent_children_employment_f=3.5&percent_children_employment_t=5",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -345,7 +345,7 @@
 					"query": [
 						{
 							"key": "country",
-							"value": "argentina"
+							"value": "Argentina"
 						},
 						{
 							"key": "year",
@@ -767,7 +767,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-employment/argentina/2012",
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-employment/Argentina/2012",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -778,7 +778,7 @@
 						"api",
 						"v2",
 						"children-employment",
-						"argentina",
+						"Argentina",
 						"2012"
 					]
 				}
@@ -805,7 +805,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-employment/argentina/2017",
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-employment/Argentina/2017",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -816,7 +816,7 @@
 						"api",
 						"v2",
 						"children-employment",
-						"argentina",
+						"Argentina",
 						"2017"
 					]
 				}
@@ -963,7 +963,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n\"country\": \"argentina\",\r\n\"year\": \"2012\",\r\n\"percent_children_employment_m\": 10,\r\n\"percent_children_employment_f\": 6,\r\n\"percent_children_employment_t\": 8\r\n}",
+					"raw": "{\r\n\"country\": \"Argentina\",\r\n\"year\": \"2012\",\r\n\"percent_children_employment_m\": 10,\r\n\"percent_children_employment_f\": 6,\r\n\"percent_children_employment_t\": 8\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -971,7 +971,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-employment/argentina/2012",
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-employment/Argentina/2012",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -982,7 +982,7 @@
 						"api",
 						"v2",
 						"children-employment",
-						"argentina",
+						"Argentina",
 						"2012"
 					]
 				}
@@ -1017,7 +1017,7 @@
 					}
 				},
 				"url": {
-					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-employment/argentina/2012",
+					"raw": "https://sos2021-24.herokuapp.com/api/v2/children-employment/Argentina/2012",
 					"protocol": "https",
 					"host": [
 						"sos2021-24",
@@ -1028,7 +1028,7 @@
 						"api",
 						"v2",
 						"children-employment",
-						"argentina",
+						"Argentina",
 						"2012"
 					]
 				}
