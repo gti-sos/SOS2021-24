@@ -232,60 +232,60 @@ module.exports.init = (app) => {
             "total_infected":11500
         },
         {
-            "country":"Morocco",
+            "country":"Moldova",
             "year":2011,
-            "living_with":500,
+            "living_with":200,
             "newly_infected":100,
-            "total_infected":600
+            "total_infected":300
         },
         {
-            "country":"Morocco",
+            "country":"Moldova",
             "year":2012,
-            "living_with":500,
+            "living_with":200,
             "newly_infected":100,
-            "total_infected":600
+            "total_infected":300
         },
         {
-            "country":"Morocco",
+            "country":"Moldova",
             "year":2013,
-            "living_with":500,
+            "living_with":200,
             "newly_infected":100,
-            "total_infected":600
+            "total_infected":300
         },
         {
-            "country":"Morocco",
+            "country":"Moldova",
             "year":2014,
             "living_with":500,
             "newly_infected":100,
             "total_infected":600
         },
         {
-            "country":"Morocco",
+            "country":"Moldova",
             "year":2015,
-            "living_with":1000,
+            "living_with":500,
             "newly_infected":100,
             "total_infected":1100
         },
         {
-            "country":"Morocco",
+            "country":"Moldova",
             "year":2016,
-            "living_with":1000,
+            "living_with":500,
             "newly_infected":100,
-            "total_infected":1100
+            "total_infected":600
         },
         {
-            "country":"Morocco",
+            "country":"Moldova",
             "year":2017,
-            "living_with":1000,
+            "living_with":500,
             "newly_infected":100,
-            "total_infected":1100
+            "total_infected":600
         },
         {
-            "country":"Morocco",
+            "country":"Moldova",
             "year":2018,
-            "living_with":1000,
+            "living_with":500,
             "newly_infected":100,
-            "total_infected":1100
+            "total_infected":600
         },
         {
             "country":"Spain",
