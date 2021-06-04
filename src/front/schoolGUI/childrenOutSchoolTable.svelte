@@ -252,23 +252,23 @@
                         <tbody>
                             <tr>
                                 <th>País</th>
-                                <td><input placeholder="Spain" bind:value="{schoolDatabusqueda.country}"></td> 
+                                <td><input id="search_country" placeholder="Spain" bind:value="{schoolDatabusqueda.country}"></td> 
                             </tr>
                             <tr>
                                 <th>Año</th>
-                                <td><input placeholder="2018" bind:value="{schoolDatabusqueda.year}"></td>
+                                <td><input id="search_year" placeholder="2018" bind:value="{schoolDatabusqueda.year}"></td>
                             </tr>
                             <tr>
                                 <th>Abandono Escolar (Niños)</th>
-                                 <td><input placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_male}"></td>   
+                                 <td><input id="search_male" placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_male}"></td>   
                             </tr>
                             <tr>
                                 <th>Abandono Escolar (Niñas)</th>
-                                <td><input placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_female}"></td>
+                                <td><input id="search_female" placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_female}"></td>
                             </tr>
                             <tr>
                                 <th>Abandono Escolar (Total)</th>
-                                <td><input placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_total}"></td>
+                                <td><input id="search_total" placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_total}"></td>
                             </tr>   
                         </tbody>
                     </Table >

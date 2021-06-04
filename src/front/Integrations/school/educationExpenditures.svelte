@@ -98,7 +98,7 @@
             Esta grafica muestra el total de niños y niñas que abandona la escuela y el gasto en educación por millones de euros en los últimos años.
         </p>
     </figure>
-    <Button outline color="secondary" on:click="{pop}"> Atrás</Button>
+    <Button id="back" outline color="secondary" on:click="{pop}"> Atrás</Button>
     
 
 </main>

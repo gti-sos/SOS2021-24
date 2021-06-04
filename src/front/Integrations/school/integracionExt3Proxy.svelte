@@ -73,7 +73,7 @@
     <Button color="primary" onclick="location.reload()" style="margin-left: 35%; width: 25%;"> Siguiente frase</Button>
 
     <br>
-    <Button outline color="secondary" on:click="{pop}"> Atrás</Button>
+    <Button id="back" outline color="secondary" on:click="{pop}"> Atrás</Button>
 </main>
 
 <style>

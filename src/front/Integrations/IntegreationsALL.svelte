@@ -42,6 +42,29 @@
             <ListGroupItem id="externalapi2" color=dark href="#/integrations/children-with-hiv/jugadores" action>Uso API Ext. Jugadores de pádel</ListGroupItem>
         </ListGroup>
     </Table>
+
+
+   
+    
+       <br>
+       <h4 style="text-align: center;">Integraciones de Niñ@s Emplead@s (Fco Javier Macero Vázquez)</h4>
+       <Table>
+        <h6>Integraciones/Usos APIs Alumnos de SOS</h6>
+        <ListGroup>
+         <ListGroupItem  color=info href="#/integrations/children-employment/unemployment" action>Integracíon API grupo 23 unemployment-stats</ListGroupItem>
+         <ListGroupItem  color=info href="#/integrations/children-employment/divorce" action>Integracíon API grupo 01 divorce-stats</ListGroupItem>
+         
+         </ListGroup>
+
+        </Table>
+
+
+
+
+
+       <h4>Integraciones del resto</h4>
+
+
    
    </body>
    </main>

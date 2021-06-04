@@ -45,6 +45,11 @@
   import IntegracionExtPalas from "./Integrations/HIV/palasExt.svelte"
   import IntegracionExtJugadores from "./Integrations/HIV/jugadoresExt.svelte"
   
+  //Employment
+  import IntegrationUnemployment from "./Integrations/employment/unenploymentStats.svelte"
+  import IntegrationDivorce from "./Integrations/employment/IntegrationG01.svelte"
+
+
 
     let isOpen=false;
     
@@ -68,10 +73,19 @@
       "/integrations/children-out-school/food": IntegracionFood,
       //==================================
 
-
+      //=================Employment=============
       "/children-employment": EmploymentAPI,
       "/children-employment/:country/:year":EditEmployment,
       "/analytics/children-employment": AnalyticsEmployment,
+      "/integrations/children-employment/unemployment": IntegrationUnemployment,
+      "/integrations/children-employment/divorce": IntegrationDivorce,
+      //========================================
+
+
+
+
+
+      
 
 
       //===============HIV===============

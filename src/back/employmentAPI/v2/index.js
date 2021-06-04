@@ -8,7 +8,7 @@ module.exports.init = (app) => {
 
     var employmentData = [
     {
-        "country":"argentina",
+        "country":"Argentina",
         "year":2012,
         "percent_children_employment_m":6.4,
         "percent_children_employment_f":3.5,
@@ -50,7 +50,7 @@ module.exports.init = (app) => {
         "percent_children_employment_t":13.9
     },
     {
-        "country":"brazil",
+        "country":"Brazil",
         "year":2015,
         "percent_children_employment_m":3.5,
         "percent_children_employment_f":1.5,

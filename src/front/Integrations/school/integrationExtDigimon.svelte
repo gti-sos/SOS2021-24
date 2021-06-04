@@ -73,7 +73,7 @@
             Gráfico Donut 3D que muestra la cantidad de Digimons segun su nivel.
         </p>
     </figure>
-    <Button outline color="secondary" on:click="{pop}"> Volver</Button>
+    <Button id="back" outline color="secondary" on:click="{pop}"> Volver</Button>
 </main>
 <style>
     .highcharts-figure {
