@@ -190,17 +190,17 @@
          if(schoolDatabusqueda.country.replace(" ","").length!=0){
              flags= flags+"&country="+schoolDatabusqueda.country;
          }
-         else if(schoolDatabusqueda.year.replace(" ","").length!=0){
-             flags= flags+"&year="+parseInt(schoolDatabusqueda.year);
+         if(schoolDatabusqueda.year.replace(" ","").length!=0){
+             flags= flags+"&year="+schoolDatabusqueda.year;
          }
-         else if(schoolDatabusqueda.children_out_school_male.replace(" ","").length!=0){
-             flags= flags+"&children_out_school_male="+parseInt(schoolDatabusqueda.children_out_school_male);
+         if(schoolDatabusqueda.children_out_school_male.replace(" ","").length!=0){
+             flags= flags+"&children_out_school_male="+schoolDatabusqueda.children_out_school_male;
          }
-         else if(schoolDatabusqueda.children_out_school_female.replace(" ","").length!=0){
-             flags= flags+"&children_out_school_female="+parseInt(schoolDatabusqueda.children_out_school_female);
+         if(schoolDatabusqueda.children_out_school_female.replace(" ","").length!=0){
+             flags= flags+"&children_out_school_female="+schoolDatabusqueda.children_out_school_female;
          }
-         else if(schoolDatabusqueda.children_out_school_total.replace(" ","").length!=0){
-             flags= flags+"&children_out_school_total="+parseInt(schoolDatabusqueda.children_out_school_total);
+         if(schoolDatabusqueda.children_out_school_total.replace(" ","").length!=0){
+             flags= flags+"&children_out_school_total="+schoolDatabusqueda.children_out_school_total;
          }
          
          filtros_act=true
@@ -237,6 +237,12 @@
    
  <main>
     <h1 style="text-align: center;">Administrador de datos de <strong>Abandono Escolar</strong></h1>
+    {#if !filtros_act} 
+        <Button id="buscar" color="info" on:click={cancelarbusqueda}> Buscar </Button>
+    {:else}
+        <Button color="warning" on:click={quitafiltros}> Quitar filtros </Button> 
+        <Alert color="warning">Desactive los filtros para realizar otra búsqueda</Alert>
+    {/if}
      <div>
         <!-- Modal para la busqueda -->
         <Modal isOpen={popbusqueda} toggle={cancelarbusqueda} transitionOptions>
@@ -246,23 +252,23 @@
                         <tbody>
                             <tr>
                                 <th>País</th>
-                                <td><input id = "country_s" placeholder="Spain" bind:value="{schoolDatabusqueda.country}"></td> 
+                                <td><input placeholder="Spain" bind:value="{schoolDatabusqueda.country}"></td> 
                             </tr>
                             <tr>
                                 <th>Año</th>
-                                <td><input id = "year_s" placeholder="2018" bind:value="{schoolDatabusqueda.year}"></td>
+                                <td><input placeholder="2018" bind:value="{schoolDatabusqueda.year}"></td>
                             </tr>
                             <tr>
                                 <th>Abandono Escolar (Niños)</th>
-                                 <td><input id = "male_s" placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_male}"></td>   
+                                 <td><input placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_male}"></td>   
                             </tr>
                             <tr>
                                 <th>Abandono Escolar (Niñas)</th>
-                                <td><input id = "female_s" placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_female}"></td>
+                                <td><input placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_female}"></td>
                             </tr>
                             <tr>
                                 <th>Abandono Escolar (Total)</th>
-                                <td><input id = "total_s" placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_total}"></td>
+                                <td><input placeholder="0" bind:value="{schoolDatabusqueda.children_out_school_total}"></td>
                             </tr>   
                         </tbody>
                     </Table >
@@ -290,13 +296,6 @@
                  
              </Modal>
          </div>
-
-     {#if !filtros_act} 
-        <Button color="info" on:click={cancelarbusqueda}> Buscar </Button>
-        {:else}
-        <Button color="warning" on:click={quitafiltros}> Quitar filtros </Button> 
-        <Alert color="warning">Desactive los filtros para realizar otra búsqueda</Alert>
-    {/if}
      
          <br/>
          <Table bordered responsive hover>

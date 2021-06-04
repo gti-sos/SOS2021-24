@@ -2,7 +2,8 @@
 	import Router from 'svelte-spa-router';
 	import NotFound from './NotFound.svelte' ;  
 	import Home from './Home.svelte';
-  import Inicio from './Inicio.svelte'
+  import Inicio from './Inicio.svelte';
+  import About from "./About.svelte";
   import {Collapse,Jumbotron,Navbar,NavbarToggler,NavbarBrand,Nav,NavItem,NavLink,Dropdown,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem} from 'sveltestrap';
 
   //Imports para APIs
@@ -34,7 +35,15 @@
   import IntegracionExt5 from "./Integrations/school/integracionExt5.svelte"
   import IntegracionObesity from "./Integrations/school/integracionObesity.svelte"
   import IntegracionFood from "./Integrations/school/usoFood.svelte"
-  
+  import IntegracionExt6 from "./Integrations/school/integracionEXT6.svelte"
+
+  //HIV
+  import IntegracionNatality from "./Integrations/HIV/natalityStats.svelte"
+  import IntegracionLife from "./Integrations/HIV/lifeStats.svelte"
+  import IntegracionHDI from "./Integrations/HIV/hdiStats.svelte"
+  import IntegracionMH from "./Integrations/HIV/mhStats.svelte"
+  import IntegracionExtPalas from "./Integrations/HIV/palasExt.svelte"
+  import IntegracionExtJugadores from "./Integrations/HIV/jugadoresExt.svelte"
   
   //Employment
   import IntegrationUnemployment from "./Integrations/employment/unenploymentStats.svelte"
@@ -46,6 +55,7 @@
     const routes = {
       "/": Inicio,
 		  "/info":Home,
+      "/about":About,
       //===============School===============
       "/children-out-school": SchoolAPI,
       "/children-out-school/:country/:year":EditSchool,
@@ -56,7 +66,8 @@
       "/integrations/children-out-school/yugioh": IntegracionExt2,
       "/integrations/children-out-school/quote": IntegracionExt3,
       "/integrations/children-out-school/restcountries": IntegracionExt4,
-      "/integrations/children-out-school/btc": IntegracionExt5,
+      "/integrations/children-out-school/5": IntegracionExt5,
+      "/integrations/children-out-school/6": IntegracionExt6,
       "/integrations/children-out-school/obesity": IntegracionObesity,
       "/integrations/children-out-school/food": IntegracionFood,
       //==================================
@@ -74,9 +85,18 @@
 
       
 
+
+      //===============HIV===============
       "/children-with-hiv": HivAPI,
       "/children-with-hiv/:country/:year":EditHIV,
       "/analytics/children-with-hiv": AnalyticsHIV,
+      "/integrations/children-with-hiv/natality":IntegracionNatality,
+      "/integrations/children-with-hiv/life":IntegracionLife,
+      "/integrations/children-with-hiv/hdi":IntegracionHDI,
+      "/integrations/children-with-hiv/mh":IntegracionMH,
+      "/integrations/children-with-hiv/palas":IntegracionExtPalas,
+      "/integrations/children-with-hiv/jugadores":IntegracionExtJugadores,
+
 
       "/integrations":IntegreationsAll,
       "/analytics/hub":AnalyticsHub,
@@ -112,7 +132,7 @@
                 <NavLink href= "#/integrations">Integraciones</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Videos</NavLink>
+                <NavLink href="#/about">Videos</NavLink>
               </NavItem>
             </Nav>
         </Navbar>

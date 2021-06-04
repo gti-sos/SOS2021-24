@@ -27,9 +27,9 @@
         }
         console.log(datos);
         new Morris.Donut({
-            element: 'AwesomeChart',
+            element: 'donutChart',
             data: datos,
-            colors: ["#3c8dbc", "red", "#A9DFBF", "yellow", "purple", "black", "#138D75", "silver"] 
+            colors: ["#3c8dbc", "red", "#A9DFBF", "yellow", "#9a32cd", "black", "#138D75", "#CE7D7D"] 
         });
     }
     </script>
@@ -43,7 +43,7 @@
     </svelte:head>
     <h2 style="text-align: center">Abandono escolar Total por año (2011 - 2017)</h2>
     
-    <div id="AwesomeChart" style="height: 250px;"></div>
+    <div id="donutChart" style="height: 300px;"></div>
     <p></p>
     <p></p>
     <h6 style="text-align: center">Gráfica diseñada con Morris.js</h6>

@@ -1,5 +1,7 @@
 <script>
-    import { Button, Nav, NavItem, NavLink } from "sveltestrap";
+    import Button from "sveltestrap/src/Button.svelte";
+  import { pop } from "svelte-spa-router";
+
     const BASE_CONTACT_API_PATH_v2 = "/api/v2";
     let HIVData = [];
     let HIVChartData = [];
@@ -211,6 +213,7 @@
         </p>
       </figure>
     {/if}
+    <Button outline color="secondary" on:click="{pop}"> Atrás</Button>
   </main>
   
   <style>

@@ -10,11 +10,10 @@
        <p></p>
        <p></p>
        <h4 style="text-align: center;">Integraciones de Abandono Escolar (Enrique Luque García)</h4>
-        <Table>
        <h6>Integraciones/Usos APIs Alumnos de SOS</h6>
        <ListGroup>
-        <ListGroupItem  color=info href="#/integrations/children-out-school/expenditures" action>Integracíon API grupo 4 Education Expenditures</ListGroupItem>
-        <ListGroupItem color=info href="#/integrations/children-out-school/sanity" action>Integracíon API grupo 10 Sanity Stats</ListGroupItem>
+        <ListGroupItem color=info href="#/integrations/children-out-school/expenditures" action>Integracíon API grupo 4 Education Expenditures</ListGroupItem>
+        <ListGroupItem color=primary href="#/integrations/children-out-school/sanity" action>Uso API grupo 10 Sanity Stats</ListGroupItem>
         <ListGroupItem color=primary href="#/integrations/children-out-school/obesity" action>Uso API grupo 10 Obesity Stats</ListGroupItem>
         <ListGroupItem color=primary href="#/integrations/children-out-school/food" action>Uso API grupo 10 Food Consumption</ListGroupItem>
         </ListGroup>
@@ -26,7 +25,24 @@
             <ListGroupItem id="extapi3" color=secondary href="#/integrations/children-out-school/quote" action>Uso API Ext. Random Quotes</ListGroupItem>
             <ListGroupItem id="extapi4" color=dark href="#/integrations/children-out-school/restcountries" action>Uso API Ext. Restcountries</ListGroupItem>
         </ListGroup>
+ 
+    <h4 style="text-align: center;">Integraciones de Niños/as con VIH (Juan Ignacio Roldán Torres)</h4>
+        <Table>
+       <h6>Integraciones/Usos APIs Alumnos de SOS</h6>
+       <ListGroup>
+        <ListGroupItem color=primary href="#/integrations/children-with-hiv/natality" action>API grupo 1 Natality Stats</ListGroupItem>
+        <ListGroupItem color=primary href="#/integrations/children-with-hiv/life" action>API grupo 1 Life Stats</ListGroupItem>
+        <ListGroupItem color=primary href="#/integrations/children-with-hiv/hdi" action>API grupo 23 HDI Stats</ListGroupItem>
+        <ListGroupItem color=primary href="#/integrations/children-with-hiv/mh" action>API grupo 23 Mental Health Consumption</ListGroupItem>
+        </ListGroup>
+        <br>
+        <h6>Integraciones/Usos APIs Externas</h6>
+        <ListGroup>
+            <ListGroupItem id="externalapi1" color=dark href="#/integrations/children-with-hiv/palas" action>Uso API Ext. Palas de pádel</ListGroupItem>
+            <ListGroupItem id="externalapi2" color=dark href="#/integrations/children-with-hiv/jugadores" action>Uso API Ext. Jugadores de pádel</ListGroupItem>
+        </ListGroup>
     </Table>
+<<<<<<< HEAD
 
    
     
@@ -46,6 +62,8 @@
 
 
        <h4>Integraciones del resto</h4>
+=======
+>>>>>>> 44dc845c315129ffe37cf4c6169553dfd4d01715
    
    </body>
    </main>

@@ -7,10 +7,10 @@ async function loadChart(){
     var cards={};
     var cardTypes = [];
     const resData = await fetch("https://db.ygoprodeck.com/api/v7/cardinfo.php");
-    const myData = await resData.json();  
-    console.log(myData);
+    const cardData = await resData.json();  
+    console.log(cardData);
     
-    myData.data.forEach((v) =>{
+    cardData.data.forEach((v) =>{
          if(v.type in cards){
                 cards[v.type] += 1;
             }
@@ -23,57 +23,46 @@ async function loadChart(){
         cardTypes.push([key,cards[key]]);
     }
     
-Highcharts.chart('container', {
+    Highcharts.chart('container', {
     chart: {
-        renderTo: 'container',
-        type: 'column',
+        type: 'pie',
         options3d: {
             enabled: true,
-            alpha: 10,
-            beta: 15,
-            depth: 50,
-            viewDistance: 20
+            alpha: 45,
+            beta: 0
         }
     },
     title: {
-        text: 'Cartas de Yu-Gi-Oh por tipos'
+        text: 'Cartas de Yu-Gi-Oh según su tipo'
     },
     accessibility: {
-        announceNewData: {
-            enabled: true
-        }
-    },
-    xAxis: {
-        type: 'category'
-    },
-    yAxis: {
-        title: {
-            text: 'Número de cartas'
-        }
-    },
-    legend: {
-        enabled: false
-    },
-    plotOptions: {
-        column: {
-            depth: 20
+        point: {
+            valueSuffix: '%'
         }
     },
     tooltip: {
-        headerFormat: '<span style="font-size:12px">{series.name}</span><br>',
-        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}</b><br/>'
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
     },
-        series: [{
-            name: 'Número de cartas',
-            colorByPoint: true,
-            data: cardTypes
-        }]
-    });
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            depth: 35,
+            dataLabels: {
+                enabled: true,
+                format: '{point.name}'
+            }
+        }
+    },
+    series: [{
+        name: 'Porcentaje de cartas',
+        data: cardTypes
+    }]
+});
 }
 </script>
 <svelte:head>
   <script src="https://code.highcharts.com/highcharts.js" on:load={loadChart}></script>
-  <script src="https://code.highcharts.com/modules/series-label.js"></script>
   <script src="https://code.highcharts.com/highcharts-3d.js"></script>
   <script src="https://code.highcharts.com/modules/exporting.js"></script>
   <script src="https://code.highcharts.com/modules/export-data.js"></script>
@@ -84,7 +73,7 @@ Highcharts.chart('container', {
   <figure class="highcharts-figure">
   <div id ="container"></div>
   <p class="highcharts-description">
-      Gráfico 3D que muestra la cantidad de cartas de YU-GI-OH por tipos.
+      Gráfico 3D que muestra la cantidad de cartas de YU-GI-OH segun su tipo.
   </p>
   </figure>
     <Button outline color="secondary" on:click="{pop}"> Atrás</Button>
@@ -97,7 +86,7 @@ Highcharts.chart('container', {
     width: 900px;
 }
 
-.highcharts-figure, .highcharts-data-table table {
+.highcharts-figure {
     min-width: 350px;
     max-width: 900px;
     margin: 1em auto;

@@ -22,52 +22,47 @@
         }
 
         Highcharts.chart('container', {
-            chart: {
-                type: 'pie',
+    chart: {
+        type: 'pyramid3d',
         options3d: {
             enabled: true,
-            alpha: 45,
-            beta: 0
+            alpha: 10,
+            depth: 50,
+            viewDistance: 50
         }
+    },
+    title: {
+        text: 'Highcharts Pyramid3D Chart'
+    },
+    plotOptions: {
+        series: {
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b> ({point.y:,.0f})',
+                allowOverlap: true,
+                x: 10,
+                y: -5
             },
-            title: {
-                text: 'Digimons según nivel',
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.2f}%</b>'
-            },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    depth: 40,
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                        connectorColor: 'silver'
-                    }
-                }
-            },
-            series: [{
-                type: 'pie',
-                name: 'Porcentaje',
-                innerSize: '50%',
-                data: clasesDigimons
-            }]
-        });
+            width: '60%',
+            height: '80%',
+            center: ['50%', '45%']
+        }
+    },
+    series: [{
+        name: 'Digimons',
+        data: clasesDigimons
+    }]
+});
     }
 </script>
 <svelte:head>
   <script src="https://code.highcharts.com/highcharts.js" on:load={loadChart}></script>
-  <script src="https://code.highcharts.com/modules/series-label.js"></script>
-  <script src="https://code.highcharts.com/modules/exporting.js"></script>
   <script src="https://code.highcharts.com/highcharts-3d.js"></script>
-  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/cylinder.js"></script>
+<script src="https://code.highcharts.com/modules/funnel3d.js"></script>
+<script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
   <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 </svelte:head>
 
@@ -75,44 +70,16 @@
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            Gráfico Donut 3D que muestra la cantidad de Digimons segun nivel.
+            Gráfico Donut 3D que muestra la cantidad de Digimons segun su nivel.
         </p>
     </figure>
     <Button outline color="secondary" on:click="{pop}"> Volver</Button>
 </main>
 <style>
-    .highcharts-figure, .highcharts-data-table table {
+    .highcharts-figure {
     min-width: 320px; 
     max-width: 660px;
     margin: 1em auto;
-}
-
-.highcharts-data-table table {
-	font-family: Arial, sans-serif;
-	border-collapse: collapse;
-	border: 1px solid #EBEBEB;
-	margin: 10px auto;
-	text-align: center;
-	width: 100%;
-	max-width: 500px;
-}
-.highcharts-data-table caption {
-    padding: 1em 0;
-    font-size: 1.2em;
-    color: #555;
-}
-.highcharts-data-table th {
-	font-weight: 600;
-    padding: 0.5em;
-}
-.highcharts-data-table td, .highcharts-data-table th, .highcharts-data-table caption {
-    padding: 0.5em;
-}
-.highcharts-data-table thead tr, .highcharts-data-table tr:nth-child(even) {
-    background: #f8f8f8;
-}
-.highcharts-data-table tr:hover {
-    background: #f1f7ff;
 }
 
 </style>
