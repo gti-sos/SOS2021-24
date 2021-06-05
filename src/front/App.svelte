@@ -48,6 +48,8 @@
   //Employment
   import IntegrationUnemployment from "./Integrations/employment/unenploymentStats.svelte"
   import IntegrationDivorce from "./Integrations/employment/IntegrationG01.svelte"
+  import IntegracionCasas from './Integrations/employment/IntegracionExt2.svelte';
+  import IntegrationExt3 from './Integrations/employment/IntegrationExt3.svelte';
 
 
 
@@ -79,6 +81,8 @@
       "/analytics/children-employment": AnalyticsEmployment,
       "/integrations/children-employment/unemployment": IntegrationUnemployment,
       "/integrations/children-employment/divorce": IntegrationDivorce,
+      "/integrations/children-employment/Casas": IntegracionCasas, 
+      "/integrations/children-employment/Areas": IntegrationExt3,
       //========================================
 
       //===============HIV===============

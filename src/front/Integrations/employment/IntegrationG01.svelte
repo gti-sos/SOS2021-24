@@ -3,7 +3,7 @@
     var errorMsg = "";    
     let correctMsg = "";
     var data04 = [];
-    var lifeData = [];
+    var employmentData = [];
     const BASE_EMPLOYMENT_API_URL = "/api/v2/children-employment";
     const BASE_API_URL_01 = "/api/v1/divorce-stats";
     
@@ -32,9 +32,9 @@
     const res = await fetch(BASE_EMPLOYMENT_API_URL);
     if (res.ok) {
       console.log("OK");
-      lifeData = await res.json();
+      employmentData = await res.json();
       correctMsg = "";
-      console.log(`We have received ${lifeData.length} life-stats.`);
+      console.log(`We have received ${employmentData.length} life-stats.`);
     } else {
       console.log("Error");
       errorMsg = "Error al cargar los datos de la API";
@@ -85,7 +85,7 @@
         var casados = [];
         data04.forEach(d => { 
             let country_minus = d.country.toLowerCase();             
-            lifeData.forEach((data) =>{
+            employmentData.forEach((data) =>{
                 let c_m = data.country.toLowerCase();
                if(c_m == country_minus){
                     total_Nempleados.push(data["percent_children_employment_t"]);

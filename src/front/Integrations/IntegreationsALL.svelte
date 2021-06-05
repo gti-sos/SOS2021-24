@@ -55,7 +55,14 @@
          <ListGroupItem  color=info href="#/integrations/children-employment/divorce" action>Integracíon API grupo 01 divorce-stats</ListGroupItem>
          
          </ListGroup>
-
+         <br>
+        <h6>Integraciones/Usos APIs Externas</h6>
+        <ListGroup>
+            
+            <ListGroupItem id="extApi1" color=dark href="#/integrations/children-employment/Areas" action>Uso API Ext. Areas de países</ListGroupItem>
+            <ListGroupItem id="extApi2" color=dark href="#/integrations/children-employment/Casas" action>Uso API Ext. Casas</ListGroupItem>
+                
+        </ListGroup>
         </Table>
 
 
