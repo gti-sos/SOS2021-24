@@ -43,23 +43,16 @@
             format: '{value}'
         },
         maxPadding: 0.05,
-        showLastLabel: true,
         categories: ChartCountryDateData,
     },
     yAxis: {
         title: {
             text: 'Valor'
         },
-        labels: {
-            format: '{value}'
-        },
         lineWidth: 2
     },
     legend: {
         enabled: false
-    },
-    tooltip: {
-        pointFormat: '{point.y}'
     },
     plotOptions: {
         spline: {

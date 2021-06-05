@@ -73,7 +73,7 @@ async function loadChart(){
   <figure class="highcharts-figure">
   <div id ="container"></div>
   <p class="highcharts-description">
-      Gráfico 3D que muestra la cantidad de cartas de YU-GI-OH segun su tipo.
+      Gráfico de tarta 3D que muestra la cantidad de cartas de YU-GI-OH segun su tipo.
   </p>
   </figure>
     <Button id="back" outline color="secondary" on:click="{pop}"> Atrás</Button>

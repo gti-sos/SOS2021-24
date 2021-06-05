@@ -12,10 +12,10 @@
        <h4 style="text-align: center;">Integraciones de Abandono Escolar (Enrique Luque García)</h4>
        <h6>Integraciones/Usos APIs Alumnos de SOS</h6>
        <ListGroup>
-        <ListGroupItem color=info href="#/integrations/children-out-school/expenditures" action>Integracíon API grupo 4 Education Expenditures</ListGroupItem>
-        <ListGroupItem color=primary href="#/integrations/children-out-school/sanity" action>Uso API grupo 10 Sanity Stats</ListGroupItem>
-        <ListGroupItem color=primary href="#/integrations/children-out-school/obesity" action>Uso API grupo 10 Obesity Stats</ListGroupItem>
-        <ListGroupItem color=primary href="#/integrations/children-out-school/food" action>Uso API grupo 10 Food Consumption</ListGroupItem>
+        <ListGroupItem id="school1" color=info href="#/integrations/children-out-school/expenditures" action>Integracíon API grupo 4 Education Expenditures</ListGroupItem>
+        <ListGroupItem id="school2" color=primary href="#/integrations/children-out-school/sanity" action>Uso API grupo 10 Sanity Stats</ListGroupItem>
+        <ListGroupItem id="school3" color=primary href="#/integrations/children-out-school/obesity" action>Uso API grupo 10 Obesity Stats</ListGroupItem>
+        <ListGroupItem id="school4" color=primary href="#/integrations/children-out-school/food" action>Uso API grupo 10 Food Consumption</ListGroupItem>
         </ListGroup>
         <br>
         <h6>Integraciones/Usos APIs Externas</h6>
