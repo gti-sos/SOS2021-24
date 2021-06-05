@@ -21,56 +21,65 @@
             clasesDigimons.push([key,proporcionDigimons[key]]);
         }
 
-        Highcharts.chart('container', {
-    chart: {
-        type: 'pyramid3d',
-        options3d: {
-            enabled: true,
-            alpha: 10,
-            depth: 50,
-            viewDistance: 50
-        }
+    Highcharts.chart('container', {
+        chart: {
+        type: 'pyramid'
     },
     title: {
-        text: 'Highcharts Pyramid3D Chart'
+        text: 'Uso API Ext. Digimon'
     },
     plotOptions: {
         series: {
             dataLabels: {
                 enabled: true,
                 format: '<b>{point.name}</b> ({point.y:,.0f})',
-                allowOverlap: true,
-                x: 10,
-                y: -5
+                softConnector: true
             },
-            width: '60%',
-            height: '80%',
-            center: ['50%', '45%']
+            center: ['40%', '50%'],
+            width: '80%'
         }
+    },
+    legend: {
+        enabled: false
     },
     series: [{
         name: 'Digimons',
         data: clasesDigimons
-    }]
+    }],
+    responsive: {
+        rules: [{
+            condition: {
+                maxWidth: 500
+            },
+            chartOptions: {
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            inside: true
+                        },
+                        center: ['50%', '50%'],
+                        width: '100%'
+                    }
+                }
+            }
+        }]
+    }
 });
     }
 </script>
 <svelte:head>
-  <script src="https://code.highcharts.com/highcharts.js" on:load={loadChart}></script>
-  <script src="https://code.highcharts.com/highcharts-3d.js"></script>
-<script src="https://code.highcharts.com/modules/cylinder.js"></script>
-<script src="https://code.highcharts.com/modules/funnel3d.js"></script>
-<script src="https://code.highcharts.com/modules/pyramid3d.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js" on:load={loadChart}></script>
+    <script src="https://code.highcharts.com/modules/funnel.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
-  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 </svelte:head>
 
 <main>
     <figure class="highcharts-figure">
         <div id="container"></div>
         <p class="highcharts-description">
-            Gráfico pirámide 3D que muestra la cantidad de Digimons segun su nivel.
+            Gráfico piramidal que muestra la cantidad de Digimons segun su nivel.
         </p>
     </figure>
     <Button id="back" outline color="secondary" on:click="{pop}"> Volver</Button>
