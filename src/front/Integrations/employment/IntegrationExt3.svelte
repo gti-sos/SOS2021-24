@@ -1,40 +1,60 @@
 <script>
-  let extData = [];
+  
   let extData2 = [];
   let countryName = [];
-  let areas = [];
+  let pob_pais = [];
+  let paisesNuevo = [];
+  let poblacion = [];
   let porcentajeEmpleados = [];
+  let CountryPopulation = [];
   
   async function loadChart() {
-      const res = await fetch("https://restcountries.eu/rest/v2/all");
-      extData = await res.json();
-      if (res.ok) {
-        extData.forEach((stat) => {
+      const resPopulation = await fetch("https://ajayakv-rest-countries-v1.p.rapidapi.com/rest/v1/all", {
+	    "method": "GET",
+	    "headers": {
+		    "x-rapidapi-host": "ajayakv-rest-countries-v1.p.rapidapi.com",
+		    "x-rapidapi-key": "7ba6091b4amsh6731b2f89b0cdc6p106e3fjsnbd534659f6b0"
+	    }
+    });
+    CountryPopulation = await resPopulation.json();
+        console.log(CountryPopulation);
+        CountryPopulation.forEach((x) => {
+            
+		        poblacion.push(x.population);
+            
+            paisesNuevo.push(x.name);
+        }); 
+
+      console.log("nuevo" + paisesNuevo);
+      console.log(poblacion);
+      
+      if (resPopulation.ok) {
+        CountryPopulation.forEach((stat) => {
             if(stat.name == "Argentina"){
               countryName.push(stat.name);
-              areas.push(stat.area);
+              pob_pais.push(stat.population);
 
             }
             else if(stat.name == "Cameroon"){
               countryName.push(stat.name);
-              areas.push(stat.area);
+              pob_pais.push(stat.population);
             }
 
             else if(stat.name == "Brazil"){
               countryName.push(stat.name);
-              areas.push(stat.area);
+              pob_pais.push(stat.population);
             }
             else if(stat.name == "Jamaica"){
               countryName.push(stat.name);
-              areas.push(stat.area);
+              pob_pais.push(stat.population);
             }
             else if(stat.name == "Peru"){
               countryName.push(stat.name);
-              areas.push(stat.area);
+              pob_pais.push(stat.population);
             }
             else if(stat.name == "Pakistan"){
               countryName.push(stat.name);
-              areas.push(stat.area);
+              pob_pais.push(stat.population);
             }
           
         });
@@ -70,17 +90,17 @@
       });
   
   console.log(countryName);
-  console.log(areas);
+  
   console.log(porcentajeEmpleados);
 
   
 
   var trace1 = {
   type: 'scatter',
-  x: areas,
+  x: pob_pais,
   y: countryName,
   mode: 'markers',
-  name: 'Area del país',
+  name: 'Población del país',
   marker: {
     color: 'rgba(156, 165, 196, 0.95)',
     line: {
@@ -163,8 +183,8 @@ Plotly.newPlot('myDiv', data, layout);
     
 
 <main>
-    <h3>Integración de API externa del Area de distintos paises</h3>
-    <h5>Se recogen los datos para los mismos paises, y se compara el porcentaje total de niños empleados y el área del país</h5> 
+    <h3>Integración de API externa de la población de distintos paises</h3>
+    <h5>Se recogen los datos para los mismos paises, y se compara el porcentaje total de niños empleados y la poblacion del país</h5> 
     <body>
         <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
     </body>
