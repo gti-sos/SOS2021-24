@@ -6,12 +6,13 @@ const puppeteer = require('puppeteer');
     await page.setViewport({width: 1500, height: 1200 });
 
 //Landing page
-await page.goto('http://localhost:10000/');
+//await page.goto('http://localhost:10000/');
+await page.goto("http://sos2021-24.herokuapp.com/");
 console.log("Landing page opened");
 await page.screenshot({ path: './tests/screenshots/01_landing.png' });
 
 //Info
-/*
+
 await Promise.all([
     page.waitForNavigation(),
     page.click("#info"),
@@ -19,7 +20,7 @@ await Promise.all([
 
 console.log("Clicked on Info");
 await page.screenshot({ path: './tests/screenshots/02_info.png' });
-*/
+
 //===================================Analytics========================
 //Abandono escolar
 console.log("Open analytics");
