@@ -13,7 +13,7 @@ await page.screenshot({ path: './tests/screenshots/01_landing.png' });
 //Info
 await Promise.all([
     page.waitForNavigation(),
-    page.click("body > nav > ul > li:nth-child(1) > a"),
+    page.click("#info"),
 ]);
 
 console.log("Clicked on Info");

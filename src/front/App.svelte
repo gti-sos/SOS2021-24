@@ -117,7 +117,7 @@
             <NavbarBrand href="#/">SOS2021-24</NavbarBrand>
             <Nav navbar >
               <NavItem>
-                <NavLink href="#/info">Info</NavLink>
+                <NavLink id="info" href="#/info">Info</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="#/children-out-school">Abandono escolar</NavLink>
