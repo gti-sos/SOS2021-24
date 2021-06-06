@@ -54,6 +54,7 @@
          <ListGroupItem  color=info href="#/integrations/children-employment/unemployment" action>Uso API grupo 23 unemployment-stats</ListGroupItem>
          <ListGroupItem  color=info href="#/integrations/children-employment/divorce" action>Integracíon API grupo 01 divorce-stats</ListGroupItem>
          <ListGroupItem  color=info href="#/integrations/children-employment/Poverty" action>Integracíon API grupo 04 Poverty-Risk</ListGroupItem>
+         <ListGroupItem  color=info href="#/integrations/children-employment/Plataform" action>Integracíon API grupo 28 Plataform</ListGroupItem>
          
          </ListGroup>
          <br>

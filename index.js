@@ -68,6 +68,15 @@ app.use(path01, function(req, res) {
 	req.pipe(request(url)).pipe(res);
   });
 
+//Grupo 28: Plataform
+var api28 = "https://sos2021-28.herokuapp.com";
+var path28 = "/api/v1/platforms";
+app.use(path28, function(req, res) {
+	var url = api28 + req.baseUrl + req.url;
+	console.log('piped: ' + req.baseUrl + req.url);
+	req.pipe(request(url)).pipe(res);
+  });
+
 //================Proxy de Juan================
 var urlLS = "https://sos2021-01-life-stats.herokuapp.com";
 var grupo01 = "/api/v2/life-stats";

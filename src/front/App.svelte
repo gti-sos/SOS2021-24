@@ -51,6 +51,7 @@
   import IntegracionCasas from './Integrations/employment/IntegracionExt2.svelte';
   import IntegrationExt3 from './Integrations/employment/IntegrationExt3.svelte';
   import IntegracionG04 from './Integrations/employment/IntegracionG04.svelte';
+  import IntegracionG28 from './Integrations/employment/IntegracionG28.svelte';
 
 
 
@@ -85,6 +86,7 @@
       "/integrations/children-employment/Casas": IntegracionCasas, 
       "/integrations/children-employment/Poblacion": IntegrationExt3,
       "/integrations/children-employment/Poverty": IntegracionG04,
+      "/integrations/children-employment/Plataform": IntegracionG28,
       //========================================
 
       //===============HIV===============
