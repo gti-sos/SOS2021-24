@@ -15,7 +15,7 @@ await page.screenshot({ path: './tests/screenshots/01_landing.png' });
 
 await Promise.all([
     page.waitForNavigation(),
-    page.click("#info"),
+    page.click("body > nav > ul > li:nth-child(1) > a"),
 ]);
 
 console.log("Clicked on Info");
@@ -69,6 +69,7 @@ await page.screenshot({ path: './tests/screenshots/07_integrations_school1.png' 
 //Volver
 await page.click("body > nav > ul > li:nth-child(6) > a");
 
+/*
 console.log("School integration with sanity")
 await page.click("#school2");
 await page.waitForTimeout(2000);
@@ -98,7 +99,7 @@ await page.waitForTimeout(5000);
 await page.screenshot({ path: './tests/screenshots/10_integrations_school3.png' });
 //Volver
 await page.click("body > nav > ul > li:nth-child(6) > a");
-
+*/
 
 console.log("School integration with ext. API 1");
 await page.click("#extapi1");
