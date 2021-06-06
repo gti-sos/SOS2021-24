@@ -19,6 +19,8 @@ async function loadChart() {
         schoolChartchildrenOutSchoolTotal.push(stat["children_out_school_total"]);   
       });
     }
+    //Ordenamos alfabeticamente
+    schoolChartCountryDateData.sort();
     
     console.log("Children out school chart: " + schoolData);
     
