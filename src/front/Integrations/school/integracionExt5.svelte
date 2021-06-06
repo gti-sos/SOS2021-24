@@ -4,8 +4,8 @@
     import { pop } from "svelte-spa-router";
         let imagen1;
         let imagen2;
-        onMount(loadWiki);
-        async function loadWiki(){
+        onMount(loadImg);
+        async function loadImg(){
             const imagesData = await fetch("https://hargrimm-wikihow-v1.p.rapidapi.com/images?count=3", {
                 "method": "GET",
                 "headers": {
@@ -17,22 +17,17 @@
             imagen1 = images["1"];
             imagen2 = images["2"];
         }
-        //loadWiki();
     </script>
-    
     <main>
-    
-    <br>
+        <br>
+    <Button color="primary" onclick="location.reload()" style="margin-left: 35%; width: 25%;"> Siguiente Imágen</Button>
     <figure class="figure">
         <img src={imagen1} class="figure-img img-fluid rounded" alt="...">
       </figure>
       <figure class="figure">
         <img src={imagen2} class="figure-img img-fluid rounded" alt="...">
       </figure>
-      <Button color="primary" onclick="location.reload()" style="margin-left: 35%; width: 25%;"> Siguiente Imágen</Button>
-        <br>
+      <br>
       <Button outline color="secondary" on:click="{pop}"> Atrás</Button>
-    
-    
     
     </main>
