@@ -11,6 +11,7 @@ console.log("Landing page opened");
 await page.screenshot({ path: './tests/screenshots/01_landing.png' });
 
 //Info
+/*
 await Promise.all([
     page.waitForNavigation(),
     page.click("#info"),
@@ -18,7 +19,7 @@ await Promise.all([
 
 console.log("Clicked on Info");
 await page.screenshot({ path: './tests/screenshots/02_info.png' });
-
+*/
 //===================================Analytics========================
 //Abandono escolar
 console.log("Open analytics");
