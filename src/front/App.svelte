@@ -71,7 +71,7 @@
       "/integrations/children-out-school/yugioh": IntegracionExt2,
       "/integrations/children-out-school/quote": IntegracionExt3,
       "/integrations/children-out-school/restcountries": IntegracionExt4,
-      "/integrations/children-out-school/5": IntegracionExt5,
+      "/integrations/children-out-school/images": IntegracionExt5,
       "/integrations/children-out-school/6": IntegracionExt6,
       "/integrations/children-out-school/obesity": IntegracionObesity,
       "/integrations/children-out-school/food": IntegracionFood,

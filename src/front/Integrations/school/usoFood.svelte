@@ -51,9 +51,6 @@
         },
         lineWidth: 2
     },
-    legend: {
-        enabled: false
-    },
     plotOptions: {
         spline: {
             marker: {

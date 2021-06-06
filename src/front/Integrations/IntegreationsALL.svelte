@@ -24,9 +24,11 @@
             <ListGroupItem id="extapi2" color=dark href="#/integrations/children-out-school/yugioh" action>Uso API Ext. YU-GI-OH</ListGroupItem>
             <ListGroupItem id="extapi3" color=secondary href="#/integrations/children-out-school/quote" action>Uso API Ext. Random Quotes</ListGroupItem>
             <ListGroupItem id="extapi4" color=dark href="#/integrations/children-out-school/restcountries" action>Uso API Ext. Restcountries</ListGroupItem>
+            <ListGroupItem id="extapi4" color=dark href="#/integrations/children-out-school/images" action>Uso API Ext. Imágenes Random</ListGroupItem>
         </ListGroup>
- 
-    <h4 style="text-align: center;">Integraciones de Niños/as con VIH (Juan Ignacio Roldán Torres)</h4>
+        
+        <br>
+        <h4 style="text-align: center;">Integraciones de Niños/as con VIH (Juan Ignacio Roldán Torres)</h4>
         <Table>
        <h6>Integraciones/Usos APIs Alumnos de SOS</h6>
        <ListGroup>
@@ -42,9 +44,6 @@
             <ListGroupItem id="externalapi2" color=dark href="#/integrations/children-with-hiv/jugadores" action>Uso API Ext. Jugadores de pádel</ListGroupItem>
         </ListGroup>
     </Table>
-
-
-   
     
        <br>
        <h4 style="text-align: center;">Integraciones de Niñ@s Emplead@s (Fco Javier Macero Vázquez)</h4>
