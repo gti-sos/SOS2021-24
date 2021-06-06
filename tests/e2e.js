@@ -36,7 +36,7 @@ await page.click("body > a.btn.btn-dark");
 await page.waitForTimeout(3000);
 await page.click("body > main > main > button");
 await page.click("body > a.btn.btn-dark");
-await page.waitForTimeout(4000);
+await page.waitForTimeout(3000);
 await page.click("body > main > main > button")
 await page.click("body > a.btn.btn-dark");
 await page.waitForTimeout(5000);
@@ -45,7 +45,7 @@ await page.click("body > main > main > button")
 
 console.log("Common chart")
 await page.click("body > a.btn.btn-primary");
-await page.waitForTimeout(5000);
+await page.waitForTimeout(4500);
 await page.screenshot({ path: './tests/screenshots/05_common_chart.png' });
 
 
@@ -125,7 +125,7 @@ await page.click("#extapi3");
 await page.waitForTimeout(2000);
 await page.click("body > nav > ul > li:nth-child(6) > a");
 await page.click("#extapi3");
-await page.waitForTimeout(5000);
+await page.waitForTimeout(4000);
 await page.screenshot({ path: './tests/screenshots/13_integrations_school_ext3.png' });
 //Volver
 await page.click("body > nav > ul > li:nth-child(6) > a");
