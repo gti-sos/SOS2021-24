@@ -1,5 +1,7 @@
 <script>
-    import { Nav, NavItem, NavLink } from "sveltestrap";
+    import Button from "sveltestrap/src/Button.svelte";
+  import { pop } from "svelte-spa-router";
+
     var errorMsg = "";    
     let correctMsg = "";
     var data04 = [];
@@ -159,14 +161,7 @@
     
     
 <main> 
-    <Nav>
-        <NavItem>
-        <NavLink href="/">Página Principal</NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink href="#/integrations">Integraciones</NavLink>
-        </NavItem>
-        </Nav>          
+            
     
 
     <h3>Integración con la API del grupo 01 de SOS</h3>
@@ -177,6 +172,7 @@
     {#if errorMsg}
     <p>{errorMsg}</p>
     {/if}
+    <Button id="back" outline color="secondary" on:click="{pop}"> Atrás</Button>
 </main>
 
   

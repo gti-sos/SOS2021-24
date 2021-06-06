@@ -1,5 +1,6 @@
 <script>
-  
+  import Button from "sveltestrap/src/Button.svelte";
+  import { pop } from "svelte-spa-router";
   let extData2 = [];
   let countryName = [];
   let pob_pais = [];
@@ -188,7 +189,7 @@ Plotly.newPlot('myDiv', data, layout);
     <body>
         <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
     </body>
-    
+    <Button id="back" outline color="secondary" on:click="{pop}"> Atrás</Button>
 </main>
 
 <style>

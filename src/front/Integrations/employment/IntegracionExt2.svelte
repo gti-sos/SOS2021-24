@@ -1,4 +1,8 @@
 <script>
+
+import Button from "sveltestrap/src/Button.svelte";
+  import { pop } from "svelte-spa-router";
+
   async function loadChart(){
     const raw_data1 = await fetch("https://sos2021-24.herokuapp.com/api/v2/children-employment");
     const raw_data2 = await fetch("https://servicios.ine.es/wstempus/js/es/DATOS_TABLA/t20/p274/serie/prov/p02/02006.px?tip=AM", {
@@ -50,7 +54,7 @@
     <body>
         <div id='myDiv'><!-- Plotly chart will be drawn inside this DIV --></div>
     </body>
-    
+    <Button id="back" outline color="secondary" on:click="{pop}"> Atrás</Button>
 </main>
 
 <style>

@@ -50,6 +50,7 @@
   import IntegrationDivorce from "./Integrations/employment/IntegrationG01.svelte"
   import IntegracionCasas from './Integrations/employment/IntegracionExt2.svelte';
   import IntegrationExt3 from './Integrations/employment/IntegrationExt3.svelte';
+  import IntegracionG04 from './Integrations/employment/IntegracionG04.svelte';
 
 
 
@@ -83,6 +84,7 @@
       "/integrations/children-employment/divorce": IntegrationDivorce,
       "/integrations/children-employment/Casas": IntegracionCasas, 
       "/integrations/children-employment/Poblacion": IntegrationExt3,
+      "/integrations/children-employment/Poverty": IntegracionG04,
       //========================================
 
       //===============HIV===============

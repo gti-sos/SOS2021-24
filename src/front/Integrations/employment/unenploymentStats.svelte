@@ -1,4 +1,7 @@
 <script>
+  import Button from "sveltestrap/src/Button.svelte";
+  import { pop } from "svelte-spa-router";
+
   var errorMsg = "";
 var data01 = [];
 const BASE_API_URL_01 = "/api/v2/unemployment-stats"
@@ -81,6 +84,7 @@ async function loadAPI() {
     {#if errorMsg}
       <p>{errorMsg}</p>
     {/if}
+    <Button id="back" outline color="secondary" on:click="{pop}"> Atrás</Button>
   </main>
   
     

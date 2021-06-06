@@ -58,25 +58,15 @@ app.use(path01, function(req, res) {
 	req.pipe(request(url)).pipe(res);
   });
 
-  //API Externa Covid 
-var apiExt01 = "https://covid-193.p.rapidapi.com";
-var pathExt01 = "/statistics";
-
-app.use(pathExt01, function(req, res) {
-  var url = apiExt01 + req.baseUrl + req.url;
-  console.log('piped: ' + req.baseUrl + req.url);
-  req.pipe(request(url)).pipe(res);
-});
-
-//API externa 2
-var apiExt02 = "https://covid19india.p.rapidapi.com";
-var pathExt02 = "/getIndiaStateData";
-
-app.use(pathExt02, function(req, res) {
-  var url = apiExt02 + req.baseUrl + req.url;
-  console.log('piped: ' + req.baseUrl + req.url);
-  req.pipe(request(url)).pipe(res);
-});
+  
+//Grupo 04: poverty risk
+var api04 = "https://endpoint-poverty-risks.herokuapp.com";
+var path04 = "/api/v1?y=2015";
+app.use(path01, function(req, res) {
+	var url = api01 + req.baseUrl + req.url;
+	console.log('piped: ' + req.baseUrl + req.url);
+	req.pipe(request(url)).pipe(res);
+  });
 
 //================Proxy de Juan================
 var urlLS = "https://sos2021-01-life-stats.herokuapp.com";
