@@ -39,12 +39,12 @@ app.use(pathQuote, function(req,res){
 	req.pipe(request(remoteAPI1)).pipe(res);
 });
 
+//Grupo 10 food
+var api10food = "https://sos2021-10.herokuapp.com";
+var path10food = "/api/integration/foodconsumption-stats";
 
-var api10 = "https://sos2021-10.herokuapp.com";
-var path10 = "/api/integration/foodconsumption-stats";
-
-app.use(path10, function(req, res) {
-  var url = api10 + req.baseUrl + req.url;
+app.use(path10food, function(req, res) {
+  var url = api10food + req.baseUrl + req.url;
   console.log('Piped: ' + req.baseUrl + req.url);
   req.pipe(request(url)).pipe(res);
 });
@@ -105,6 +105,8 @@ app.get("/cool", (request,response) => {
 	console.log("New request to /cool has arrived");
 });
 
+
 app.listen(port,() => {
 	console.log("Server already listening on port " + port);
 });
+
