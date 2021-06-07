@@ -519,6 +519,7 @@ await Promise.all([
     page.click("body > nav > ul > li:nth-child(4) > a"), 
 ]);
 
+
 console.log("Clicked on Niños/as con VIH");
 await page.waitForTimeout(1000);
 await page.screenshot({ path: './tests/screenshots/35_hiv_table_page1.png' });
