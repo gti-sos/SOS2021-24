@@ -523,14 +523,14 @@ console.log("Clicked on Niños/as con VIH");
 await page.waitForTimeout(1000);
 await page.screenshot({ path: './tests/screenshots/35_hiv_table_page1.png' });
 
-console.log("Pagination, page 2")
+/*console.log("Pagination, page 2")
 await page.click("body > main > main > div:nth-child(13) > button.btn.btn-outline-info");
 await page.waitForTimeout(1000);
 await page.screenshot({ path: './tests/screenshots/36_hiv_table_page2.png' });
 //Volver a pagina 1
 console.log("Return to page 1")
 await page.click("body > main > main > div:nth-child(13) > button:nth-child(1)");
-
+*/
 console.log("Inserting new data");
 await page.focus('body > main > main > div.table-responsive > table > thead > tr:nth-child(2) > td:nth-child(1) > input[type=text]');
 await page.keyboard.type("Perú");
