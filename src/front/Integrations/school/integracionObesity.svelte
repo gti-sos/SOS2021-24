@@ -17,8 +17,6 @@ async function loadChart() {
         obesityFemale.push(stat["woman_percent"]);
       });
     }
-    //Ordenamos por nombre
-    obesityCountryDate.sort();
 
     console.log(obesityData);
     Highcharts.chart("container", {
