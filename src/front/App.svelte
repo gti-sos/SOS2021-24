@@ -42,8 +42,8 @@
   import IntegracionLife from "./Integrations/HIV/lifeStats.svelte"
   import IntegracionHDI from "./Integrations/HIV/hdiStats.svelte"
   import IntegracionMH from "./Integrations/HIV/mhStats.svelte"
-  import IntegracionExtPalas from "./Integrations/HIV/palasExt.svelte"
-  import IntegracionExtJugadores from "./Integrations/HIV/jugadoresExt.svelte"
+  import IntegracionExterna1 from "./Integrations/HIV/ext1.svelte"
+  import IntegracionExterna2 from "./Integrations/HIV/ext2.svelte"
   
   //Employment
   import IntegrationUnemployment from "./Integrations/employment/unenploymentStats.svelte"
@@ -97,8 +97,8 @@
       "/integrations/children-with-hiv/life":IntegracionLife,
       "/integrations/children-with-hiv/hdi":IntegracionHDI,
       "/integrations/children-with-hiv/mh":IntegracionMH,
-      "/integrations/children-with-hiv/palas":IntegracionExtPalas,
-      "/integrations/children-with-hiv/jugadores":IntegracionExtJugadores,
+      "/integrations/children-with-hiv/ext1":IntegracionExterna1,
+      "/integrations/children-with-hiv/ext2":IntegracionExterna2,
 
 
       "/integrations":IntegreationsAll,

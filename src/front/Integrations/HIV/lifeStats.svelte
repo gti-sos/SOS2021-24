@@ -40,11 +40,11 @@
                 e++;
             }
 			while(i<data.length){
-				Quality = data[i].quality_life_index;
-                Purchasing = data[i].purchasing_power_index;
-                Safety = data[i].safety_index;				
-				i++;
-			
+                    Quality = data[i].quality_life_index;
+                    Purchasing = data[i].purchasing_power_index;
+                    Safety = data[i].safety_index;	
+                    i++;			
+                
 			}
             console.log(Quality);
             

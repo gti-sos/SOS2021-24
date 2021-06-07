@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var Datastore = require("nedb");
 var cors = require("cors");
 var request = require("request");
+var request2 = require('request');
 
 //Variables
 var app = express();
@@ -88,13 +89,14 @@ app.use(path28, function(req, res) {
   });
 
 //================Proxy de Juan================
-var urlLS = "https://sos2021-01-life-stats.herokuapp.com";
-var grupo01 = "/api/v2/life-stats";
-app.use(grupo01, function(req,res){
-	console.log("Piped:" + req.baseUrl + req.url);
-	req.pipe(request(urlLS)).pipe(res);
-});
 
+ 
+app.use("/proxy", function(req, res) {
+  var apiServerHost = "https://corona.lmao.ninja";
+  var url = apiServerHost + req.url;
+  console.log('piped: ' + req.url);
+  req.pipe(request(url)).pipe(res);
+});
 
 //========================F02 /cool====================
 app.get("/cool", (request,response) => {

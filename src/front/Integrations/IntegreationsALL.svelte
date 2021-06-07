@@ -33,15 +33,15 @@
        <h6>Integraciones/Usos APIs Alumnos de SOS</h6>
        <ListGroup>
         <ListGroupItem color=primary href="#/integrations/children-with-hiv/natality" action>Integración API grupo 1 Natality Stats</ListGroupItem>
-        <ListGroupItem color=primary href="#/integrations/children-with-hiv/life" action>API grupo 1 Life Stats</ListGroupItem>
-        <ListGroupItem color=primary href="#/integrations/children-with-hiv/hdi" action>API grupo 23 HDI Stats</ListGroupItem>
-        <ListGroupItem color=primary href="#/integrations/children-with-hiv/mh" action>API grupo 23 Mental Health Consumption</ListGroupItem>
+        <ListGroupItem color=primary href="#/integrations/children-with-hiv/life" action>Integración API grupo 1 Life Stats</ListGroupItem>
+        <ListGroupItem color=primary href="#/integrations/children-with-hiv/hdi" action>Uso API grupo 23 HDI Stats</ListGroupItem>
+        <ListGroupItem color=primary href="#/integrations/children-with-hiv/mh" action>Integración API grupo 23 Mental Health Consumption</ListGroupItem>
         </ListGroup>
         <br>
         <h6>Integraciones/Usos APIs Externas</h6>
         <ListGroup>
-            <ListGroupItem id="externalapi1" color=dark href="#/integrations/children-with-hiv/palas" action>Uso API Ext. Palas de pádel</ListGroupItem>
-            <ListGroupItem id="externalapi2" color=dark href="#/integrations/children-with-hiv/jugadores" action>Uso API Ext. Jugadores de pádel</ListGroupItem>
+            <ListGroupItem id="externalapi1" color=dark href="#/integrations/children-with-hiv/ext1" action>Uso API Ext. Covid-19</ListGroupItem>
+            <ListGroupItem id="externalapi2" color=dark href="#/integrations/children-with-hiv/ext2" action>Uso API Ext. </ListGroupItem>
         </ListGroup>
     </Table>
     

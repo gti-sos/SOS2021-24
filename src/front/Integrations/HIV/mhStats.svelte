@@ -12,8 +12,8 @@
     const paises = new Set()
     var dataSource={};
     let MHChartAnxdaly = [];
-	let MHChartBipolar = [];
-	let arrPaises =[];
+	  let MHChartBipolar = [];
+	  let arrPaises =[];
     let data = [];
     var dict ={};
     let categorias=[];
