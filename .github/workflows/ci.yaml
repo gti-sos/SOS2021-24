@@ -15,4 +15,4 @@ jobs:
       - run: npx newman run tests/school_integrationV2.json
       - run: npx newman run tests/employment_integrationV2.json
       - run: npx newman run tests/hiv_integrationV2.json
-    # - run: node tests/e2e.js
+     - run: node tests/e2e.js
