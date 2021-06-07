@@ -51,13 +51,6 @@
         },
         lineWidth: 2
     },
-    plotOptions: {
-        spline: {
-            marker: {
-                enable: false
-            }
-        }
-    },
     series: [{
             name: 'Calorías por persona',
             data: calory,
