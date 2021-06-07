@@ -33,7 +33,7 @@ await page.screenshot({ path: './tests/screenshots/03_analytics.png' });
 
 console.log("School analytics");
 await page.click("body > a.btn.btn-dark");
-await page.waitForTimeout(2000);
+await page.waitForTimeout(3000);
 await page.click("body > main > main > button");
 await page.click("body > a.btn.btn-dark");
 await page.waitForTimeout(3000);
@@ -47,10 +47,10 @@ await page.click("body > main > main > button");
 //Niños empleados
 console.log("Employment Analytics");
 await page.click("body > a.btn.btn-info");
-await page.waitForTimeout(2000);
+await page.waitForTimeout(3000);
 await page.click("body > main > main > button");
 await page.click("body > a.btn.btn-info");
-await page.waitForTimeout(2000);
+await page.waitForTimeout(3000);
 await page.click("body > main > main > button")
 await page.click("body > a.btn.btn-info");
 await page.waitForTimeout(5000);
@@ -74,10 +74,10 @@ await page.waitForTimeout(1000);
 
 console.log("HIV analytics");
 await page.click("body > main > main > a"); 
-await page.waitForTimeout(2000);
+await page.waitForTimeout(3000);
 await page.click("body > nav > ul > li:nth-child(4) > a");
 await page.click("body > main > main > a"); 
-await page.waitForTimeout(2000);
+await page.waitForTimeout(3000);
 await page.click("body > nav > ul > li:nth-child(4) > a") 
 await page.click("body > main > main > a"); 
 await page.waitForTimeout(5000);
@@ -95,7 +95,7 @@ await page.waitForTimeout(1000);
 await page.screenshot({ path: './tests/screenshots/06_integrations.png' });
 
 //=====================Abandono escolar
-console.log("School integration with education");
+console.log("School integration with education");//Esta sale en blanco el screenshot porque hay demasiados datos...
 await page.click("#school1");
 await page.waitForTimeout(2000);
 await page.click("body > nav > ul > li:nth-child(6) > a");
@@ -176,7 +176,7 @@ await page.screenshot({ path: './tests/screenshots/14_integrations_school_ext4.p
 //Volver
 await page.click("body > nav > ul > li:nth-child(6) > a");
 
-//======================Niños Empleados
+//======================Niños EMpleados
 console.log("Employment integration with unemployment");
 await page.click("body > table:nth-child(14) > ul:nth-child(2) > a:nth-child(1)");
 await page.waitForTimeout(2000);
@@ -262,7 +262,7 @@ await page.click("#back2");
 
 //Una de las APIs externas
 
-console.log("HIV integration with ext. API 4")
+console.log("School integration with ext. API 4")
 await page.click("#externalapi1");
 await page.waitForTimeout(2000);
 await page.click("#back");
@@ -392,7 +392,7 @@ await page.waitForTimeout(2000);
 await page.screenshot({ path: './tests/screenshots/30_school_after_edit_table.png'});
 
 //=============Niños EMpleados
-
+/*
 await Promise.all([
     page.waitForNavigation(),
     page.click("body > nav > ul > li:nth-child(3) > a"),
@@ -454,7 +454,7 @@ await page.click("body > nav > ul > li:nth-child(3) > a");
 console.log("Search employment data button");
 await page.focus('body > main > main > button.btn.btn-info' )
 await page.keyboard.type('\n');
-await page.waitForTimeout(2000);
+await page.waitForTimeout(4000);
 await page.screenshot({ path: './tests/screenshots/21_employment_search_01.png' });
 
 console.log("Searching data by country");
@@ -511,6 +511,7 @@ await page.focus("body > main > main > a");
 await page.keyboard.type('\n');
 await page.waitForTimeout(2000);
 await page.screenshot({ path: './tests/screenshots/30_employment_after_edit_table.png'});
+*/
 
 //=======================VIH
 await Promise.all([
@@ -616,6 +617,10 @@ await page.focus("body > main > main > div:nth-child(3) > div.modal.show.d-block
 await page.keyboard.type('\n');
 await page.waitForTimeout(2000);
 await page.screenshot({ path: './tests/screenshots/50_hiv_after_edit_table.png'});
+
+
+
+
 
 //Cerrar
 await page.close();
