@@ -398,7 +398,7 @@ await page.focus('body > main > main > button.btn.btn-info' )
 await page.keyboard.type('\n');
 await page.waitForTimeout(2000);
 await page.screenshot({ path: './tests/screenshots/21_employment_search_01.png' });
-
+/*
 console.log("Searching data by country");
 await page.focus('body > main > main > div:nth-child(2) > div > div.modal.show.d-block > div > div > div.modal-body > table > tbody > tr:nth-child(1) > td > input');
 await page.keyboard.type("india");
@@ -418,6 +418,7 @@ await page.keyboard.type('\n');
 await page.focus('body > main > main > button.btn.btn-info' )
 await page.keyboard.type('\n');
 await page.waitForTimeout(1000);
+
 
 console.log("Searching data by country and year");
 await page.focus('body > main > main > div:nth-child(2) > div > div.modal.show.d-block > div > div > div.modal-body > table > tbody > tr:nth-child(2) > td > input[type=number]');
@@ -452,7 +453,7 @@ await page.focus("body > main > main > a");
 await page.keyboard.type('\n');
 await page.waitForTimeout(2000);
 await page.screenshot({ path: './tests/screenshots/30_employment_after_edit_table.png'});
-
+*/
 
 //Cerrar
 await page.close();
