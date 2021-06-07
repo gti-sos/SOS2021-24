@@ -3,6 +3,7 @@
         onMount
     } from "svelte";
     
+    import { pop } from "svelte-spa-router";
     import Button from "sveltestrap/src/Button.svelte";
     import FusionCharts from 'fusioncharts';
     import Charts from 'fusioncharts/fusioncharts.charts';
@@ -105,7 +106,7 @@
     }
     </script>
     <main>
-        <Button outline color="secondary" onclick="window.location.href='#/children-with-hiv'">Volver</Button>
+        <Button id="back2" outline color="secondary" on:click="{pop}"> Atrás</Button>
         <div style="margin:auto;"> 
           <SvelteFC {...chartConfigs}/>
           

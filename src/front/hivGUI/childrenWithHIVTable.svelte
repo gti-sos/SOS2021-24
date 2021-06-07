@@ -353,22 +353,22 @@
                              <tbody>
                                      <tr>
                                          <td>País</td>
-                                         <td><input placeholder ="Hungary" bind:value="{HIVDatabusqueda.country}"></td>  
+                                         <td><input id= "paises" placeholder ="Hungary" bind:value="{HIVDatabusqueda.country}"></td>  
                                      </tr><tr>
                                          <td>Año</td>
-                                         <td><input placeholder ="2018" bind:value="{HIVDatabusqueda.year}"></td>
+                                         <td><input id= "año" placeholder ="2018" bind:value="{HIVDatabusqueda.year}"></td>
                                     
                                      </tr><tr>
                                          <td>Viviendo con VIH</td>
-                                         <td><input placeholder="100" bind:value="{HIVDatabusqueda.living_with}"></td>
+                                         <td><input id= "living" placeholder="100" bind:value="{HIVDatabusqueda.living_with}"></td>
                                         
                                      </tr><tr>
                                          <td>Nuevos infectados</td>
-                                         <td><input placeholder="100" bind:value="{HIVDatabusqueda.newly_infected}"></td>
+                                         <td><input id= "newly" placeholder="100" bind:value="{HIVDatabusqueda.newly_infected}"></td>
                                           
                                      </tr><tr>
                                          <td>Total de infectados</td>
-                                         <td><input placeholder ="200" bind:value="{HIVDatabusqueda.total_infected}"></td>
+                                         <td><input id= "totalInf" placeholder ="200" bind:value="{HIVDatabusqueda.total_infected}"></td>
                                     </tr>   
                              </tbody>
                          </Table >
@@ -412,7 +412,7 @@
  
                      <div>
                          <p></p>
-                     <Button color="secondary" on:click={togglealerta}>Volver</Button>
+                     <Button id = "volver" color="secondary" on:click={togglealerta}>Volver</Button>
                  </div>
                  </ModalBody>
                  

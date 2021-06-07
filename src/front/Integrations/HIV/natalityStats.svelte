@@ -3,9 +3,7 @@
   	import Charts from 'fusioncharts/fusioncharts.charts';
   	import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
   	import SvelteFC, { fcRoot } from 'svelte-fusioncharts';
-  	import {
-        onMount
-    } from "svelte";
+    import { pop } from "svelte-spa-router";
 	import Button from "sveltestrap/src/Button.svelte";
 	
 	// Always set FusionCharts as the first parameter
@@ -89,4 +87,5 @@
 		Gráfica que muestra la relación entre el número de niños moldavos infectados y los que nacen cada año.
 		</p>
 	</figure>
+    <Button id="back" outline color="secondary" on:click="{pop}"> Atrás</Button>
 	</main>
