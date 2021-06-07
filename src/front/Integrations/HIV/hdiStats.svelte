@@ -6,11 +6,48 @@
     let hdirank = [];
     let hdivalue = [];
     let hdischolar = [];
-    async function loadChart() {
-        const res = await fetch("https://sos2021-23.herokuapp.com/api/v1/hdi-stats");
-        extData = await res.json();
-        if (res.ok) {
-          extData.forEach((stat) => {
+    var errorMsg = "";    
+    let correctMsg = "";
+    const BASE_API_URL = "https://sos2021-23.herokuapp.com/api/v1/hdi-stats";
+
+  async function loadMyStats() {
+    console.log("Loading data...");
+    const res = await fetch(
+        BASE_API_URL + "/loadInitialData"
+    ).then(function (res) {
+      if (res.ok) {
+        errorMsg = "";
+        correctMsg = "Datos cargados correctamente";
+        console.log("OK");
+      } else {
+        if (res.status === 500) {
+          errorMsg = "No se ha podido acceder a la base de datos";
+        }
+        correctMsg = "";
+        console.log("ERROR!" + errorMsg);
+      }
+    });
+  }
+  async function getMyStats() {
+    console.log("Fetching data...");
+    await loadMyStats();
+    const res = await fetch(BASE_API_URL);
+    if (res.ok) {
+      console.log("OK");
+      extData = await res.json();
+      correctMsg = "";
+      console.log(`We have received ${extData.length} life-stats.`);
+    } else {
+      console.log("Error");
+      errorMsg = "Error al cargar los datos de la API";
+    }
+}
+
+      async function loadChart(){
+        console.log("pasando por loadchart");
+        await getMyStats();
+
+        extData.forEach((stat) => {
             if(stat.country == "Italy" && stat.year==2017){
             hdirank.push(stat.hdirank);
             hdivalue.push(stat.hdivalue);
@@ -18,9 +55,7 @@
             }
             
           });
-        }
-    
-    console.log(extData);
+        console.log(extData);
 
     Highcharts.chart('container', {
     colorAxis: {

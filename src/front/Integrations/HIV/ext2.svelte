@@ -8,59 +8,64 @@
     import Charts from 'fusioncharts/fusioncharts.charts';
     import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion';
     import SvelteFC, { fcRoot } from 'svelte-fusioncharts';
+
+    fcRoot(FusionCharts, Charts, FusionTheme);
     
-    let extData = [];
-    let ruralHospitals = [];
-    let urbanHospitals = [];
-    let totalHospitals = [];
-    async function loadChart() {
-        const res = await fetch("https://api.covid19api.com/country/france");
-        extData = await res.json();
-        if (res.ok) {
-          extData.forEach((stat) => {
-            if(extData.regional == "state"){
-                if("state" == "Andhra Pradesh"){
-                    ruralHospitals.push(stat.ruralHospitals);
-            urbanHospitals.push(stat.urbanHospitals);
-            totalHospitals.push(stat.totalHospitals);
-                }
-            }
-          });
-        }else{
-            console.log("Error!");
-        }
-    
-    console.log(extData);
+    var dataSource={}
+   let Regiones =[];
+   let muertes=[];
+   let hospitalizedWithSymptoms=[];
+   let newCases=[];
+   async function loadChart(){
+       console.log("Fetching data...");
+       const res = await fetch("https://disease.sh/v2/gov/Italy");
+       if(res.ok){
+           console.log("Ok.");
+           const json = await res.json();
+           let i =0;
+           muertes.push({value: null});
+           while(i<json.length){
+               if(json[i].region == "Toscana" || json[i].region == "Lazio" ||json[i].region == "Sardegna" ||json[i].region == "Piemonte"){
+                Regiones.push({label: json[i].region})
+                muertes.push({value: json[i].deaths});
+                hospitalizedWithSymptoms.push({value: json[i].hospitalizedWithSymptoms})
+                newCases.push({value: json[i].newCases})
+               }
+               i++;
+           }
+          
+           
+       }else{
+           console.log("Error!");
+       }
         
-        dataSource = {
+    dataSource = {
   "chart": {
-    "caption": "Split of visitors by Channels & Gender",
-    "placevaluesinside": "1",
-    "showvalues": "0",
-    "plottooltext": "",
+    "caption": "Twitter Mentions",
+    "yaxisname": "Number of mentions",
+    "numbersuffix": "M",
+    "subcaption": "(iPhone Vs Samsung)",
+    "yaxismaxvalue": "2",
+    "plottooltext": "$seriesName was mentioned <b>$dataValue</b> times on Twitter in $label",
     "theme": "fusion"
   },
   "categories": [
     {
-      "category": [
-        {
-          "label": "Hospitales"
-        }
-      ]
+      "category": Regiones
     }
   ],
   "dataset": [
     {
-      "seriesname": "Hospitales rurales",
-      "data": ruralHospitals
+      "seriesname": "Hospitalizados con síntomas",
+      "data": hospitalizedWithSymptoms
     },
     {
-      "seriesname": "Hospitales urbanos",
-      "data": urbanHospitals
+      "seriesname": "Nuevos casos",
+      "data": newCases
     },
     {
-      "seriesname": "Hospitales totales",
-      "data": totalHospitals
+      "seriesname": "Muertes",
+      "data": muertes
     }
   ]
 };
@@ -70,7 +75,7 @@
     var chartConfigs={};
     async function cargarConf(){
       chartConfigs = {
-        type: 'stackedbar2d',
+        type: 'mssplinearea',
    width: 600,
    height: 400,
    dataFormat: 'json',
@@ -79,7 +84,7 @@
   }
     </script>
     <main>
-        <Button outline color="secondary" onclick="window.location.href='#/children-with-hiv'">Volver</Button>
+        <Button outline color="secondary" onclick="window.location.href='#/integrations'">Volver</Button>
         <div style="margin:auto;"> 
           <SvelteFC {...chartConfigs}/>
           
