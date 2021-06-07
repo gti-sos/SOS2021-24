@@ -95,7 +95,6 @@
     min-width: 320px; 
     max-width: 1000px;
     margin: 1em auto;
-    height: 800px;
 }
 
 </style>
