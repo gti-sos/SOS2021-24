@@ -43,6 +43,14 @@ await page.waitForTimeout(5000);
 await page.screenshot({ path: './tests/screenshots/04_analytics_school.png' });
 await page.click("body > main > main > button")
 
+
+//Niños empleados
+//console.log("Employment Analytics");
+//await page.click("body > a.btn.btn-info");
+//await page.waitForTimeout(5000);
+//await page.screenshot({ path: './tests/screenshots/04_analytics_employment.png' });
+
+
 console.log("Common chart")
 await page.click("body > a.btn.btn-primary");
 await page.waitForTimeout(4500);
