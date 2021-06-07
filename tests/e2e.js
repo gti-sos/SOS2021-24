@@ -530,7 +530,7 @@ await page.screenshot({ path: './tests/screenshots/36_hiv_table_page2.png' });
 //Volver a pagina 1
 console.log("Return to page 1")
 await page.click("body > main > main > div:nth-child(13) > button:nth-child(1)");
-*/
+
 console.log("Inserting new data");
 await page.focus('body > main > main > div.table-responsive > table > thead > tr:nth-child(2) > td:nth-child(1) > input[type=text]');
 await page.keyboard.type("Perú");
@@ -620,7 +620,7 @@ await page.screenshot({ path: './tests/screenshots/50_hiv_after_edit_table.png'}
 
 
 
-
+*/
 
 //Cerrar
 await page.close();
