@@ -61,14 +61,14 @@
     
     <main>
         <div>
-            <h1 style="text-align: center;"><strong>Uso API Ext. Restcountries</strong></h1>
+            <h1 style="text-align: center;"><strong>Uso API Ext. Covid</strong></h1>
           </div>
         
         <div>
             <figure class="highcharts-figure">
               <div id="container" />
               <p style="text-align: center;" class="highcharts-description">
-                Gráfico lollipop que muestra la cantidad de habitantes en los países de habla hispana.
+                Gráfico que muestra los casos de covid-19 en los estados de EEUU.
               </p>
             </figure>
             <Button id="back" outline color="secondary" on:click="{pop}"> Atrás</Button>
