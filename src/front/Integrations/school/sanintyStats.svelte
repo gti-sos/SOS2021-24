@@ -7,15 +7,6 @@
     let health = [];
     let doctor = [];
     let hospital = [];
-    const BASE_API_PATH = "/api/v2";
-    let schoolData = [];
-let schoolChartCountryDateData = [];
-let schoolChartchildrenOutSchoolMale = [];
-let schoolChartchildrenOutSchoolFemale = [];
-let schoolChartchildrenOutSchoolTotal = [];
-
-let cyd = [];
-
     
     async function loadChart() {
         console.log("Fetching data...");
@@ -29,16 +20,7 @@ let cyd = [];
             hospital.push(stat["hospital_bed"]);   
           });
         }
-        const res2 = await fetch(BASE_API_PATH + "/children-out-school");
-    schoolData = await res2.json();
-    if (res2.ok) {
-        schoolData.forEach(stat => {
-        schoolChartCountryDateData.push(stat.country+"/"+stat.year);
-        schoolChartchildrenOutSchoolMale.push(stat["children_out_school_male"]);
-        schoolChartchildrenOutSchoolFemale.push(stat["children_out_school_female"]);
-        schoolChartchildrenOutSchoolTotal.push(stat["children_out_school_total"]);   
-      });
-    }
+
         
         console.log("Sanity chart: " + Data);
         
