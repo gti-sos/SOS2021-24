@@ -38,7 +38,8 @@ app.use(pathQuote, function(req,res){
 	console.log("Piped:" + req.baseUrl + req.url);
 	req.pipe(request(remoteAPI1)).pipe(res);
 });
-//Grupo 23: unemployment-stats
+
+
 var api10 = "https://sos2021-10.herokuapp.com";
 var path10 = "/api/integration/foodconsumption-stats";
 

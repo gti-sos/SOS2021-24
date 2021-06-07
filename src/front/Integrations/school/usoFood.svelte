@@ -11,7 +11,7 @@
 
     async function loadChart() {
         console.log("Fetching data...");
-        const res = await fetch("https://sos2021-10.herokuapp.com/api/integration/foodconsumption-stats");
+        const res = await fetch("/api/integration/foodconsumption-stats");
         Data = await res.json();
         if (res.ok) {
             Data.forEach(stat => {
