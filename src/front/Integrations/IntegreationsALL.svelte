@@ -40,8 +40,8 @@
         <br>
         <h6>Integraciones/Usos APIs Externas</h6>
         <ListGroup>
-            <ListGroupItem id="externalapi1" color=dark href="#/integrations/children-with-hiv/ext1" action>Uso API Ext. Covid-19</ListGroupItem>
-            <ListGroupItem id="externalapi2" color=dark href="#/integrations/children-with-hiv/ext2" action>Uso API Ext. </ListGroupItem>
+            <ListGroupItem id="externalapi1" color=dark href="#/integrations/children-with-hiv/ext1" action>Uso API Ext. Covid-19 en todos los estados de EEUU</ListGroupItem>
+            <ListGroupItem id="externalapi2" color=dark href="#/integrations/children-with-hiv/ext2" action>Uso API Ext. Covid-19 regiones de Italia</ListGroupItem>
         </ListGroup>
     </Table>
     
