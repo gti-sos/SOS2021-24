@@ -250,19 +250,19 @@
                             </tr>
                             <tr>
                                 <th>Año</th>
-                                <td><input type ="number" placeholder ="2005" bind:value="{employmentDatabusqueda.year}"></td>
+                                <td><input  placeholder ="2005" bind:value="{employmentDatabusqueda.year}"></td>
                             </tr>
                             <tr>
                                 <th>Niños empleados</th>
-                                 <td><input type="number" placeholder="6" bind:value="{employmentDatabusqueda.percent_children_employment_m}"></td>   
+                                 <td><input placeholder="6" bind:value="{employmentDatabusqueda.percent_children_employment_m}"></td>   
                             </tr>
                             <tr>
                                 <th>Niñas empleadas</th>
-                                <td><input type="number" placeholder="4.4" bind:value="{employmentDatabusqueda.percent_children_employment_f}"></td>
+                                <td><input placeholder="4.4" bind:value="{employmentDatabusqueda.percent_children_employment_f}"></td>
                             </tr>
                             <tr>
                                 <th>Total de niñ@s emplead@s</th>
-                                <td><input type="number" placeholder ="5.2" bind:value="{employmentDatabusqueda.percent_children_employment_t}"></td>
+                                <td><input placeholder ="5.2" bind:value="{employmentDatabusqueda.percent_children_employment_t}"></td>
                             </tr>   
                         </tbody>
                     </Table >
@@ -311,11 +311,11 @@
                  <th>Acciones</th>
              </tr>
              <tr>
-                <td><input type="text" placeholder="Acerbaijan" bind:value="{newEmploymentData.country}"></td>
-                <td><input type="number" placeholder="2005" min=1960 bind:value="{newEmploymentData.year}"></td>
+                <td><input  type="text" placeholder="Acerbaijan" bind:value="{newEmploymentData.country}"></td>
+                <td><input  type="number" placeholder="2005" min=1960 bind:value="{newEmploymentData.year}"></td>
                 <td><input type="number" placeholder="6" min=0 bind:value="{newEmploymentData.percent_children_employment_m}"></td> 
                 <td><input type="number" placeholder="4.4" min=0 bind:value="{newEmploymentData.percent_children_employment_f}"></td>    
-                <td><input type="number" placeholder="5.2" min=0 bind:value="{newEmploymentData.percent_children_employment_t}"></td>  
+                <td><input  type="number" placeholder="5.2" min=0 bind:value="{newEmploymentData.percent_children_employment_t}"></td>  
                 <td><Button outline color="primary" on:click={insertEmploymentData}>Insertar</Button></td>           
             </tr>
          </thead>

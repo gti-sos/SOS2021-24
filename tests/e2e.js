@@ -41,17 +41,24 @@ await page.click("body > main > main > button")
 await page.click("body > a.btn.btn-dark");
 await page.waitForTimeout(5000);
 await page.screenshot({ path: './tests/screenshots/04_analytics_school.png' });
-await page.click("body > main > main > button")
+await page.click("body > main > main > button");
 
 
 //Niños empleados
-//console.log("Employment Analytics");
-//await page.click("body > a.btn.btn-info");
-//await page.waitForTimeout(5000);
-//await page.screenshot({ path: './tests/screenshots/04_analytics_employment.png' });
+console.log("Employment Analytics");
+await page.click("body > a.btn.btn-info");
+await page.waitForTimeout(3000);
+await page.click("body > main > main > button");
+await page.click("body > a.btn.btn-info");
+await page.waitForTimeout(3000);
+await page.click("body > main > main > button")
+await page.click("body > a.btn.btn-info");
+await page.waitForTimeout(5000);
+await page.screenshot({ path: './tests/screenshots/04_analytics_employment.png' });
+await page.click("body > main > main > button");
 
 
-console.log("Common chart")
+console.log("Common chart");
 await page.click("body > a.btn.btn-primary");
 await page.waitForTimeout(4500);
 await page.screenshot({ path: './tests/screenshots/05_common_chart.png' });
@@ -148,7 +155,66 @@ await page.screenshot({ path: './tests/screenshots/14_integrations_school_ext4.p
 //Volver
 await page.click("body > nav > ul > li:nth-child(6) > a");
 
+//======================Niños EMpleados
+console.log("Employment integration with unemployment");
+await page.click("body > table:nth-child(14) > ul:nth-child(2) > a:nth-child(1)");
+await page.waitForTimeout(2000);
+await page.click("body > nav > ul > li:nth-child(6) > a");
+await page.click("body > table:nth-child(14) > ul:nth-child(2) > a:nth-child(1)");
+await page.waitForTimeout(5000);
+await page.screenshot({ path: './tests/screenshots/07_integrations_employment1.png' });
+//Volver
+await page.click("body > nav > ul > li:nth-child(6) > a");
 
+console.log("Employment integration with divorce");
+await page.click("body > table:nth-child(14) > ul:nth-child(2) > a:nth-child(2)");
+await page.waitForTimeout(2000);
+await page.click("body > nav > ul > li:nth-child(6) > a");
+await page.click("body > table:nth-child(14) > ul:nth-child(2) > a:nth-child(2)");
+await page.waitForTimeout(5000);
+await page.screenshot({ path: './tests/screenshots/08_integrations_employment2.png' });
+//Volver
+await page.click("body > nav > ul > li:nth-child(6) > a");
+
+console.log("Employment integration with poverty");
+await page.click("body > table:nth-child(14) > ul:nth-child(2) > a:nth-child(3)");
+await page.waitForTimeout(2000);
+await page.click("body > nav > ul > li:nth-child(6) > a");
+await page.click("body > table:nth-child(14) > ul:nth-child(2) > a:nth-child(3)");
+await page.waitForTimeout(5000);
+await page.screenshot({ path: './tests/screenshots/09_integrations_employment3.png' });
+//Volver
+await page.click("body > nav > ul > li:nth-child(6) > a");
+
+console.log("Employment integration with poverty");
+await page.click("body > table:nth-child(14) > ul:nth-child(2) > a:nth-child(4)");
+await page.waitForTimeout(2000);
+await page.click("body > nav > ul > li:nth-child(6) > a");
+await page.click("body > table:nth-child(14) > ul:nth-child(2) > a:nth-child(4)");
+await page.waitForTimeout(5000);
+await page.screenshot({ path: './tests/screenshots/11_integrations_employment4.png' });
+//Volver
+await page.click("body > nav > ul > li:nth-child(6) > a");
+
+console.log("Employment integration with ext. API 1");
+await page.click("#extApi1");
+await page.waitForTimeout(2000);
+await page.click("body > nav > ul > li:nth-child(6) > a");
+await page.click("#extApi1");
+await page.waitForTimeout(5000);
+await page.screenshot({ path: './tests/screenshots/12_integrations_employment_ext1.png' });
+//Volver
+await page.click("body > nav > ul > li:nth-child(6) > a");
+
+console.log("Employment integration with ext. API 1");
+await page.click("#extApi2");
+await page.waitForTimeout(2000);
+await page.click("body > nav > ul > li:nth-child(6) > a");
+await page.click("#extApi2");
+await page.waitForTimeout(5000);
+await page.screenshot({ path: './tests/screenshots/12_integrations_employment_ext2.png' });
+//Volver
+await page.click("body > nav > ul > li:nth-child(6) > a");
 
 //==========================Tablas===============================
 //=======================Abandono escolar
@@ -268,6 +334,124 @@ await page.focus("body > main > main > a");
 await page.keyboard.type('\n');
 await page.waitForTimeout(2000);
 await page.screenshot({ path: './tests/screenshots/30_school_after_edit_table.png'});
+
+//=============Niños EMpleados
+await Promise.all([
+    page.waitForNavigation(),
+    page.click("body > nav > ul > li:nth-child(3) > a"),
+]);
+
+console.log("Clicked on Niños Empleados");
+await page.waitForTimeout(1000);
+await page.screenshot({ path: './tests/screenshots/15_employment_table_page1.png' });
+
+console.log("Pagination, page 2")
+await page.click("body > main > main > div:nth-child(9) > button.btn.btn-outline-info");
+await page.waitForTimeout(1000);
+await page.screenshot({ path: './tests/screenshots/16_employment_table_page2.png' });
+//Volver a pagina 1
+console.log("Return to page 1")
+await page.click("body > main > main > div:nth-child(9) > button.btn.btn-outline-info");
+
+console.log("Inserting new data");
+await page.focus('body > main > main > div.table-responsive > table > thead > tr:nth-child(2) > td:nth-child(1) > input[type=text]');
+await page.keyboard.type("Acerbaijan");
+
+await page.focus('body > main > main > div.table-responsive > table > thead > tr:nth-child(2) > td:nth-child(2) > input[type=number]');
+await page.keyboard.type("2005");
+
+await page.focus('body > main > main > div.table-responsive > table > thead > tr:nth-child(2) > td:nth-child(3) > input[type=number]');
+await page.keyboard.type("6");
+
+await page.focus('body > main > main > div.table-responsive > table > thead > tr:nth-child(2) > td:nth-child(4) > input[type=number]');
+await page.keyboard.type("4.4");
+
+await page.focus('body > main > main > div.table-responsive > table > thead > tr:nth-child(2) > td:nth-child(5) > input[type=number]');
+await page.keyboard.type("5.2");
+
+await page.waitForTimeout(1000);
+await page.screenshot({ path: './tests/screenshots/17_employment_imputs_insert.png' });
+
+await page.click("body > main > main > div.table-responsive > table > thead > tr:nth-child(2) > td:nth-child(6) > button"),
+await page.waitForTimeout(1000);
+console.log("New employment data added");
+await page.screenshot({ path: './tests/screenshots/18_employment_insert_final.png' });
+await page.click("body > main > main > div.table-responsive > table > thead > tr:nth-child(2) > td:nth-child(6) > button")
+
+console.log("Deleted all employment data");
+await page.click("body > main > main > button.btn.btn-danger");
+await page.waitForTimeout(1000);
+await page.click("body > main > main > button.btn.btn-danger");
+await page.waitForTimeout(1000);
+await page.screenshot({ path: './tests/screenshots/19_employment_deleteAll.png' });
+
+console.log("Click on load data");
+await page.click("body > main > main > button.btn.btn-success");
+await page.waitForTimeout(1000);
+await page.click("body > main > main > button.btn.btn-success");
+await page.waitForTimeout(1000);
+await page.screenshot({ path: './tests/screenshots/20_employment_load.png'});
+await page.click("body > nav > ul > li:nth-child(3) > a");
+
+console.log("Search employment data button");
+await page.focus('body > main > main > button.btn.btn-info' )
+await page.keyboard.type('\n');
+await page.waitForTimeout(2000);
+await page.screenshot({ path: './tests/screenshots/21_employment_search_01.png' });
+
+console.log("Searching data by country");
+await page.focus('body > main > main > div:nth-child(2) > div > div.modal.show.d-block > div > div > div.modal-body > table > tbody > tr:nth-child(1) > td > input');
+await page.keyboard.type("india");
+await page.screenshot({ path: './tests/screenshots/22_employment_search_country_field.png'});
+await page.click("body > main > main > div:nth-child(2) > div > div.modal.show.d-block > div > div > div.modal-footer > button.btn.btn-primary");
+await page.waitForTimeout(2000);
+await page.screenshot({ path: './tests/screenshots/23_employment_search_country.png'});
+
+await page.focus("body > main > main > div:nth-child(2) > div > div.modal.show.d-block > div > div > div.modal-body > button");
+await page.keyboard.type('\n');
+await page.waitForTimeout(2000);
+await page.screenshot({ path: './tests/screenshots/24_employment_search_country_quitafiltros.png'});
+
+await page.focus("body > main > main > button.btn.btn-warning");
+await page.keyboard.type('\n');
+
+await page.focus('body > main > main > button.btn.btn-info' )
+await page.keyboard.type('\n');
+await page.waitForTimeout(1000);
+
+console.log("Searching data by country and year");
+await page.focus('body > main > main > div:nth-child(2) > div > div.modal.show.d-block > div > div > div.modal-body > table > tbody > tr:nth-child(2) > td > input[type=number]');
+await page.keyboard.type("2012");
+await page.screenshot({ path: './tests/screenshots/25_employment_search_country_year_fields.png'});
+await page.click("body > main > main > div:nth-child(2) > div > div.modal.show.d-block > div > div > div.modal-footer > button.btn.btn-primary");
+await page.waitForTimeout(2000);
+await page.screenshot({ path: './tests/screenshots/26_employment_search_country_year.png'});
+
+await page.focus("body > main > main > div:nth-child(2) > div > div.modal.show.d-block > div > div > div.modal-body > button");
+await page.keyboard.type('\n');
+await page.focus("body > main > main > button.btn.btn-warning");
+await page.keyboard.type('\n');
+
+console.log("Edit button")
+//Pongo esto por si en la primera página no estuviera el elemento x
+await page.focus('body > main > main > div.table-responsive > table > tbody > tr:nth-child(2) > td:nth-child(6) > button.btn.btn-outline-success' )
+await page.keyboard.type('\n');
+await page.waitForTimeout(2000);
+await page.screenshot({ path: './tests/screenshots/27_employment_edit.png'});
+
+await page.focus("body > main > main > div > table > tbody > tr > td:nth-child(3) > input[type=number]")
+await page.keyboard.type("1");
+await page.screenshot({ path: './tests/screenshots/28_employment_edit_field.png'});
+
+await page.focus("body > main > main > div > table > tbody > tr > td:nth-child(6) > button");
+await page.keyboard.type('\n');
+await page.waitForTimeout(1000);
+await page.screenshot({ path: './tests/screenshots/29_employment_edit_confirm.png'});
+
+await page.focus("body > main > main > a");
+await page.keyboard.type('\n');
+await page.waitForTimeout(2000);
+await page.screenshot({ path: './tests/screenshots/30_employment_after_edit_table.png'});
 
 
 //Cerrar

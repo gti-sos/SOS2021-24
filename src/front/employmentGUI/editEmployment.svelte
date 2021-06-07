@@ -38,7 +38,7 @@
     }
 
     async function updateEmploymentData() {
-        if(confirm("¿Está seguro de que desea actualizar esta entrada?")){
+        //if(confirm("¿Está seguro de que desea actualizar esta entrada?")){
             console.log("Updating stat..." + JSON.stringify(params.country) + JSON.stringify(params.year));
             const res = await fetch("/api/v2/children-employment/" + params.country +"/" + params.year,
             {
@@ -66,7 +66,7 @@
           console.log("ERROR!" + errorMsg);
         }
       });
-    }
+    //}
     }
     onMount(getEmploymentData);
   </script>
